@@ -1,22 +1,15 @@
-<nav>
-  <a
-    routerLink="/home"
-    [routerLinkActiveOptions]="{ exact: true }"
-    routerLinkActive="active"
-    >로고</a
-  >
-  <a
-    routerLink="/storageList"
-    [routerLinkActiveOptions]="{ exact: true }"
-    routerLinkActive="active"
-    >저장목록</a
-  >
-  <a
-    routerLink="/yourTrip"
-    [routerLinkActiveOptions]="{ exact: true }"
-    routerLinkActive="active"
-    >여행</a
-  >
-  <button>로그인</button>
-  <button>회원가입</button>
-</nav>
+<header>
+  <div class="container">
+    <h1 class="logo">
+      <a routerLink="/home">로고</a>
+    </h1>
+    <nav class="headerNav">
+      <ul>
+        <li><a routerLink="/storageList">저장목록</a></li>
+        <li><a routerLink="/yourTrip">여행</a></li>
+        <li><button>로그인</button></li>
+        <li><button>회원가입</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
