@@ -4,8 +4,10 @@ import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
+import { StorageListComponent } from './storage-list/storage-list.component';
+
 @NgModule({
-  declarations: [],
+  declarations: [StorageListComponent],
   imports: [CommonModule, PagesRoutingModule, SharedModule]
 })
 export class PagesModule {}
