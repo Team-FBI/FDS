@@ -1,0 +1,54 @@
+<header class="header clear-fix">
+  <div class="header-fixed">
+    <h1 class="logo">
+      <a routerLink="/home"><img src="https://i.postimg.cc/zDhvQrxH/logo.png" alt="Airbnb" class="mainLogo" /></a>
+    </h1>
+    <div class="search"><a routerLink="/roomlist">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input type="text" placeholder="검색" class="searchInput" />
+      </a>
+    </div>
+    <nav class="headerNav">
+      <ul class="clear-fix">
+        <li><a routerLink="/storageList">저장목록</a></li>
+        <li><a routerLink="/yourTrip">여행</a></li>
+        <li><button class="outlineNone">회원가입</button></li>
+        <li><button class="outlineNone">로그인</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div class="filter">
+  <div class="filterLeft">
+    <button class="date">날짜</button>
+    <button class="person">인원</button>
+    <button class="businesstrip">출장</button>
+    <button class="roomtype">숙소유형</button>
+    <button class="price">가격</button>
+    <button class="instantreservation">즉시예약</button>
+    <button class="addfilter">필터 추가하기</button>
+  </div>
+  <div class="filterRight">
+    <span>지도 보기</span>
+    <input type="checkbox" checked data-toggle="toggle">
+    <button class="viewMap"></button>
+  </div>
+</div>
+<div class="list">
+  <div class="notice">
+    <span>여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수 있습니다. 관광세가 추가로 부과될 수 있습니다.</span>
+  </div>
+  <div class="roomlist">
+    <h1>300개 이상의 숙소</h1>
+    <ul>
+      <li>
+        <div class="img1" >
+          <img src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="map"></div>
