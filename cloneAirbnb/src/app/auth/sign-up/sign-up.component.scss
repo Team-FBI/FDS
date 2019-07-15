@@ -1,0 +1,101 @@
+.formClass {
+  width: 600px;
+  border: 1px solid #000;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.fa {
+  font-size: 16px;
+}
+
+.fa-times {
+  color: #fc642d;
+}
+
+.fa-check {
+  color: #00a699;
+}
+
+.warningMessage {
+  color: #fc642d;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.inputDiv {
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  margin: 15px auto;
+}
+
+.input {
+  display: inline-block;
+  width: 95%;
+  height: 40px;
+  padding: 7px;
+  font-size: 16px;
+  border: 0;
+}
+
+.passwordHide {
+  display: none;
+}
+
+.warningPassword {
+  font-size: 13px;
+}
+
+.monthSelector,
+.daySelector,
+.yearSelector {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 40px;
+  padding: 7px;
+  font-size: 16px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+
+.monthSelector {
+  width: 220px;
+  margin-right: 15px;
+}
+
+.daySelector {
+  width: 133px;
+  margin-right: 15px;
+}
+
+.yearSelector {
+  width: 173px;
+}
+
+.textBold {
+  margin-top: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.textColor484848 {
+  color: #484848;
+  font-size: 13px;
+}
+
+.signUpBtn {
+  margin-top: 15px;
+  width: 100%;
+  height: 50px;
+  font-size: 17px;
+  font-weight: bold;
+  background: #ff5a5f;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  text-aline: center;
+}
+
+.disable {
+  background: #ccc;
+}
