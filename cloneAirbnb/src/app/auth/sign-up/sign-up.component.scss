@@ -1,8 +1,17 @@
+.background {
+  height: calc(100vh - 80px);
+  background-image: url('https://i.postimg.cc/Kc6xrNBX/florence-1655830-1920.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-top: 100px;
+}
+
 .formClass {
   width: 600px;
-  border: 1px solid #000;
   margin: 0 auto;
   padding: 10px 20px;
+  background: #fff;
 }
 
 .fa {

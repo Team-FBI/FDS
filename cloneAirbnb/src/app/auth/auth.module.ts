@@ -5,6 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 import { SignUpComponent } from './sign-up/sign-up.component';
 
@@ -15,7 +16,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     AuthRoutingModule,
     ReactiveFormsModule,
     AngularFontAwesomeModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   exports: [SignUpComponent]
 })
