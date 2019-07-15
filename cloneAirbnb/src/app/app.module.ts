@@ -13,10 +13,11 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     SharedModule,
     PagesModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
