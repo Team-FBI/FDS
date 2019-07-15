@@ -1,5 +1,5 @@
-<header>
-  <div class="headerContainer">
+<header class="header clear-fix">
+  <div class="header-fixed">
     <h1 class="logo">
       <a routerLink="/home"
         ><img
@@ -8,12 +8,16 @@
           class="mainLogo"
       /></a>
     </h1>
+    <div class="search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <input type="text" placeholder="검색" class="searchInput" />
+    </div>
     <nav class="headerNav">
-      <ul>
+      <ul class="clear-fix">
         <li><a routerLink="/storageList">저장목록</a></li>
         <li><a routerLink="/yourTrip">여행</a></li>
-        <li><button>로그인</button></li>
-        <li><button>회원가입</button></li>
+        <li><button class="outlineNone">회원가입</button></li>
+        <li><button class="outlineNone">로그인</button></li>
       </ul>
     </nav>
   </div>
