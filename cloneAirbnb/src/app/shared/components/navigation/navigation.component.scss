@@ -1,6 +1,12 @@
 h1 {
   display: inline-block;
+  margin-top: 0;
 }
+
+a {
+  margin-right: 10px;
+}
+
 nav {
   display: inline-block;
 
@@ -14,6 +20,11 @@ nav {
   button {
     margin-right: 10px;
   }
+}
+
+.mainLogo {
+  height: 35px;
+  width: auto;
 }
 
 .active {
