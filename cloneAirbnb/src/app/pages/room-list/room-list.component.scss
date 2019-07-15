@@ -119,24 +119,59 @@ button:focus {
 .filterRight span{
   padding-right:8px;
 }
-.notice {
-  background: gold;
-  // width:840px;
-  // margin-top:24px;
+
+.list{
+  float: left;
+  width:60%;
+  padding:25px;
+  border:2px solid red
 }
-.notice span{
-  // padding: 0 24px;
-  // font-size: 14px;
-  // padding-bottom: 24px;
-  // border-bottom: 1px solid rgb(235, 235, 235);
-}
-.roomlist{
-  background: cyan;
-}
-.img1{
-  width: 100%; 
-  height: 100%; 
-}
+
 .map{
-  background: coral;
+  float: left;
+  width: 40%;
+}
+.mapWrap{
+  width: 100%;
+  height: 100%;
+}
+.notice {
+  margin-bottom:50px;
+  padding-bottom:30px;
+  border-bottom: 1px solid #ddd;
+   p{
+     font-size:14px;
+   }
+}
+
+.detailList{
+  margin-bottom: 20px;
+  padding:5px;
+  border:1px solid #ddd;
+  border-radius: 5px;
+}
+.detailList::after{
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.detailImg{
+  float: left;
+  width: 35%;
+  border-radius: 5px;
+}
+.detailText{
+  float: left;
+  width: 65%;
+  padding:10px;
+}
+
+.img1, .img2{
+  width: 100%;
+  border-radius: 5px;
+}
+
+agm-map {
+  height: 500px;
 }

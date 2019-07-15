@@ -20,7 +20,7 @@
 </header>
 
 
-<div class="filter">
+<div class="filter"><!-- filter -->
   <div class="filterLeft">
     <button class="date">날짜</button>
     <button class="person">인원</button>
@@ -35,20 +35,79 @@
     <input type="checkbox" checked data-toggle="toggle">
     <button class="viewMap"></button>
   </div>
-</div>
+</div><!-- //filter -->
+<div class="roomListWrap clear-fix">
 <div class="list">
   <div class="notice">
-    <span>여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수 있습니다. 관광세가 추가로 부과될 수 있습니다.</span>
+    <p>여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수 있습니다. 관광세가 추가로 부과될 수 있습니다.</p>
   </div>
-  <div class="roomlist">
-    <h1>300개 이상의 숙소</h1>
-    <ul>
-      <li>
-        <div class="img1" >
-          <img src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
-        </div>
-      </li>
-    </ul>
+  <ul>
+    <li class="detailList">
+      <div class="detailImg">
+        <img class="img1"
+          src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
+      </div>
+      <div class="detailText">
+        <p>바다 바로 앞, 오션뷰와 침실 정원, 하루앤하루 옥상정원집 haru n haru rooftop garden</p>
+        <p>인원 2명·침실1개·침대1개·욕실1개</p>
+      </div>
+    </li>
+    <li class="detailList">
+      <div class="detailImg">
+        <img class="img1"
+          src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
+      </div>
+      <div class="detailText">
+        <p>바다 바로 앞, 오션뷰와 침실 정원, 하루앤하루 옥상정원집 haru n haru rooftop garden</p>
+        <p>인원 2명·침실1개·침대1개·욕실1개</p>
+      </div>
+    </li>
+    <li class="detailList">
+      <div class="detailImg">
+        <img class="img1"
+          src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
+      </div>
+      <div class="detailText">
+        <p>바다 바로 앞, 오션뷰와 침실 정원, 하루앤하루 옥상정원집 haru n haru rooftop garden</p>
+        <p>인원 2명·침실1개·침대1개·욕실1개</p>
+      </div>
+    </li>
+    <li class="detailList">
+      <div class="detailImg">
+        <img class="img1"
+          src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
+      </div>
+      <div class="detailText">
+        <p>바다 바로 앞, 오션뷰와 침실 정원, 하루앤하루 옥상정원집 haru n haru rooftop garden</p>
+        <p>인원 2명·침실1개·침대1개·욕실1개</p>
+      </div>
+    </li>
+    <li class="detailList">
+      <div class="detailImg">
+        <img class="img1"
+          src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
+      </div>
+      <div class="detailText">
+        <p>바다 바로 앞, 오션뷰와 침실 정원, 하루앤하루 옥상정원집 haru n haru rooftop garden</p>
+        <p>인원 2명·침실1개·침대1개·욕실1개</p>
+      </div>
+    </li>
+  </ul>
+
+</div>
+
+<div class="map">
+  <div class="mapWrap">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="12"
+      (mapClick)="addMarker($event.coords.lat, $event.coords.lng)">
+      <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" [opacity]="marker.alpha"
+        [markerDraggable]="true" (markerClick)="selectMarker($event)">
+        <agm-info-window>Börk</agm-info-window>
+      </agm-marker>
+    </agm-map>
+    <p *ngIf="selectedMarker">
+      Lat: {{ selectedMarker.lat }} Lng: {{ selectedMarker.lng }}
+    </p>
   </div>
 </div>
-<div class="map"></div>
+</div>
