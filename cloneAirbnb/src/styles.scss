@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import '~font-awesome/css/font-awesome.min.css';
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap');
 
 html,
 body,
@@ -105,6 +106,8 @@ section {
 }
 body {
   line-height: 1;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
 }
 ol,
 ul {
@@ -506,8 +509,18 @@ template {
 [hidden] {
   display: none;
 }
-.clear-fix {
+.clear-fix::after {
   display: block;
   content: '';
   clear: both;
+}
+
+/* 숨김 콘턴츠 */
+.readable-hidden, legend{
+  position: absolute;
+  width:1px;
+  height:1px;
+  overflow: hidden;
+  margin:-1px;
+  clip:rect(0, 0, 0, 0);
 }

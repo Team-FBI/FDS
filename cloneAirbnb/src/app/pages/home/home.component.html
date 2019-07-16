@@ -1,3 +1,42 @@
 <app-navigation></app-navigation>
-<p>home works!</p>
-<app-sign-up *ngIf="signUpState"></app-sign-up>
+<main class="mainBg">
+  <div class="mainSearch">
+    <form action="">
+      <fieldset>
+        <legend>숙소 예약</legend>
+        <h2>특색 있는 숙소와 즐길 거리를 예약하세요.</h2>
+        <div>
+          <label for="">목적지</label>
+          <input type="text" name="" id="" value="" placeholder="모든 위치" />
+        </div>
+        <div class="mainDate">
+          <div class="checkIn form-group">
+            <label for="">체크인</label>
+            <input
+              type="text"
+              placeholder="년/월/일"
+              class="form-control"
+              bsDatepicker
+              [bsConfig]="{ isAnimated: true }"
+            />
+          </div>
+          <div class="checkOut form-group">
+            <label for="">체크아웃</label>
+            <input
+              type="text"
+              placeholder="년/월/일"
+              class="form-control"
+              bsDatepicker
+              [bsConfig]="{ isAnimated: true }"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="">인원</label>
+          <input type="text" name="" id="" value="" placeholder="인원" />
+        </div>
+        <button class="mainBtn">검색</button>
+      </fieldset>
+    </form>
+  </div>
+</main>
