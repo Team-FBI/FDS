@@ -9,10 +9,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AuthModule } from './auth/auth.module';
 
 import { AppComponent } from './app.component';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,15 +19,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     AngularFontAwesomeModule,
     AuthModule,
 
-    AppRoutingModule,
-
-    CarouselModule.forRoot(),
-
-    BsDatepickerModule.forRoot(),
-
-    BrowserAnimationsModule,
-
-    BsDropdownModule.forRoot()
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

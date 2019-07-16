@@ -12,9 +12,20 @@ import { StorageListComponent } from './storage-list/storage-list.component';
 import { YourTripComponent } from './your-trip/your-trip.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 
-
 @NgModule({
-  declarations: [HomeComponent, StorageListComponent, YourTripComponent, RoomDetailComponent],
-  imports: [CommonModule, PagesRoutingModule, SharedModule, BrowserAnimationsModule,  BsDatepickerModule.forRoot(), AuthModule]
+  declarations: [
+    HomeComponent,
+    StorageListComponent,
+    YourTripComponent,
+    RoomDetailComponent
+  ],
+  imports: [
+    CommonModule,
+    PagesRoutingModule,
+    SharedModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
+    AuthModule
+  ]
 })
 export class PagesModule {}
