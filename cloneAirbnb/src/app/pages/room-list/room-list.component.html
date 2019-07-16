@@ -99,11 +99,11 @@
   <div class="map">
     <div class="mapWrap">
       <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="12"
-        [scaleControl]="true" [scrollwheel]="false"
+        [zoomControl]="true" [zoomControlOptions]="zoomControlOptions" [scrollwheel]="false"
         (mapClick)="markerClose()">
         <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" 
         [opacity]="marker.alpha" (markerClick)="selectMarker($event)">
-          <agm-info-window #window >
+          <agm-info-window >
             <div class="infowindow">
               <div>
                <img class="infoimg" 

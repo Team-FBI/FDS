@@ -22,12 +22,9 @@
     "@angular/router": "~8.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "angular-font-awesome": "^3.1.2",
-<<<<<<< HEAD
     "angular-google-maps": "^2.4.1",
     "bootstrap-switch": "^3.4.0",
-=======
     "bootstrap": "4.1.1",
->>>>>>> rmorigin/develop
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^5.1.0",
     "rxjs": "~6.4.0",
