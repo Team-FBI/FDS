@@ -96,18 +96,30 @@
 
 </div>
 
-<div class="map">
-  <div class="mapWrap">
-    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="12"
-      (mapClick)="addMarker($event.coords.lat, $event.coords.lng)">
-      <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" [opacity]="marker.alpha"
-        [markerDraggable]="true" (markerClick)="selectMarker($event)">
-        <agm-info-window>Börk</agm-info-window>
-      </agm-marker>
-    </agm-map>
-    <p *ngIf="selectedMarker">
-      Lat: {{ selectedMarker.lat }} Lng: {{ selectedMarker.lng }}
-    </p>
+  <div class="map">
+    <div class="mapWrap">
+      <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="12"
+        [scaleControl]="true" [scrollwheel]="false"
+        (mapClick)="markerClose()">
+        <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" 
+        [opacity]="marker.alpha" (markerClick)="selectMarker($event)">
+          <agm-info-window #window>
+            <div class="infowindow">
+              <div>
+               <img class="infoimg" src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
+              </div>
+              <div>
+                <p>집 전체·침대1개</p>
+                <p>제주도를 가로지르는 아름다운 1100로위 "jeju901"</p>
+              </div>
+            </div>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+      <p *ngIf="selectedMarker">
+        Lat: {{ selectedMarker.lat }} Lng: {{ selectedMarker.lng }}
+      </p>
+    </div>
   </div>
-</div>
+
 </div>
