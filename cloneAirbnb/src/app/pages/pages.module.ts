@@ -9,8 +9,10 @@ import { StorageListComponent } from './storage-list/storage-list.component';
 import { YourTripComponent } from './your-trip/your-trip.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 @NgModule({
   declarations: [HomeComponent, StorageListComponent, YourTripComponent, RoomDetailComponent],
-  imports: [CommonModule, PagesRoutingModule, SharedModule]
+  imports: [CommonModule, PagesRoutingModule, SharedModule, BsDatepickerModule.forRoot()]
 })
 export class PagesModule {}

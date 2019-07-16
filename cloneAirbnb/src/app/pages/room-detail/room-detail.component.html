@@ -47,8 +47,78 @@
     </div>
   </div>
 
-  <div class="_1f4354o4">
-      <button type="button">a</button>
+  <div class="showpicture">
+      <button type="button" id="button">사진보기</button>
   </div>
 
 </div>
+
+
+
+<div class="dialog">
+  a
+  <div class="dialog-top">
+    <div>
+      <span class="price">₩75,000</span>
+      <span class="bac">/박</span>
+    </div>
+    <button id="ratingbutton">
+      <span class="rating">★★★★☆</span>
+      <span class="rating">89</span>
+    </button>
+    <div>
+      <hr class="hr">
+    </div>
+  </div>
+  
+  <form class="dialog-mid">
+    <div>
+      <div>날짜
+          <div class="row">
+              <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group">
+                <input class="form-control"
+                      placeholder="Datepicker"
+                      ngModel
+                      bsDatepicker
+                      [minDate]="minDate"
+                      [maxDate]="maxDate">
+              </div>
+              <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group">
+                <input class="form-control"
+                    placeholder="Daterangepicker"
+                    ngModel
+                    bsDaterangepicker
+                    [minDate]="minDate"
+                    [maxDate]="maxDate">
+              </div>
+            </div>
+      </div>
+      <div class="people">인원
+        <div class="hi">a
+          <div class="container1">
+              <button class="increase1">+</button>
+              <div class="counter1">0</div>
+              <button class="increase1">-</button>
+          </div>    
+          <div class="container1">
+              <button class="increase1">+</button>
+              <div class="counter1">0</div>
+              <button class="increase1">-</button>
+          </div>    
+          <div class="container1">
+              <button class="increase1">+</button>
+              <div class="counter1">0</div>
+              <button class="increase1">-</button>
+          </div>
+        </div>    
+      </div>
+    </div>
+  </form>
+  
+  <div class="dialog-bottom">
+    d
+  </div>
+</div>
+
+
+
