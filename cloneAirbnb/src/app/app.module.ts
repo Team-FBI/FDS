@@ -13,6 +13,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +33,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
     BrowserAnimationsModule,
 
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

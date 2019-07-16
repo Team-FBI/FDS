@@ -11,10 +11,11 @@ import { YourTripComponent } from './your-trip/your-trip.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [HomeComponent, StorageListComponent, YourTripComponent, RoomDetailComponent],
-  imports: [CommonModule, PagesRoutingModule, SharedModule, BsDatepickerModule.forRoot(), AuthModule]
+  imports: [CommonModule, PagesRoutingModule, SharedModule, BsDatepickerModule.forRoot(), AuthModule, ModalModule.forRoot()]
 
 })
 export class PagesModule {}
