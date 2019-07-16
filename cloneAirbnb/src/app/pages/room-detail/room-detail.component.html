@@ -47,4 +47,129 @@
     </div>
   </div>
 
+  <div class="showpicture">
+      <button type="button" id="button">사진보기</button>
+  </div>
+
 </div>
+
+
+
+<div class="dialog">
+  a
+  <div class="dialog-top">
+    <div>
+      <span class="price">₩75,000</span>
+      <span class="bac">/박</span>
+    </div>
+    <button id="ratingbutton">
+      <span class="rating">★★★★☆</span>
+      <span class="rating">89</span>
+    </button>
+    <div>
+      <hr class="hr">
+    </div>
+  </div>
+  
+  <form class="dialog-mid">
+    <div>
+      <div>날짜
+          <div class="row">
+              <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group">
+                <input class="form-control"
+                      placeholder="Datepicker"
+                      ngModel
+                      bsDatepicker
+                      [minDate]="minDate"
+                      [maxDate]="maxDate">
+              </div>
+              <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group">
+                <input class="form-control"
+                    placeholder="Daterangepicker"
+                    ngModel
+                    bsDaterangepicker
+                    [minDate]="minDate"
+                    [maxDate]="maxDate">
+              </div>
+            </div>
+      </div>
+      <div class="people">인원
+        <div class="hi">a
+          <div class="container1">
+              <button class="increase1">+</button>
+              <div class="counter1">0</div>
+              <button class="increase1">-</button>
+          </div>    
+          <div class="container1">
+              <button class="increase1">+</button>
+              <div class="counter1">0</div>
+              <button class="increase1">-</button>
+          </div>    
+          <div class="container1">
+              <button class="increase1">+</button>
+              <div class="counter1">0</div>
+              <button class="increase1">-</button>
+          </div>
+        </div>    
+      </div>  
+    </div>
+    <div>
+    <div class="h">
+      <span>₩75,000 x 2박</span>
+      <div class="dkd">
+        <span>₩150,000</span>
+      </div>
+    </div>
+    <div class="e">
+      <span>서비스 수수료</span>
+      <div class="dkd">
+        <span>₩19,350</span>
+
+        <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+ 
+      </div>
+    </div>
+    <div class="y">
+      <span>숙박세와 수수료</span>
+      <div class="dkd">
+        <span>₩1,935</span>
+      </div>
+    </div>
+    <div class="o">
+      <span>합계</span>
+      <div class="dkd">
+        <span>₩171,285</span>
+        
+      </div>
+    </div>
+    </div>
+    <button type="submit" class="_1o4htsfg" aria-busy="false" data-veloute="book-it-button"><span class="_ftj2sg4"><div class="_10cu6uvp">계속 진행하기</div></span></button>
+  </form>
+  
+  <div class="dialog-bottom">
+    d
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    This is a modal.
+  </div>
+</ng-template>
+
+
+

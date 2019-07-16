@@ -39,8 +39,8 @@
   z-index: 1;
 }
 .hey{
-  color : gray;
   display: inline-block;
+  fill: white;
 }
 .share{
   margin-right: 15px;
@@ -51,10 +51,115 @@
 #button{
   border: 1px solid gray;
   background-color: rgba(0,0,0,0);
-  color: gray;
+  color: black;
   padding: 5px; 
   margin-left:-3px;
 }
+.showpicture {
+  position: absolute;
+  backgorund-color: white;
+  left: auto;
+  right: 24px;
+  bottom: 24px;
+}
+.dialog{
+  background-color: blue;
+  width:324px;
+  height:504px;
+}
 
+.dialog-top{
+  background-color: aqua;
+  width:326px;
+  height:64px;
+}
+.dialog-mid{
+  background-color: bisque;
+  width:326px;
+  height:383px;
+}
+.dialog-bottom{
+  background-color: red;
+  width:326px;
+  height:60px;
+}
+.price{
+  font-size: 22px;
+}
+.bac{
+  overflow-wrap: break-word;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  font-weight: 600; 
+  line-height: 1.33333em; 
+  color: rgb(72, 72, 72); 
+  margin: 0px; 
+}
+#ratingbutton{
+  width:326px;
+  height:20px;
+}
+.rating{
+    display: block;
+    background-size: 9px 9px;
+    height: 10px;
+    transform: none;
+    background-repeat: space no-repeat;
+    display:inline-block;
+}
+.hr{
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width:326px;
+  color:black;
+}
 
+.container1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 130px;
+  margin: 20px auto;
+  font-size: 24px;
+  color: #3f51b5;
+}
 
+.increase1 {
+  padding: 5px 10px;
+  font-size: 24px;
+  border-radius: 5px;
+  color: #3f51b5;
+  border-color: #3f51b5;
+  outline: none;
+  cursor: pointer;
+}
+
+.counter1 {
+  width: 50px;
+  text-align: center;
+}
+
+.peoplecontainer{
+  display:none
+}
+.hi{
+  background-color:red;
+  display:none;
+}
+.h{
+  background-color: red;
+  width:100%;
+}
+.e{
+  background-color: blue;
+}
+.y{
+  background-color:yellow;
+}
+.o{
+  background-color: aqua;
+}
+.btn-primary{
+  width:15px;
+  height:15px;
+}

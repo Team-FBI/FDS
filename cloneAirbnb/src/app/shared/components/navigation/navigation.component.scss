@@ -3,6 +3,7 @@
   height: 80px;
   background: transparent;
   border-bottom: 1px solid #ddd;
+
   // position: fixed;
 
   .logo {
@@ -47,7 +48,7 @@
     }
 
     li:hover {
-      border-bottom: 2px solid #bbb;
+      border-bottom: 2px solid #555;
     }
   }
 }
@@ -74,6 +75,7 @@ button:focus {
   width: 400px;
   border: 0;
   font-size: 17px;
+  background: transparent;
 }
 
 .fa-search {

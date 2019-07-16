@@ -103,10 +103,11 @@
         (mapClick)="markerClose()">
         <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" 
         [opacity]="marker.alpha" (markerClick)="selectMarker($event)">
-          <agm-info-window #window>
+          <agm-info-window #window >
             <div class="infowindow">
               <div>
-               <img class="infoimg" src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
+               <img class="infoimg" 
+               src="https://a0.muscache.com/im/pictures/89587324/26c55a69_original.jpg?aki_policy=large">
               </div>
               <div>
                 <p>집 전체·침대1개</p>
