@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { AuthModule } from '../auth/auth.module';
 
 import { HomeComponent } from './home/home.component';
 import { StorageListComponent } from './storage-list/storage-list.component';
@@ -13,6 +14,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [HomeComponent, StorageListComponent, YourTripComponent, RoomDetailComponent],
-  imports: [CommonModule, PagesRoutingModule, SharedModule, BsDatepickerModule.forRoot()]
+  imports: [CommonModule, PagesRoutingModule, SharedModule, BsDatepickerModule.forRoot(), AuthModule]
+
 })
 export class PagesModule {}
