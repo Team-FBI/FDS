@@ -22,7 +22,10 @@
 
 <div class="filter"><!-- filter -->
   <div class="filterLeft">
-    <button class="date">날짜</button>
+    <button class="date" 
+      bsDaterangepicker
+      [bsConfig]="{ isAnimated: true}"
+      >날짜</button>
     <button class="person">인원</button>
     <button class="businesstrip">출장</button>
     <button class="roomtype">숙소유형</button>
@@ -104,16 +107,6 @@
         <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" 
         [opacity]="marker.alpha" (markerClick)="selectMarker($event)">
           <agm-info-window >
-            <div class="infowindow">
-              <div>
-               <img class="infoimg" 
-               src="https://a0.muscache.com/im/pictures/89587324/26c55a69_original.jpg?aki_policy=large">
-              </div>
-              <div>
-                <p>집 전체·침대1개</p>
-                <p>제주도를 가로지르는 아름다운 1100로위 "jeju901"</p>
-              </div>
-            </div>
           </agm-info-window>
         </agm-marker>
       </agm-map>

@@ -34,6 +34,8 @@
     font-weight: bold;
   }
 
+  
+
   ul {
     li {
       float: left;
@@ -50,6 +52,11 @@
       border-bottom: 2px solid #bbb;
     }
   }
+}
+
+::ng-deep.bs-datepicker {
+  margin-left: 550px;
+  margin-top: 10px;
 }
 
 button:focus {
