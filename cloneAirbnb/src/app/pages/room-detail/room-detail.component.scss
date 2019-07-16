@@ -63,25 +63,30 @@
   bottom: 24px;
 }
 .dialog{
-  background-color: blue;
-  width:324px;
+  border : 1px solid ;
   height:504px;
+  margin-left: 45px;
+  width: 376px;
+  z-index: 3;
+  // position: fixed; 처음엔 absolute 일정 이하 내려가면 fiexed;
+  top: 600px;
 }
 
 .dialog-top{
-  background-color: aqua;
   width:326px;
   height:64px;
 }
 .dialog-mid{
-  background-color: bisque;
   width:326px;
   height:383px;
 }
 .dialog-bottom{
-  background-color: red;
   width:326px;
   height:60px;
+}
+#d{
+  border: 0;
+  background-color : white;
 }
 .price{
   font-size: 22px;
@@ -98,6 +103,8 @@
 #ratingbutton{
   width:326px;
   height:20px;
+  border: 0;
+  background-color : white;
 }
 .rating{
     display: block;
@@ -132,6 +139,8 @@
   border-color: #3f51b5;
   outline: none;
   cursor: pointer;
+  border: 0;
+  background-color : white;
 }
 
 .counter1 {
@@ -146,20 +155,29 @@
   background-color:red;
   display:none;
 }
-.h{
-  background-color: red;
-  width:100%;
-}
-.e{
-  background-color: blue;
-}
-.y{
-  background-color:yellow;
-}
-.o{
-  background-color: aqua;
-}
+
 .btn-primary{
   width:15px;
   height:15px;
+}
+
+.image{
+  background-image: url("https://a0.muscache.com/airbnb/static/packages/icon-uc-tag.ba942714.gif");
+  width:80px;
+  height:70px;
+}
+.flex{
+  display:flex;
+}
+.continue{
+  width:326px;
+  height:46px;
+  border: 0;
+  background-color : red;
+  color:white;
+  border-radius: 4px;
+}
+.asd{
+  padding-left: 24px;
+  padding-right: 24px;
 }
