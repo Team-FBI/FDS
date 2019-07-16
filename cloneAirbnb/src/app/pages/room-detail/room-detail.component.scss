@@ -1,0 +1,60 @@
+.box{
+  position: relative;
+}
+.main{
+  height: 592px;
+  cursor: pointer;
+  align-items: center;
+  overflow: hidden;
+  display: flex;
+  width:100%;
+}
+.left-big{
+  width:50%;
+}
+.right-left{
+  width: 25%;
+  height: 592px;
+  overflow :hidden;
+}
+.right-left-p{
+  height: 50%;
+  background-color: rgb(0, 0, 0)
+}
+.right-right{
+  background-color: yellow;
+  width: 25%;
+  height: 592px;
+  overflow :hidden;
+}
+.right-right-p{
+  height: 50%;
+  background-color: rgb(0, 0, 0)
+}
+
+.s {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 1;
+}
+.hey{
+  color : gray;
+  display: inline-block;
+}
+.share{
+  margin-right: 15px;
+}
+.svg{
+  margin-left: 3px;
+}
+#button{
+  border: 1px solid gray;
+  background-color: rgba(0,0,0,0);
+  color: gray;
+  padding: 5px; 
+  margin-left:-3px;
+}
+
+
+
