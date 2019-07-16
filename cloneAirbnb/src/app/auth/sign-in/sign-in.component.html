@@ -1,2 +1,43 @@
 <app-navigation></app-navigation>
-<p>sign-in works!</p>
+<div class="background">
+  <div class="formClass">
+    <form [formGroup]="singIn" (ngSubmit)="onSubmit()">
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivEmail)"
+        (focusout)="inputDivUnclicked(inputDivEmail)"
+        #inputDivEmail
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="이메일 주소"
+          formControlName="userEmail"
+        />
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      </div>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivPassword)"
+        (focusout)="inputDivUnclicked(inputDivPassword)"
+        #inputDivPassword
+      >
+        <input
+          class="input"
+          type="password"
+          placeholder="비밀번호 설정"
+          formControlName="userPassword"
+        />
+        <i class="fa fa-eye-slash" aria-hidden="true"></i>
+      </div>
+      <button
+        type="submit"
+        class="signInBtn"
+        [disabled]="singIn.invalid"
+        [class.disable]="singIn.invalid"
+      >
+        로그인
+      </button>
+    </form>
+  </div>
+</div>

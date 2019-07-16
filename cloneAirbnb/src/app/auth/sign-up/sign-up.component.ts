@@ -70,6 +70,10 @@ export class SignUpComponent implements OnInit {
     });
   }
 
+  onSubmit() {
+    console.log(1);
+  }
+
   inputDivClicked(inputDiv: HTMLDivElement) {
     inputDiv.style.border = '1px solid #87CEFA';
   }

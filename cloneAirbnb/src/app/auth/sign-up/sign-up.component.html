@@ -1,7 +1,7 @@
 <app-navigation></app-navigation>
 <div class="background">
   <div class="formClass">
-    <form [formGroup]="singUp">
+    <form [formGroup]="singUp" (ngSubmit)="onSubmit()">
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivEmail)"
