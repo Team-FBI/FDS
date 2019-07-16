@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @Component({
   selector: 'app-room-detail',
@@ -6,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./room-detail.component.scss']
 })
 export class RoomDetailComponent implements OnInit {
-
-  constructor() { }
-
+  minDate: Date;
+  maxDate: Date;
+  constructor() {
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.minDate.setDate(this.minDate.getDate() - 1);
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+  }
+  
   ngOnInit() {
   }
 

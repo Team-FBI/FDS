@@ -9,6 +9,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AuthModule } from './auth/auth.module';
 
 import { AppComponent } from './app.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { AppComponent } from './app.component';
     PagesModule,
     AngularFontAwesomeModule,
     AuthModule,
+    CarouselModule.forRoot(),
 
     AppRoutingModule
   ],
