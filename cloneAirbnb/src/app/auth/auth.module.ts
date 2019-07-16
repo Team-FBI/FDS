@@ -8,9 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
-  declarations: [SignUpComponent],
+  declarations: [SignUpComponent, SignInComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -19,6 +20,6 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FormsModule,
     SharedModule
   ],
-  exports: [SignUpComponent]
+  exports: [SignUpComponent, SignInComponent]
 })
 export class AuthModule {}
