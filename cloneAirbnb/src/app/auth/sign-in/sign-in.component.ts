@@ -15,7 +15,15 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.singIn = this.fb.group({
-      userEmail: ['', [Validators.required]],
+      userEmail: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            '[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}'
+          )
+        ]
+      ],
       userPassword: ['', [Validators.required]]
     });
   }
@@ -30,5 +38,13 @@ export class SignInComponent implements OnInit {
 
   inputDivUnclicked(inputDiv: HTMLDivElement) {
     inputDiv.style.border = '1px solid #bbb';
+  }
+
+  get userEmail() {
+    return this.singIn.get('userEmail');
+  }
+
+  get userPassword() {
+    return this.singIn.get('userPassword');
   }
 }
