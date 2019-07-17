@@ -7,12 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-
-
-  constructor( private router: Router) {}
+  isMain: boolean;
+  constructor(private router: Router) {}
 
   ngOnInit() {
-
+    this.isMain = this.router.url === '/home' ? true : false;
   }
-
 }

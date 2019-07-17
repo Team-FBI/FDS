@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { StorageListComponent } from './storage-list/storage-list.component';
 import { YourTripComponent } from './your-trip/your-trip.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
+import { ModalModule } from 'ngx-bootstrap/modal/';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RoomDetailComponent } from './room-detail/room-detail.component';
     SharedModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
-    AuthModule
+    AuthModule,
+    ModalModule.forRoot()
   ]
 })
 export class PagesModule {}
