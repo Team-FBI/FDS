@@ -57,8 +57,21 @@
 ::ng-deep.bs-datepicker {
   margin-left: 550px;
   margin-top: 10px;
+  height: 350px;
+  position: relative;
 }
 
+.custom-content {
+  position: absolute;
+  z-index: 1081;
+  top: 390px;
+  cursor: pointer;
+  align-self: center;
+}
+.dateAdjust{
+  left: 530px;
+  top: -35px;
+}
 button:focus {
   outline: none;
 }

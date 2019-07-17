@@ -15,6 +15,7 @@ import { RoomListComponent } from './room-list/room-list.component';
 import { ModalModule } from 'ngx-bootstrap/modal/';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 @NgModule({
   declarations: [
     HomeComponent,

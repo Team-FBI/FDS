@@ -1,31 +1,14 @@
-<header class="header clear-fix">
-  <div class="header-fixed">
-    <h1 class="logo">
-      <a routerLink="/home"><img src="https://i.postimg.cc/zDhvQrxH/logo.png" alt="Airbnb" class="mainLogo" /></a>
-    </h1>
-    <div class="search"><a routerLink="/roomlist">
-        <i class="fa fa-search" aria-hidden="true"></i>
-        <input type="text" placeholder="검색" class="searchInput" />
-      </a>
-    </div>
-    <nav class="headerNav">
-      <ul class="clear-fix">
-        <li><a routerLink="/storageList">저장목록</a></li>
-        <li><a routerLink="/yourTrip">여행</a></li>
-        <li><button class="outlineNone">회원가입</button></li>
-        <li><button class="outlineNone">로그인</button></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<app-navigation></app-navigation>
 
 
 <div class="filter"><!-- filter -->
   <div class="filterLeft">
     <button class="date" 
-      bsDaterangepicker
-      [bsConfig]="{ isAnimated: true}"
-      >날짜</button>
+      [bsConfig]="{ isAnimated: true}" #dp="bsDaterangepicker" bsDaterangepicker>
+      날짜</button>
+      <div class="custom-content" *ngIf="dp.isOpen">
+        <button class="dateAdjust">적용</button>
+      </div>
     <button class="person">인원</button>
     <button class="businesstrip">출장</button>
     <button class="roomtype">숙소유형</button>
@@ -103,10 +86,21 @@
     <div class="mapWrap">
       <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="12"
         [zoomControl]="true" [zoomControlOptions]="zoomControlOptions" [scrollwheel]="false"
-        (mapClick)="markerClose()">
+        (mapClick)="mapClick($event)">
         <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" 
-        [opacity]="marker.alpha" (markerClick)="selectMarker($event)">
-          <agm-info-window >
+        [opacity]="marker.alpha" [iconUrl]="icon" (markerClick)="markerClick(iw)">
+          <agm-info-window [isOpen]="marker.disabled" #iw>
+            <div class="infowindow">
+               <div>
+                 <img class="infoimg"
+                  src="{{marker.url}}">
+                 </div>
+               <div>
+                 <p>{{marker.content}} 집 전체·침대1개</p>
+                 <p>제주도를 가로지르는 아름다운 1100로위 "jeju901"</p>
+                 </div>
+               </div>`
+              
           </agm-info-window>
         </agm-marker>
       </agm-map>
