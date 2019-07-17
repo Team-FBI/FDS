@@ -15,12 +15,10 @@ export class SignInComponent implements OnInit {
     this.singIn = this.fb.group({
       userEmail: ['', [Validators.required]],
       userPassword: ['', [Validators.required]]
-    })
+    });
   }
 
-  onSubmit() {
-    console.log(1);
-  }
+  onSubmit() {}
 
   inputDivClicked(inputDiv: HTMLDivElement) {
     inputDiv.style.border = '1px solid #87CEFA';
