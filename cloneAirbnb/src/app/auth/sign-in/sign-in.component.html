@@ -16,6 +16,18 @@
         />
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
       </div>
+      <p
+        *ngIf="userEmail.errors?.required && userEmail.touched"
+        class="warningMessage"
+      >
+        이메일을 입력해 주세요
+      </p>
+      <p
+        *ngIf="userEmail.errors?.pattern && userEmail.touched"
+        class="warningMessage"
+      >
+        이메일 형식이 올바르지 않습니다.
+      </p>
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivPassword)"
@@ -30,6 +42,12 @@
         />
         <i class="fa fa-eye-slash" aria-hidden="true"></i>
       </div>
+      <p
+        *ngIf="userPassword.errors?.required && userPassword.touched"
+        class="warningMessage"
+      >
+        비밀번호를 입력해 주세요.
+      </p>
       <button
         type="submit"
         class="signInBtn"
