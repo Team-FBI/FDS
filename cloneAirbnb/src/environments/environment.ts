@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  appUrl: 'airbnb.tthae.com/api/'
+  appUrl: 'http://airbnb.tthae.com/api'
 };
 
 /*
