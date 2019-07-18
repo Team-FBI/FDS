@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 
 @Component({
   selector: 'app-home',
@@ -6,23 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  counter = 0;
-  
-  counter3 = 0;
+  constructor(
+    private router: Router,
+    private urlRemember: UrlRememberService
+  ) {}
 
-  constructor() {}
-
-  ngOnInit() {}
-
-  increase(n:number){
-    this.counter++;
+  ngOnInit() {
+    this.urlRemember.currentUrl = this.router.url;
   }
-
-  decrease(){
-    if(this.counter > 0){
-      this.counter--;
-    }
-  }
-
-  
 }

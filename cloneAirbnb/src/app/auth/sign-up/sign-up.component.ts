@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SignUpObj } from 'src/app/core/interface/signUp.interface';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,8 +17,16 @@ export class SignUpComponent implements OnInit {
   months: number[];
   days: number[];
   years: number[];
+  appUrl: string = environment.appUrl;
+  userInfo: SignUpObj;
+  previousUrl: string;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+    private urlRemember: UrlRememberService
+  ) {}
 
   ngOnInit() {
     this.months = [];
@@ -70,8 +83,29 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(1);
+  onSubmit(
+    userEmail: HTMLInputElement,
+    userFirstName: HTMLInputElement,
+    userLastName: HTMLInputElement,
+    userPassword: HTMLInputElement,
+    birthMonth: HTMLSelectElement,
+    birthDay: HTMLSelectElement,
+    birthYear: HTMLSelectElement
+  ) {
+    this.previousUrl = this.urlRemember.currentUrl;
+
+    const payload: SignUpObj = {
+      username: userEmail.value,
+      first_name: userFirstName.value,
+      last_name: userLastName.value,
+      password: userPassword.value
+    };
+
+    // this.http
+    //   .post(`${this.appUrl}/accounts/user/`, payload)
+    //   .subscribe(res => console.log(res));
+
+    this.router.navigate([this.previousUrl]);
   }
 
   inputDivClicked(inputDiv: HTMLDivElement) {
