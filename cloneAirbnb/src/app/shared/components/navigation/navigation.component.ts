@@ -7,11 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+  isMain: boolean;
   constructor(private router: Router) {}
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    this.isMain = this.router.url === '/home' ? true : false;
+  }
   showroomList() {
-    this.router.navigate(['roomList']);
+  this.router.navigate(['roomList']);
   }
 }

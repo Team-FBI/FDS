@@ -1,0 +1,183 @@
+.box{
+  position: relative;
+}
+.main{
+  height: 592px;
+  cursor: pointer;
+  align-items: center;
+  overflow: hidden;
+  display: flex;
+  width:100%;
+}
+.left-big{
+  width:50%;
+}
+.right-left{
+  width: 25%;
+  height: 592px;
+  overflow :hidden;
+}
+.right-left-p{
+  height: 50%;
+  background-color: rgb(0, 0, 0)
+}
+.right-right{
+  background-color: yellow;
+  width: 25%;
+  height: 592px;
+  overflow :hidden;
+}
+.right-right-p{
+  height: 50%;
+  background-color: rgb(0, 0, 0)
+}
+
+.s {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 1;
+}
+.hey{
+  display: inline-block;
+  fill: white;
+}
+.share{
+  margin-right: 15px;
+}
+.svg{
+  margin-left: 3px;
+}
+#button{
+  border: 1px solid gray;
+  background-color: rgba(0,0,0,0);
+  color: black;
+  padding: 5px; 
+  margin-left:-3px;
+}
+.showpicture {
+  position: absolute;
+  backgorund-color: white;
+  left: auto;
+  right: 24px;
+  bottom: 24px;
+}
+.dialog{
+  border : 1px solid ;
+  height:504px;
+  margin-left: 45px;
+  width: 376px;
+  z-index: 3;
+  // position: fixed; 처음엔 absolute 일정 이하 내려가면 fiexed;
+  top: 600px;
+}
+
+.dialog-top{
+  width:326px;
+  height:64px;
+}
+.dialog-mid{
+  width:326px;
+  height:383px;
+}
+.dialog-bottom{
+  width:326px;
+  height:60px;
+}
+#d{
+  border: 0;
+  background-color : white;
+}
+.price{
+  font-size: 22px;
+}
+.bac{
+  overflow-wrap: break-word;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  font-weight: 600; 
+  line-height: 1.33333em; 
+  color: rgb(72, 72, 72); 
+  margin: 0px; 
+}
+#ratingbutton{
+  width:326px;
+  height:20px;
+  border: 0;
+  background-color : white;
+}
+.rating{
+    display: block;
+    background-size: 9px 9px;
+    height: 10px;
+    transform: none;
+    background-repeat: space no-repeat;
+    display:inline-block;
+}
+.hr{
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width:326px;
+  color:black;
+}
+
+.container1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 130px;
+  margin: 20px auto;
+  font-size: 24px;
+  color: #3f51b5;
+}
+
+.increase1 {
+  padding: 5px 10px;
+  font-size: 24px;
+  border-radius: 5px;
+  color: #3f51b5;
+  border-color: #3f51b5;
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  background-color : white;
+}
+
+.counter1 {
+  width: 50px;
+  text-align: center;
+}
+
+.peoplecontainer{
+  display:none
+}
+.hi{
+  background-color:red;
+  display:none;
+}
+
+.btn-primary{
+  width:15px;
+  height:15px;
+}
+
+.image{
+  background-image: url("https://a0.muscache.com/airbnb/static/packages/icon-uc-tag.ba942714.gif");
+  width:80px;
+  height:70px;
+}
+.flex{
+  display:flex;
+}
+.continue{
+  width:326px;
+  height:46px;
+  border: 0;
+  background-color : red;
+  color:white;
+  border-radius: 4px;
+}
+.asd{
+  padding-left: 24px;
+  padding-right: 24px;
+}

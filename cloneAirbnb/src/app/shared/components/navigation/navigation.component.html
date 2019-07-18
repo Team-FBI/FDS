@@ -1,23 +1,45 @@
-<header class="header clear-fix">
+<header class="header clear-fix" [class.isMain]="isMain">
   <div class="header-fixed">
     <h1 class="logo">
       <a routerLink="/home"
         ><img
+          *ngIf="!isMain"
           src="https://i.postimg.cc/zDhvQrxH/logo.png"
+          alt="Airbnb"
+          class="mainLogo"/>
+        <img
+          *ngIf="isMain"
+          src="https://i.postimg.cc/7Y2G1YNd/logo.png"
           alt="Airbnb"
           class="mainLogo"
       /></a>
     </h1>
-    <div class="search">
+    <div class="search" *ngIf="!isMain">
       <i class="fa fa-search" aria-hidden="true"></i>
       <input type="text" (keyup.enter)="showroomList()" placeholder="검색" class="searchInput" />
     </div>
     <nav class="headerNav">
       <ul class="clear-fix">
-        <li><a routerLink="/storageList">저장목록</a></li>
-        <li><a routerLink="/yourTrip">여행</a></li>
-        <li><a routerLink="/signUp">회원가입</a></li>
-        <li><a routerLink="/signIn">로그인</a></li>
+        <li>
+          <a routerLink="/storageList" [style.color]="isMain ? '#fff' : '#000'"
+            >저장목록</a
+          >
+        </li>
+        <li>
+          <a routerLink="/yourTrip" [style.color]="isMain ? '#fff' : '#000'"
+            >여행</a
+          >
+        </li>
+        <li>
+          <a routerLink="/signUp" [style.color]="isMain ? '#fff' : '#000'"
+            >회원가입</a
+          >
+        </li>
+        <li>
+          <a routerLink="/signIn" [style.color]="isMain ? '#fff' : '#000'"
+            >로그인</a
+          >
+        </li>
       </ul>
     </nav>
   </div>

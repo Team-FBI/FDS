@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ZoomControlOptions, ControlPosition, ZoomControlStyle } from '@agm/core/services/google-maps-types';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-room-list',
@@ -37,16 +38,18 @@ export class RoomListComponent implements OnInit {
     url: 'https://i.dlpng.com/static/png/510666_thumb.png',
     scaledSize: { width: 50, height: 60 }
   };
-  url = 'airbnb.tthae.com/api';
+  appUrl: string = environment.appUrl;
 
   constructor(private http: HttpClient) {
     this.currentIW = null;
     this.previousIW = null;
+    console.log(this.appUrl);
   }
+    
 
   ngOnInit() {
-    this.http.get(this.url)
-      .subscribe()
+    this.http.get(`${this.appUrl}`)
+      .subscribe(res => console.log(res));
   }
 
   max(coordType: 'lat' | 'lng'): number {
