@@ -12,13 +12,19 @@ import { StorageListComponent } from './storage-list/storage-list.component';
 import { YourTripComponent } from './your-trip/your-trip.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { ModalModule } from 'ngx-bootstrap/modal/';
+import { RoomRegulationComponent } from './room-regulation/room-regulation.component';
+import { GuestInfoComponent } from './guest-info/guest-info.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     StorageListComponent,
     YourTripComponent,
-    RoomDetailComponent
+    RoomDetailComponent,
+    RoomRegulationComponent,
+    GuestInfoComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
