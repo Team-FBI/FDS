@@ -49,7 +49,8 @@
 
   <div class="showpicture">
       <!-- <button type="button" id="button">사진보기</button> -->
-      <button type="button" class="btn" (click)="roomlistopenModal(roomlist)">사진보기</button>
+      <!-- <button type="button" class="btn" (click)="roomlistopenModal(roomlist)">사진보기</button> -->
+      <button (click)="isOpen = !isOpen">사진보기</button>
   </div>
 </div>
 
@@ -204,19 +205,112 @@
   </div>
 </ng-template>
 
-<ng-template #roomlist>
+<!-- <ng-template #roomlist>
     <div class="modal-header">
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" >
-        <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true" class="roomlistmodalclose">&times;</span>
       </button>
+    </div> -->
+    <!-- <swiper [config]="galleryTop">
+      <button>
+      <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 4.8em; width: 4.8em; fill: rgb(255, 255, 255);"><path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path></svg>
+      </button>
+      <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+      <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
+      <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
+      <button><svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 4.8em; width: 4.8em; fill: rgb(255, 255, 255);"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
+      </button>
+    </swiper> -->
+    <!-- <div class="modal-body"> -->
+      <!-- <div class="swiper-container gallery-top" #galleryTop [swiper]="galleryTopConfig">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
+          </div>
+        </div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+        <div class="swiper-button-next swiper-button-white"></div>
+      </div>
+      <div class="swiper-container gallery-thumbs" #galleryThumbs [swiper]="galleryThumbsConfig">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
+          </div>
+        </div>
+      </div>
     </div>
-        <swiper>
-          <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+  </ng-template> -->
+
+<div class="back-drop" [class.active]="isOpen">
+  <button (click)="isOpen = !isOpen" class="close-btn">X</button>
+  
+  <div class="all-wrpper">
+    
+    <div class="swiper-container gallery-top" #galleryTop [swiper]="galleryTopConfig">
+      
+      <div class="swiper-wrapper">
+        
+        <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+        </div>
+        <div class="swiper-slide">
           <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
+        </div>
+        <div class="swiper-slide">
           <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
-          <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 4.8em; width: 4.8em; fill: rgb(255, 255, 255);"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
-        </swiper>
-  </ng-template>
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/73c41fb8-658e-419a-bef2-95abf08e4a80.jpg?aki_policy=large">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/884f3794-1451-443a-9cbe-c2e2d8f11bc1.jpg?aki_policy=large">
+        </div>
+      
+      </div> <!-- swiper-wrapper -->
+      
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div> <!-- gallery-top -->
+    
+    <div class="swiper-container gallery-thumbs" #galleryThumbs [swiper]="galleryThumbsConfig">
+      
+      <div class="swiper-wrapper">
+        
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+        </div>
+        <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/73c41fb8-658e-419a-bef2-95abf08e4a80.jpg?aki_policy=large">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/884f3794-1451-443a-9cbe-c2e2d8f11bc1.jpg?aki_policy=large">
+        </div>
+      
+      </div> <!--swiper-wrapper-->
+  
+    </div> <!-- gallery-thumbs -->
+  
+  </div> <!-- all-wrpper -->
+
+</div> <!-- back-drop -->
 
 
   
