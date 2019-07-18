@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
+import { SignUpObj } from '../interface/signUp.interface';
+import { SignInObj } from '../interface/signIn.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +14,14 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   registerUser(payload: object) {
-    return this.http.post(`${this.appUrl}/accounts/user/`, payload);
+    return this.http.post<SignUpObj>(`${this.appUrl}/accounts/user/`, payload);
   }
 
-  signInUser(payload: object) {
-    return this.http.post(`${this.appUrl}/accounts/get_token/`, payload);
+  getToken(payload: object) {
+    return this.http.post<SignInObj>(
+      `${this.appUrl}/accounts/get_token/`,
+      payload
+    );
   }
 
   loggedIn() {
