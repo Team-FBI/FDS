@@ -1,43 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { ZoomControlOptions, ControlPosition, ZoomControlStyle } from '@agm/core/services/google-maps-types';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-room-list',
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent {
-
+export class RoomListComponent implements OnInit {
   myDateValue: Date;
-
-  ngOnInit() {
-    this.myDateValue = new Date();
-  }
-
-  customAction() {
-    alert("Some custom action");
-  }
-
   latitude = 33.36995865711402;
   longitude = 126.52811723292518;
   selectedMarker;
   infowindowManager: InfoWindowManager;
   currentIW: AgmInfoWindow;
   previousIW: AgmInfoWindow;
-
-  constructor() {
-    this.currentIW = null;
-    this.previousIW = null;
-  }
-
   markers = [
-    { id: 1, lat: 33.36995865711402, lng: 126.52811723292518, alpha: 1, content: 'css',
+    {
+      id: 1, lat: 33.36995865711402, lng: 126.52811723292518, alpha: 1, content: 'css',
       url: 'https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large',
-      disabled: false },
-    { id: 2, lat: 33.36995865711402, lng: 126.54811723292518, alpha: 1, content: 'html',
+      disabled: false
+    },
+    {
+      id: 2, lat: 33.36995865711402, lng: 126.54811723292518, alpha: 1, content: 'html',
       url: 'https://a0.muscache.com/im/pictures/89587324/26c55a69_original.jpg?aki_policy=large',
-      disabled: false }
+      disabled: false
+    }
   ];
   zoomControlOptions: ZoomControlOptions = {
     position: ControlPosition.LEFT_TOP,
@@ -46,11 +35,18 @@ export class RoomListComponent {
   previous: any;
   icon = {
     url: 'https://i.dlpng.com/static/png/510666_thumb.png',
-    scaledSize: { width: 50, height: 60}
+    scaledSize: { width: 50, height: 60 }
   };
+  url = 'airbnb.tthae.com/api';
 
-  addMarker(lat: number, lng: number) {
-    this.markers.push({ lat, lng, alpha: 0.4 });
+  constructor(private http: HttpClient) {
+    this.currentIW = null;
+    this.previousIW = null;
+  }
+
+  ngOnInit() {
+    this.http.get(this.url)
+      .subscribe()
   }
 
   max(coordType: 'lat' | 'lng'): number {
