@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -25,7 +26,8 @@ export class SignUpComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private urlRemember: UrlRememberService
+    private urlRemember: UrlRememberService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -101,9 +103,7 @@ export class SignUpComponent implements OnInit {
       password: userPassword.value
     };
 
-    // this.http
-    //   .post(`${this.appUrl}/accounts/user/`, payload)
-    //   .subscribe(res => console.log(res));
+    this.authService.registerUser(payload).subscribe(res => console.log(res));
 
     this.router.navigate([this.previousUrl]);
   }
