@@ -1,0 +1,103 @@
+.roomPayment{
+  float: left;
+  width:400px;
+  padding:20px;
+  border:1px solid #ddd;
+
+  .paymentInfoWrap{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+      h4{
+        font-size:1.1em;
+        font-weight: 600;
+      }
+      p{
+        margin-top:10px;
+        font-weight: 300;
+      }
+      .grade{
+        font-size:14px;
+        font-weight: 600;
+      }
+
+  }
+
+  .paymentGuest{
+    margin:20px 0px;
+    padding:20px 0px; 
+    font-weight: 300;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+
+
+    .paymentDate{
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: start;
+      margin-top:10px;
+    }
+    .paymentDateLine{
+      padding:0px 10px;
+    }
+  }
+
+  .paymentReceipt{
+
+
+    li{
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-weight: 300;
+    }
+    .total{
+      font-weight: 600;
+    }
+  }
+
+  .paymentDateNow{
+    margin-top:10px;
+    padding:20px 0 10px;
+    border-top:1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+
+
+    li{
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-weight: 300;
+
+       .bold{
+         font-weight: 600;
+       }
+    }
+  }
+
+  .cancel{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding-top:20px;
+
+      h4{
+        margin-bottom:10px;
+        font-weight: 600;
+      }
+      p{
+        font-weight: 300;
+
+        a{
+          color:#008489;
+        }
+        a::hover{
+          text-decoration: underline;
+        }
+      }
+  }
+
+}

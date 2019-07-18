@@ -40,9 +40,9 @@
                 <p class="top">성인</p>
               </div>
               <div class="counterCheck">
-                <button class="decrease">-</button>
-                <span class="counter">0</span>
-                <button class="increase">+</button>
+                <button type="button" class="decrease" (click)="decrease()">-</button>
+                <span class="counter" #counter2 >0</span>
+                <button type="button" class="increase" (click)="increase(counter2)">+</button>
               </div>
             </div>
             <div class="counterLine">
@@ -51,9 +51,9 @@
                 <span>2~12세</span>
               </div>
               <div class="counterCheck">
-                <button class="decrease">-</button>
-                <span class="counter">0</span>
-                <button class="increase">+</button>
+                <button type="button" class="decrease" (click)="decrease()">-</button>
+                <span class="counter">{{counter}}</span>
+                <button type="button" class="increase" (click)="increase()">+</button>
               </div>
             </div>
             <div class="counterLine">
@@ -62,15 +62,15 @@
                 <span>2세 미만</span>
               </div>
               <div class="counterCheck">
-                <button class="decrease">-</button>
-                <span class="counter">0</span>
-                <button class="increase">+</button>
+                <button type="button" class="decrease" (click)="decrease()">-</button>
+                <span class="counter">{{counter}}</span>
+                <button type="button" class="increase" (click)="increase()">+</button>
               </div>
             </div>
-            <button class="counterBtn">신청하기</button>
+            <button type="button" class="counterBtn">신청하기</button>
           </div>
         </div>
-        <button class="mainBtn">검색</button>
+        <button type="button" class="mainBtn">검색</button>
       </fieldset>
     </form>
   </div>
