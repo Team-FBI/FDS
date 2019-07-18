@@ -101,9 +101,9 @@ export class SignUpComponent implements OnInit {
       password: userPassword.value
     };
 
-    // this.http
-    //   .post(`${this.appUrl}/accounts/user/`, payload)
-    //   .subscribe(res => console.log(res));
+    this.http
+      .post(`${this.appUrl}/accounts/user/`, payload)
+      .subscribe(res => console.log(res));
 
     this.router.navigate([this.previousUrl]);
   }
