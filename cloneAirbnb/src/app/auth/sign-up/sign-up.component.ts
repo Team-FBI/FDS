@@ -99,23 +99,20 @@ export class SignUpComponent implements OnInit {
       birthYear.value
     );
 
-    const userFullName = `${userFirstName.value} ${userLastName.value}`;
-    const userBirth = `${birthMonth.value}/${birthDay.value}/${
-      birthYear.value
-    }`;
-
-    // 리스폰 콘솔로 찍어보기
     const payload: SignUpObj = {
-      username: userFullName,
-      password: userPassword.value,
-      email: userEmail.value
+      username: userEmail.value,
+      first_name: userFirstName.value,
+      last_name: userLastName.value,
+      password: userPassword.value
     };
 
     console.log(payload);
 
+    // 리스폰 콘솔로 찍어보기
     this.http
       .post(`${this.appUrl}/accounts/user/`, payload)
       .subscribe(res => console.log(res));
+
     // this.location.back();
   }
 
