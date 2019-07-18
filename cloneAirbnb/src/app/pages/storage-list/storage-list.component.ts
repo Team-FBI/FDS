@@ -8,10 +8,18 @@ import { UrlRememberService } from 'src/app/core/service/url-remember.service';
   styleUrls: ['./storage-list.component.scss']
 })
 export class StorageListComponent implements OnInit {
+<<<<<<< HEAD
+
+  constructor(
+    private router: Router,
+    private urlRemember: UrlRememberService
+  ) { }
+=======
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService
   ) {}
+>>>>>>> rmorigin/develop
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
