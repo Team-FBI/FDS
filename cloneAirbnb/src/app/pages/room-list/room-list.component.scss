@@ -61,6 +61,7 @@
   position: relative;
 }
 
+
 .custom-content {
   position: absolute;
   z-index: 1081;
@@ -68,12 +69,12 @@
   cursor: pointer;
   align-self: center;
 }
-.dateAdjust{
-  left: 530px;
-  top: -35px;
-}
+
 button:focus {
   outline: none;
+}
+.date, .personnel, .businesstrip, .roomtype, .price, .instantreservation, .addfilter{
+  display: inline;
 }
 
 .mainLogo {
@@ -110,7 +111,7 @@ button:focus {
   border-bottom: 1px solid #ddd;
   position: relative;
 }
-.filterLeft button {
+.filterButton {
     margin: 0px 4px 0px 8px;
     font-size: 14px;
     line-height: 18px;
@@ -132,6 +133,7 @@ button:focus {
     border-radius: 4px;
     text-decoration: none;
 }
+
 .filterRight{
   position: absolute;
   right: 100px;
@@ -206,4 +208,125 @@ agm-map {
   width: 100%;
   height: 50%;
 
+}
+
+.counterWrap{
+  padding:30px 20px 60px;
+  border:1px solid black;
+  }
+  .counterLine{
+  position: relative;
+  height:40px;
+  margin-bottom:20px;
+}
+.people{
+  p{
+    display: inline;
+    font-size:18px;
+    font-weight: 600;
+    margin:0;
+  }
+  span{
+    display: block;
+    margin-top:8px;
+    font-size:12px;
+  }
+}
+.counterCheck{
+  position: absolute;
+  top:0;
+  right:0;
+  button{
+    width:40px;
+    height:40px;
+    padding:5px;
+    margin:0;
+    border:1px solid #008489;
+    border-radius: 50%;
+    background: #fff;
+  }
+  .counter{
+    padding:0px 20px;
+  }
+}
+.personnelSaveBtn{
+  float: right;
+  margin-top:10px;
+  border:0;
+  color: #008489;
+  background: #fff;
+}
+
+.personnelremoveBtn{
+  float: left;
+  margin-top:10px;
+  border:0;
+  color: black;
+  background: #fff;
+}
+
+.dateAdjust{
+  float: right;
+  margin-top:10px;
+  border:0;
+  color: #008489;
+  background: #fff;
+}
+
+::ng-deep.personnel-dropdown-menu{
+  margin-left: 143px;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+  padding: 24px !important;
+  line-height: 150%;
+}
+::ng-deep.businesstrip-dropdown-menu{
+  margin-left: 207px;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+  padding: 24px !important;
+  line-height: 150%;
+}
+::ng-deep.roomtype-dropdown-menu{
+  margin-left: 207px;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+  padding: 24px !important;
+  line-height: 150%;
+}
+::ng-deep.price-dropdown-menu{
+  margin-left: 360px;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+  padding: 24px !important;
+  line-height: 150%;
+}
+.roomtype-checkbox{
+  float: left;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+.roomtype-text{
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.personnel-content-second{
+  margin-bottom: 30px;
+}
+
+.businesstrip-checkbox{
+  float: right;
+  margin-top:10px;
+  border:0;
+  color: #008489;
+  background: #fff;
 }

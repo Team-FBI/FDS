@@ -3,6 +3,8 @@ import { ZoomControlOptions, ControlPosition, ZoomControlStyle } from '@agm/core
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Options, LabelType } from 'ng5-slider';
+import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-room-list',
@@ -11,6 +13,10 @@ import { environment } from 'src/environments/environment';
 })
 export class RoomListComponent implements OnInit {
   myDateValue: Date;
+  Allcounter = 0;
+  Adultcounter = 0;
+  Childcounter = 0;
+  Youngcounter = 0;
   latitude = 33.36995865711402;
   longitude = 126.52811723292518;
   selectedMarker;
@@ -39,17 +45,53 @@ export class RoomListComponent implements OnInit {
     scaledSize: { width: 50, height: 60 }
   };
   appUrl: string = environment.appUrl;
+  minValue: number = 0;
+  maxValue: number = 100000;
+  options: Options = {
+    floor: 0,
+    ceil: 100000,
+    translate: (value: number): string => {
+      return '￦' + value;
+    },
+    combineLabels: (minValue: string, maxValue: string): string => {
+      return 'from ' + minValue + ' up to ' + maxValue;
+    }
+  };
+  priceToggle: boolean;
+  dateCustomClasses: DatepickerDateCustomClasses[];
 
   constructor(private http: HttpClient) {
     this.currentIW = null;
     this.previousIW = null;
-    console.log(this.appUrl);
+
+    const now = new Date();
+    const twoDaysAhead = new Date();
+    twoDaysAhead.setDate(now.getDate() + 2);
+    const fourDaysAhead = new Date();
+    fourDaysAhead.setDate(now.getDate() + 4);
+
+    this.dateCustomClasses = [
+      { date: now, classes: [] },
+      { date: twoDaysAhead, classes: ['bg-warning'] },
+      { date: fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
+    ];
   }
-    
+  datestyle = {
+    'width' : '52px'
+  };
+  roomimage: string;
 
   ngOnInit() {
-    this.http.get(`${this.appUrl}`)
-      .subscribe(res => console.log(res));
+    this.http.get(`${this.appUrl}/rooms/2`)
+      .subscribe((res: any) => this.roomimage = res.image);
+  }
+
+  chageStyle() {
+    this.datestyle.width = 'auto';
+  }
+
+  savePirce() {
+    console.log(this.minValue, this.maxValue);
   }
 
   max(coordType: 'lat' | 'lng'): number {
@@ -81,4 +123,32 @@ export class RoomListComponent implements OnInit {
     this.previousIW = infoWindow;
   }
 
+  increase(n: number) {
+    // console.log(n)
+    if (n === 1) {
+      this.Adultcounter++;
+    } else if (n == 2) {
+      this.Childcounter++;
+    } else if (n == 3) {
+      this.Youngcounter++;
+    }
+    this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
+  }
+  decrease(n: number) {
+    if (n == 1) {
+      if (this.Adultcounter === 0) { return; }
+      this.Adultcounter--;
+    } else if (n == 2) {
+      if (this.Childcounter === 0) { return; }
+      this.Childcounter--;
+    } else if (n == 3) {
+      if (this.Youngcounter === 0) { return; }
+      this.Youngcounter--;
+    }
+    this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
+  }
+
+  toggleRemoveText(binput){
+    console.log(binput);
+  }
 }
