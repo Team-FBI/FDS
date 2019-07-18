@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AuthModule } from './auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
@@ -16,6 +18,8 @@ import { AppComponent } from './app.component';
     SharedModule,
     PagesModule,
     AngularFontAwesomeModule,
+    AuthModule,
+    HttpClientModule,
 
     AppRoutingModule
   ],

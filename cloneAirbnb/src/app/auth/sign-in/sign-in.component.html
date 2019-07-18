@@ -1,0 +1,63 @@
+<app-navigation></app-navigation>
+<div class="background">
+  <div class="formClass">
+    <form [formGroup]="singIn" (ngSubmit)="onSubmit(userId, userPassword)">
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivEmail)"
+        (focusout)="inputDivUnclicked(inputDivEmail)"
+        #inputDivEmail
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="이메일 주소"
+          formControlName="userEmail"
+          #userId
+        />
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      </div>
+      <p
+        *ngIf="userEmail.errors?.required && userEmail.touched"
+        class="warningMessage"
+      >
+        이메일을 입력해 주세요
+      </p>
+      <p
+        *ngIf="userEmail.errors?.pattern && userEmail.touched"
+        class="warningMessage"
+      >
+        이메일 형식이 올바르지 않습니다.
+      </p>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivPassword)"
+        (focusout)="inputDivUnclicked(inputDivPassword)"
+        #inputDivPassword
+      >
+        <input
+          class="input"
+          type="password"
+          placeholder="비밀번호 설정"
+          formControlName="userPassword"
+          #userPassword
+        />
+        <i class="fa fa-eye-slash" aria-hidden="true"></i>
+      </div>
+      <p
+        *ngIf="userPassword.errors?.required && userPassword.touched"
+        class="warningMessage"
+      >
+        비밀번호를 입력해 주세요.
+      </p>
+      <button
+        type="submit"
+        class="signInBtn"
+        [disabled]="singIn.invalid"
+        [class.disable]="singIn.invalid"
+      >
+        로그인
+      </button>
+    </form>
+  </div>
+</div>

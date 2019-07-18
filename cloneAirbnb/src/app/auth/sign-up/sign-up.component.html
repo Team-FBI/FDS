@@ -1,0 +1,201 @@
+<app-navigation></app-navigation>
+<div class="background">
+  <div class="formClass">
+    <form
+      [formGroup]="singUp"
+      (ngSubmit)="
+        onSubmit(
+          inputUserEmail,
+          firstName,
+          lastName,
+          password,
+          month,
+          day,
+          year
+        )
+      "
+    >
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivEmail)"
+        (focusout)="inputDivUnclicked(inputDivEmail)"
+        #inputDivEmail
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="이메일 주소"
+          formControlName="userEmail"
+          #inputUserEmail
+        />
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      </div>
+      <p
+        *ngIf="userEmail.errors?.required && userEmail.touched"
+        class="warningMessage"
+      >
+        이메일을 입력해 주세요
+      </p>
+      <p
+        *ngIf="userEmail.errors?.pattern && userEmail.touched"
+        class="warningMessage"
+      >
+        이메일 형식이 올바르지 않습니다.
+      </p>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivFistName)"
+        (focusout)="inputDivUnclicked(inputDivFistName)"
+        #inputDivFistName
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="이름(예: 길동)"
+          formControlName="userFirstName"
+          #firstName
+        />
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+      </div>
+      <p
+        *ngIf="userFirstName.errors?.required && userFirstName.touched"
+        class="warningMessage"
+      >
+        이름을 입력해 주세요
+      </p>
+      <p
+        *ngIf="userFirstName.errors?.pattern && userFirstName.touched"
+        class="warningMessage"
+      >
+        이름 형식이 올바르지 않습니다.
+      </p>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivLastName)"
+        (focusout)="inputDivUnclicked(inputDivLastName)"
+        #inputDivLastName
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="성(예: 홍)"
+          formControlName="userLastName"
+          #lastName
+        />
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+      </div>
+      <p
+        *ngIf="userLastName.errors?.required && userLastName.touched"
+        class="warningMessage"
+      >
+        성을 입력해 주세요
+      </p>
+      <p
+        *ngIf="userLastName.errors?.pattern && userLastName.touched"
+        class="warningMessage"
+      >
+        이름 형식이 올바르지 않습니다.
+      </p>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivPassword)"
+        (focusout)="inputDivUnclicked(inputDivPassword)"
+        #inputDivPassword
+      >
+        <input
+          class="input"
+          type="password"
+          placeholder="비밀번호 설정"
+          formControlName="userPassword"
+          (click)="passwordClicked()"
+          (focus)="passwordClicked()"
+          #password
+        />
+        <i class="fa fa-eye-slash" aria-hidden="true"></i>
+      </div>
+      <div [class.passwordHide]="passwordDisplay">
+        <span
+          *ngIf="
+            userPassword.errors?.required || userPassword.value.length < 8;
+            else passwordLengthElse
+          "
+          ><i class="fa fa-times" aria-hidden="true"></i
+        ></span>
+        <ng-template #passwordLengthElse
+          ><i class="fa fa-check" aria-hidden="true"></i
+        ></ng-template>
+        <span
+          class="warningPassword"
+          [style.color]="
+            userPassword.errors?.required || userPassword.value.length < 8
+              ? '#fc642d'
+              : '#00a699'
+          "
+        >
+          8자리 이상 입력해 주세요
+        </span>
+        <br />
+        <span
+          *ngIf="
+            userPassword.errors?.pattern || userPassword.invalid;
+            else passwordLengthElse
+          "
+          ><i class="fa fa-times" aria-hidden="true"></i
+        ></span>
+        <ng-template #passwordLengthElse
+          ><i class="fa fa-check" aria-hidden="true"></i
+        ></ng-template>
+        <span
+          class="warningPassword"
+          [style.color]="
+            userPassword.errors?.pattern || userPassword.invalid
+              ? '#fc642d'
+              : '#00a699'
+          "
+        >
+          숫자, 문자, 특수문자의 조합으로 만들어 주세요
+        </span>
+      </div>
+      <div class="textBold">생일</div>
+      <div class="textColor484848">
+        회원 가입을 하시려면 만 18세 이상이어야 합니다. 생일은 다른 회원에게는
+        공개되지 않습니다
+      </div>
+      <div class="selectBoxes">
+        <select formControlName="monthSelector" class="monthSelector" #month>
+          <option [ngValue]="null" disabled value selected>월</option>
+          <option
+            *ngFor="let month of months"
+            [value]="month"
+            [ngValue]="month"
+            >{{ month }}</option
+          >
+        </select>
+        <select formControlName="daySelector" class="daySelector" #day>
+          <option [ngValue]="null" disabled value selected>일</option>
+          <option *ngFor="let day of days" [value]="day" [ngValue]="day">{{
+            day
+          }}</option>
+        </select>
+        <select formControlName="yearSelector" class="yearSelector" #year>
+          <option [ngValue]="null" disabled value selected>년</option>
+          <option *ngFor="let year of years" [value]="year" [ngValue]="year">{{
+            year
+          }}</option>
+        </select>
+      </div>
+      <div class="textColor484848">
+        에어비앤비의 마케팅 프로모션, 특별 할인 및 추천 여행 정보, 정책
+        변경사항을 이메일로 보내드립니다.
+      </div>
+      <button
+        type="submit"
+        class="signUpBtn"
+        [disabled]="singUp.invalid"
+        [class.disable]="singUp.invalid"
+      >
+        가입하기
+      </button>
+    </form>
+  </div>
+</div>
