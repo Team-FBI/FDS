@@ -44,7 +44,7 @@ export class SignInComponent implements OnInit {
       password: userPassword.value
     };
 
-    this.authService.signInUser(payload).subscribe(
+    this.authService.getToken(payload).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);
         this.router.navigate([this.previousUrl]);
