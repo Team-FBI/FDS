@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
+import { SignUpObj } from 'src/app/core/interface/signUp.interface';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,8 +16,14 @@ export class SignUpComponent implements OnInit {
   months: number[];
   days: number[];
   years: number[];
+  appUrl: string = environment.appUrl;
+  userInfo: SignUpObj;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private location: Location,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     this.months = [];
@@ -70,8 +80,40 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(1);
+  onSubmit(
+    userEmail: HTMLInputElement,
+    userFirstName: HTMLInputElement,
+    userLastName: HTMLInputElement,
+    userPassword: HTMLInputElement,
+    birthMonth: HTMLSelectElement,
+    birthDay: HTMLSelectElement,
+    birthYear: HTMLSelectElement
+  ) {
+    console.log(
+      userEmail.value,
+      userFirstName.value,
+      userLastName.value,
+      userPassword.value,
+      birthMonth.value,
+      birthDay.value,
+      birthYear.value
+    );
+
+    const payload: SignUpObj = {
+      username: userEmail.value,
+      first_name: userFirstName.value,
+      last_name: userLastName.value,
+      password: userPassword.value
+    };
+
+    console.log(payload);
+
+    // 리스폰 콘솔로 찍어보기
+    this.http
+      .post(`${this.appUrl}/accounts/user/`, payload)
+      .subscribe(res => console.log(res));
+
+    // this.location.back();
   }
 
   inputDivClicked(inputDiv: HTMLDivElement) {

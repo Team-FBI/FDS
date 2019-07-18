@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AuthModule } from './auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -19,6 +20,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     PagesModule,
     AngularFontAwesomeModule,
     AuthModule,
+    HttpClientModule,
 
     AppRoutingModule,
 
