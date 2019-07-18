@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 
 @Component({
   selector: 'app-storage-list',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StorageListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private urlRemember: UrlRememberService
+  ) { }
 
   ngOnInit() {
+    this.urlRemember.currentUrl = this.router.url;
   }
 
 }
