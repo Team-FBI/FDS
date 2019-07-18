@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UrlRememberService } from './url-remember.service';
+
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,5 +13,17 @@ export class AuthService {
 
   registerUser(payload: object) {
     return this.http.post(`${this.appUrl}/accounts/user/`, payload);
+  }
+
+  signInUser(payload: object) {
+    return this.http.post(`${this.appUrl}/accounts/get_token/`, payload);
+  }
+
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+
+  logoutUser() {
+    localStorage.removeItem('token');
   }
 }
