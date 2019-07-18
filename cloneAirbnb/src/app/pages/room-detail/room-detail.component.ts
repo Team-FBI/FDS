@@ -1,5 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-room-detail',
@@ -14,18 +16,19 @@ export class RoomDetailComponent implements OnInit {
   Adultcounter = 0;
   Childcounter = 0;
   Youngcounter = 0;
+  appUrl: string = environment.appUrl;
 
   config = {
     ignoreBackdropClick: true
   };
 
-  constructor(private modalService: BsModalService) {
+  constructor(private modalService: BsModalService, private http: HttpClient, ) {
     this.minDate = new Date();
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate() - 1);
     this.maxDate.setDate(this.maxDate.getDate() + 7);
+    
   }
-
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
@@ -36,6 +39,9 @@ export class RoomDetailComponent implements OnInit {
   
 
   ngOnInit() {
+    this.http.get(`${this.appUrl}/rooms/1`)
+      .subscribe(res => console.log(res))
+
   }
   increase(n: number) {
     // console.log(n)
