@@ -4,7 +4,15 @@
     <form
       [formGroup]="singUp"
       (ngSubmit)="
-        onSubmit(inputUserEmail, firstName, lastName, password, month, day, year)
+        onSubmit(
+          inputUserEmail,
+          firstName,
+          lastName,
+          password,
+          month,
+          day,
+          year
+        )
       "
     >
       <div
@@ -100,6 +108,7 @@
           placeholder="비밀번호 설정"
           formControlName="userPassword"
           (click)="passwordClicked()"
+          (focus)="passwordClicked()"
           #password
         />
         <i class="fa fa-eye-slash" aria-hidden="true"></i>
