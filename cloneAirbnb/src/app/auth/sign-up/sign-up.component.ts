@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SignUpObj } from 'src/app/core/interface/signUp.interface';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
@@ -24,7 +23,6 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
     private router: Router,
     private urlRemember: UrlRememberService,
     private authService: AuthService
