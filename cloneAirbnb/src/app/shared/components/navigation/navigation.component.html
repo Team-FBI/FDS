@@ -12,7 +12,9 @@
           src="https://i.postimg.cc/7Y2G1YNd/logo.png"
           alt="Airbnb"
           class="mainLogo"
-      /></a>
+      />
+
+    </a>
     </h1>
     <div class="search" *ngIf="!isMain">
       <i class="fa fa-search" aria-hidden="true"></i>
@@ -20,22 +22,22 @@
     </div>
     <nav class="headerNav">
       <ul class="clear-fix">
-        <li>
+        <li *ngIf="authService.loggedIn()">
           <a routerLink="/storageList" [style.color]="isMain ? '#fff' : '#000'"
             >저장목록</a
           >
         </li>
-        <li>
+        <li *ngIf="authService.loggedIn()">
           <a routerLink="/yourTrip" [style.color]="isMain ? '#fff' : '#000'"
             >여행</a
           >
         </li>
-        <li>
+        <li *ngIf="!authService.loggedIn()">
           <a routerLink="/signUp" [style.color]="isMain ? '#fff' : '#000'"
             >회원가입</a
           >
         </li>
-        <li>
+        <li *ngIf="!authService.loggedIn()">
           <a routerLink="/signIn" [style.color]="isMain ? '#fff' : '#000'"
             >로그인</a
           >
