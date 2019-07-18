@@ -99,23 +99,23 @@ export class SignUpComponent implements OnInit {
       birthYear.value
     );
 
-    const userFullName = `${userFirstName.value} ${userLastName.value}`;
-    const userBirth = `${birthMonth.value}/${birthDay.value}/${
-      birthYear.value
-    }`;
-
-    // 리스폰 콘솔로 찍어보기
     const payload: SignUpObj = {
-      username: userFullName,
-      password: userPassword.value,
-      email: userEmail.value
+      username: userEmail.value,
+      first_name: userFirstName.value,
+      last_name: userLastName.value,
+      password: userPassword.value
     };
 
     console.log(payload);
 
+    // 리스폰 콘솔로 찍어보기
     this.http
       .post(`${this.appUrl}/accounts/user/`, payload)
       .subscribe(res => console.log(res));
+
+    // 커런트 url을 사인업 또는 사인인을 눌르는 순간 저장하고 보관하고 있다가 다시 이동
+    // 위에말 보다는 사인업과 사인인 페이지를 제외한 페이지 onInit에 서비스로 자신의 현재 url을 전송해서 보관하고 있다가
+    // 사인인 사인업 에서 버튼을 누르면 보관하고 있던 url로 라우팅(사인인 사이업 url은 저장안함)
     // this.location.back();
   }
 
