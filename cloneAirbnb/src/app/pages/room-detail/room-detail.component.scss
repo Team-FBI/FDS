@@ -64,8 +64,7 @@
 }
 .dialog{
   border : 1px solid ;
-  height:504px;
-  margin-left: 45px;
+  height:562px;
   width: 376px;
   z-index: 3;
   // position: fixed; 처음엔 absolute 일정 이하 내려가면 fiexed;
@@ -143,18 +142,18 @@
   background-color : white;
 }
 
-.counter1 {
-  width: 50px;
-  text-align: center;
-}
+// .counter1 {
+//   width: 50px;
+//   text-align: center;
+// }
 
 .peoplecontainer{
-  display:none
+  // display:none
 }
-.hi{
-  background-color:red;
-  display:none;
-}
+// .hi{
+//   background-color:red;
+//   display:none;
+// }
 
 .btn-primary{
   width:15px;
@@ -165,9 +164,13 @@
   background-image: url("https://a0.muscache.com/airbnb/static/packages/icon-uc-tag.ba942714.gif");
   width:80px;
   height:70px;
+  position: absolute;
+  right: -21px;
+  bottom: -7px;
 }
 .flex{
   display:flex;
+  position: relative;
 }
 .continue{
   width:326px;
@@ -180,4 +183,80 @@
 .asd{
   padding-left: 24px;
   padding-right: 24px;
+}
+
+
+
+.counterWrap{
+  padding:30px 20px 60px;
+  border:1px solid black;
+}
+.counterLine{
+  position: relative;
+  height:40px;
+  margin-bottom:20px;
+}
+.people{
+
+    p{
+      display: inline;
+      font-size:18px;
+      font-weight: 600;
+      margin:0;
+    }
+    
+    span{
+      display: block;
+      margin-top:8px;
+      font-size:12px;
+    }
+}
+.counterCheck{
+  position: absolute;
+  top:0;
+  right:0;
+
+    button{
+      width:40px;
+      height:40px;
+      padding:5px;
+      margin:0;
+      border:1px solid #008489;
+      border-radius: 50%;
+      background: #fff;
+    }
+    
+    .counter{
+      padding:0px 20px;
+    }
+}
+.counterBtn{
+  float: right;
+  margin-top:10px;
+  border:0;
+  color: #008489;
+  background: #fff;
+}
+
+::ng-deep.dropdown-menu{
+  width:300px;
+  height:300px;
+  border:1px solid black;
+  
+}
+::ng-deep#button-basic{
+  width:300px;
+  background: white;
+  border: 1px solid gray;
+}
+.caret{
+  float:right;
+}
+
+.float{
+  position :absolute;
+  right: 10px;
+}
+.relative{
+  position: relative;
 }

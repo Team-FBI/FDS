@@ -48,9 +48,9 @@
   </div>
 
   <div class="showpicture">
-      <button type="button" id="button">사진보기</button>
+      <!-- <button type="button" id="button">사진보기</button> -->
+      <button type="button" class="btn" (click)="roomlistopenModal(roomlist)">사진보기</button>
   </div>
-
 </div>
 
 
@@ -93,65 +93,92 @@
               </div>
             </div>
       </div>
-      <div class="people">인원
-        <div class="hi">
-          <div class="container1">
-              <button class="increase1">+</button>
-              <div class="counter1">0</div>
-              <button class="increase1">-</button>
-          </div>    
-          <div class="container1">
-              <button class="increase1">+</button>
-              <div class="counter1">0</div>
-              <button class="increase1">-</button>
-          </div>    
-          <div class="container1">
-              <button class="increase1">+</button>
-              <div class="counter1">0</div>
-              <button class="increase1">-</button>
+      
+      <div>인원
+          <div class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="false">
+              <button id="button-basic" dropdownToggle type="button" class="btn  dropdown-toggle"
+                      aria-controls="dropdown-basic">
+                게스트 {{Allcounter}}명 <span class="caret"></span>
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="button-basic">
+                  <div class="counterLine">
+                      <div class="people">
+                          <p class="top">성인</p>
+                      </div>
+                      <div class="counterCheck">
+                        <button class="decrease" type="button" (click)="decrease(1)">
+                          -</button>
+                        <span class="counter">{{Adultcounter}}</span>
+                        <button class="increase" (click)="increase(1)" type="button">+</button>
+                      </div>
+                  </div>
+                  <div class="counterLine">
+                      <div class="people">
+                        <p>어린이</p>
+                        <span>2~12세</span>
+                      </div>
+                      <div class="counterCheck">
+                        <button class="decrease" type="button" (click)="decrease(2)">-</button>
+                        <span class="counter">{{Childcounter}}</span>
+                        <button class="increase" type="button" (click)="increase(2)">+</button>
+                      </div>
+                  </div>
+                  <div class="counterLine">
+                      <div class="people">
+                        <p>유아</p>
+                        <span>2세 미만</span>
+                      </div>
+                      <div class="counterCheck">
+                        <button class="decrease" type="button" (click)="decrease(3)">-</button>
+                        <span class="counter">{{Youngcounter}}</span>
+                        <button class="increase" type="button" (click)="increase(3)">+</button>
+                      </div>
+                  </div>
+                <button class="counterBtn" type="button" (click)="dropdown.isOpen = !dropdown.isOpen">닫기</button>
+              </ul>
           </div>
-        </div>    
+        </div>
       </div>  
-    </div>
+    
+    
     <div>
     <div class="flex">
       <span>₩75,000 x 2박</span>
-      <div class="dkd">
-        <span>₩150,000</span>
-      </div>
+        <span class="float">₩150,000</span>
       <hr>
     </div>
     <hr>
     <div class="flex">
       <span>서비스 수수료</span>
       <div class="dkd">
-        <span>₩19,350</span>
-        <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+        <button type="button" class="btn" (click)="openModal(template)">1</button>
       </div>
+      <span class="float">₩19,350</span>
     </div>
     <hr>
     <div class="flex">
       <span>숙박세와 수수료</span>
       <div class="dkd">
-        <span>₩1,935</span>
       </div>
+        <span class="float">₩1,935</span>
     </div>
     <hr>
     <div class="flex">
       <span>합계</span>
-      <div class="dkd">
-        <span>₩171,285</span>
-      </div>
+        <span class="float">₩171,285</span>
       <hr>
     </div>
     </div>
     <button type="submit" class="continue" aria-busy="false" data-veloute="book-it-button"><span class="_ftj2sg4"><div class="_10cu6uvp">계속 진행하기</div></span></button>
     <div>예약 확정 전에는 요금이 청구되지 않습니다 </div>
     <hr>
-    <div>저렴한숙소요금</div>
-    <div class="flex">이 숙소는 평균 1박 요금보다 ₩24,087 저렴합니다.
-      <div class="image"></div>
-    </div>
+    <div class="relative">
+      <div>저렴한숙소요금</div>
+      <div class="flex">이 숙소는 평균 1박 요금보다 ₩24,087 저렴합니다.
+        <div class="image"></div>
+      </div>
+  </div>
 
   </form>
   </div>
@@ -165,15 +192,6 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Modal</h4>
@@ -185,6 +203,32 @@
     This is a modal.
   </div>
 </ng-template>
+
+<ng-template #roomlist>
+    <div class="modal-header">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <swiper>
+            <div>
+              <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+            </div>
+            <div>
+              Swiper slide content
+            </div>
+            <div>
+              Swiper slide content
+            </div>
+        </swiper>
+    </div>
+  </ng-template>
+
+
+  
+
+
 
 
 

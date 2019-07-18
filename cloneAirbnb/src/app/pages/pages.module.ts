@@ -13,6 +13,17 @@ import { YourTripComponent } from './your-trip/your-trip.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { ModalModule } from 'ngx-bootstrap/modal/';
 
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -27,7 +38,15 @@ import { ModalModule } from 'ngx-bootstrap/modal/';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     AuthModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    SwiperModule,
+    BsDropdownModule.forRoot()
+  ],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
   ]
 })
 export class PagesModule {}

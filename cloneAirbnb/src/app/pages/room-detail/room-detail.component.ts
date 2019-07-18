@@ -10,6 +10,15 @@ export class RoomDetailComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
   modalRef: BsModalRef;
+  Allcounter = 0;
+  Adultcounter = 0;
+  Childcounter = 0;
+  Youngcounter = 0;
+
+  config = {
+    ignoreBackdropClick: true
+  };
+
   constructor(private modalService: BsModalService) {
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -20,8 +29,37 @@ export class RoomDetailComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
-  
-  ngOnInit() {
+  roomlistopenModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, this.config);
   }
 
+  
+
+  ngOnInit() {
+  }
+  increase(n: number) {
+    // console.log(n)
+    if(n === 1){
+      this.Adultcounter++;
+    } else if (n== 2) {
+      this.Childcounter++;
+    } else if (n==3) {
+      this.Youngcounter++;
+    }
+    this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
+  }
+
+  decrease(n : number) {
+    if(n==1){
+      if (this.Adultcounter === 0) { return; }
+      this.Adultcounter--;
+    } else if (n==2) {
+      if (this.Childcounter === 0) { return; }
+      this.Childcounter--;
+    } else if (n==3) {
+      if (this.Youngcounter === 0) { return; }
+      this.Youngcounter--;
+    }
+    this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
+  }
 }
