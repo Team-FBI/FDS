@@ -103,7 +103,7 @@ export class SignUpComponent implements OnInit {
 
     this.authService.registerUser(payload).subscribe(res => console.log(res));
 
-    this.router.navigate([this.previousUrl]);
+    this.router.navigate(['/signIn']);
   }
 
   inputDivClicked(inputDiv: HTMLDivElement) {

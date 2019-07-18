@@ -20,22 +20,22 @@
     </div>
     <nav class="headerNav">
       <ul class="clear-fix">
-        <li>
+        <li *ngIf="authService.loggedIn()">
           <a routerLink="/storageList" [style.color]="isMain ? '#fff' : '#000'"
             >저장목록</a
           >
         </li>
-        <li>
+        <li *ngIf="authService.loggedIn()">
           <a routerLink="/yourTrip" [style.color]="isMain ? '#fff' : '#000'"
             >여행</a
           >
         </li>
-        <li>
+        <li *ngIf="!authService.loggedIn()">
           <a routerLink="/signUp" [style.color]="isMain ? '#fff' : '#000'"
             >회원가입</a
           >
         </li>
-        <li>
+        <li *ngIf="!authService.loggedIn()">
           <a routerLink="/signIn" [style.color]="isMain ? '#fff' : '#000'"
             >로그인</a
           >
