@@ -1,0 +1,90 @@
+.roomdetailInfoContainer{
+  width:1100px;
+  margin: 10px auto;
+  border : 1px solid black;
+
+  h3{
+    font-size:1.25em;
+    font-weight: 400;
+  }
+}
+.roomdetailInfo{
+  float: left;
+  width:700px;
+  padding:0px 50px 0 30px;
+
+    h2{
+      font-size:2em;
+      font-weight: 600;
+      color:#444;
+    }
+
+    .houseall{
+      display: flex;
+
+      .margin-r{
+        margin-right: 10px;
+      }
+    }
+}
+
+.description{
+  
+  .placedetail{
+    // margin-top:50px;
+    padding:15px 25px;
+    color:#fff;
+    border:0;
+    border-radius: 5px;
+    background: #008489;
+  }
+
+  .msgbutton{
+    // margin-top:50px;
+    padding:15px 25px;
+    color:#fff;
+    border:0;
+    border-radius: 5px;
+    background: #008489;
+  }
+
+}
+
+::ng-deep .form-control{
+  left:100px;
+}
+
+
+
+
+.commentContainer{
+  margin-top:50px;
+
+  p{
+    margin-top:10px;
+    font-weight: 300;
+  }
+
+  .comment{
+    margin-top:30px;
+    
+    textarea{
+      width:100%;
+      height: 100px;
+      padding:15px;
+      font-weight: 300;
+      border:1px solid #ddd;
+      border-radius: 5px;
+    }
+  }
+
+}
+
+.roomdetailInfoBtn{
+  // margin-top:50px;
+  padding:15px 25px;
+  color:#fff;
+  border:0;
+  border-radius: 5px;
+  background: #008489;
+}

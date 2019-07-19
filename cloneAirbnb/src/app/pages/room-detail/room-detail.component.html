@@ -48,9 +48,10 @@
   </div>
 
   <div class="showpicture">
-      <button type="button" id="button">사진보기</button>
+      <!-- <button type="button" id="button">사진보기</button> -->
+      <!-- <button type="button" class="btn" (click)="roomlistopenModal(roomlist)">사진보기</button> -->
+      <button (click)="isOpen = !isOpen">사진보기</button>
   </div>
-
 </div>
 
 
@@ -93,84 +94,103 @@
               </div>
             </div>
       </div>
-      <div class="people">인원
-        <div class="hi">
-          <div class="container1">
-              <button class="increase1">+</button>
-              <div class="counter1">0</div>
-              <button class="increase1">-</button>
-          </div>    
-          <div class="container1">
-              <button class="increase1">+</button>
-              <div class="counter1">0</div>
-              <button class="increase1">-</button>
-          </div>    
-          <div class="container1">
-              <button class="increase1">+</button>
-              <div class="counter1">0</div>
-              <button class="increase1">-</button>
+      
+      <div>인원
+          <div class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="false">
+              <button id="button-basic" dropdownToggle type="button" class="btn  dropdown-toggle"
+                      aria-controls="dropdown-basic">
+                게스트 {{Allcounter}}명 <span class="caret"></span>
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="button-basic">
+                  <div class="counterLine">
+                      <div class="people">
+                          <p class="top">성인</p>
+                      </div>
+                      <div class="counterCheck">
+                        <button class="decrease" type="button" (click)="decrease(1)">
+                          -</button>
+                        <span class="counter">{{Adultcounter}}</span>
+                        <button class="increase" (click)="increase(1)" type="button">+</button>
+                      </div>
+                  </div>
+                  <div class="counterLine">
+                      <div class="people">
+                        <p>어린이</p>
+                        <span>2~12세</span>
+                      </div>
+                      <div class="counterCheck">
+                        <button class="decrease" type="button" (click)="decrease(2)">-</button>
+                        <span class="counter">{{Childcounter}}</span>
+                        <button class="increase" type="button" (click)="increase(2)">+</button>
+                      </div>
+                  </div>
+                  <div class="counterLine">
+                      <div class="people">
+                        <p>유아</p>
+                        <span>2세 미만</span>
+                      </div>
+                      <div class="counterCheck">
+                        <button class="decrease" type="button" (click)="decrease(3)">-</button>
+                        <span class="counter">{{Youngcounter}}</span>
+                        <button class="increase" type="button" (click)="increase(3)">+</button>
+                      </div>
+                  </div>
+                <button class="counterBtn" type="button" (click)="dropdown.isOpen = !dropdown.isOpen">닫기</button>
+              </ul>
           </div>
-        </div>    
+        </div>
       </div>  
-    </div>
+    
+    
     <div>
     <div class="flex">
       <span>₩75,000 x 2박</span>
-      <div class="dkd">
-        <span>₩150,000</span>
-      </div>
+        <span class="float">₩150,000</span>
       <hr>
     </div>
     <hr>
     <div class="flex">
       <span>서비스 수수료</span>
       <div class="dkd">
-        <span>₩19,350</span>
-        <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+        <button type="button" class="btn" (click)="openModal(template)">1</button>
       </div>
+      <span class="float">₩19,350</span>
     </div>
     <hr>
     <div class="flex">
       <span>숙박세와 수수료</span>
       <div class="dkd">
-        <span>₩1,935</span>
       </div>
+        <span class="float">₩1,935</span>
     </div>
     <hr>
     <div class="flex">
       <span>합계</span>
-      <div class="dkd">
-        <span>₩171,285</span>
-      </div>
+        <span class="float">₩171,285</span>
       <hr>
     </div>
     </div>
     <button type="submit" class="continue" aria-busy="false" data-veloute="book-it-button"><span class="_ftj2sg4"><div class="_10cu6uvp">계속 진행하기</div></span></button>
     <div>예약 확정 전에는 요금이 청구되지 않습니다 </div>
     <hr>
-    <div>저렴한숙소요금</div>
-    <div class="flex">이 숙소는 평균 1박 요금보다 ₩24,087 저렴합니다.
-      <div class="image"></div>
-    </div>
+    <div class="relative">
+      <div>저렴한숙소요금</div>
+      <div class="flex">이 숙소는 평균 1박 요금보다 ₩24,087 저렴합니다.
+        <div class="image"></div>
+      </div>
+  </div>
 
   </form>
   </div>
+    <div class="dialog-bottom">
+      <button class="flex" id = "d">
+          <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" style="height:1em;width:1em;display:block;fill:currentColor">
+            <path d="m22.39 5.8-.27-.64a207.86 207.86 0 0 0 -2.17-4.87.5.5 0 0 0 -.84-.11 7.23 7.23 0 0 1 -.41.44c-.34.34-.72.67-1.13.99-1.17.87-2.38 1.39-3.57 1.39-1.21 0-2-.13-3.31-.48l-.4-.11c-1.1-.29-1.82-.41-2.79-.41a6.35 6.35 0 0 0 -1.19.12c-.87.17-1.79.49-2.72.93-.48.23-.93.47-1.35.71l-.11.07-.17-.49a.5.5 0 1 0 -.94.33l7 20a .5.5 0 0 0 .94-.33l-2.99-8.53a21.75 21.75 0 0 1 1.77-.84c.73-.31 1.44-.56 2.1-.72.61-.16 1.16-.24 1.64-.24.87 0 1.52.11 2.54.38l.4.11c1.39.37 2.26.52 3.57.52 2.85 0 5.29-1.79 5.97-3.84a.5.5 0 0 0 0-.32c-.32-.97-.87-2.36-1.58-4.04zm-4.39 7.2c-1.21 0-2-.13-3.31-.48l-.4-.11c-1.1-.29-1.82-.41-2.79-.41-.57 0-1.2.09-1.89.27a16.01 16.01 0 0 0 -2.24.77c-.53.22-1.04.46-1.51.7l-.21.11-3.17-9.06c.08-.05.17-.1.28-.17.39-.23.82-.46 1.27-.67.86-.4 1.7-.7 2.48-.85.35-.06.68-.1.99-.1.87 0 1.52.11 2.54.38l.4.11c1.38.36 2.25.51 3.56.51 1.44 0 2.85-.6 4.18-1.6.43-.33.83-.67 1.18-1.02a227.9 227.9 0 0 1 1.85 4.18l.27.63c.67 1.57 1.17 2.86 1.49 3.79-.62 1.6-2.62 3.02-4.97 3.02z" fill-rule="evenodd"></path>
+          </svg>
+        이 숙소 신고하기</button>
+  </div>
 </div>
-<div class="dialog-bottom">
-    <button class="flex" id = "d">
-        <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" style="height:1em;width:1em;display:block;fill:currentColor">
-          <path d="m22.39 5.8-.27-.64a207.86 207.86 0 0 0 -2.17-4.87.5.5 0 0 0 -.84-.11 7.23 7.23 0 0 1 -.41.44c-.34.34-.72.67-1.13.99-1.17.87-2.38 1.39-3.57 1.39-1.21 0-2-.13-3.31-.48l-.4-.11c-1.1-.29-1.82-.41-2.79-.41a6.35 6.35 0 0 0 -1.19.12c-.87.17-1.79.49-2.72.93-.48.23-.93.47-1.35.71l-.11.07-.17-.49a.5.5 0 1 0 -.94.33l7 20a .5.5 0 0 0 .94-.33l-2.99-8.53a21.75 21.75 0 0 1 1.77-.84c.73-.31 1.44-.56 2.1-.72.61-.16 1.16-.24 1.64-.24.87 0 1.52.11 2.54.38l.4.11c1.39.37 2.26.52 3.57.52 2.85 0 5.29-1.79 5.97-3.84a.5.5 0 0 0 0-.32c-.32-.97-.87-2.36-1.58-4.04zm-4.39 7.2c-1.21 0-2-.13-3.31-.48l-.4-.11c-1.1-.29-1.82-.41-2.79-.41-.57 0-1.2.09-1.89.27a16.01 16.01 0 0 0 -2.24.77c-.53.22-1.04.46-1.51.7l-.21.11-3.17-9.06c.08-.05.17-.1.28-.17.39-.23.82-.46 1.27-.67.86-.4 1.7-.7 2.48-.85.35-.06.68-.1.99-.1.87 0 1.52.11 2.54.38l.4.11c1.38.36 2.25.51 3.56.51 1.44 0 2.85-.6 4.18-1.6.43-.33.83-.67 1.18-1.02a227.9 227.9 0 0 1 1.85 4.18l.27.63c.67 1.57 1.17 2.86 1.49 3.79-.62 1.6-2.62 3.02-4.97 3.02z" fill-rule="evenodd"></path>
-        </svg>
-      이 숙소 신고하기</button>
-</div>
-
-
-
-
-
-
-
-
 
 
 
@@ -185,6 +205,120 @@
     This is a modal.
   </div>
 </ng-template>
+
+<!-- <ng-template #roomlist>
+    <div class="modal-header">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" >
+        <span aria-hidden="true" class="roomlistmodalclose">&times;</span>
+      </button>
+    </div> -->
+    <!-- <swiper [config]="galleryTop">
+      <button>
+      <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 4.8em; width: 4.8em; fill: rgb(255, 255, 255);"><path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path></svg>
+      </button>
+      <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+      <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
+      <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
+      <button><svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 4.8em; width: 4.8em; fill: rgb(255, 255, 255);"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
+      </button>
+    </swiper> -->
+    <!-- <div class="modal-body"> -->
+      <!-- <div class="swiper-container gallery-top" #galleryTop [swiper]="galleryTopConfig">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
+          </div>
+        </div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+        <div class="swiper-button-next swiper-button-white"></div>
+      </div>
+      <div class="swiper-container gallery-thumbs" #galleryThumbs [swiper]="galleryThumbsConfig">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template> -->
+
+<div class="back-drop" [class.active]="isOpen">
+  <button (click)="isOpen = !isOpen" class="close-btn">X</button>
+  
+  <div class="all-wrpper">
+    
+    <div class="swiper-container gallery-top" #galleryTop [swiper]="galleryTopConfig">
+      
+      <div class="swiper-wrapper">
+        
+        <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/73c41fb8-658e-419a-bef2-95abf08e4a80.jpg?aki_policy=large">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/884f3794-1451-443a-9cbe-c2e2d8f11bc1.jpg?aki_policy=large">
+        </div>
+      
+      </div> <!-- swiper-wrapper -->
+      
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div> <!-- gallery-top -->
+    
+    <div class="swiper-container gallery-thumbs" #galleryThumbs [swiper]="galleryThumbsConfig">
+      
+      <div class="swiper-wrapper">
+        
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
+        </div>
+        <div class="swiper-slide">
+            <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/73c41fb8-658e-419a-bef2-95abf08e4a80.jpg?aki_policy=large">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://a0.muscache.com/im/pictures/884f3794-1451-443a-9cbe-c2e2d8f11bc1.jpg?aki_policy=large">
+        </div>
+      
+      </div> <!--swiper-wrapper-->
+  
+    </div> <!-- gallery-thumbs -->
+  
+  </div> <!-- all-wrpper -->
+
+</div> <!-- back-drop -->
+
+
+<app-roomdetail-info></app-roomdetail-info>
+
+  
+
+
 
 
 

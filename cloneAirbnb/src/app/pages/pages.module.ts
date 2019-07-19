@@ -6,7 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { AuthModule } from '../auth/auth.module';
-import { BsDatepickerModule, BsDropdownModule } from 'ngx-bootstrap'
+import { BsDatepickerModule, BsDropdownModule } from 'ngx-bootstrap';
 
 import { HomeComponent } from './home/home.component';
 import { StorageListComponent } from './storage-list/storage-list.component';
@@ -19,6 +19,18 @@ import { RoomRegulationComponent } from './room-regulation/room-regulation.compo
 import { GuestInfoComponent } from './guest-info/guest-info.component';
 import { PaymentComponent } from './payment/payment.component';
 
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { RoomdetailpaymentComponent } from './roomdetailpayment/roomdetailpayment.component';
+import { RoomdetailInfoComponent } from './roomdetail-info/roomdetail-info.component';
+
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -27,22 +39,31 @@ import { PaymentComponent } from './payment/payment.component';
     RoomListComponent,
     RoomRegulationComponent,
     GuestInfoComponent,
-    PaymentComponent
+    PaymentComponent,
+    RoomdetailpaymentComponent,
+    RoomdetailInfoComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     PagesRoutingModule,
     SharedModule,
-    AuthModule,
     BrowserAnimationsModule,
     Ng5SliderModule,
     BsDatepickerModule.forRoot(),
-    BsDropdownModule.forRoot(),
+    AuthModule,
     ModalModule.forRoot(),
+    SwiperModule,
+    BsDropdownModule.forRoot(),
     AgmCoreModule.forRoot({
     apiKey: 'AIzaSyA3mYS53qBU6qHCKhyxke8JoYzrD5r2LJo'
   })
+  ],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
   ]
 })
 

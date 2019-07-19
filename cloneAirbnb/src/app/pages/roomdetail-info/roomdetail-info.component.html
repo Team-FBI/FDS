@@ -1,0 +1,61 @@
+<section class="roomdetailInfoContainer">
+  <section class="roomdetailInfo">
+    <h2>{{title}}</h2>
+    <h3>{{address}}</h3>
+    
+    <div>
+      <div>
+          {{room_type}}
+      </div>
+      <div class="houseall">
+          <div class="margin-r">인원 {{capacity}} 명</div>
+          <div class="margin-r">침실 {{bedroom}} 개</div>
+          <div class="margin-r">욕실 {{bathroom}} 개</div>
+      </div>
+      <div>숙소의 상세사항</div>
+      <div>편의 시설</div>
+      <div>기타사항</div>
+    </div>
+
+    <hr>
+
+    <div class="description">{{description}}
+      <button class="placedetail">이 공간 자세히 알아보기</button>
+      <button class="msgbutton">호스트에게 연락하기</button>
+    </div> <!--description-->
+
+    <hr>
+
+
+
+    <div>
+        <div class="col-xs-12 col-12 col-md-4 form-group">
+            <input type="text"
+                  placeholder="Daterangepicker"
+                  class="form-control"
+                  bsDaterangepicker>
+          </div>
+    </div>
+
+    <hr>
+
+    <div class="commentContainer">
+      <div class="comment">
+        <textarea name="" id="" placeholder="후기 넣을곳"></textarea>
+      </div> <!--hostMessage-->
+    </div>
+
+    <hr>
+
+    <div class="commentContainer">
+        <div class="comment">
+          <textarea name="" id="" placeholder="유의사항 넣을곳"></textarea>
+        </div> <!--hostMessage-->
+    </div>
+    
+    
+    <button class="roomdetailInfoBtn">언젠가 쓸일이 있겠지</button>
+  
+  </section><!-- roomdetailInfo -->
+
+</section> <!-- roomdetailInfoContainer -->
