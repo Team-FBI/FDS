@@ -127,54 +127,14 @@
     <p>여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수 있습니다. 관광세가 추가로 부과될 수 있습니다.</p>
   </div>
   <ul>
-    <li class="detailList">
+    <li class="detailList" *ngFor="let room of roomList">
       <div class="detailImg">
-        <img class="img1"
-          src="{{roomimage}}">
+        <img class="img1" src="{{room.image}}">
       </div>
       <div class="detailText">
-        <p>바다 바로 앞, 오션뷰와 침실 정원, 하루앤하루 옥상정원집 haru n haru rooftop garden</p>
-        <p>인원 2명·침실1개·침대1개·욕실1개</p>
-      </div>
-    </li>
-    <li class="detailList">
-      <div class="detailImg">
-        <img class="img1"
-          src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
-      </div>
-      <div class="detailText">
-        <p>바다 바로 앞, 오션뷰와 침실 정원, 하루앤하루 옥상정원집 haru n haru rooftop garden</p>
-        <p>인원 2명·침실1개·침대1개·욕실1개</p>
-      </div>
-    </li>
-    <li class="detailList">
-      <div class="detailImg">
-        <img class="img1"
-          src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
-      </div>
-      <div class="detailText">
-        <p>바다 바로 앞, 오션뷰와 침실 정원, 하루앤하루 옥상정원집 haru n haru rooftop garden</p>
-        <p>인원 2명·침실1개·침대1개·욕실1개</p>
-      </div>
-    </li>
-    <li class="detailList">
-      <div class="detailImg">
-        <img class="img1"
-          src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
-      </div>
-      <div class="detailText">
-        <p>바다 바로 앞, 오션뷰와 침실 정원, 하루앤하루 옥상정원집 haru n haru rooftop garden</p>
-        <p>인원 2명·침실1개·침대1개·욕실1개</p>
-      </div>
-    </li>
-    <li class="detailList">
-      <div class="detailImg">
-        <img class="img1"
-          src="https://a0.muscache.com/im/pictures/8cca891c-d4c2-45f0-9623-0c7c0f46fccf.jpg?aki_policy=large">
-      </div>
-      <div class="detailText">
-        <p>바다 바로 앞, 오션뷰와 침실 정원, 하루앤하루 옥상정원집 haru n haru rooftop garden</p>
-        <p>인원 2명·침실1개·침대1개·욕실1개</p>
+        <p>{{room.room_type}} {{room.space}}</p>
+        <p>{{room.title}}</p>
+        <p>인원{{room.capacity}}·{{room.bed_type}}·침실{{room.bedroom}}개·욕실{{room.bathroom}}개</p>
       </div>
     </li>
   </ul>
@@ -190,15 +150,15 @@
         [opacity]="marker.alpha" [iconUrl]="icon" (markerClick)="markerClick(iw)">
           <agm-info-window [isOpen]="marker.disabled" #iw>
             <div class="infowindow">
-               <div>
-                 <img class="infoimg"
-                  src="{{marker.url}}">
-                 </div>
-               <div>
-                 <p>{{marker.content}} 집 전체·침대1개</p>
-                 <p>제주도를 가로지르는 아름다운 1100로위 "jeju901"</p>
-                 </div>
-               </div>`
+              <div>
+                <img class="infoimg"
+                src="{{marker.url}}">
+                </div>
+              <div>
+                <p>{{marker.content}} 집 전체·침대1개</p>
+                <p>제주도를 가로지르는 아름다운 1100로위 "jeju901"</p>
+                </div>
+              </div>`
           </agm-info-window>
         </agm-marker>
       </agm-map>
