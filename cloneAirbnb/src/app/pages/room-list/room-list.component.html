@@ -106,7 +106,7 @@
       <button class="price filterButton" dropdownToggle type="button">가격</button>
       <ul *dropdownMenu class="price-dropdown-menu dropdown-menu" role="menu" >
         <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
-        <button class="personnelSaveBtn" type="button" (click)="priceDropdown.isOpen = !priceDropdown.isOpen">저장</button>
+        <button class="personnelSaveBtn" type="button" (click)="priceDropdown.isOpen = !priceDropdown.isOpen" (click)="setPrice()">저장</button>
       </ul>
     </div><!-- price filterbutton -->
     
@@ -121,6 +121,7 @@
   </div>
 
 </div><!-- //filter -->
+
 <div class="roomListWrap clear-fix">
 <div class="list">
   <div class="notice">
@@ -138,34 +139,28 @@
       </div>
     </li>
   </ul>
-
 </div>
 
-  <div class="map">
-    <div class="mapWrap">
-      <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="12"
-        [zoomControl]="true" [zoomControlOptions]="zoomControlOptions" [scrollwheel]="false"
-        (mapClick)="mapClick($event)">
-        <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" 
-        [opacity]="marker.alpha" [iconUrl]="icon" (markerClick)="markerClick(iw)">
-          <agm-info-window [isOpen]="marker.disabled" #iw>
-            <div class="infowindow">
-              <div>
-                <img class="infoimg"
-                src="{{marker.url}}">
-                </div>
-              <div>
-                <p>{{marker.content}} 집 전체·침대1개</p>
-                <p>제주도를 가로지르는 아름다운 1100로위 "jeju901"</p>
-                </div>
-              </div>`
-          </agm-info-window>
-        </agm-marker>
-      </agm-map>
-      <p *ngIf="selectedMarker">
-        Lat: {{ selectedMarker.lat }} Lng: {{ selectedMarker.lng }}
-      </p>
-    </div>
+<div class="map">
+  <div class="mapWrap">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="12"
+      [zoomControl]="true" [zoomControlOptions]="zoomControlOptions" [scrollwheel]="false"
+      (mapClick)="mapClick($event)">
+      <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" 
+      [opacity]="marker.alpha" [iconUrl]="icon" (markerClick)="markerClick(iw)">
+        <agm-info-window [isOpen]="marker.disabled" #iw>
+          <div class="infowindow">
+            <div>
+              <img class="infoimg"
+              src="{{marker.url}}">
+              </div>
+            <div>
+              <p>{{marker.content}} 집 전체·침대1개</p>
+              <p>제주도를 가로지르는 아름다운 1100로위 "jeju901"</p>
+              </div>
+            </div>`
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
   </div>
-
 </div>

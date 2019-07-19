@@ -9,6 +9,7 @@ import { RoomRegulationComponent } from './room-regulation/room-regulation.compo
 import { PaymentComponent } from './payment/payment.component';
 import { GuestInfoComponent } from './guest-info/guest-info.component';
 import { RoomdetailInfoComponent } from './roomdetail-info/roomdetail-info.component';
+import { RoomDetailComponent } from './room-detail/room-detail.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'storageList', component: StorageListComponent },
   { path: 'yourTrip', component: YourTripComponent },
   { path: 'roomList', component: RoomListComponent },
+  { path: 'roomdetail', component: RoomDetailComponent },
   { path: 'roomregulation', component: RoomRegulationComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'guestinfo', component: GuestInfoComponent },

@@ -3,10 +3,9 @@ import { ZoomControlOptions, ControlPosition, ZoomControlStyle } from '@agm/core
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Options, LabelType } from 'ng5-slider';
+import { Options } from 'ng5-slider';
 import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 import { GoogleMapService } from './google-map.service';
-
 
 @Component({
   selector: 'app-room-list',
@@ -14,11 +13,10 @@ import { GoogleMapService } from './google-map.service';
   styleUrls: ['./room-list.component.scss']
 })
 export class RoomListComponent {
-  myDateValue: Date;
-  Allcounter = 0;
-  Adultcounter = 0;
-  Childcounter = 0;
-  Youngcounter = 0;
+  //백엔드 연결 URL
+  appUrl: string = environment.appUrl;
+  
+  // 지도관련 변수
   latitude = 33.36995865711402;
   longitude = 126.52811723292518;
   selectedMarker;
@@ -35,7 +33,21 @@ export class RoomListComponent {
     url: 'https://i.dlpng.com/static/png/510666_thumb.png',
     scaledSize: { width: 50, height: 60 }
   };
-  appUrl: string = environment.appUrl;
+  Glat: number;
+  Glng: number;
+
+  // datepicker 데이터
+  myDateValue: Date;
+  Allcounter = 0;
+  Adultcounter = 0;
+  Childcounter = 0;
+  Youngcounter = 0;
+  dateCustomClasses: DatepickerDateCustomClasses[];
+  datestyle = {
+    'width': '52px'
+  };
+  
+  // price range 데이터
   minValue: number = 0;
   maxValue: number = 100000;
   options: Options = {
@@ -44,21 +56,17 @@ export class RoomListComponent {
     translate: (value: number): string => {
       return '￦' + value;
     },
-    combineLabels: (minValue: string, maxValue: string): string => {
-      return 'from ' + minValue + ' up to ' + maxValue;
-    }
   };
   priceToggle: boolean;
-  dateCustomClasses: DatepickerDateCustomClasses[];
-  title: string;
-  Glat: number;
-  Glng: number;
+
+  // 방 목록  
   roomList = [];
 
   constructor(
     private http: HttpClient,
     private mapsService: GoogleMapService,
     private ngzone: NgZone ) {
+
     this.currentIW = null;
     this.previousIW = null;
 
@@ -83,13 +91,16 @@ export class RoomListComponent {
           }
         }
       );
-}
+  }
 
-  datestyle = {
-    'width' : '52px'
-  };
-  roomimage: string;
-  address: string;
+  setPrice() {
+    this.http.get(`${this.appUrl}/rooms/?min_price=${this.minValue}&&max_price=${this.maxValue}`)
+      .subscribe(
+        (res: any) => {
+          console.log(res);
+          }
+      );
+  }
 
   addRoomlist(res) {
     this.http.get(`${this.appUrl}/rooms/${res.id}`)
@@ -211,9 +222,9 @@ export class RoomListComponent {
     // console.log(n)
     if (n === 1) {
       this.Adultcounter++;
-    } else if (n == 2) {
+    } else if (n === 2) {
       this.Childcounter++;
-    } else if (n == 3) {
+    } else if (n === 3) {
       this.Youngcounter++;
     }
     this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
