@@ -16,6 +16,19 @@ import { RoomRegulationComponent } from './room-regulation/room-regulation.compo
 import { GuestInfoComponent } from './guest-info/guest-info.component';
 import { PaymentComponent } from './payment/payment.component';
 
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { RoomdetailpaymentComponent } from './roomdetailpayment/roomdetailpayment.component';
+import { RoomdetailInfoComponent } from './roomdetail-info/roomdetail-info.component';
+
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -24,7 +37,9 @@ import { PaymentComponent } from './payment/payment.component';
     RoomDetailComponent,
     RoomRegulationComponent,
     GuestInfoComponent,
-    PaymentComponent
+    PaymentComponent,
+    RoomdetailpaymentComponent,
+    RoomdetailInfoComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +48,15 @@ import { PaymentComponent } from './payment/payment.component';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     AuthModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    SwiperModule,
+    BsDropdownModule.forRoot()
+  ],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
   ]
 })
 export class PagesModule {}

@@ -8,6 +8,7 @@ import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { RoomRegulationComponent } from './room-regulation/room-regulation.component';
 import { PaymentComponent } from './payment/payment.component';
 import { GuestInfoComponent } from './guest-info/guest-info.component';
+import { RoomdetailInfoComponent } from './roomdetail-info/roomdetail-info.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'roomdetail', component: RoomDetailComponent },
   { path: 'roomregulation', component: RoomRegulationComponent },
   { path: 'payment', component: PaymentComponent },
-  { path: 'guestinfo', component: GuestInfoComponent }
+  { path: 'guestinfo', component: GuestInfoComponent },
+  { path: 'roomdetailinfo', component: RoomdetailInfoComponent }
 ];
 
 @NgModule({
