@@ -24,6 +24,7 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { RoomdetailpaymentComponent } from './roomdetailpayment/roomdetailpayment.component';
 import { RoomdetailInfoComponent } from './roomdetail-info/roomdetail-info.component';
+import { RoomDetailComponent } from './room-detail/room-detail.component';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -41,7 +42,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     GuestInfoComponent,
     PaymentComponent,
     RoomdetailpaymentComponent,
-    RoomdetailInfoComponent
+    RoomdetailInfoComponent,
+    RoomDetailComponent
   ],
   imports: [
     CommonModule,
