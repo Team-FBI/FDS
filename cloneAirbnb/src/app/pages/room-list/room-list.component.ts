@@ -6,13 +6,14 @@ import { environment } from 'src/environments/environment';
 import { Options } from 'ng5-slider';
 import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 import { GoogleMapService } from './google-map.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-room-list',
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent {
+export class RoomListComponent implements OnInit {
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
   
@@ -65,7 +66,8 @@ export class RoomListComponent {
   constructor(
     private http: HttpClient,
     private mapsService: GoogleMapService,
-    private ngzone: NgZone ) {
+    private ngzone: NgZone,
+    private router: Router, ) {
 
     this.currentIW = null;
     this.previousIW = null;
@@ -82,10 +84,18 @@ export class RoomListComponent {
       { date: fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
     ];
 
+    
+  }
+
+  ngOnInit() {
+    this.getRoomlist();
+  }
+
+  getRoomlist() {
     this.http.get(`${this.appUrl}/rooms/`)
       .subscribe(
         (res: any) => {
-          for ( let i = 1; i < res.length; i++) {
+          for (let i = 0; i < res.length; i++) {
             this.addRoomlist(res[i]);
             this.makeMarker(res[i]);
           }
@@ -97,6 +107,10 @@ export class RoomListComponent {
     this.http.get(`${this.appUrl}/rooms/?min_price=${this.minValue}&&max_price=${this.maxValue}`)
       .subscribe(
         (res: any) => {
+          for ( let j = 0; j < res.length; j++) {
+            this.roomList = [];
+            this.addRoomlist(res[j]);
+          }
           console.log(res);
           }
       );
