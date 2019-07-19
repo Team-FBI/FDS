@@ -14,4 +14,7 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     this.isMain = this.router.url === '/home' ? true : false;
   }
+  showroomList() {
+    this.router.navigate(['roomList']);
+  }
 }

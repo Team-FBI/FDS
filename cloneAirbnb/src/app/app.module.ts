@@ -21,10 +21,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     AngularFontAwesomeModule,
     AuthModule,
     HttpClientModule,
+    BsDropdownModule.forRoot(),
 
-    AppRoutingModule,
-
-    BsDropdownModule.forRoot()
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

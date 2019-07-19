@@ -18,7 +18,7 @@
     </h1>
     <div class="search" *ngIf="!isMain">
       <i class="fa fa-search" aria-hidden="true"></i>
-      <input type="text" placeholder="검색" class="searchInput" />
+      <input type="text" (keyup.enter)="showroomList()" placeholder="검색" class="searchInput" />
     </div>
     <nav class="headerNav">
       <ul class="clear-fix">
