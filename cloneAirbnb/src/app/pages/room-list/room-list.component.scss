@@ -1,0 +1,332 @@
+.header {
+  width: 100%;
+  height: 80px;
+  background: transparent;
+  border-bottom: 1px solid #ddd;
+  // position: fixed;
+
+  .logo {
+    width: 50px;
+    float: left;
+    margin: 20px 15px 0 20px;
+    font-size: 0;
+  }
+
+  a {
+    margin-right: 10px;
+  }
+
+  ::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+.headerNav {
+  float: right;
+  font-weight: bold;
+
+  button {
+    padding: 10px 20px;
+    background: transparent;
+    border: 0px;
+    font-weight: bold;
+  }
+
+  
+
+  ul {
+    li {
+      float: left;
+      height: 78px;
+      line-height: 78px;
+
+      a {
+        display: inline-block;
+        padding: 0px 20px;
+      }
+    }
+
+    li:hover {
+      border-bottom: 2px solid #bbb;
+    }
+  }
+}
+
+::ng-deep.bs-datepicker {
+  margin-left: 550px;
+  margin-top: 10px;
+  height: 350px;
+  position: relative;
+}
+
+
+.custom-content {
+  position: absolute;
+  z-index: 1081;
+  top: 390px;
+  cursor: pointer;
+  align-self: center;
+}
+
+button:focus {
+  outline: none;
+}
+.date, .personnel, .businesstrip, .roomtype, .price, .instantreservation, .addfilter{
+  display: inline;
+}
+
+.mainLogo {
+  height: 35px;
+  width: 35px;
+}
+
+.search {
+  float: left;
+  height: 50px;
+  margin-top: 15px;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.searchInput {
+  width: 400px;
+  border: 0;
+  font-size: 17px;
+}
+
+.fa-search {
+  font-size: 17px;
+  margin-right: 10px;
+}
+
+.filter {
+  width: 100%;
+  height: 48px;
+  padding: 0 72px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+.filterButton {
+    margin: 0px 4px 0px 8px;
+    font-size: 14px;
+    line-height: 18px;
+    color: rgb(72, 72, 72) ;
+    padding-top: 6px ;
+    padding-bottom: 6px;
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 12px;
+    padding-right: 12px;
+    position: relative;
+    background: none;
+    text-align: center;
+    width: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(220, 224, 224);
+    border-image: initial;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.filterRight{
+  position: absolute;
+  right: 100px;
+}
+.filterRight span{
+  padding-right:8px;
+}
+
+.list{
+  float: left;
+  width:60%;
+  padding:25px;
+  border:2px solid red
+}
+
+.map{
+  float: left;
+  width: 40%;
+}
+.mapWrap{
+  width: 100%;
+  height: 100%;
+}
+.notice {
+  margin-bottom:50px;
+  padding-bottom:30px;
+  border-bottom: 1px solid #ddd;
+   p{
+     font-size:14px;
+   }
+}
+
+.detailList{
+  margin-bottom: 20px;
+  padding:5px;
+  border:1px solid #ddd;
+  border-radius: 5px;
+}
+.detailList::after{
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.detailImg{
+  float: left;
+  width: 35%;
+  border-radius: 5px;
+}
+.detailText{
+  float: left;
+  width: 65%;
+  padding:10px;
+}
+
+.img1, .img2{
+  width: 100%;
+  border-radius: 5px;
+}
+
+agm-map {
+  height: 500px;
+}
+
+.infowindow{
+  width: 250px;
+  height: 300px;
+  padding: 0;
+}
+
+.infoimg{
+  width: 100%;
+  height: 50%;
+
+}
+
+.counterWrap{
+  padding:30px 20px 60px;
+  border:1px solid black;
+  }
+  .counterLine{
+  position: relative;
+  height:40px;
+  margin-bottom:20px;
+}
+.people{
+  p{
+    display: inline;
+    font-size:18px;
+    font-weight: 600;
+    margin:0;
+  }
+  span{
+    display: block;
+    margin-top:8px;
+    font-size:12px;
+  }
+}
+.counterCheck{
+  position: absolute;
+  top:0;
+  right:0;
+  button{
+    width:40px;
+    height:40px;
+    padding:5px;
+    margin:0;
+    border:1px solid #008489;
+    border-radius: 50%;
+    background: #fff;
+  }
+  .counter{
+    padding:0px 20px;
+  }
+}
+.personnelSaveBtn{
+  float: right;
+  margin-top:10px;
+  border:0;
+  color: #008489;
+  background: #fff;
+}
+
+.personnelremoveBtn{
+  float: left;
+  margin-top:10px;
+  border:0;
+  color: black;
+  background: #fff;
+}
+
+.dateAdjust{
+  float: right;
+  margin-top:10px;
+  border:0;
+  color: #008489;
+  background: #fff;
+}
+
+::ng-deep.personnel-dropdown-menu{
+  margin-left: 143px;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+  padding: 24px !important;
+  line-height: 150%;
+}
+::ng-deep.businesstrip-dropdown-menu{
+  margin-left: 207px;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+  padding: 24px !important;
+  line-height: 150%;
+}
+::ng-deep.roomtype-dropdown-menu{
+  margin-left: 207px;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+  padding: 24px !important;
+  line-height: 150%;
+}
+::ng-deep.price-dropdown-menu{
+  margin-left: 360px;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+  padding: 24px !important;
+  line-height: 150%;
+}
+.roomtype-checkbox{
+  float: left;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+.roomtype-text{
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.personnel-content-second{
+  margin-bottom: 30px;
+}
+
+.businesstrip-checkbox{
+  float: right;
+  margin-top:10px;
+  border:0;
+  color: #008489;
+  background: #fff;
+}

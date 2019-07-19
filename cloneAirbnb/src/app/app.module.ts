@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { AppComponent } from './app.component';
     AngularFontAwesomeModule,
     AuthModule,
     HttpClientModule,
+    BsDropdownModule.forRoot(),
 
     AppRoutingModule
   ],
