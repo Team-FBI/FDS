@@ -2,15 +2,88 @@
   width:1100px;
   margin:100px auto;
 
+  h3{
+    font-size:1.25em;
+    font-weight: 400;
+  }
 }
 .guestInfo{
   float: left;
   width:700px;
-  padding-left:30px;
+  padding:0px 50px 0 30px;
 
     h2{
       font-size:2em;
       font-weight: 600;
       color:#444;
     }
+}
+
+.peopleNumber{
+  margin-top:50px;
+
+  h3{
+    margin-bottom:20px;
+  }
+  .peopleNumberBtn{
+    width:300px;
+    height:50px;
+    padding-left:20px;
+    line-height: 50px;
+    text-align: left;
+    font-weight: 300;
+    border:1px solid #ddd;
+    background: #fff;
+  }
+
+}
+
+.businessTrip{
+  margin-top:50px;
+
+  h3{
+    display: inline-block;
+  }
+  button{
+    margin-left:50px;
+    border:0;
+    background: #fff;
+  }
+}
+
+.hostMessageContainer{
+  margin-top:50px;
+
+  p{
+    margin-top:10px;
+    font-weight: 300;
+  }
+  .flexContainer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  .hostMessage{
+    margin-top:30px;
+    
+    textarea{
+      width:100%;
+      height: 100px;
+      padding:15px;
+      font-weight: 300;
+      border:1px solid #ddd;
+      border-radius: 5px;
+    }
+  }
+
+}
+
+.guestInfoBtn{
+  margin-top:50px;
+  padding:15px 25px;
+  color:#fff;
+  border:0;
+  border-radius: 5px;
+  background: #008489;
 }
