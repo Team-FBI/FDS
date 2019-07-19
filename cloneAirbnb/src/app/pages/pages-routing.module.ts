@@ -5,13 +5,21 @@ import { HomeComponent } from './home/home.component';
 import { StorageListComponent } from './storage-list/storage-list.component';
 import { YourTripComponent } from './your-trip/your-trip.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
-
+import { AuthGuard } from '../core/guard/auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'storageList', component: StorageListComponent },
-  { path: 'yourTrip', component: YourTripComponent },
-  { path: 'roomdetail', component: RoomDetailComponent }
+  {
+    path: 'storageList',
+    component: StorageListComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'yourTrip', component: YourTripComponent, canActivate: [AuthGuard] },
+  {
+    path: 'roomdetail',
+    component: RoomDetailComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
