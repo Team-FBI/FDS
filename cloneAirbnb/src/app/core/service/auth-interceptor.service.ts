@@ -2,8 +2,7 @@ import { Injectable, Injector } from '@angular/core';
 import {
   HttpInterceptor,
   HttpRequest,
-  HttpHandler,
-  HttpEvent
+  HttpHandler
 } from '@angular/common/http';
 import { AuthService } from './auth.service';
 
@@ -20,7 +19,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     const clonedRequest = req.clone({
       headers: req.headers.set(
         'Authorization',
-        `${authService.getTokenFromLocalStorage()}`
+        `Token ${authService.getTokenFromLocalStorage()}`
       )
     });
 
