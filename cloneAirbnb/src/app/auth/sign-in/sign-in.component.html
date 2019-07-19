@@ -2,6 +2,12 @@
 <div class="background">
   <div class="formClass">
     <form [formGroup]="singIn" (ngSubmit)="onSubmit(userId, userPassword)">
+      <div *ngIf="signInFail">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        <span class="signInFailMessage">
+          이메일주소 또는 비밀번호를 확인해 주세요!
+        </span>
+      </div>
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivEmail)"

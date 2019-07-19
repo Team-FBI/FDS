@@ -13,6 +13,7 @@ import { SignInObj } from 'src/app/core/interface/signIn.interface';
 export class SignInComponent implements OnInit {
   singIn: FormGroup;
   previousUrl: string;
+  signInFail = false;
 
   constructor(
     private fb: FormBuilder,
@@ -46,11 +47,14 @@ export class SignInComponent implements OnInit {
 
     this.authService.getToken(payload).subscribe(
       (res: any) => {
+        console.log(res);
         localStorage.setItem('token', res.token);
+        localStorage.setItem('userId', res.user);
         this.router.navigate([this.previousUrl]);
       },
       err => {
-        console.log('fail', err);
+        console.log('fail');
+        this.signInFail = true;
       }
     );
   }
