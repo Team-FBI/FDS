@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
 import { SignUpObj } from 'src/app/core/interface/signUp.interface';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { UrlRememberService } from 'src/app/core/service/url-remember.service';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,11 +19,13 @@ export class SignUpComponent implements OnInit {
   years: number[];
   appUrl: string = environment.appUrl;
   userInfo: SignUpObj;
+  previousUrl: string;
 
   constructor(
     private fb: FormBuilder,
-    private location: Location,
-    private http: HttpClient
+    private router: Router,
+    private urlRemember: UrlRememberService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -89,15 +92,7 @@ export class SignUpComponent implements OnInit {
     birthDay: HTMLSelectElement,
     birthYear: HTMLSelectElement
   ) {
-    console.log(
-      userEmail.value,
-      userFirstName.value,
-      userLastName.value,
-      userPassword.value,
-      birthMonth.value,
-      birthDay.value,
-      birthYear.value
-    );
+    this.previousUrl = this.urlRemember.currentUrl;
 
     const payload: SignUpObj = {
       username: userEmail.value,
@@ -106,14 +101,9 @@ export class SignUpComponent implements OnInit {
       password: userPassword.value
     };
 
-    console.log(payload);
+    this.authService.registerUser(payload).subscribe(res => console.log(res));
 
-    // 리스폰 콘솔로 찍어보기
-    this.http
-      .post(`${this.appUrl}/accounts/user/`, payload)
-      .subscribe(res => console.log(res));
-
-    // this.location.back();
+    this.router.navigate(['/signIn']);
   }
 
   inputDivClicked(inputDiv: HTMLDivElement) {

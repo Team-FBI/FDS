@@ -15,7 +15,9 @@ import { RoomListComponent } from './room-list/room-list.component';
 import { ModalModule } from 'ngx-bootstrap/modal/';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng5SliderModule } from 'ng5-slider';
-
+import { RoomRegulationComponent } from './room-regulation/room-regulation.component';
+import { GuestInfoComponent } from './guest-info/guest-info.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,9 @@ import { Ng5SliderModule } from 'ng5-slider';
     StorageListComponent,
     YourTripComponent,
     RoomListComponent,
+    RoomRegulationComponent,
+    GuestInfoComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,13 @@
 <app-navigation></app-navigation>
 <div class="background">
   <div class="formClass">
-    <form [formGroup]="singIn" (ngSubmit)="onSubmit()">
+    <form [formGroup]="singIn" (ngSubmit)="onSubmit(userId, userPassword)">
+      <div *ngIf="signInFail">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        <span class="signInFailMessage">
+          이메일주소 또는 비밀번호를 확인해 주세요!
+        </span>
+      </div>
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivEmail)"
@@ -13,6 +19,7 @@
           type="text"
           placeholder="이메일 주소"
           formControlName="userEmail"
+          #userId
         />
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
       </div>
@@ -39,6 +46,7 @@
           type="password"
           placeholder="비밀번호 설정"
           formControlName="userPassword"
+          #userPassword
         />
         <i class="fa fa-eye-slash" aria-hidden="true"></i>
       </div>

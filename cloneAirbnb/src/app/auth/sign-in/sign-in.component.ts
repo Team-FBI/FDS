@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { UrlRememberService } from 'src/app/core/service/url-remember.service';
+import { AuthService } from 'src/app/core/service/auth.service';
+import { SignInObj } from 'src/app/core/interface/signIn.interface';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,8 +13,14 @@ import { Location } from '@angular/common';
 export class SignInComponent implements OnInit {
   singIn: FormGroup;
   previousUrl: string;
+  signInFail = false;
 
-  constructor(private fb: FormBuilder, private location: Location) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private urlRemember: UrlRememberService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.singIn = this.fb.group({
@@ -28,8 +37,26 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    this.location.back();
+  onSubmit(userId: HTMLInputElement, userPassword: HTMLInputElement) {
+    this.previousUrl = this.urlRemember.currentUrl;
+
+    const payload: SignInObj = {
+      username: userId.value,
+      password: userPassword.value
+    };
+
+    this.authService.getToken(payload).subscribe(
+      (res: any) => {
+        console.log(res);
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('userId', res.user);
+        this.router.navigate([this.previousUrl]);
+      },
+      err => {
+        console.log('fail');
+        this.signInFail = true;
+      }
+    );
   }
 
   inputDivClicked(inputDiv: HTMLDivElement) {

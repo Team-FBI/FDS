@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -8,12 +9,12 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   isMain: boolean;
-  constructor(private router: Router) {}
+  constructor(private router: Router, public authService: AuthService) {}
 
   ngOnInit() {
     this.isMain = this.router.url === '/home' ? true : false;
   }
   showroomList() {
-  this.router.navigate(['roomList']);
+    this.router.navigate(['roomList']);
   }
 }

@@ -4,7 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { StorageListComponent } from './storage-list/storage-list.component';
 import { YourTripComponent } from './your-trip/your-trip.component';
-import { RoomListComponent } from './room-list/room-list.component'
+import { RoomListComponent } from './room-list/room-list.component';
+import { RoomRegulationComponent } from './room-regulation/room-regulation.component';
+import { PaymentComponent } from './payment/payment.component';
+import { GuestInfoComponent } from './guest-info/guest-info.component';
 
 
 const routes: Routes = [
@@ -12,6 +15,9 @@ const routes: Routes = [
   { path: 'storageList', component: StorageListComponent },
   { path: 'yourTrip', component: YourTripComponent },
   { path: 'roomList', component: RoomListComponent },
+  { path: 'roomregulation', component: RoomRegulationComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'guestinfo', component: GuestInfoComponent }
 ];
 
 @NgModule({
