@@ -22,9 +22,9 @@ import { PaymentComponent } from './payment/payment.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { RoomdetailpaymentComponent } from './roomdetailpayment/roomdetailpayment.component';
 import { RoomdetailInfoComponent } from './roomdetail-info/roomdetail-info.component';
-
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -40,6 +40,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     RoomRegulationComponent,
     GuestInfoComponent,
     PaymentComponent,
+    RoomDetailComponent,
     RoomdetailpaymentComponent,
     RoomdetailInfoComponent
   ],
@@ -56,8 +57,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     SwiperModule,
     BsDropdownModule.forRoot(),
     AgmCoreModule.forRoot({
-    apiKey: 'AIzaSyA3mYS53qBU6qHCKhyxke8JoYzrD5r2LJo'
-  })
+      apiKey: 'AIzaSyA3mYS53qBU6qHCKhyxke8JoYzrD5r2LJo'
+    })
   ],
   providers: [
     {
@@ -66,6 +67,4 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     }
   ]
 })
-
-export class PagesModule {
-}
+export class PagesModule {}
