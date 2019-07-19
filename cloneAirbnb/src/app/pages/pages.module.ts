@@ -20,6 +20,8 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { RoomdetailpaymentComponent } from './roomdetailpayment/roomdetailpayment.component';
+import { RoomdetailInfoComponent } from './roomdetail-info/roomdetail-info.component';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -35,7 +37,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     RoomDetailComponent,
     RoomRegulationComponent,
     GuestInfoComponent,
-    PaymentComponent
+    PaymentComponent,
+    RoomdetailpaymentComponent,
+    RoomdetailInfoComponent
   ],
   imports: [
     CommonModule,
