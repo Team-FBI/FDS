@@ -20,6 +20,7 @@ export class RoomdetailInfoComponent implements OnInit {
   bedroom: number;
   room_type:any;
 
+
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
@@ -58,3 +59,5 @@ export class RoomdetailInfoComponent implements OnInit {
     })
   }
 }
+
+
