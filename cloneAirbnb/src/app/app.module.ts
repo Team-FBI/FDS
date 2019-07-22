@@ -10,7 +10,6 @@ import { AuthModule } from './auth/auth.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { AuthInterceptorService } from './core/service/auth-interceptor.service';
 
@@ -23,7 +22,6 @@ import { AuthInterceptorService } from './core/service/auth-interceptor.service'
     AngularFontAwesomeModule,
     AuthModule,
     HttpClientModule,
-    BsDropdownModule.forRoot(),
 
     AppRoutingModule
   ],
