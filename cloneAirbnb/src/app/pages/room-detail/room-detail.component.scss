@@ -3,6 +3,9 @@
 .box{
   position: relative;
 }
+.abc{
+  position: relative;
+}
 .main{
   height: 592px;
   cursor: pointer;
@@ -69,9 +72,9 @@
   height:562px;
   width: 376px;
   z-index: 3;
-  // position: fixed; 처음엔 absolute 일정 이하 내려가면 fiexed;
-  top: 600px;
-  display:none;
+  top:10px;
+  position: absolute;
+  right:30px;
 }
 
 .dialog-top{
@@ -365,4 +368,13 @@
 }
 .gallery-thumbs .swiper-slide-active {
   opacity: 1;
+}
+
+
+
+
+
+
+.dlatldyd{
+  height : 1000px;
 }
