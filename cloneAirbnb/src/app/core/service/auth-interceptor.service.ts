@@ -2,9 +2,11 @@ import { Injectable, Injector } from '@angular/core';
 import {
   HttpInterceptor,
   HttpRequest,
-  HttpHandler
+  HttpHandler,
+  HttpEvent
 } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +14,12 @@ import { AuthService } from './auth.service';
 export class AuthInterceptorService implements HttpInterceptor {
   constructor(private injector: Injector) {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     const authService = this.injector.get(AuthService);
 
-    console.log(authService.getTokenFromLocalStorage());
     const clonedRequest = req.clone({
       headers: req.headers.set(
         'Authorization',

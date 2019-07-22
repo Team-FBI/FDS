@@ -52,7 +52,6 @@ export class SignInComponent implements OnInit {
         this.router.navigate([this.previousUrl]);
       },
       err => {
-        console.log('fail');
         this.signInFail = true;
       }
     );
