@@ -42,18 +42,23 @@
             >로그인</a
           >
         </li>
-        <li class="myPageBtn" (click)="myPage= !myPage">
-          <div>
-              <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt="">
+        <!-- <li class="myPageBtn" (click)="myPage= !myPage">
+          <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt="">
+        </li> -->
+        <li class="mypage">
+          <div class="btn-group" dropdown placement="bottom right">
+            <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle" aria-controls="dropdown-basic">
+              <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt=""> <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a class="dropdown-item" href="#">프로필</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">계정</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">로그아웃</a></li>
+            </ul>
           </div>
         </li>
       </ul>
     </nav>
   </div>
 </header>
-<div class="back" *ngIf="myPage" (click)="myPage = false"></div>
-<ul class="myPageList" [class.active]="myPage">
-  <li><a href="#">프로필</a></li>
-  <li><a href="#">계정</a></li>
-  <li><a href="#" class="last">로그아웃</a></li>
-</ul>
