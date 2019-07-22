@@ -20,13 +20,19 @@ export class AuthInterceptorService implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const authService = this.injector.get(AuthService);
 
-    const clonedRequest = req.clone({
-      headers: req.headers.set(
-        'Authorization',
-        `Token ${authService.getTokenFromLocalStorage()}`
-      )
-    });
+    if (!authService.getTokenFromLocalStorage()) {
+      const clonedRequestWithoutToken = req.clone({});
 
-    return next.handle(clonedRequest);
+      return next.handle(clonedRequestWithoutToken);
+    } else {
+      const clonedRequest = req.clone({
+        headers: req.headers.set(
+          'Authorization',
+          `Token ${authService.getTokenFromLocalStorage()}`
+        )
+      });
+
+      return next.handle(clonedRequest);
+    }
   }
 }
