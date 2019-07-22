@@ -524,3 +524,12 @@ template {
   margin:-1px;
   clip:rect(0, 0, 0, 0);
 }
+
+@mixin flexContainer($justifyContent) {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: $justifyContent;
+}
+
+
+$roomColor: #008489;

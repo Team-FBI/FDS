@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { AuthService } from 'src/app/core/service/auth.service';
+
+
+
 
 @Component({
   selector: 'app-navigation',
@@ -11,6 +13,8 @@ import { AuthService } from 'src/app/core/service/auth.service';
 export class NavigationComponent implements OnInit {
   isMain: boolean;
   myPage = false;
+
+
   constructor(private router: Router, public authService: AuthService) {}
 
   ngOnInit() {
@@ -23,4 +27,5 @@ export class NavigationComponent implements OnInit {
   signOutBtn() {
     this.authService.signOutUser();
   }
+
 }
