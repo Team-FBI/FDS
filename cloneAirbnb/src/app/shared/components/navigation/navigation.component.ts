@@ -11,15 +11,17 @@ import { AuthService } from 'src/app/core/service/auth.service';
 })
 export class NavigationComponent implements OnInit {
   isMain: boolean;
-  myPage= false;
-  constructor(private router: Router, public authService:AuthService) {}
- 
+  myPage = false;
+  constructor(private router: Router, public authService: AuthService) {}
+
   ngOnInit() {
     this.isMain = this.router.url === '/home' ? true : false;
   }
   showroomList() {
     this.router.navigate(['roomList']);
-  } 
+  }
 
-
+  signOutBtn() {
+    this.authService.signOutUser();
+  }
 }

@@ -35,4 +35,8 @@ export class AuthService {
   
 
 
+  signOutUser() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+  }
 }

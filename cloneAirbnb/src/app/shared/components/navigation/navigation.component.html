@@ -6,19 +6,24 @@
           *ngIf="!isMain"
           src="https://i.postimg.cc/zDhvQrxH/logo.png"
           alt="Airbnb"
-          class="mainLogo"/>
+          class="mainLogo"
+        />
         <img
           *ngIf="isMain"
           src="https://i.postimg.cc/7Y2G1YNd/logo.png"
           alt="Airbnb"
           class="mainLogo"
-      />
-
-    </a>
+        />
+      </a>
     </h1>
     <div class="search" *ngIf="!isMain">
       <i class="fa fa-search" aria-hidden="true"></i>
-      <input type="text" (keyup.enter)="showroomList()" placeholder="검색" class="searchInput" />
+      <input
+        type="text"
+        (keyup.enter)="showroomList()"
+        placeholder="검색"
+        class="searchInput"
+      />
     </div>
     <nav class="headerNav">
       <ul class="clear-fix">
@@ -45,16 +50,36 @@
         <!-- <li class="myPageBtn" (click)="myPage= !myPage">
           <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt="">
         </li> -->
-        <li class="mypage">
+        <li class="mypage" *ngIf="authService.loggedIn()">
           <div class="btn-group" dropdown placement="bottom right">
-            <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle" aria-controls="dropdown-basic">
-              <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt=""> <span class="caret"></span>
+            <button
+              id="button-basic"
+              dropdownToggle
+              type="button"
+              class="btn dropdown-toggle"
+              aria-controls="dropdown-basic"
+            >
+              <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt="" />
+              <span class="caret"></span>
             </button>
-            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right"
-                role="menu" aria-labelledby="button-basic">
-              <li role="menuitem"><a class="dropdown-item" href="#">프로필</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">계정</a></li>
-              <li role="menuitem" ><a class="dropdown-item" href="#">로그아웃</a></li>
+            <ul
+              id="dropdown-basic"
+              *dropdownMenu
+              class="dropdown-menu dropdown-menu-right"
+              role="menu"
+              aria-labelledby="button-basic"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">프로필</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">계정</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#" (click)="signOutBtn()"
+                  >로그아웃</a
+                >
+              </li>
             </ul>
           </div>
         </li>
