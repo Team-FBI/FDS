@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/core/service/auth.service';
 
 
 
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -12,6 +13,8 @@ import { AuthService } from 'src/app/core/service/auth.service';
 export class NavigationComponent implements OnInit {
   isMain: boolean;
   myPage = false;
+
+
   constructor(private router: Router, public authService: AuthService) {}
 
   ngOnInit() {
@@ -24,4 +27,5 @@ export class NavigationComponent implements OnInit {
   signOutBtn() {
     this.authService.signOutUser();
   }
+
 }
