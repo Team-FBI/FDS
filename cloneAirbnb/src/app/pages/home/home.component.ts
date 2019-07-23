@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
       destination.value;
     this.reservationInfoService.reservationInfoObj.checkIn = checkIn.value;
     this.reservationInfoService.reservationInfoObj.checkOut = checkOut.value;
-
+    
     this.router.navigate(['roomList']);
   }
 
