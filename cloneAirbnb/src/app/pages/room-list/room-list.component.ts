@@ -72,9 +72,8 @@ export class RoomListComponent implements OnInit{
     private http: HttpClient,
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
-    private router: Router,
-    private reservationInfoService: ReservationInfoService ) {
-
+    private reservationInfoService: ReservationInfoService
+  ) {
     this.currentIW = null;
     this.previousIW = null;
 
@@ -92,19 +91,24 @@ export class RoomListComponent implements OnInit{
   }
 
   ngOnInit() {
+    if (!this.reservationInfoService.reservationInfoObj.destination) {
+      this.reservationInfoService.reservationInfoObj.destination = 'seoul';
+    }
     this.http
       .get(
-        `${this.appUrl}/rooms/?search=seoul&ordering=price&page_size=12&page=1`
+        `${this.appUrl}/rooms/?search=${
+          this.reservationInfoService.reservationInfoObj.destination
+        }&ordering=price&page_size=12&page=1`
       )
       .subscribe((res: any) => {
-        console.log(res);
-        for (let i = 1; i < res.length; i++) {
-          this.addRoomlist(res[i]);
-          this.makeMarker(res[i]);
+        // console.log(res.results);
+        for (let i = 0; i < res.results.length; i++) {
+          this.addRoomlist(res.results[i]);
+          this.makeMarker(res.results[i]);
         }
       });
 
-    this.getRoomlist();
+    // this.getRoomlist();
   }
 
   getRoomlist() {
@@ -120,14 +124,16 @@ export class RoomListComponent implements OnInit{
   }
 
   setPrice() {
-    this.http.get(`${this.appUrl}/rooms/?min_price=${this.minValue}&&max_price=${this.maxValue}`)
+    this.http.get(`${this.appUrl}/rooms/?search=${
+      this.reservationInfoService.reservationInfoObj.destination
+        }&ordering=price&page_size=12&page=1&min_price=${this.minValue}&&max_price=${this.maxValue}`)
       .subscribe(
         (res: any) => {
-          for ( let j = 0; j < res.length; j++) {
+          for ( let j = 0; j < res.results.length; j++) {
             this.roomList = [];
-            this.addRoomlist(res[j]);
+            this.addRoomlist(res.results[j]);
           }
-          console.log(res);
+          // console.log(res);
           }
       );
   }
@@ -136,41 +142,7 @@ export class RoomListComponent implements OnInit{
 
   addRoomlist(res) {
     this.http.get(`${this.appUrl}/rooms/${res.id}`).subscribe((res: any) => {
-      const { image, id, title, capacity, bedroom, bathroom } = res;
-      let { room_type, space, bed_type } = res;
-      if (room_type === 1) {
-        room_type = '아파트';
-      } else if (room_type === 2) {
-        room_type = '개인집';
-      } else if (room_type === 3) {
-        room_type = '가든하우스';
-      } else if (room_type === 4) {
-        room_type = '침대와 아침식사';
-      } else if (room_type === 5) {
-        room_type = '빌라';
-      } else if (room_type === 6) {
-        room_type = '카라반';
-      } else if (room_type === 50) {
-        room_type = '사무실';
-      } else {
-        room_type = '';
-      }
-      if (space === 1) {
-        space = '전체';
-      } else if (space === 2) {
-        space = '개인 방';
-      } else if (space === 3) {
-        space = '공동사용';
-      } else {
-        space = '';
-      }
-      if (bed_type === 1) {
-        bed_type = '개인 침실';
-      } else if (bed_type === 2) {
-        bed_type = '공용 침실';
-      } else {
-        bed_type = '';
-      }
+      const { image, id, title, capacity, bedroom, bathroom, room_type, space } = res;
       const roominfo = {
         id,
         image,
@@ -178,7 +150,6 @@ export class RoomListComponent implements OnInit{
         room_type,
         capacity,
         space,
-        bed_type,
         bedroom,
         bathroom
       };
@@ -192,6 +163,7 @@ export class RoomListComponent implements OnInit{
 
   getAddress(res) {
     const { image, id, title } = res;
+    console.log(res.address);
     this.mapsService.getLatLan(res.address).subscribe(result => {
       this.ngzone.run(() => {
         this.Glat = result.lat();

@@ -1,117 +1,118 @@
+@import "../../../styles.scss";
+
 .mainBg{
   position: absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
   background-image: url('https://a0.muscache.com/4ea/air/r:w3100-h2074-sfit,e:fjpg-c80/pictures/0ffd8594-f123-43f0-85bb-7ef88c6f0624.jpg');
   background-position: center center;
   background-size: cover;
   z-index: -10;
 }
 
-.mainSearch{
+.mainSearch {
   position: absolute;
-  top:20%;
-  left:5%;
-  width:450px;
-  padding:20px;
+  top: 20%;
+  left: 5%;
+  width: 450px;
+  padding: 20px;
   border-radius: 5px;
   background: #fff;
 
-   h2{
-     margin-bottom:20px;
-     font-size:30px;
-     font-weight: 600;
-     color:#555;
-     line-height: 1.3;
-   }
-   .mainLine{
-     margin-bottom:15px;
-   }
-   .mainDate::after{
+  h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.3;
+  }
+  .mainLine {
+    margin-bottom: 15px;
+  }
+  .mainDate::after {
     content: '';
     display: block;
     clear: both;
-   }
-   .mainDate div{
-     float: left;
-     width:50%;
-   }
-   label{
-     display: block;
-     margin-bottom:10px;
-     font-size:12px;
-   }
-   input{
-    width:100%;
-    padding:10px;
-    border:1px solid #f1f1f1;
+  }
+  .mainDate div {
+    float: left;
+    width: 50%;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f1f1f1;
     border-radius: 5px;
   }
-   .personnel{
-     width:100%;
-     padding:20px 15px;
-     border:1px solid #f1f1f1;
-     border-radius: 5px;
-   }
+  .personnel {
+    width: 100%;
+    padding: 20px 15px;
+    border: 1px solid #f1f1f1;
+    border-radius: 5px;
+  }
 
-   .checkIn input{
-     border-right:0px;
-     border-radius: 5px 0 0 5px;
-   }
-   .checkOut input{
+  .checkIn input {
+    border-right: 0px;
+    border-radius: 5px 0 0 5px;
+  }
+  .checkOut input {
     border-radius: 0 5px 5px 0px;
   }
-  .mainBtn{
+  .mainBtn {
     float: right;
-    margin-top:5px;
-    padding:15px 25px;
-    color:#fff;
-    border:0px;
+    margin-top: 20px;
+    padding: 15px 25px;
+    color: #fff;
+    border: 0px;
     border-radius: 5px;
     background: #ff5a5f;
   }
-  .counterWrap{
+  .counterWrap {
     display: none;
-    padding:30px 20px 60px;
-    border:2px solid red
+    padding: 30px 20px 60px;
+    border: 2px solid red;
   }
 
-  .active{
+  .active {
     display: block;
   }
-  .counterLine{
+  .counterLine {
     position: relative;
-    height:40px;
-    margin-bottom:20px;
+    height: 40px;
+    margin-bottom: 20px;
   }
-  .people{
+  .people {
+    p {
+      display: inline;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
 
-      p{
-        display: inline;
-        font-size:18px;
-        font-weight: 600;
-        margin:0;
-      }
-      
-      span{
-        display: block;
-        margin-top:8px;
-        font-size:12px;
-      }
+    span {
+      display: block;
+      margin-top: 8px;
+      font-size: 12px;
+    }
   }
-  .counterCheck{
+  .counterCheck {
     position: absolute;
-    top:0;
-    right:0;
+    top: 0;
+    right: 0;
 
       button{
         width:40px;
         height:40px;
         padding:5px;
         margin:0;
-        border:1px solid #008489;
+        border:1px solid $roomColor;
         border-radius: 50%;
         background: #fff;
       }
@@ -124,17 +125,26 @@
     float: right;
     margin-top:10px;
     border:0;
-    color: #008489;
+    color: $roomColor;
     background: #fff;
   }
-}
 
-.bgbg {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  background: #000;
-  z-index: -10;
+  .dropdown-toggle::after {
+    display: none;
+  }
+
+  #button-basic {
+    width: 385px;
+    height: 40px;
+    text-align: left;
+    background: #fff;
+    color: #008489;
+    border: 1px solid #f1f1f1;
+    border-radius: 5px;
+  }
+
+  .personnelLabel {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
 }

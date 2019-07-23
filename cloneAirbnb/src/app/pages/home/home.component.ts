@@ -9,7 +9,7 @@ import { ReservationInfoService } from 'src/app/core/service/reservation-info.se
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  active= false;
+  active = false;
 
   constructor(
     private router: Router,
@@ -29,34 +29,41 @@ export class HomeComponent implements OnInit {
     return this.reservationInfoService.reservationInfoObj.children;
   }
 
-  get infants(){
+  get infants() {
     return this.reservationInfoService.reservationInfoObj.infants;
   }
 
-  increase(a: HTMLSpanElement){
-    this.reservationInfoService.reservationInfoObj[a.id] ++;
+  increase(a: HTMLSpanElement) {
+    this.reservationInfoService.reservationInfoObj[a.id]++;
   }
-  
-  decrease(a: HTMLSpanElement){
-    if(this.reservationInfoService.reservationInfoObj[a.id] > 0){
-      this.reservationInfoService.reservationInfoObj[a.id] --;
+
+  decrease(a: HTMLSpanElement) {
+    if (this.reservationInfoService.reservationInfoObj[a.id] > 0) {
+      this.reservationInfoService.reservationInfoObj[a.id]--;
     }
   }
 
   sendReservationInfo(
-    destination: HTMLInputElement, 
-    checkIn: HTMLInputElement, 
-    checkOut: HTMLInputElement, 
-    ){
-    this.reservationInfoService.reservationInfoObj.destination = destination.value;
+    destination: HTMLInputElement,
+    checkIn: HTMLInputElement,
+    checkOut: HTMLInputElement
+    // adult: HTMLSpanElement,
+    // child: HTMLSpanElement,
+    // infant: HTMLSpanElement
+  ) {
+    this.reservationInfoService.reservationInfoObj.destination =
+      destination.value;
     this.reservationInfoService.reservationInfoObj.checkIn = checkIn.value;
     this.reservationInfoService.reservationInfoObj.checkOut = checkOut.value;
-    
+    // this.reservationInfoService.reservationInfoObj.personnel =
+    //   Number(adult.innerHTML) +
+    //   Number(child.innerHTML) +
+    //   Number(infant.innerHTML);
+
     this.router.navigate(['roomList']);
   }
 
-  counterActive(){
-    this.active= !this.active
+  counterActive() {
+    this.active = !this.active;
   }
-  
 }
