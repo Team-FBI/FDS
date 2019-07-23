@@ -1,12 +1,19 @@
 import { Component, OnInit, NgZone, OnChanges } from '@angular/core';
-import { ZoomControlOptions, ControlPosition, ZoomControlStyle } from '@agm/core/services/google-maps-types';
+import {
+  ZoomControlOptions,
+  ControlPosition,
+  ZoomControlStyle
+} from '@agm/core/services/google-maps-types';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Options } from 'ng5-slider';
 import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 import { GoogleMapService } from './google-map.service';
+<<<<<<< HEAD
 import { Router } from '@angular/router';
+=======
+>>>>>>> rmorigin/develop
 
 @Component({
   selector: 'app-room-list',
@@ -84,91 +91,100 @@ export class RoomListComponent implements OnInit {
       { date: fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
     ];
 
-    
-  }
-
-  ngOnInit() {
-    this.getRoomlist();
-  }
-
-  getRoomlist() {
-    this.http.get(`${this.appUrl}/rooms/`)
-      .subscribe(
-        (res: any) => {
-          for (let i = 0; i < res.length; i++) {
-            this.addRoomlist(res[i]);
-            this.makeMarker(res[i]);
-          }
+    this.http
+      .get(
+        `${this.appUrl}/rooms/?search=seoul&ordering=price&page_size=12&page=1`
+      )
+      .subscribe((res: any) => {
+        console.log(res);
+        for (let i = 1; i < res.length; i++) {
+          this.addRoomlist(res[i]);
+          this.makeMarker(res[i]);
         }
-      );
+      });
   }
 
-  setPrice() {
-    this.http.get(`${this.appUrl}/rooms/?min_price=${this.minValue}&&max_price=${this.maxValue}`)
-      .subscribe(
-        (res: any) => {
-          for ( let j = 0; j < res.length; j++) {
-            this.roomList = [];
-            this.addRoomlist(res[j]);
-          }
-          console.log(res);
-          }
-      );
-  }
+  // ngOnInit() {
+  //   this.getRoomlist();
+  // }
+
+  // getRoomlist() {
+  //   this.http.get(`${this.appUrl}/rooms/`)
+  //     .subscribe(
+  //       (res: any) => {
+  //         for (let i = 0; i < res.length; i++) {
+  //           this.addRoomlist(res[i]);
+  //           this.makeMarker(res[i]);
+  //         }
+  //       }
+  //     );
+  // }
+
+  // setPrice() {
+  //   this.http.get(`${this.appUrl}/rooms/?min_price=${this.minValue}&&max_price=${this.maxValue}`)
+  //     .subscribe(
+  //       (res: any) => {
+  //         for ( let j = 0; j < res.length; j++) {
+  //           this.roomList = [];
+  //           this.addRoomlist(res[j]);
+  //         }
+  //         console.log(res);
+  //         }
+  //     );
+  // }
+  roomimage: string;
+  address: string;
 
   addRoomlist(res) {
-    this.http.get(`${this.appUrl}/rooms/${res.id}`)
-      .subscribe(
-        (res: any) => {
-          const { image, id, title, capacity, bedroom, bathroom } = res;
-          let { room_type, space, bed_type } = res;
-          if (room_type === 1){
-            room_type = '아파트';
-          } else if (room_type === 2) {
-            room_type = '개인집';
-          } else if (room_type === 3) {
-            room_type = '가든하우스';
-          } else if (room_type === 4) {
-            room_type = '침대와 아침식사';
-          } else if (room_type === 5) {
-            room_type = '빌라';
-          } else if (room_type === 6) {
-            room_type = '카라반';
-          } else if (room_type === 50) {
-            room_type = '사무실';
-          } else {
-            room_type = '';
-          }
-          if (space === 1){
-            space = '전체';
-          } else if ( space === 2) {
-            space = '개인 방';
-          } else if ( space === 3) {
-            space = '공동사용';
-          } else {
-            space = '';
-          }
-          if ( bed_type === 1 ) {
-            bed_type = '개인 침실';
-          } else if ( bed_type === 2 ) {
-            bed_type = '공용 침실';
-          } else {
-            bed_type = '';
-          }
-          const roominfo = {
-            id,
-            image,
-            title,
-            room_type,
-            capacity,
-            space,
-            bed_type,
-            bedroom,
-            bathroom
-          };
-          this.roomList.push(roominfo);
-        }
-      );
+    this.http.get(`${this.appUrl}/rooms/${res.id}`).subscribe((res: any) => {
+      const { image, id, title, capacity, bedroom, bathroom } = res;
+      let { room_type, space, bed_type } = res;
+      if (room_type === 1) {
+        room_type = '아파트';
+      } else if (room_type === 2) {
+        room_type = '개인집';
+      } else if (room_type === 3) {
+        room_type = '가든하우스';
+      } else if (room_type === 4) {
+        room_type = '침대와 아침식사';
+      } else if (room_type === 5) {
+        room_type = '빌라';
+      } else if (room_type === 6) {
+        room_type = '카라반';
+      } else if (room_type === 50) {
+        room_type = '사무실';
+      } else {
+        room_type = '';
+      }
+      if (space === 1) {
+        space = '전체';
+      } else if (space === 2) {
+        space = '개인 방';
+      } else if (space === 3) {
+        space = '공동사용';
+      } else {
+        space = '';
+      }
+      if (bed_type === 1) {
+        bed_type = '개인 침실';
+      } else if (bed_type === 2) {
+        bed_type = '공용 침실';
+      } else {
+        bed_type = '';
+      }
+      const roominfo = {
+        id,
+        image,
+        title,
+        room_type,
+        capacity,
+        space,
+        bed_type,
+        bedroom,
+        bathroom
+      };
+      this.roomList.push(roominfo);
+    });
   }
 
   makeMarker(res) {
@@ -176,7 +192,7 @@ export class RoomListComponent implements OnInit {
   }
 
   getAddress(res) {
-    const { image, id, title} = res;
+    const { image, id, title } = res;
     this.mapsService.getLatLan(res.address).subscribe(result => {
       this.ngzone.run(() => {
         this.Glat = result.lat();
@@ -245,19 +261,25 @@ export class RoomListComponent implements OnInit {
   }
   decrease(n: number) {
     if (n == 1) {
-      if (this.Adultcounter === 0) { return; }
+      if (this.Adultcounter === 0) {
+        return;
+      }
       this.Adultcounter--;
     } else if (n == 2) {
-      if (this.Childcounter === 0) { return; }
+      if (this.Childcounter === 0) {
+        return;
+      }
       this.Childcounter--;
     } else if (n == 3) {
-      if (this.Youngcounter === 0) { return; }
+      if (this.Youngcounter === 0) {
+        return;
+      }
       this.Youngcounter--;
     }
     this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
   }
 
-  toggleRemoveText(binput){
+  toggleRemoveText(binput) {
     console.log(binput);
   }
 }

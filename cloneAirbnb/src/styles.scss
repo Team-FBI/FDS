@@ -108,6 +108,7 @@ body {
   line-height: 1.3;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 400;
+  overflow-x: hidden;
 }
 ol,
 ul {
@@ -523,3 +524,12 @@ template {
   margin:-1px;
   clip:rect(0, 0, 0, 0);
 }
+
+@mixin flexContainer($justifyContent) {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: $justifyContent;
+}
+
+
+$roomColor: #008489;

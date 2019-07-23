@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PagesRoutingModule } from './pages-routing.module';
-import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+
+import { PagesRoutingModule } from './pages-routing.module';
+import { SharedModule } from '../shared/shared.module';
 import { AuthModule } from '../auth/auth.module';
 
 import { BsDatepickerModule, BsDropdownModule } from 'ngx-bootstrap';
