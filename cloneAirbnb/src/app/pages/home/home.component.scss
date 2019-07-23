@@ -44,14 +44,18 @@
      font-size:12px;
    }
    input{
+    width:100%;
+    padding:10px;
+    border:1px solid #f1f1f1;
+    border-radius: 5px;
+  }
+   .personnel{
      width:100%;
-     padding:10px;
+     padding:20px 15px;
      border:1px solid #f1f1f1;
      border-radius: 5px;
    }
-   input:focus{
-    box-shadow: 0 0 0 0 rgba(0,0,0,0); 
-   }
+
    .checkIn input{
      border-right:0px;
      border-radius: 5px 0 0 5px;
@@ -69,7 +73,13 @@
     background: #ff5a5f;
   }
   .counterWrap{
+    display: none;
     padding:30px 20px 60px;
+    border:2px solid red
+  }
+
+  .active{
+    display: block;
   }
   .counterLine{
     position: relative;
@@ -119,4 +129,12 @@
   }
 }
 
-
+.bgbg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: #000;
+  z-index: -10;
+}
