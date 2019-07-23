@@ -33,10 +33,38 @@
             >
           </div>
         </div>
+          <!-- <div class="btn-group" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" 
+                    aria-controls="dropdown-basic">
+              인원<span class="caret"></span>
+            </button>
+            <div id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem">
+                <div class="dropdown-item" href="#">
+                    <div class="counterLine">
+                        <div class="people">
+                          <p class="top">성인</p>
+                        </div>
+                        <div class="counterCheck">
+                          <button type="button" class="decrease" (click)="decrease(adult)">-</button>
+                          <span class="counter" id="adults" #adult>{{adults}}</span>
+                          <button type="button" class="increase" (click)="increase(adult)">+</button>
+                        </div>
+                      </div>
+                </div>
+              </li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+              </li>
+            </div>
+          </div>  -->
         <div class="mainLine">
           <label for="">인원</label>
-          <input type="text" name="" id="" value="" placeholder="인원" />
-          <div class="counterWrap">
+          <div class="personnel" (click)="counterActive()"></div>
+          <div class="counterWrap" [class.active]="active" tabindex="0" (blur)="counterActive()">
             <div class="counterLine">
               <div class="people">
                 <p class="top">성인</p>
@@ -70,10 +98,11 @@
               </div>
             </div>
             <button type="button" class="counterBtn">신청하기</button>
-          </div>
+          </div> 
         </div>
         <button type="button" class="mainBtn" (click)="sendReservationInfo(destination, checkIn, checkOut, adult, child, infant)">검색</button>
       </fieldset>
     </form>
   </div>
+  <div class="bgbg">test</div>
 </main>

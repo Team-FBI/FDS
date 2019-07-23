@@ -9,6 +9,8 @@ import { ReservationInfoService } from 'src/app/core/service/reservation-info.se
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  active= false;
+
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
@@ -53,4 +55,9 @@ export class HomeComponent implements OnInit {
     this.reservationInfoService.reservationInfoObj.checkOut = checkOut.value;
     this.reservationInfoService.reservationInfoObj.personnel = Number(adult.innerHTML) + Number(child.innerHTML) + Number(infant.innerHTML)
   }
+
+  counterActive(){
+    this.active= !this.active
+  }
+  
 }
