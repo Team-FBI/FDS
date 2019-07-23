@@ -21,11 +21,15 @@ export class HomeComponent implements OnInit {
 
   increase(personnelType: HTMLSpanElement) {
     this.reservationInfoService.reservationInfoObj[personnelType.id]++;
+
+    this.reservationInfoService.reservationInfoObj.personnel++;
   }
 
   decrease(personnelType: HTMLSpanElement) {
     if (this.reservationInfoService.reservationInfoObj[personnelType.id] > 0) {
       this.reservationInfoService.reservationInfoObj[personnelType.id]--;
+
+      this.reservationInfoService.reservationInfoObj.personnel--;
     }
   }
 
@@ -38,10 +42,6 @@ export class HomeComponent implements OnInit {
       destination.value;
     this.reservationInfoService.reservationInfoObj.checkIn = checkIn.value;
     this.reservationInfoService.reservationInfoObj.checkOut = checkOut.value;
-    this.reservationInfoService.reservationInfoObj.personnel =
-      this.reservationInfoService.reservationInfoObj.adults +
-      this.reservationInfoService.reservationInfoObj.children +
-      this.reservationInfoService.reservationInfoObj.infants;
 
     this.router.navigate(['roomList']);
   }
@@ -56,5 +56,9 @@ export class HomeComponent implements OnInit {
 
   get infants() {
     return this.reservationInfoService.reservationInfoObj.infants;
+  }
+
+  get personnel() {
+    return this.reservationInfoService.reservationInfoObj.personnel;
   }
 }
