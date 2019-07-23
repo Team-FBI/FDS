@@ -25,15 +25,12 @@ export class YourTripComponent implements OnInit {
       .get('http://airbnb.tthae.com/api/accounts/user/13/')
       .subscribe(res => console.log(res));
 
-      console.log(this.test.reservationInfoObj.destination)
-    console.log(this.test.reservationInfoObj.checkIn)
-    console.log(this.test.reservationInfoObj.checkOut)
-    console.log(this.test.reservationInfoObj.adults)
-    console.log(this.test.reservationInfoObj.children)
-    console.log(this.test.reservationInfoObj.infants)
-    console.log(this.test.reservationInfoObj.personnel)
-
-    }
-    
+    console.log(this.test.reservationInfoObj.destination);
+    console.log(this.test.reservationInfoObj.checkIn);
+    console.log(this.test.reservationInfoObj.checkOut);
+    console.log(this.test.reservationInfoObj.adults);
+    console.log(this.test.reservationInfoObj.children);
+    console.log(this.test.reservationInfoObj.infants);
+    console.log(this.test.reservationInfoObj.personnel);
   }
-  
+}

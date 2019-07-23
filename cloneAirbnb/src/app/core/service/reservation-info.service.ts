@@ -5,7 +5,6 @@ import { ReservationInfo } from '../interface/reservationInfo.interface';
   providedIn: 'root'
 })
 export class ReservationInfoService {
-  
   reservationInfoObj: ReservationInfo = {
     destination: '',
     checkIn: '',
@@ -15,5 +14,4 @@ export class ReservationInfoService {
     children: 0,
     infants: 0
   };
-
 }
