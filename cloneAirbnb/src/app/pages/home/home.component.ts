@@ -47,13 +47,12 @@ export class HomeComponent implements OnInit {
     destination: HTMLInputElement, 
     checkIn: HTMLInputElement, 
     checkOut: HTMLInputElement, 
-    adult: HTMLSpanElement, 
-    child: HTMLSpanElement, 
-    infant: HTMLSpanElement){
+    ){
     this.reservationInfoService.reservationInfoObj.destination = destination.value;
     this.reservationInfoService.reservationInfoObj.checkIn = checkIn.value;
     this.reservationInfoService.reservationInfoObj.checkOut = checkOut.value;
-    this.reservationInfoService.reservationInfoObj.personnel = Number(adult.innerHTML) + Number(child.innerHTML) + Number(infant.innerHTML)
+    
+    this.router.navigate(['roomList']);
   }
 
   counterActive(){

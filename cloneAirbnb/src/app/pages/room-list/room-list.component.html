@@ -157,7 +157,7 @@
   <div class="mapWrap">
     <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="12"
       [zoomControl]="true" [zoomControlOptions]="zoomControlOptions" [scrollwheel]="false"
-      (mapClick)="mapClick($event)">
+      (mapClick)="mapClick()">
       <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" 
       [opacity]="marker.alpha" [iconUrl]="icon" (markerClick)="markerClick(iw)">
         <agm-info-window [isOpen]="marker.disabled" #iw>

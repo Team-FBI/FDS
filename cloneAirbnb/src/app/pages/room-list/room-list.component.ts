@@ -10,17 +10,15 @@ import { environment } from 'src/environments/environment';
 import { Options } from 'ng5-slider';
 import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 import { GoogleMapService } from './google-map.service';
-<<<<<<< HEAD
 import { Router } from '@angular/router';
-=======
->>>>>>> rmorigin/develop
+import { ReservationInfoService } from '../../core/service/reservation-info.service';
 
 @Component({
   selector: 'app-room-list',
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent implements OnInit {
+export class RoomListComponent implements OnInit{
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
   
@@ -74,7 +72,8 @@ export class RoomListComponent implements OnInit {
     private http: HttpClient,
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
-    private router: Router, ) {
+    private router: Router,
+    private reservationInfoService: ReservationInfoService ) {
 
     this.currentIW = null;
     this.previousIW = null;
@@ -90,7 +89,9 @@ export class RoomListComponent implements OnInit {
       { date: twoDaysAhead, classes: ['bg-warning'] },
       { date: fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
     ];
+  }
 
+  ngOnInit() {
     this.http
       .get(
         `${this.appUrl}/rooms/?search=seoul&ordering=price&page_size=12&page=1`
@@ -102,36 +103,34 @@ export class RoomListComponent implements OnInit {
           this.makeMarker(res[i]);
         }
       });
+
+    this.getRoomlist();
   }
 
-  // ngOnInit() {
-  //   this.getRoomlist();
-  // }
+  getRoomlist() {
+    this.http.get(`${this.appUrl}/rooms/`)
+      .subscribe(
+        (res: any) => {
+          for (let i = 0; i < res.length; i++) {
+            this.addRoomlist(res[i]);
+            this.makeMarker(res[i]);
+          }
+        }
+      );
+  }
 
-  // getRoomlist() {
-  //   this.http.get(`${this.appUrl}/rooms/`)
-  //     .subscribe(
-  //       (res: any) => {
-  //         for (let i = 0; i < res.length; i++) {
-  //           this.addRoomlist(res[i]);
-  //           this.makeMarker(res[i]);
-  //         }
-  //       }
-  //     );
-  // }
-
-  // setPrice() {
-  //   this.http.get(`${this.appUrl}/rooms/?min_price=${this.minValue}&&max_price=${this.maxValue}`)
-  //     .subscribe(
-  //       (res: any) => {
-  //         for ( let j = 0; j < res.length; j++) {
-  //           this.roomList = [];
-  //           this.addRoomlist(res[j]);
-  //         }
-  //         console.log(res);
-  //         }
-  //     );
-  // }
+  setPrice() {
+    this.http.get(`${this.appUrl}/rooms/?min_price=${this.minValue}&&max_price=${this.maxValue}`)
+      .subscribe(
+        (res: any) => {
+          for ( let j = 0; j < res.length; j++) {
+            this.roomList = [];
+            this.addRoomlist(res[j]);
+          }
+          console.log(res);
+          }
+      );
+  }
   roomimage: string;
   address: string;
 
