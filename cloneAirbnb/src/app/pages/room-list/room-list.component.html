@@ -110,7 +110,19 @@
       </ul>
     </div><!-- price filterbutton -->
     
-    <button class="instantreservation filterButton">즉시예약</button>
+    <div class="instantreservation" dropdown #instantreservationDropdown="bs-dropdown" [insideClick]="true">
+      <!-- instantreservation filterbutton -->
+      <button class="instantreservation filterButton" dropdownToggle type="button">
+        즉시 예약</button>
+      <ul *dropdownMenu class="instantreservation-dropdown-menu dropdown-menu" role="menu">
+        <input class="instantreservation-checkbox" type="checkbox" #ibinput>
+        <p><strong>즉시 예약</strong></p>
+        <p class="personnel-content-second">호스트 승인을 기다릴 필요 없이 예약할 수 <br> 있는 숙소</p>
+        <button class="personnelSaveBtn" type="button"
+          (click)="instantreservationDropdown.isOpen = !instantreservationDropdown.isOpen">저장</button>
+      </ul>
+    </div> <!-- instantreservation filterbutton -->
+
     <button class="addfilter filterButton">필터 추가하기</button>
   </div>
 

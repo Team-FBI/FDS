@@ -161,9 +161,9 @@ button:focus {
   margin-bottom:50px;
   padding-bottom:30px;
   border-bottom: 1px solid #ddd;
-   p{
-     font-size:14px;
-   }
+  p{
+    font-size:14px;
+  }
 }
 
 .detailList{
@@ -309,6 +309,15 @@ agm-map {
   padding: 24px !important;
   line-height: 150%;
 }
+::ng-deep.instantreservation-dropdown-menu{
+  margin-left: 424px;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+  padding: 24px !important;
+  line-height: 150%;
+}
 .roomtype-checkbox{
   float: left;
   margin-right: 10px;
@@ -323,7 +332,7 @@ agm-map {
   margin-bottom: 30px;
 }
 
-.businesstrip-checkbox{
+.businesstrip-checkbox, .instantreservation-checkbox{
   float: right;
   margin-top:10px;
   border:0;
