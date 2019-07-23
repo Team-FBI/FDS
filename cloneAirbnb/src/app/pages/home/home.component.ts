@@ -10,6 +10,7 @@ import { ReservationInfoService } from 'src/app/core/service/reservation-info.se
 })
 export class HomeComponent implements OnInit {
   active = false;
+  
 
   constructor(
     private router: Router,
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit {
     return this.reservationInfoService.reservationInfoObj.infants;
   }
 
+
   increase(a: HTMLSpanElement) {
     this.reservationInfoService.reservationInfoObj[a.id]++;
   }
@@ -47,19 +49,12 @@ export class HomeComponent implements OnInit {
     destination: HTMLInputElement,
     checkIn: HTMLInputElement,
     checkOut: HTMLInputElement
-    // adult: HTMLSpanElement,
-    // child: HTMLSpanElement,
-    // infant: HTMLSpanElement
   ) {
     this.reservationInfoService.reservationInfoObj.destination =
       destination.value;
     this.reservationInfoService.reservationInfoObj.checkIn = checkIn.value;
     this.reservationInfoService.reservationInfoObj.checkOut = checkOut.value;
-    // this.reservationInfoService.reservationInfoObj.personnel =
-    //   Number(adult.innerHTML) +
-    //   Number(child.innerHTML) +
-    //   Number(infant.innerHTML);
-
+  
     this.router.navigate(['roomList']);
   }
 
