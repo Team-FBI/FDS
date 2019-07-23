@@ -1,13 +1,5 @@
+@import "../../../styles.scss";
 
-
-
-$roomColor: #008489;
-
-@mixin flexContainer($justifyContent) {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: $justifyContent;
-}
 
 .roomContainer{
   width:1100px;
@@ -152,6 +144,7 @@ $roomColor: #008489;
   }
 
   .paymentReceipt{
+
     li{
       @include flexContainer(space-between);
       margin-bottom: 15px;
@@ -160,6 +153,7 @@ $roomColor: #008489;
     .total{
       font-weight: 600;
     }
+
   }
 
   .paymentDateNow{
@@ -167,7 +161,6 @@ $roomColor: #008489;
     padding:20px 0 10px;
     border-top:1px solid #ddd;
     border-bottom: 1px solid #ddd;
-
 
     li{
       @include flexContainer(space-between);
@@ -181,6 +174,7 @@ $roomColor: #008489;
   }
 
   .cancel{
+
     @include flexContainer(space-between);
     padding-top:20px;
 
@@ -193,10 +187,7 @@ $roomColor: #008489;
 
         a{
           color:$roomColor;
-
-          &:hover{
-            text-decoration: underline;
-          }
+          border:2px solid red
         }
       }
   }

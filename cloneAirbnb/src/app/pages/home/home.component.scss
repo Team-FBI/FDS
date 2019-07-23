@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .mainBg{
   position: absolute;
   top:0;
@@ -111,7 +113,7 @@
         height:40px;
         padding:5px;
         margin:0;
-        border:1px solid #008489;
+        border:1px solid $roomColor;
         border-radius: 50%;
         background: #fff;
       }
@@ -124,7 +126,7 @@
     float: right;
     margin-top:10px;
     border:0;
-    color: #008489;
+    color: $roomColor;
     background: #fff;
   }
 }
