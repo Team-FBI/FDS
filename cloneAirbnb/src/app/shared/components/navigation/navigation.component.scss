@@ -88,66 +88,66 @@ button:focus {
   margin-right: 10px;
 }
 
-.mypage{
-  margin-right:10px;
-  .btn-group{
-
-    button{
+.mypage {
+  margin-right: 10px;
+  .btn-group {
+    button {
       background: transparent;
     }
-    button:focus{
+    button:focus {
       outline: none;
     }
-  
-    img{
-      width:30px;
+
+    img {
+      width: 30px;
       height: 30px;
       border-radius: 50%;
-      border:2px solid #ddd
+      border: 2px solid #ddd;
     }
-  
-    .dropdown-menu{
+
+    .dropdown-menu {
       position: absolute;
-      left:-2000px;
-      width:280px;
-      padding:10px 15px;
-  
-  
-      li{
+      left: -2000px;
+      width: 280px;
+      padding: 10px 15px;
+
+      li {
         display: block;
-        width:100%;
+        width: 100%;
       }
-  
-      a{
+
+      a {
         display: block;
-        padding:0px;
-        color:#555;
-        border-bottom: 1px solid #f1f1f1;      
+        padding: 0px;
+        color: #555;
+        border-bottom: 1px solid #f1f1f1;
       }
-      a:hover{
-        border-bottom: 1px solid #333
+      a:hover {
+        border-bottom: 1px solid #333;
       }
-  
     }
-  
   }
 }
-.btn-group:focus{
+.btn-group:focus {
   outline: none;
 }
 
-#dropdown-basic li{
+#dropdown-basic li {
   height: 50px;
   line-height: 50px;
 }
 
-
 .dropdown-toggle::after {
   content: '';
   position: absolute;
-  left:1000px;
+  left: 1000px;
 }
 
 #button-basic {
-  box-shadow: 0 0 0 0 rgba(0,0,0,0);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #fff;
 }

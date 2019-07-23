@@ -11,6 +11,8 @@ import { Options, LabelType } from 'ng5-slider';
 import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 import { GoogleMapService } from './google-map.service';
 
+import { ReservationInfoService } from '../../core/service/reservation-info.service';
+
 @Component({
   selector: 'app-room-list',
   templateUrl: './room-list.component.html',
@@ -61,7 +63,8 @@ export class RoomListComponent {
   constructor(
     private http: HttpClient,
     private mapsService: GoogleMapService,
-    private ngzone: NgZone
+    private ngzone: NgZone,
+    private reservationInfoService: ReservationInfoService
   ) {
     this.currentIW = null;
     this.previousIW = null;
@@ -78,9 +81,13 @@ export class RoomListComponent {
       { date: fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
     ];
 
+    console.log(this.reservationInfoService.reservationInfoObj.destination);
+
     this.http
       .get(
-        `${this.appUrl}/rooms/?search=seoul&ordering=price&page_size=12&page=1`
+        `${this.appUrl}/rooms/?search=${
+          this.reservationInfoService.reservationInfoObj.destination
+        }&ordering=price&page_size=12&page=1`
       )
       .subscribe((res: any) => {
         console.log(res);
