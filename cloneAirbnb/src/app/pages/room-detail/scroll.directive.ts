@@ -19,12 +19,12 @@ export class ScrollDirective {
       this.renderer.setStyle(
         this.el.nativeElement,
         'top',
-        window.pageYOffset > this.scrollToTop ? '25px' : '10px');
+        window.pageYOffset > this.scrollToTop ? '1%' : '10px');
 
         this.renderer.setStyle(
           this.el.nativeElement,
           'right',
-          window.pageYOffset > this.scrollToTop ? '30px' : '30px');
+          window.pageYOffset > this.scrollToTop ? '10%' : '30px');
   }
   
   

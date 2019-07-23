@@ -54,6 +54,18 @@
   left:100px;
   top:0px;
 }
+::ng-deep.form-group{
+  height : 300px;
+
+  .form-control{
+    margin-left: 120%;
+  }
+  
+}
+
+::ng-deep.theme-green{
+  top:-50px;
+}
 
 
 
