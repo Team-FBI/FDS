@@ -31,7 +31,6 @@
     border-top:1px solid #ddd;
     border-bottom:1px solid #ddd;
 
-
     .paymentDate{
       @include flexContainer(flex-start);
       margin-top:10px;
@@ -59,7 +58,6 @@
     border-top:1px solid #ddd;
     border-bottom: 1px solid #ddd;
 
-
     li{
       @include flexContainer(space-between);
       margin-bottom: 15px;
@@ -84,7 +82,7 @@
 
         a{
           color:#008489;
-          
+
           &:hover{
             text-decoration: underline;
           }
@@ -92,4 +90,10 @@
       }
   }
 
+}
+
+svg{
+  display: inline !important;
+  margin-right:5px;
+  vertical-align: top;
 }
