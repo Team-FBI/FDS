@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .roomPayment{
   float: left;
   width:400px;
@@ -5,9 +7,7 @@
   border:1px solid #ddd;
 
   .paymentInfoWrap{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    @include flexContainer(space-between);
 
       h4{
         font-size:1.1em;
@@ -33,9 +33,7 @@
 
 
     .paymentDate{
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: flex-start;
+      @include flexContainer(flex-start);
       margin-top:10px;
     }
     .paymentDateLine{
@@ -45,11 +43,8 @@
 
   .paymentReceipt{
 
-
     li{
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
+      @include flexContainer(space-between);
       margin-bottom: 15px;
       font-weight: 300;
     }
@@ -66,9 +61,7 @@
 
 
     li{
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
+      @include flexContainer(space-between);
       margin-bottom: 15px;
       font-weight: 300;
 
@@ -79,9 +72,7 @@
   }
 
   .cancel{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    @include flexContainer(space-between);
     padding-top:20px;
 
       h4{
@@ -93,9 +84,10 @@
 
         a{
           color:#008489;
-        }
-        a::hover{
-          text-decoration: underline;
+          
+          &:hover{
+            text-decoration: underline;
+          }
         }
       }
   }
