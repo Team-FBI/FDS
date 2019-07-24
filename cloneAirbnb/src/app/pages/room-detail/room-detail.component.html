@@ -3,29 +3,29 @@
   <div class="main">
     
     <div class="left-big">
-    <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large"
+    <img src={{image}}
     height="590" width="885">
     </div>
 
     <div class="right">
       
       <div class="right-left-p">
-        <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
+        <img src={{image_1}}>
       </div>
 
       <div class="right-left-p">
-        <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
+        <img src={{image_2}}>
       </div>
     </div> <!--right-left-->
 
     <div class="right">
       
       <div class="right-left-p">
-        <img src="https://a0.muscache.com/im/pictures/73c41fb8-658e-419a-bef2-95abf08e4a80.jpg?aki_policy=large">
+          <img src={{image_3}}>
       </div>
 
       <div class="right-left-p">
-        <img src="https://a0.muscache.com/im/pictures/884f3794-1451-443a-9cbe-c2e2d8f11bc1.jpg?aki_policy=large">
+        <img src={{image_4}}>
       </div>
     
     </div> <!-- right-right -->
@@ -62,7 +62,7 @@
 <div class="detailcontent">
   
   <div class="detail-left">
-     <app-roomdetail-info></app-roomdetail-info>
+    <app-roomdetail-info></app-roomdetail-info>
   </div> <!-- detail-left -->
   
   <div class="dialog">
@@ -77,8 +77,7 @@
         </div> <!-- 가격 -->
         
         <button id="ratingbutton">
-          <span class="rating"><i class="fas fa-star"></i>★★★</span>
-          <i class="far fa-star"></i>
+          <span class="rating">평점{{total_rating}}</span>
           <span class="rating">89</span>
         </button> <!--rating-->
         <!-- <div>
