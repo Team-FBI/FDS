@@ -50,12 +50,15 @@
         display: inline-block;
         padding: 0px 20px;
       }
-    }
 
-    li:hover {
+    .borderColor555:hover {
       border-bottom: 2px solid #555;
     }
+    .borderColorWhite:hover {
+      border-bottom: 2px solid #fff;
+    }
   }
+}
 }
 
 button:focus {
@@ -128,6 +131,8 @@ button:focus {
     }
   }
 }
+
+
 .btn-group:focus {
   outline: none;
 }

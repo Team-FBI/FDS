@@ -22,12 +22,14 @@ import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { RoomRegulationComponent } from './room-regulation/room-regulation.component';
 import { RoomdetailInfoComponent } from './roomdetail-info/roomdetail-info.component';
 import { RoomdetailpaymentComponent } from './roomdetailpayment/roomdetailpayment.component';
+import { CheckPaymentComponent } from './check-payment/check-payment.component';
 import { GuestInfoComponent } from './guest-info/guest-info.component';
 import { PaymentComponent } from './payment/payment.component';
 
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { CheckPaymentComponent } from './check-payment/check-payment.component';
+
+import { ScrollDirective } from './room-detail/scroll.directive';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -46,8 +48,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     RoomDetailComponent,
     RoomdetailpaymentComponent,
     RoomdetailInfoComponent,
-    RoomDetailComponent,
-    CheckPaymentComponent
+    CheckPaymentComponent,
+    ScrollDirective,
   ],
   imports: [
     CommonModule,

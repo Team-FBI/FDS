@@ -9,8 +9,6 @@ import { ReservationInfoService } from 'src/app/core/service/reservation-info.se
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  active = false;
-
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
@@ -19,6 +17,33 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
+  }
+
+  increase(personnelType: HTMLSpanElement) {
+    this.reservationInfoService.reservationInfoObj[personnelType.id]++;
+
+    this.reservationInfoService.reservationInfoObj.personnel++;
+  }
+
+  decrease(personnelType: HTMLSpanElement) {
+    if (this.reservationInfoService.reservationInfoObj[personnelType.id] > 0) {
+      this.reservationInfoService.reservationInfoObj[personnelType.id]--;
+
+      this.reservationInfoService.reservationInfoObj.personnel--;
+    }
+  }
+
+  sendReservationInfo(
+    destination: HTMLInputElement,
+    checkIn: HTMLInputElement,
+    checkOut: HTMLInputElement
+  ) {
+    this.reservationInfoService.reservationInfoObj.destination =
+      destination.value;
+    this.reservationInfoService.reservationInfoObj.checkIn = checkIn.value;
+    this.reservationInfoService.reservationInfoObj.checkOut = checkOut.value;
+    
+    this.router.navigate(['roomList']);
   }
 
   get adults() {
@@ -33,37 +58,7 @@ export class HomeComponent implements OnInit {
     return this.reservationInfoService.reservationInfoObj.infants;
   }
 
-  increase(a: HTMLSpanElement) {
-    this.reservationInfoService.reservationInfoObj[a.id]++;
-  }
-
-  decrease(a: HTMLSpanElement) {
-    if (this.reservationInfoService.reservationInfoObj[a.id] > 0) {
-      this.reservationInfoService.reservationInfoObj[a.id]--;
-    }
-  }
-
-  sendReservationInfo(
-    destination: HTMLInputElement,
-    checkIn: HTMLInputElement,
-    checkOut: HTMLInputElement
-    // adult: HTMLSpanElement,
-    // child: HTMLSpanElement,
-    // infant: HTMLSpanElement
-  ) {
-    this.reservationInfoService.reservationInfoObj.destination =
-      destination.value;
-    this.reservationInfoService.reservationInfoObj.checkIn = checkIn.value;
-    this.reservationInfoService.reservationInfoObj.checkOut = checkOut.value;
-    // this.reservationInfoService.reservationInfoObj.personnel =
-    //   Number(adult.innerHTML) +
-    //   Number(child.innerHTML) +
-    //   Number(infant.innerHTML);
-
-    this.router.navigate(['roomList']);
-  }
-
-  counterActive() {
-    this.active = !this.active;
+  get personnel() {
+    return this.reservationInfoService.reservationInfoObj.personnel;
   }
 }

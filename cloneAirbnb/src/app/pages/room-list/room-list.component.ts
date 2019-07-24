@@ -92,15 +92,13 @@ export class RoomListComponent implements OnInit{
   }
 
   ngOnInit() {
-    
     if (!this.reservationInfoService.reservationInfoObj.destination) {
       this.reservationInfoService.reservationInfoObj.destination = 'seoul';
     }
-    this.render();
-    // this.getRoomlist();
+    this.getRoomInfo();
   }
 
-  render() {
+  getRoomInfo() {
     this.roomList = [];
     this.http
       .get(
@@ -111,41 +109,13 @@ export class RoomListComponent implements OnInit{
       .subscribe((res: any) => {
         // console.log(res.results);
         for (let i = 0; i < res.results.length; i++) {
-          this.addRoomlist(res.results[i]);
+          this.getRoomDetailinfo(res.results[i]);
           this.makeMarker(res.results[i]);
         }
       });
   }
 
-  getRoomlist() {
-    this.http.get(`${this.appUrl}/rooms/`)
-      .subscribe(
-        (res: any) => {
-          for (let i = 0; i < res.length; i++) {
-            this.addRoomlist(res[i]);
-            this.makeMarker(res[i]);
-          }
-        }
-      );
-  }
-
-  setPrice() {
-    this.http.get(`${this.appUrl}/rooms/?search=${
-      this.reservationInfoService.reservationInfoObj.destination
-        }&ordering=price&page_size=12&page=1&min_price=${this.minValue}&max_price=${this.maxValue}`)
-      .subscribe(
-        (res: any) => {
-          for ( let j = 0; j < res.results.length; j++) {
-            console.log(res.results);
-            this.render();
-          }
-          // console.log(res);
-          }
-      );
-  }
-  
-
-  addRoomlist(res) {
+  getRoomDetailinfo(res) {
     this.http.get(`${this.appUrl}/rooms/${res.id}/`).subscribe((res: any) => {
       const { image, id, title, capacity, bedroom, bathroom, room_type, space } = res;
       const roominfo = {
@@ -161,12 +131,26 @@ export class RoomListComponent implements OnInit{
       this.roomList.push(roominfo);
     });
   }
+  
+  setPrice() {
+    this.http.get(`${this.appUrl}/rooms/?search=${
+      this.reservationInfoService.reservationInfoObj.destination
+        }&ordering=price&page_size=12&page=1&min_price=${this.minValue}&max_price=${this.maxValue}`)
+      .subscribe(
+        (res: any) => {
+          for ( let j = 0; j < res.results.length; j++) {
+            console.log(res.results);
+            this.getRoomInfo();
+          }
+          // console.log(res);
+          }
+      );
+  }
+  
+
+  
 
   makeMarker(res) {
-    this.getAddress(res);
-  }
-
-  getAddress(res) {
     const { image, id, title } = res;
     console.log(res.address);
     this.mapsService.getLatLan(res.address).subscribe(result => {

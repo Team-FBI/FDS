@@ -21,7 +21,7 @@
             <label for="">체크인</label>
             <input
               type="text"
-              placeholder="년/월/일"
+              placeholder="월/일/년"
               class="form-control"
               bsDatepicker
               [bsConfig]="{ isAnimated: true }"
@@ -32,7 +32,7 @@
             <label for="">체크아웃</label>
             <input
               type="text"
-              placeholder="년/월/일"
+              placeholder="월/일/년"
               class="form-control"
               bsDatepicker
               [bsConfig]="{ isAnimated: true }"
@@ -50,7 +50,7 @@
               class="btn dropdown-toggle"
               aria-controls="dropdown-basic"
             >
-              인원<span class="caret"></span>
+              게스트 {{ personnel }} 명<span class="caret"></span>
             </button>
           </div>
           <div
@@ -144,16 +144,7 @@
         <button
           type="button"
           class="mainBtn"
-          (click)="
-            sendReservationInfo(
-              destination,
-              checkIn,
-              checkOut,
-              adult,
-              child,
-              infant
-            )
-          "
+          (click)="sendReservationInfo(destination, checkIn, checkOut)"
         >
           검색
         </button>
