@@ -31,30 +31,31 @@
     </div> <!-- right-right -->
   </div> <!-- main -->
 
-  <div class="s">
-    <div class="hey">
-        <button type="button" class="share" class="button-s">
-            <svg style="height:15px;" viewBox="0 0 24 24" fill-opacity="0" stroke="currentColor" class="svg-s">
+  <div class="btnwrraper">
+    <div class="sharecontainer">
+        <button type="button" class="sharebtn">
+            <svg style="height:15px;" viewBox="0 0 24 24" fill-opacity="0" stroke="currentColor" class="svg-share">
                 <path d="m11.5 16v-15"></path>
                 <path d="m7.5 4 4-3 4 3"></path>
                 <path d="m5.4 9.5h-3.9v14h20v-14h-3.1"></path>
-            </svg>
-        공유하기</button>
-    </div> <!-- hey -->
+            </svg>공유하기
+        </button>
+    </div> 
 
-    <div class="hey">
-      <button type="button" class="share" class="button-s">
-        <svg style="height:15px;" viewBox="0 0 24 24" fill-opacity="0" stroke="#484848" class="svg-s">
+    <div class="savecontainer">
+      <button type="button" class="savebtn">
+        <svg style="height:15px;" viewBox="0 0 24 24" fill-opacity="0" stroke="#484848" class="svg-save">
           <path d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6" ></path>
-        </svg>
-      저장</button>
-    </div> <!-- hey -->
+        </svg>저장
+      </button>
+    </div> <!--savecontainer-->
   
-  </div> <!-- s -->
+  </div> <!-- sharecontainer -->
 
-  <div class="showpicture">
-      <button (click)="isOpen = !isOpen">사진보기</button>
-  </div> <!--showpicture-->
+  <div class="picwrraper">
+      <button (click)="isOpen = !isOpen" class="picbtn">사진보기 
+      </button>
+  </div> <!--picwrraper-->
 </div> <!-- box -->
 
 
@@ -62,7 +63,7 @@
   
   <div class="detail-left">
      <app-roomdetail-info></app-roomdetail-info>
-  </div> <!--b-->
+  </div> <!-- detail-left -->
   
   <div class="dialog">
     
@@ -70,7 +71,7 @@
     
       <div class="dialog-top">
         
-        <div> 
+        <div class="pricewrraper"> 
           <span class="price">₩{{price}}</span>
           <span class="bac">/박</span>
         </div> <!-- 가격 -->
@@ -86,32 +87,13 @@
       </div>
     
       <form class="dialog-mid">
-        <div>
+        <div class="dialogwrraper">
           
           <div id="datepick">날짜
-            <div>
               <input>
-            </div>
-                  <!-- <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group">
-                    <input class="form-control"
-                          placeholder="Datepicker"
-                          ngModel
-                          bsDatepicker
-                          [minDate]="minDate"
-                          [maxDate]="maxDate">
-                  </div> -->
-<!--                   
-                  <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group">
-                    <input class="form-control"
-                        placeholder="Daterangepicker"
-                        ngModel
-                        bsDaterangepicker
-                        [minDate]="minDate"
-                        [maxDate]="maxDate">
-                  </div> -->
           </div>
           
-          <div>인원
+          <div class="peoplewrraper">인원
               <div class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="false">
                   <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle guest-dropdown"
                           aria-controls="dropdown-basic">
@@ -200,58 +182,11 @@
         <button type="button" class="Declaration">이 숙소 신고하기</button>
 
       </form>
-    </div> <!--dialog bottom-->
+    </div>
       
   </div> <!-- dialog-->
 </div> <!--detailcontent-->
 
-<!-- <ng-template #roomlist>
-    <div class="modal-header">
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" >
-        <span aria-hidden="true" class="roomlistmodalclose">&times;</span>
-      </button>
-    </div> -->
-    <!-- <swiper [config]="galleryTop">
-      <button>
-      <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 4.8em; width: 4.8em; fill: rgb(255, 255, 255);"><path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path></svg>
-      </button>
-      <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
-      <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
-      <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
-      <button><svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 4.8em; width: 4.8em; fill: rgb(255, 255, 255);"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
-      </button>
-    </swiper> -->
-    <!-- <div class="modal-body"> -->
-      <!-- <div class="swiper-container gallery-top" #galleryTop [swiper]="galleryTopConfig">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
-          </div>
-        </div>
-        <div class="swiper-button-prev swiper-button-white"></div>
-        <div class="swiper-button-next swiper-button-white"></div>
-      </div>
-      <div class="swiper-container gallery-thumbs" #galleryThumbs [swiper]="galleryThumbsConfig">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="https://a0.muscache.com/im/pictures/fa07aa7b-0936-42a4-8b24-8dc85d7204c0.jpg?aki_policy=xx_large">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://a0.muscache.com/im/pictures/fc882024-d547-45e7-b3a9-09b2bacc1257.jpg?aki_policy=large">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://a0.muscache.com/im/pictures/7bd5625e-b9cd-407e-a5de-34540b7edfab.jpg?aki_policy=large">
-          </div>
-        </div>
-      </div>
-    </div>
-  </ng-template> -->
 
 <div class="back-drop" [class.active]="isOpen">
   <button (click)="isOpen = !isOpen" class="close-btn">X</button>
@@ -311,13 +246,3 @@
   </div> <!-- all-wrpper -->
 
 </div> <!-- back-drop -->
-
-
-
-
-  
-
-
-
-
-
