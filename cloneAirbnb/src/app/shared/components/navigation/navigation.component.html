@@ -33,12 +33,12 @@
           >
         </li>
         <li *ngIf="authService.loggedIn()">
-          <a routerLink="/yourTrip" [style.color]="isMain ? '#fff' : '#000'"
+          <a routerLink="/yourTrip" [style.color]="isMain ? '#fff' : '#000'" 
             >여행</a
           >
         </li>
         <li *ngIf="!authService.loggedIn()">
-          <a routerLink="/signUp" [style.color]="isMain ? '#fff' : '#000'"
+          <a routerLink="/signUp" [style.color]="isMain ? '#fff' : '#000'" 
             >회원가입</a
           >
         </li>
