@@ -7,102 +7,148 @@
         <h2>특색 있는 숙소와 즐길 거리를 예약하세요.</h2>
         <div class="mainLine">
           <label for="">목적지</label>
-          <input type="text" name="" id="" value="" placeholder="모든 위치" #destination>
+          <input
+            type="text"
+            name=""
+            id=""
+            value=""
+            placeholder="모든 위치"
+            #destination
+          />
         </div>
         <div class="mainDate">
           <div class="checkIn form-group">
             <label for="">체크인</label>
-            <input 
+            <input
               type="text"
-              placeholder="년/월/일"
+              placeholder="월/일/년"
               class="form-control"
               bsDatepicker
               [bsConfig]="{ isAnimated: true }"
               #checkIn
-            >
+            />
           </div>
           <div class="checkOut form-group">
             <label for="">체크아웃</label>
             <input
               type="text"
-              placeholder="년/월/일"
+              placeholder="월/일/년"
               class="form-control"
               bsDatepicker
               [bsConfig]="{ isAnimated: true }"
               #checkOut
-            >
+            />
           </div>
         </div>
-          <!-- <div class="btn-group" dropdown>
-            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" 
-                    aria-controls="dropdown-basic">
-              인원<span class="caret"></span>
+        <div class="btn-group" dropdown [insideClick]="true">
+          <div>
+            <p class="personnelLabel">인원</p>
+            <button
+              id="button-basic"
+              dropdownToggle
+              type="button"
+              class="btn dropdown-toggle"
+              aria-controls="dropdown-basic"
+            >
+              게스트 {{ personnel }} 명<span class="caret"></span>
             </button>
-            <div id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-                role="menu" aria-labelledby="button-basic">
-              <li role="menuitem">
-                <div class="dropdown-item" href="#">
-                    <div class="counterLine">
-                        <div class="people">
-                          <p class="top">성인</p>
-                        </div>
-                        <div class="counterCheck">
-                          <button type="button" class="decrease" (click)="decrease(adult)">-</button>
-                          <span class="counter" id="adults" #adult>{{adults}}</span>
-                          <button type="button" class="increase" (click)="increase(adult)">+</button>
-                        </div>
-                      </div>
+          </div>
+          <div
+            id="dropdown-basic"
+            *dropdownMenu
+            class="dropdown-menu"
+            role="menu"
+            aria-labelledby="button-basic"
+          >
+            <div role="menuitem">
+              <div class="counterLine">
+                <div class="people">
+                  <p class="top">성인</p>
                 </div>
-              </li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
-              <li class="divider dropdown-divider"></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
-              </li>
-            </div>
-          </div>  -->
-        <div class="mainLine">
-          <label for="">인원</label>
-          <div class="personnel" (click)="counterActive()"></div>
-          <div class="counterWrap" [class.active]="active" tabindex="0" (blur)="counterActive()">
-            <div class="counterLine">
-              <div class="people">
-                <p class="top">성인</p>
-              </div>
-              <div class="counterCheck">
-                <button type="button" class="decrease" (click)="decrease(adult)">-</button>
-                <span class="counter" id="adults" #adult>{{adults}}</span>
-                <button type="button" class="increase" (click)="increase(adult)">+</button>
+                <div class="counterCheck">
+                  <button
+                    type="button"
+                    class="decrease"
+                    (click)="decrease(adult)"
+                  >
+                    -
+                  </button>
+                  <span class="counter" id="adults" #adult>{{ adults }}</span>
+                  <button
+                    type="button"
+                    class="increase"
+                    (click)="increase(adult)"
+                  >
+                    +
+                  </button>
+                </div>
               </div>
             </div>
-            <div class="counterLine">
-              <div class="people">
-                <p>어린이</p>
-                <span>2~12세</span>
-              </div>
-              <div class="counterCheck">
-                <button type="button" class="decrease" (click)="decrease(child)">-</button>
-                <span class="counter" id="children" #child>{{children}}</span>
-                <button type="button" class="increase" (click)="increase(child)">+</button>
+            <div role="menuitem">
+              <div class="counterLine">
+                <div class="people">
+                  <p>어린이</p>
+                  <span>2~12세</span>
+                </div>
+                <div class="counterCheck">
+                  <button
+                    type="button"
+                    class="decrease"
+                    (click)="decrease(child)"
+                  >
+                    -
+                  </button>
+                  <span class="counter" id="children" #child>{{
+                    children
+                  }}</span>
+                  <button
+                    type="button"
+                    class="increase"
+                    (click)="increase(child)"
+                  >
+                    +
+                  </button>
+                </div>
               </div>
             </div>
-            <div class="counterLine">
-              <div class="people">
-                <p>유아</p>
-                <span>2세 미만</span>
-              </div>
-              <div class="counterCheck">
-                <button type="button" class="decrease" (click)="decrease(infant)">-</button>
-                <span class="counter" id="infants" #infant>{{infants}}</span>
-                <button type="button" class="increase" (click)="increase(infant)">+</button>
+            <div role="menuitem">
+              <div class="counterLine">
+                <div class="people">
+                  <p>유아</p>
+                  <span>2세 미만</span>
+                </div>
+                <div class="counterCheck">
+                  <button
+                    type="button"
+                    class="decrease"
+                    (click)="decrease(infant)"
+                  >
+                    -
+                  </button>
+                  <span class="counter" id="infants" #infant>{{
+                    infants
+                  }}</span>
+                  <button
+                    type="button"
+                    class="increase"
+                    (click)="increase(infant)"
+                  >
+                    +
+                  </button>
+                </div>
               </div>
             </div>
-            <button type="button" class="counterBtn">신청하기</button>
-          </div> 
+          </div>
         </div>
-        <button type="button" class="mainBtn" (click)="sendReservationInfo(destination, checkIn, checkOut, adult, child, infant)">검색</button>
+
+        <button
+          type="button"
+          class="mainBtn"
+          (click)="sendReservationInfo(destination, checkIn, checkOut)"
+        >
+          검색
+        </button>
       </fieldset>
     </form>
   </div>
-  <div class="bgbg">test</div>
 </main>
