@@ -68,18 +68,18 @@
   width: 1100px;
   margin:0 auto;
   // padding:0 24px;
-  border:2px solid red;
+  // border:2px solid red;
   
   .detail-left{
    float: left;
    width: 700px;
-   border:2px solid blue;
+  //  border:2px solid blue;
   }
 
   .dialog{
-    border : 2px solid pink;
+    border : 2px solid green;
     width: 400px;
-    height: 500px;
+    // height: 500px;
     float :right;
     // left: 700px;
     // position: relative;
@@ -90,6 +90,7 @@
       // padding-right: 24px;
       
       position: absolute;
+      border : 2px solid pink;
       top:650px;
       width:400px;
       
@@ -103,7 +104,6 @@
 
         .bac{
           overflow-wrap: break-word;
-          font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
           font-size: 12px;
           font-weight: 600; 
           line-height: 1.33333em; 
@@ -126,12 +126,12 @@
             display:inline-block;
         }
         }
-        .hr{
-          margin-top: 16px;
-          margin-bottom: 16px;
-          width:326px;
-          color:black;
-        }
+        // .hr{
+        //   margin-top: 16px;
+        //   margin-bottom: 16px;
+        //   width:326px;
+        //   color:black;
+        // }
       }
   
       .dialog-mid{
@@ -142,6 +142,7 @@
           background-color:pink;
           width:100%;
           height:100%;
+          border:2px solid red;
         }
 
         .increase1 {
