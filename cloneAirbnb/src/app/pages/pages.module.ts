@@ -26,6 +26,7 @@ import { PaymentComponent } from './payment/payment.component';
 
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { ScrollDirective } from './room-detail/scroll.directive';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -43,7 +44,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     PaymentComponent,
     RoomDetailComponent,
     RoomdetailpaymentComponent,
-    RoomdetailInfoComponent
+    RoomdetailInfoComponent,
+    ScrollDirective,
   ],
   imports: [
     CommonModule,

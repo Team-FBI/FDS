@@ -15,11 +15,18 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   minDate: Date;
   maxDate: Date;
   modalRef: BsModalRef;
-  Allcounter = 0;
-  Adultcounter = 0;
+  Allcounter = 1;
+  Adultcounter = 1;
   Childcounter = 0;
   Youngcounter = 0;
+  price: number;
+  min_stay:number;
   appUrl: string = environment.appUrl;
+  totalprice:number;
+  serviceprice:number;
+  Accommodation:number;
+  finalprice:number;
+
 
   @ViewChild('galleryTop', { static: true }) galleryTop;
   @ViewChild('galleryThumbs', { static: true }) galleryThumbs;
@@ -70,10 +77,21 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
 
-    this.http.get(`${this.appUrl}/rooms/`)
-      .subscribe(res => console.log(res))
+    // this.http.get(`${this.appUrl}/rooms/`)
+    //   .subscribe(res => console.log(res))
 
+    this.http.get(`${this.appUrl}/rooms/5/`)
+      .subscribe( (res: any) => { 
+        console.log(res)
+        this.price = res.price;
+        this.min_stay = res.min_stay;
+        this.totalprice = this.price* this.min_stay * this.Allcounter;
+        this.serviceprice = this.totalprice * 0.13;
+        this.Accommodation = this.serviceprice *0.10;
+        this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
+    })
   }
+
   increase(n: number) {
     // console.log(n)
     if(n === 1){
@@ -84,6 +102,10 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.Youngcounter++;
     }
     this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
+    this.totalprice = this.price* this.min_stay * this.Allcounter;
+    this.serviceprice = this.totalprice * 0.13;
+    this.Accommodation = this.serviceprice *0.10;
+    this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
   }
 
   decrease(n : number) {
@@ -98,6 +120,10 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.Youngcounter--;
     }
     this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
+    this.totalprice = this.price* this.min_stay * this.Allcounter;
+    this.serviceprice = this.totalprice * 0.13;
+    this.Accommodation = this.serviceprice *0.10;
+    this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
   }
 
   ngAfterViewInit() {

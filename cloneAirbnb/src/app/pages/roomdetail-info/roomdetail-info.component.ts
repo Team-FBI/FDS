@@ -20,6 +20,7 @@ export class RoomdetailInfoComponent implements OnInit {
   bedroom: number;
   room_type:any;
 
+
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
@@ -29,7 +30,7 @@ export class RoomdetailInfoComponent implements OnInit {
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
 
-    this.http.get(`${this.appUrl}/rooms/2`)
+    this.http.get(`${this.appUrl}/rooms/5/`)
       .subscribe( (res: any) => { 
       this.title = res.title;
       this.address = res.address;
@@ -58,3 +59,5 @@ export class RoomdetailInfoComponent implements OnInit {
     })
   }
 }
+
+
