@@ -2,6 +2,7 @@
 <div class="background">
   <div class="formClass">
     <form [formGroup]="singIn" (ngSubmit)="onSubmit(userId, userPassword)">
+      <p class="title">로그인</p>
       <div *ngIf="signInFail">
         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
         <span class="signInFailMessage">
@@ -65,5 +66,9 @@
         로그인
       </button>
     </form>
+    <div class="divideLine"></div>
+    <button type="button" class="toSignUp" (click)="toSignUp()">
+      회원가입
+    </button>
   </div>
 </div>

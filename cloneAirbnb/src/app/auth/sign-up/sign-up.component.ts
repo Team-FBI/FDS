@@ -111,7 +111,7 @@ export class SignUpComponent implements OnInit {
   }
 
   inputDivUnclicked(inputDiv: HTMLDivElement) {
-    inputDiv.style.border = '1px solid #bbb';
+    inputDiv.style.border = '1px solid #f1f1f1';
   }
 
   passwordClicked() {

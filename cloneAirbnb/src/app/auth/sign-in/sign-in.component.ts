@@ -53,6 +53,8 @@ export class SignInComponent implements OnInit {
       },
       err => {
         this.signInFail = true;
+        userId.value = '';
+        userPassword.value = '';
       }
     );
   }
@@ -62,7 +64,11 @@ export class SignInComponent implements OnInit {
   }
 
   inputDivUnclicked(inputDiv: HTMLDivElement) {
-    inputDiv.style.border = '1px solid #bbb';
+    inputDiv.style.border = '1px solid #f1f1f1';
+  }
+
+  toSignUp() {
+    this.router.navigate(['signUp']);
   }
 
   get userEmail() {
