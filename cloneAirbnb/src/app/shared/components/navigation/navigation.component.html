@@ -27,22 +27,38 @@
     </div>
     <nav class="headerNav">
       <ul class="clear-fix">
-        <li *ngIf="authService.loggedIn()">
+        <li
+          *ngIf="authService.loggedIn()"
+          class="borderColor555"
+          [class.borderColorWhite]="isMain"
+        >
           <a routerLink="/storageList" [style.color]="isMain ? '#fff' : '#000'"
             >저장목록</a
           >
         </li>
-        <li *ngIf="authService.loggedIn()">
-          <a routerLink="/yourTrip" [style.color]="isMain ? '#fff' : '#000'" 
+        <li
+          *ngIf="authService.loggedIn()"
+          class="borderColor555"
+          [class.borderColorWhite]="isMain"
+        >
+          <a routerLink="/yourTrip" [style.color]="isMain ? '#fff' : '#000'"
             >여행</a
           >
         </li>
-        <li *ngIf="!authService.loggedIn()">
-          <a routerLink="/signUp" [style.color]="isMain ? '#fff' : '#000'" 
+        <li
+          *ngIf="!authService.loggedIn()"
+          class="borderColor555"
+          [class.borderColorWhite]="isMain"
+        >
+          <a routerLink="/signUp" [style.color]="isMain ? '#fff' : '#000'"
             >회원가입</a
           >
         </li>
-        <li *ngIf="!authService.loggedIn()">
+        <li
+          *ngIf="!authService.loggedIn()"
+          class="borderColor555"
+          [class.borderColorWhite]="isMain"
+        >
           <a routerLink="/signIn" [style.color]="isMain ? '#fff' : '#000'"
             >로그인</a
           >
@@ -50,7 +66,11 @@
         <!-- <li class="myPageBtn" (click)="myPage= !myPage">
           <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt="">
         </li> -->
-        <li class="mypage" *ngIf="authService.loggedIn()">
+        <li
+          class="mypage borderColor555"
+          *ngIf="authService.loggedIn()"
+          [class.borderColorWhite]="isMain"
+        >
           <div class="btn-group" dropdown placement="bottom right">
             <button
               id="button-basic"
