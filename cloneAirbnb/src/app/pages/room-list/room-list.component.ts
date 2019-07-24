@@ -7,10 +7,9 @@ import {
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Options, LabelType } from 'ng5-slider';
+import { Options } from 'ng5-slider';
 import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 import { GoogleMapService } from './google-map.service';
-
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 
 @Component({
@@ -18,12 +17,11 @@ import { ReservationInfoService } from '../../core/service/reservation-info.serv
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent {
-  myDateValue: Date;
-  Allcounter = 0;
-  Adultcounter = 0;
-  Childcounter = 0;
-  Youngcounter = 0;
+export class RoomListComponent implements OnInit{
+  //백엔드 연결 URL
+  appUrl: string = environment.appUrl;
+  
+  // 지도관련 변수
   latitude = 33.36995865711402;
   longitude = 126.52811723292518;
   selectedMarker;
@@ -40,7 +38,21 @@ export class RoomListComponent {
     url: 'https://i.dlpng.com/static/png/510666_thumb.png',
     scaledSize: { width: 50, height: 60 }
   };
-  appUrl: string = environment.appUrl;
+  Glat: number;
+  Glng: number;
+
+  // datepicker 데이터
+  myDateValue: Date;
+  Allcounter = 0;
+  Adultcounter = 0;
+  Childcounter = 0;
+  Youngcounter = 0;
+  dateCustomClasses: DatepickerDateCustomClasses[];
+  datestyle = {
+    'width': '52px'
+  };
+  
+  // price range 데이터
   minValue: number = 0;
   maxValue: number = 100000;
   options: Options = {
@@ -49,16 +61,13 @@ export class RoomListComponent {
     translate: (value: number): string => {
       return '￦' + value;
     },
-    combineLabels: (minValue: string, maxValue: string): string => {
-      return 'from ' + minValue + ' up to ' + maxValue;
-    }
   };
   priceToggle: boolean;
-  dateCustomClasses: DatepickerDateCustomClasses[];
-  title: string;
-  Glat: number;
-  Glng: number;
+
+  // 방 목록  
   roomList = [];
+  roomimage: string;
+  address: string;
 
   constructor(
     private http: HttpClient,
@@ -80,67 +89,35 @@ export class RoomListComponent {
       { date: twoDaysAhead, classes: ['bg-warning'] },
       { date: fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
     ];
+  }
 
-    console.log(this.reservationInfoService.reservationInfoObj.destination);
+  ngOnInit() {
+    if (!this.reservationInfoService.reservationInfoObj.destination) {
+      this.reservationInfoService.reservationInfoObj.destination = 'seoul';
+    }
+    this.getRoomInfo();
+  }
 
+  getRoomInfo() {
+    this.roomList = [];
     this.http
       .get(
         `${this.appUrl}/rooms/?search=${
-          this.reservationInfoService.reservationInfoObj.destination
+        this.reservationInfoService.reservationInfoObj.destination
         }&ordering=price&page_size=12&page=1`
       )
       .subscribe((res: any) => {
-        console.log(res);
-        for (let i = 1; i < res.length; i++) {
-          this.addRoomlist(res[i]);
-          this.makeMarker(res[i]);
+        // console.log(res.results);
+        for (let i = 0; i < res.results.length; i++) {
+          this.getRoomDetailinfo(res.results[i]);
+          this.makeMarker(res.results[i]);
         }
       });
   }
 
-  datestyle = {
-    width: '52px'
-  };
-  roomimage: string;
-  address: string;
-
-  addRoomlist(res) {
-    this.http.get(`${this.appUrl}/rooms/${res.id}`).subscribe((res: any) => {
-      const { image, id, title, capacity, bedroom, bathroom } = res;
-      let { room_type, space, bed_type } = res;
-      if (room_type === 1) {
-        room_type = '아파트';
-      } else if (room_type === 2) {
-        room_type = '개인집';
-      } else if (room_type === 3) {
-        room_type = '가든하우스';
-      } else if (room_type === 4) {
-        room_type = '침대와 아침식사';
-      } else if (room_type === 5) {
-        room_type = '빌라';
-      } else if (room_type === 6) {
-        room_type = '카라반';
-      } else if (room_type === 50) {
-        room_type = '사무실';
-      } else {
-        room_type = '';
-      }
-      if (space === 1) {
-        space = '전체';
-      } else if (space === 2) {
-        space = '개인 방';
-      } else if (space === 3) {
-        space = '공동사용';
-      } else {
-        space = '';
-      }
-      if (bed_type === 1) {
-        bed_type = '개인 침실';
-      } else if (bed_type === 2) {
-        bed_type = '공용 침실';
-      } else {
-        bed_type = '';
-      }
+  getRoomDetailinfo(res) {
+    this.http.get(`${this.appUrl}/rooms/${res.id}/`).subscribe((res: any) => {
+      const { image, id, title, capacity, bedroom, bathroom, room_type, space } = res;
       const roominfo = {
         id,
         image,
@@ -148,20 +125,34 @@ export class RoomListComponent {
         room_type,
         capacity,
         space,
-        bed_type,
         bedroom,
         bathroom
       };
       this.roomList.push(roominfo);
     });
   }
+  
+  setPrice() {
+    this.http.get(`${this.appUrl}/rooms/?search=${
+      this.reservationInfoService.reservationInfoObj.destination
+        }&ordering=price&page_size=12&page=1&min_price=${this.minValue}&max_price=${this.maxValue}`)
+      .subscribe(
+        (res: any) => {
+          for ( let j = 0; j < res.results.length; j++) {
+            console.log(res.results);
+            this.getRoomInfo();
+          }
+          // console.log(res);
+          }
+      );
+  }
+  
+
+  
 
   makeMarker(res) {
-    this.getAddress(res);
-  }
-
-  getAddress(res) {
     const { image, id, title } = res;
+    console.log(res.address);
     this.mapsService.getLatLan(res.address).subscribe(result => {
       this.ngzone.run(() => {
         this.Glat = result.lat();
@@ -221,9 +212,9 @@ export class RoomListComponent {
     // console.log(n)
     if (n === 1) {
       this.Adultcounter++;
-    } else if (n == 2) {
+    } else if (n === 2) {
       this.Childcounter++;
-    } else if (n == 3) {
+    } else if (n === 3) {
       this.Youngcounter++;
     }
     this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
@@ -251,4 +242,6 @@ export class RoomListComponent {
   toggleRemoveText(binput) {
     console.log(binput);
   }
+
+  
 }

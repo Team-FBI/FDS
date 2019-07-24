@@ -12,6 +12,7 @@ import { BsDatepickerModule, BsDropdownModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal/';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SwiperModule } from 'ngx-swiper-wrapper';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { HomeComponent } from './home/home.component';
 import { StorageListComponent } from './storage-list/storage-list.component';
@@ -21,11 +22,13 @@ import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { RoomRegulationComponent } from './room-regulation/room-regulation.component';
 import { RoomdetailInfoComponent } from './roomdetail-info/roomdetail-info.component';
 import { RoomdetailpaymentComponent } from './roomdetailpayment/roomdetailpayment.component';
+import { CheckPaymentComponent } from './check-payment/check-payment.component';
 import { GuestInfoComponent } from './guest-info/guest-info.component';
 import { PaymentComponent } from './payment/payment.component';
 
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+
 import { ScrollDirective } from './room-detail/scroll.directive';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -45,6 +48,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     RoomDetailComponent,
     RoomdetailpaymentComponent,
     RoomdetailInfoComponent,
+    CheckPaymentComponent,
     ScrollDirective,
   ],
   imports: [
@@ -61,7 +65,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     BsDropdownModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA3mYS53qBU6qHCKhyxke8JoYzrD5r2LJo'
-    })
+    }),
+    FontAwesomeModule
   ],
   providers: [
     {
