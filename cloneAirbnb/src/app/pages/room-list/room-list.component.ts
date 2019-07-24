@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
 import { Options } from 'ng5-slider';
 import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 import { GoogleMapService } from './google-map.service';
-import { Router } from '@angular/router';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 
 @Component({
@@ -67,6 +66,8 @@ export class RoomListComponent implements OnInit{
 
   // 방 목록  
   roomList = [];
+  roomimage: string;
+  address: string;
 
   constructor(
     private http: HttpClient,
@@ -91,13 +92,20 @@ export class RoomListComponent implements OnInit{
   }
 
   ngOnInit() {
+    
     if (!this.reservationInfoService.reservationInfoObj.destination) {
       this.reservationInfoService.reservationInfoObj.destination = 'seoul';
     }
+    this.render();
+    // this.getRoomlist();
+  }
+
+  render() {
+    this.roomList = [];
     this.http
       .get(
         `${this.appUrl}/rooms/?search=${
-          this.reservationInfoService.reservationInfoObj.destination
+        this.reservationInfoService.reservationInfoObj.destination
         }&ordering=price&page_size=12&page=1`
       )
       .subscribe((res: any) => {
@@ -107,8 +115,6 @@ export class RoomListComponent implements OnInit{
           this.makeMarker(res.results[i]);
         }
       });
-
-    // this.getRoomlist();
   }
 
   getRoomlist() {
@@ -126,22 +132,21 @@ export class RoomListComponent implements OnInit{
   setPrice() {
     this.http.get(`${this.appUrl}/rooms/?search=${
       this.reservationInfoService.reservationInfoObj.destination
-        }&ordering=price&page_size=12&page=1&min_price=${this.minValue}&&max_price=${this.maxValue}`)
+        }&ordering=price&page_size=12&page=1&min_price=${this.minValue}&max_price=${this.maxValue}`)
       .subscribe(
         (res: any) => {
           for ( let j = 0; j < res.results.length; j++) {
-            this.roomList = [];
-            this.addRoomlist(res.results[j]);
+            console.log(res.results);
+            this.render();
           }
           // console.log(res);
           }
       );
   }
-  roomimage: string;
-  address: string;
+  
 
   addRoomlist(res) {
-    this.http.get(`${this.appUrl}/rooms/${res.id}`).subscribe((res: any) => {
+    this.http.get(`${this.appUrl}/rooms/${res.id}/`).subscribe((res: any) => {
       const { image, id, title, capacity, bedroom, bathroom, room_type, space } = res;
       const roominfo = {
         id,
@@ -253,4 +258,6 @@ export class RoomListComponent implements OnInit{
   toggleRemoveText(binput) {
     console.log(binput);
   }
+
+  
 }
