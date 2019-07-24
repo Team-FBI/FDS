@@ -26,6 +26,13 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   serviceprice:number;
   Accommodation:number;
   finalprice:number;
+  total_rating:number;
+  image: string;
+  image_1:string;
+  image_2:string;
+  image_3:string;
+  image_4:string;
+
 
 
   @ViewChild('galleryTop', { static: true }) galleryTop;
@@ -89,6 +96,12 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
         this.serviceprice = this.totalprice * 0.13;
         this.Accommodation = this.serviceprice *0.10;
         this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
+        this.total_rating = res.total_rating;
+        this.image = res.image;
+        this.image_1 = res.image_1;
+        this.image_2 = res.image_2;
+        this.image_3 = res.image_3;
+        this.image_4 = res.image_4;
     })
   }
 
