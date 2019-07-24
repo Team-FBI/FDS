@@ -67,9 +67,45 @@ export class RoomdetailInfoComponent implements OnInit {
         if(element === "queen-size bed"){
           this.dkd = '퀸사이즈침대';
         }
-        // if(element === "swimming pool"){
-        //   this.dkd += '수영장';
-        // }
+        if(element === "swimming pool"){
+          this.dkd += '수영장';
+        }
+        if(element === "parking lot"){
+          this.dkd += '주차장';
+        }
+        if(element === "ethernet"){
+          this.dkd += '이더넷';
+        }
+        if(element === "work space"){
+          this.dkd += '작업공간';
+        }
+        if(element === "television"){
+          this.dkd += 'TV';
+        }
+        if(element === "kitchen"){
+          this.dkd += '주방';
+        }
+        if(element === "elevator"){
+          this.dkd += '엘리베이터';
+        }
+        if(element === "cloth iron"){
+          this.dkd += '다리미';
+        }
+        if(element === "cloth dryer"){
+          this.dkd += '옷걸이';
+        }
+        if(element === "wifi"){
+          this.dkd += '와이파이';
+        }
+        if(element === "breakfast service"){
+          this.dkd += '아침식사';
+        }
+        if(element === "coffee maker"){
+          this.dkd += '커피머신';
+        }
+        if(element === "air conditioner"){
+          this.dkd += '에어컨';
+        }
       })
     })
   }
