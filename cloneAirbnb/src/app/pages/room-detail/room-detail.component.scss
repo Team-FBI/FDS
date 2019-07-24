@@ -60,34 +60,38 @@
   }
 }
 
-// box 부분 끝 a 부분 시작
+// box 부분 끝 
 
 
 .detailcontent{
   position: relative;
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-right: 24px;
-  padding-left: 24px;
+  width: 1100px;
+  margin:0 auto;
+  // padding:0 24px;
+  border:2px solid red;
+  
   .detail-left{
-    // background-color : red;
-    width:100%;
-    height:100%;
+   float: left;
+   width: 700px;
+   border:2px solid blue;
   }
 
   .dialog{
-    border : 1px solid ;
-    height:562px;
-    width: 376px;
-    // z-index: 3;
-    top:10px;
-    position: absolute;
-    right: 1%;
+    border : 2px solid pink;
+    width: 400px;
+    height: 500px;
+    float :right;
+    // left: 700px;
+    // position: relative;
 
     .dialog-pad{
+      // border : 2px solid purple;
       padding-left: 24px;
-      padding-right: 24px;
+      // padding-right: 24px;
+      
+      position: absolute;
+      top:650px;
+      width:400px;
       
       .dialog-top{
         width:326px;
