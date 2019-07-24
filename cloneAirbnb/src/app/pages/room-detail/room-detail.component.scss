@@ -63,157 +63,144 @@
 // box 부분 끝 a 부분 시작
 
 
-.a{
+.detailcontent{
   position: relative;
   max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
   padding-right: 24px;
   padding-left: 24px;
-  .b{
-    background-color : red;
+  .detail-left{
+    // background-color : red;
     width:100%;
     height:100%;
   }
+
+  .dialog{
+    border : 1px solid ;
+    height:562px;
+    width: 376px;
+    // z-index: 3;
+    top:10px;
+    position: absolute;
+    right: 1%;
+
+    .dialog-pad{
+      padding-left: 24px;
+      padding-right: 24px;
+      
+      .dialog-top{
+        width:326px;
+        height:64px;
+  
+        .price{
+          font-size: 22px;
+        }
+
+        .bac{
+          overflow-wrap: break-word;
+          font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+          font-size: 12px;
+          font-weight: 600; 
+          line-height: 1.33333em; 
+          color: rgb(72, 72, 72); 
+          margin: 0px; 
+        }
+
+        #ratingbutton{
+          width:326px;
+          height:20px;
+          border: 0;
+          background-color : white;
+
+          .rating{
+            display: block;
+            background-size: 9px 9px;
+            height: 10px;
+            transform: none;
+            background-repeat: space no-repeat;
+            display:inline-block;
+        }
+        }
+        .hr{
+          margin-top: 16px;
+          margin-bottom: 16px;
+          width:326px;
+          color:black;
+        }
+      }
+  
+      .dialog-mid{
+        width:326px;
+        height:383px;
+
+        #datepick{
+          background-color:pink;
+          width:100%;
+          height:100%;
+        }
+
+        .increase1 {
+          padding: 5px 10px;
+          font-size: 24px;
+          border-radius: 5px;
+          color: #3f51b5;
+          border-color: #3f51b5;
+          outline: none;
+          cursor: pointer;
+          border: 0;
+          background-color : white;
+        }
+
+        .image{
+          background-image: url("https://a0.muscache.com/airbnb/static/packages/icon-uc-tag.ba942714.gif");
+          width:80px;
+          height:70px;
+          position: absolute;
+          right: -21px;
+          bottom: -7px;
+        }
+
+        .dialog-bottom-flex{
+          display:flex;
+          position: relative;
+
+          .dialog-bottom-position{
+            position :absolute;
+            right: 10px;
+          }
+        }
+
+        .continue{
+          width:326px;
+          height:46px;
+          border: 0;
+          background-color : red;
+          color:white;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    .Declaration{
+      display:block;
+      margin : 0 auto;
+      background-color: white;
+      border: 0px;
+    }
+    // .dialog-bottom{
+    //   width:326px;
+    //   height:60px;
+    // }
+  }
 }
 
-
-.dialog{
-  border : 1px solid ;
-  height:562px;
-  width: 376px;
-  z-index: 3;
-  top:10px;
-  position: absolute;
-  right: 1%;
-}
-
-.dialog-top{
-  width:326px;
-  height:64px;
-}
-.dialog-mid{
-  width:326px;
-  height:383px;
-}
-.dialog-bottom{
-  width:326px;
-  height:60px;
-}
-#d{
-  border: 0;
-  background-color : white;
-}
-.price{
-  font-size: 22px;
-}
-.bac{
-  overflow-wrap: break-word;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-  font-size: 12px;
-  font-weight: 600; 
-  line-height: 1.33333em; 
-  color: rgb(72, 72, 72); 
-  margin: 0px; 
-}
-#ratingbutton{
-  width:326px;
-  height:20px;
-  border: 0;
-  background-color : white;
-}
-.rating{
-    display: block;
-    background-size: 9px 9px;
-    height: 10px;
-    transform: none;
-    background-repeat: space no-repeat;
-    display:inline-block;
-}
-.hr{
-  margin-top: 16px;
-  margin-bottom: 16px;
-  width:326px;
-  color:black;
-}
-
-.container1 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 130px;
-  margin: 20px auto;
-  font-size: 24px;
-  color: #3f51b5;
-}
-
-.increase1 {
-  padding: 5px 10px;
-  font-size: 24px;
-  border-radius: 5px;
-  color: #3f51b5;
-  border-color: #3f51b5;
-  outline: none;
-  cursor: pointer;
-  border: 0;
-  background-color : white;
-}
-
-// .counter1 {
-//   width: 50px;
-//   text-align: center;
-// }
-
-.peoplecontainer{
-  // display:none
-}
-// .hi{
-//   background-color:red;
-//   display:none;
-// }
-
-.btn-primary{
-  width:15px;
-  height:15px;
-}
-
-.image{
-  background-image: url("https://a0.muscache.com/airbnb/static/packages/icon-uc-tag.ba942714.gif");
-  width:80px;
-  height:70px;
-  position: absolute;
-  right: -21px;
-  bottom: -7px;
-}
-.flex{
-  display:flex;
-  position: relative;
-}
-.continue{
-  width:326px;
-  height:46px;
-  border: 0;
-  background-color : red;
-  color:white;
-  border-radius: 4px;
-}
-.asd{
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
-
-
-.counterWrap{
-  padding:30px 20px 60px;
-  border:1px solid black;
-}
 .counterLine{
   position: relative;
   height:40px;
   margin-bottom:20px;
-}
-.people{
+
+  .people{
 
     p{
       display: inline;
@@ -227,26 +214,28 @@
       margin-top:8px;
       font-size:12px;
     }
+  }
+  .counterCheck{
+    position: absolute;
+    top:0;
+    right:0;
+  
+      button{
+        width:40px;
+        height:40px;
+        padding:5px;
+        margin:0;
+        border:1px solid #008489;
+        border-radius: 50%;
+        background: #fff;
+      }
+      
+      .counter{
+        padding:0px 20px;
+      }
+  }
 }
-.counterCheck{
-  position: absolute;
-  top:0;
-  right:0;
 
-    button{
-      width:40px;
-      height:40px;
-      padding:5px;
-      margin:0;
-      border:1px solid #008489;
-      border-radius: 50%;
-      background: #fff;
-    }
-    
-    .counter{
-      padding:0px 20px;
-    }
-}
 .counterBtn{
   float: right;
   margin-top:10px;
@@ -256,24 +245,18 @@
 }
 
 ::ng-deep.dropdown-menu{
-  width:300px;
-  height:300px;
+  width:100%;
+  min-width:300px;
   border:1px solid black;
-  
 }
-::ng-deep#button-basic{
+
+::ng-deep.guest-dropdown{
   width:300px;
   background: white;
   border: 1px solid gray;
 }
-.caret{
-  float:right;
-}
 
-.float{
-  position :absolute;
-  right: 10px;
-}
+
 .relative{
   position: relative;
 }
@@ -292,6 +275,7 @@
 //   transform: translateX(0px);
 //   transition: opacity 150ms ease-out 0s, transform 150ms ease-out 0s;
 // }
+
 ::ng-deep .modal .modal-dialog {
   max-width: 100%;
   margin: 0;
@@ -340,6 +324,7 @@
   padding: 66px 0 0;
   background-color: rgb(0, 0, 0);
   opacity: 0;
+  
 }
 .back-drop.active {
   opacity: 1;
@@ -385,7 +370,3 @@
 
 
 
-
-.dlatldyd{
-  height : 1000px;
-}
