@@ -11,16 +11,17 @@ import { Options } from 'ng5-slider';
 import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 import { GoogleMapService } from './google-map.service';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
+import { RoomListService } from 'src/app/core/service/room-list.service';
 
 @Component({
   selector: 'app-room-list',
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent implements OnInit{
+export class RoomListComponent implements OnInit {
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
-  
+
   // 지도관련 변수
   latitude = 33.36995865711402;
   longitude = 126.52811723292518;
@@ -49,9 +50,9 @@ export class RoomListComponent implements OnInit{
   Youngcounter = 0;
   dateCustomClasses: DatepickerDateCustomClasses[];
   datestyle = {
-    'width': '52px'
+    width: '52px'
   };
-  
+
   // price range 데이터
   minValue: number = 0;
   maxValue: number = 100000;
@@ -60,12 +61,11 @@ export class RoomListComponent implements OnInit{
     ceil: 100000,
     translate: (value: number): string => {
       return '￦' + value;
-    },
+    }
   };
   priceToggle: boolean;
 
-  // 방 목록  
-  roomList = [];
+  // 방 목록
   roomimage: string;
   address: string;
 
@@ -73,7 +73,8 @@ export class RoomListComponent implements OnInit{
     private http: HttpClient,
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
-    private reservationInfoService: ReservationInfoService
+    private reservationInfoService: ReservationInfoService,
+    private roomListService: RoomListService
   ) {
     this.currentIW = null;
     this.previousIW = null;
@@ -99,77 +100,40 @@ export class RoomListComponent implements OnInit{
   }
 
   getRoomInfo() {
-    this.roomList = [];
-    this.http
-      .get(
-        `${this.appUrl}/rooms/?search=${
-        this.reservationInfoService.reservationInfoObj.destination
-        }&ordering=price&page_size=12&page=1`
-      )
-      .subscribe((res: any) => {
-        // console.log(res.results);
-        for (let i = 0; i < res.results.length; i++) {
-          this.getRoomDetailinfo(res.results[i]);
-          this.makeMarker(res.results[i]);
-        }
-      });
+    this.roomListService.roomList = [];
+    this.roomListService.getRoomList();
   }
 
   getRoomDetailinfo(res) {
-    this.http.get(`${this.appUrl}/rooms/${res.id}/`).subscribe((res: any) => {
-      const { image, id, title, capacity, bedroom, bathroom, room_type, space } = res;
-      const roominfo = {
-        id,
-        image,
-        title,
-        room_type,
-        capacity,
-        space,
-        bedroom,
-        bathroom
-      };
-      this.roomList.push(roominfo);
-    });
+    this.roomListService.getRoomDetailinfoService(res);
   }
-  
+
   setPrice() {
-    this.http.get(`${this.appUrl}/rooms/?search=${
-      this.reservationInfoService.reservationInfoObj.destination
-        }&ordering=price&page_size=12&page=1&min_price=${this.minValue}&max_price=${this.maxValue}`)
-      .subscribe(
-        (res: any) => {
-          for ( let j = 0; j < res.results.length; j++) {
-            console.log(res.results);
-            this.getRoomInfo();
-          }
-          // console.log(res);
-          }
-      );
+    const minValueTest = this.minValue;
+    const maxValueTest = this.maxValue;
+    this.roomListService.setPriceService(minValueTest, maxValueTest);
   }
-  
 
-  
-
-  makeMarker(res) {
-    const { image, id, title } = res;
-    console.log(res.address);
-    this.mapsService.getLatLan(res.address).subscribe(result => {
-      this.ngzone.run(() => {
-        this.Glat = result.lat();
-        this.Glng = result.lng();
-        const makerInfo = {
-          id,
-          lat: this.Glat,
-          lng: this.Glng,
-          alpha: 1,
-          content: title,
-          url: image,
-          disabled: false
-        };
-        this.markers.push(makerInfo);
-      });
-    });
-  }
+  // makeMarker(res) {
+  //   const { image, id, title } = res;
+  //   console.log(res.address);
+  //   this.mapsService.getLatLan(res.address).subscribe(result => {
+  //     this.ngzone.run(() => {
+  //       this.Glat = result.lat();
+  //       this.Glng = result.lng();
+  //       const makerInfo = {
+  //         id,
+  //         lat: this.Glat,
+  //         lng: this.Glng,
+  //         alpha: 1,
+  //         content: title,
+  //         url: image,
+  //         disabled: false
+  //       };
+  //       this.markers.push(makerInfo);
+  //     });
+  //   });
+  // }
 
   chageStyle() {
     this.datestyle.width = 'auto';
@@ -242,6 +206,4 @@ export class RoomListComponent implements OnInit{
   toggleRemoveText(binput) {
     console.log(binput);
   }
-
-  
 }
