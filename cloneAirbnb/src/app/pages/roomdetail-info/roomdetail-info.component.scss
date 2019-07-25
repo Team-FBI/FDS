@@ -1,7 +1,6 @@
 .roomdetailInfoContainer{
   width:1100px;
-  margin: 10px auto;
-  border : 1px solid black;
+  // margin: 10px auto;
 
   h3{
     font-size:1.25em;
@@ -30,24 +29,20 @@
 
 .description{
   
-  .placedetail{
-    // margin-top:50px;
-    padding:15px 25px;
-    color:#fff;
-    border:0;
-    border-radius: 5px;
-    background: #008489;
-  }
-
-  .msgbutton{
-    // margin-top:50px;
-    padding:15px 25px;
-    color:#fff;
-    border:0;
-    border-radius: 5px;
-    background: #008489;
-  }
-
+}
+.placedetail{
+  margin-top: 10px;
+  color:#008489;
+  border:0;
+  background: #ffffff;
+  display:block;
+}
+.msgbutton{
+  margin-top: 10px;
+  color:#008489;
+  border:0;
+  background: #ffffff;
+  display:block;
 }
 
 ::ng-deep.bsDaterangepicker{
@@ -94,10 +89,11 @@
 }
 
 .roomdetailInfoBtn{
-  // margin-top:50px;
-  padding:15px 25px;
-  color:#fff;
-  border:0;
+  // padding:15px 25px;
   border-radius: 5px;
-  background: #008489;
+  margin-top: 10px;
+  color:#008489;
+  border:0;
+  background: #ffffff;
+  display:block;
 }

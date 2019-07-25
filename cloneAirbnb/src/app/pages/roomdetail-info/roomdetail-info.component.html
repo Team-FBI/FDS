@@ -13,24 +13,21 @@
           <div class="margin-r">욕실 {{bathroom}} 개</div>
       </div>
       <div>숙소의 상세사항</div>
-      <div>편의 시설 {{dkd}}</div>
-      <div>기타사항</div>
     </div>
 
     <hr>
 
-    <div class="description">{{description}}
-      <div>
-        <button class="placedetail">이 공간 자세히 알아보기</button>
-      </div>
-      <div>
-        <button class="msgbutton">호스트에게 연락하기</button>
-      </div>
+    <div class="description">
+      <ul>
+        <li *ngFor="let str of strArray">{{str}}</li>
+      </ul>
     </div> <!--description-->
-
+    <button class="placedetail">이 공간 자세히 알아보기</button> 
+    <button class="msgbutton">호스트에게 연락하기</button>
     <hr>
-
-
+    
+    <div class="facilities">편의 시설 {{dkd}}</div>
+    <hr>
 
     <div>
         <div class="col-xs-12 col-12 col-md-4 form-group">
@@ -39,7 +36,7 @@
                   class="form-control"
                   bsDaterangepicker
                   [isOpen]="true">
-          </div>
+        </div>
     </div>
 
     <hr>

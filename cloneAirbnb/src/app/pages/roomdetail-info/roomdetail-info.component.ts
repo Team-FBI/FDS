@@ -21,6 +21,7 @@ export class RoomdetailInfoComponent implements OnInit {
   room_type:any;
   facilities:any;
   dkd : string;
+  strArray
 
 
   constructor(
@@ -37,33 +38,32 @@ export class RoomdetailInfoComponent implements OnInit {
       this.title = res.title;
       this.address = res.address;
       this.description = res.description;
+      // console.log(typeof this.description);
+      this.strArray = this.description.split('\n');
+      // console.log(this.strArray);
       this.capacity = res.capacity;
       this.bedroom = res.bedroom;
       this.bathroom = res.bathroom;
       this.room_type = res.room_type;
       if (this.room_type === "Apartment"){
         this.room_type = '아파트';
-      // } else if (this.room_type === 2) {
-      //   this.room_type = '개인집';
-      // } else if (this.room_type === 3) {
-      //   this.room_type = '가든하우스';
-      // } else if (this.room_type === 4) {
-      //   this.room_type = '침대와 아침식사';
-      // } else if (this.room_type === 5) {
-      //   this.room_type = '빌라';
-      // } else if (this.room_type === 6) {
-      //   this.room_type = '카라반';
-      // } else if (this.room_type === 50) {
-      //   this.room_type = '사무실';
-      // } else {
-      //   this.room_type = '';
+      } else if (this.room_type === "House") {
+        this.room_type = '개인집';
+      } else if (this.room_type === "Garden House") {
+        this.room_type = '가든하우스';
+      } else if (this.room_type === "Bed and Breakfast") {
+        this.room_type = '침대와 아침식사';
+      } else if (this.room_type === "Villa") {
+        this.room_type = '빌라';
+      } else if (this.room_type === "Caravan") {
+        this.room_type = '카라반';
+      } else if (this.room_type === "Office") {
+        this.room_type = '사무실';
+      } else {
+        this.room_type = '';
       }
       this.facilities = res.facilities;
-      // if (this.facilities[0] === "queen-size bed"){
-      //   this.facilities = '퀸 사이즈 침대';
-      // }
       this.facilities.forEach(element => {
-        console.log(element);
         if(element === "queen-size bed"){
           this.dkd = '퀸사이즈침대';
         }
