@@ -30,11 +30,13 @@ export class RoomListService {
         for (let i = 0; i < res.results.length; i++) {
           this.getRoomDetailinfoService(res.results[i]);
           // this.makeMarker(res.results[i]);
+          console.log(this.roomList);
         }
       });
   }
 
   getRoomDetailinfoService(res) {
+    this.roomList = [];
     return this.http
       .get(`${this.appUrl}/rooms/${res.id}/`)
       .subscribe((res: any) => {
@@ -59,6 +61,7 @@ export class RoomListService {
           bathroom
         };
         this.roomList.push(roominfo);
+        console.log(this.roomList);
       });
   }
 
@@ -72,9 +75,8 @@ export class RoomListService {
       .subscribe((res: any) => {
         for (let j = 0; j < res.results.length; j++) {
           console.log(res.results);
-          this.getRoomList();
+          this.getRoomDetailinfoService(res.results[j]);
         }
-        // console.log(res);
       });
   }
 }

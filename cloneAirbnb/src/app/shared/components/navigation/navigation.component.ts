@@ -23,9 +23,10 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     this.isMain = this.router.url === '/home' ? true : false;
   }
-  showroomList(val) {
-    this.reservationInfoService.reservationInfoObj.destination = val;
+  showRoomList(destination: string) {
+    this.reservationInfoService.reservationInfoObj.destination = destination;
     this.roomListService.getRoomList();
+    this.router.navigate(['roomList']);
   }
 
   signOutBtn() {

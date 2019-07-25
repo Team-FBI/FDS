@@ -1,14 +1,14 @@
-import { Component, OnInit, NgZone, OnChanges } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {
   ZoomControlOptions,
   ControlPosition,
   ZoomControlStyle
 } from '@agm/core/services/google-maps-types';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Options } from 'ng5-slider';
 import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
+
 import { GoogleMapService } from './google-map.service';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { RoomListService } from 'src/app/core/service/room-list.service';
@@ -21,6 +21,7 @@ import { RoomListService } from 'src/app/core/service/room-list.service';
 export class RoomListComponent implements OnInit {
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
+  roomlist = [];
 
   // 지도관련 변수
   latitude = 33.36995865711402;
@@ -70,7 +71,6 @@ export class RoomListComponent implements OnInit {
   address: string;
 
   constructor(
-    private http: HttpClient,
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
     private reservationInfoService: ReservationInfoService,
@@ -93,6 +93,7 @@ export class RoomListComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(1);
     if (!this.reservationInfoService.reservationInfoObj.destination) {
       this.reservationInfoService.reservationInfoObj.destination = 'seoul';
     }
@@ -100,8 +101,10 @@ export class RoomListComponent implements OnInit {
   }
 
   getRoomInfo() {
-    this.roomListService.roomList = [];
     this.roomListService.getRoomList();
+    console.log(this.roomListService.roomList);
+    this.roomlist = this.roomListService.roomList;
+    console.log(this.roomlist);
   }
 
   getRoomDetailinfo(res) {
@@ -112,6 +115,9 @@ export class RoomListComponent implements OnInit {
     const minValueTest = this.minValue;
     const maxValueTest = this.maxValue;
     this.roomListService.setPriceService(minValueTest, maxValueTest);
+    console.log(this.roomListService.roomList);
+    this.roomlist = this.roomListService.roomList;
+    console.log(this.roomlist);
   }
 
   // makeMarker(res) {
