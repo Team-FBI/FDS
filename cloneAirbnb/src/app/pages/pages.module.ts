@@ -68,6 +68,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     }),
     FontAwesomeModule
   ],
+  exports: [
+    RoomListComponent
+  ],
   providers: [
     {
       provide: SWIPER_CONFIG,
