@@ -13,6 +13,7 @@ import { GoogleMapService } from './google-map.service';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { RoomListService } from 'src/app/core/service/room-list.service';
 import { ThrowStmt } from '@angular/compiler';
+import { RoomList, Result } from '../../core/interface/roomList.interface';
 
 @Component({
   selector: 'app-room-list',
@@ -94,27 +95,20 @@ export class RoomListComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.reservationInfoService.reservationInfoObj.destination) {
-      this.reservationInfoService.reservationInfoObj.destination = 'seoul';
-    }
+    this.getRoomInfo();
 
-    this.roomListService.roomListUpDated.subscribe(roomList => {
+    this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
     });
-    this.getRoomInfo();
   }
 
   getRoomInfo() {
-    this.roomListService.getRoomList().subscribe(res => {
+    this.roomListService.getRoomList().subscribe((res: RoomList) => {
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
       }
     });
   }
-
-  // getRoomDetailinfo(res) {
-  //   this.roomListService.getRoomDetailinfoService(res);
-  // }
 
   // setPrice() {
   //   const minValueTest = this.minValue;
