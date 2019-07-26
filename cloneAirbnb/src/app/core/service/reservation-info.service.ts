@@ -6,12 +6,14 @@ import { ReservationInfo } from '../interface/reservationInfo.interface';
 })
 export class ReservationInfoService {
   reservationInfoObj: ReservationInfo = {
+    title: '',
     destination: '',
     checkIn: '',
     checkOut: '',
     personnel: 1,
     adults: 1,
     children: 0,
-    infants: 0
+    infants: 0,
+    price: 0
   };
 }

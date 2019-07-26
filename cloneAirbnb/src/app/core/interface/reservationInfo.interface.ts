@@ -1,4 +1,5 @@
-export interface ReservationInfo{
+export interface ReservationInfo {
+  title: string;
   destination: string;
   checkIn: string;
   checkOut: string;
@@ -6,4 +7,5 @@ export interface ReservationInfo{
   adults: number;
   children: number;
   infants: number;
+  price: number;
 }
