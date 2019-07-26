@@ -10,10 +10,6 @@ export interface Result {
   host: string;
   title: string;
   image: string;
-  image_1: string;
-  image_2: string;
-  image_3: string;
-  image_4: string;
   price: number;
   description: string;
   room_type: string;
@@ -22,6 +18,9 @@ export interface Result {
   bedroom: number;
   capacity: number;
   bath_type: string;
-  state: string;
   address: string;
+  images: number;
+  reservations: number;
+  state: string;
+  label?: string;
 }

@@ -7,10 +7,7 @@ export interface RoomDetail {
   postal_code: string;
   mobile: number;
   image: string;
-  image_1: string;
-  image_2: string;
-  image_3: string;
-  image_4: string;
+  images: number;
   total_rating: number;
   capacity: number;
   space: string;
@@ -27,4 +24,5 @@ export interface RoomDetail {
   reservations: string[][];
   updated_at: string;
   created_at: string;
+  label?: string;
 }
