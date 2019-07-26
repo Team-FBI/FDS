@@ -14,6 +14,7 @@ export class ReservationInfoService {
     adults: 1,
     children: 0,
     infants: 0,
-    price: 0
+    price: 0,
+    roomType: ''
   };
 }

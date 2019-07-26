@@ -8,4 +8,5 @@ export interface ReservationInfo {
   children: number;
   infants: number;
   price: number;
+  roomType: string;
 }
