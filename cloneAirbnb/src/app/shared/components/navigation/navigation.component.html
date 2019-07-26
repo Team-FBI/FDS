@@ -20,9 +20,10 @@
       <i class="fa fa-search" aria-hidden="true"></i>
       <input
         type="text"
-        (keyup.enter)="showroomList()"
+        (keyup.enter)="showRoomList(input.value)"
         placeholder="검색"
         class="searchInput"
+        #input
       />
     </div>
     <nav class="headerNav">

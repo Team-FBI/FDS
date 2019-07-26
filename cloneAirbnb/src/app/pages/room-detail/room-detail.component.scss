@@ -26,32 +26,45 @@
       }
     }
   }
-  .s {
+  .btnwrraper{
     position: absolute;
     top: 24px;
     right: 24px;
     z-index: 1;
 
-    .hey{
+    .sharecontainer{
       display: inline-block;
-      // fill: white;
+
+      .sharebtn{
+        border: 1px solid gray;
+        background-color: rgba(0,0,0,0);
+        color: black;
+        padding: 5px; 
+        margin-left:-3px;
+        
+        .svg-share{
+          margin-left: 3px;
+        }
+      }
+    }
+    .savecontainer{
+      display: inline-block;
+
+      .savebtn{
+        border: 1px solid gray;
+        background-color: rgba(0,0,0,0);
+        color: black;
+        padding: 5px; 
+        margin-left:-3px;
+        
+        .svg-save{
+          margin-left: 3px;
+        }
+      }
     }
   }
 
-  .share{
-    margin-right: 15px;
-  }
-  .svg-s{
-    margin-left: 3px;
-  }
-  .button-s{
-    border: 1px solid gray;
-    background-color: rgba(0,0,0,0);
-    color: black;
-    padding: 5px; 
-    margin-left:-3px;
-  }
-  .showpicture {
+  .picwrraper{
     position: absolute;
     backgorund-color: white;
     left: auto;
@@ -67,11 +80,10 @@
   position: relative;
   width: 1100px;
   margin:0 auto;
-
   
   .detail-left{
-   float: left;
-   width: 700px;
+  float: left;
+  width: 700px;
   }
 
   .dialog{
@@ -79,11 +91,12 @@
     width: 400px;
     float :right;
 
+
     .dialog-pad{
+      padding: 24px;
       position: absolute;
       padding:0 24px;
       border : 2px solid pink;
-      // top:650px;
       width:400px;
       
       .dialog-top{
@@ -118,12 +131,6 @@
             display:inline-block;
         }
         }
-        // .hr{
-        //   margin-top: 16px;
-        //   margin-bottom: 16px;
-        //   width:326px;
-        //   color:black;
-        // }
       }
   
       .dialog-mid{
@@ -185,10 +192,6 @@
       background-color: white;
       border: 0px;
     }
-    // .dialog-bottom{
-    //   width:326px;
-    //   height:60px;
-    // }
   }
 }
 
@@ -362,8 +365,3 @@
 .gallery-thumbs .swiper-slide-active {
   opacity: 1;
 }
-
-
-
-
-

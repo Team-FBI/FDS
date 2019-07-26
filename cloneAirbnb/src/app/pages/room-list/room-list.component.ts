@@ -1,29 +1,30 @@
-import { Component, OnInit, NgZone, OnChanges } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {
   ZoomControlOptions,
   ControlPosition,
   ZoomControlStyle
 } from '@agm/core/services/google-maps-types';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Options, LabelType } from 'ng5-slider';
+import { Options } from 'ng5-slider';
 import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
-import { GoogleMapService } from './google-map.service';
 
+import { GoogleMapService } from './google-map.service';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
+import { RoomListService } from 'src/app/core/service/room-list.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-room-list',
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent {
-  myDateValue: Date;
-  Allcounter = 0;
-  Adultcounter = 0;
-  Childcounter = 0;
-  Youngcounter = 0;
+export class RoomListComponent implements OnInit {
+  //백엔드 연결 URL
+  appUrl: string = environment.appUrl;
+  roomList = this.roomListService.roomList;
+
+  // 지도관련 변수
   latitude = 33.36995865711402;
   longitude = 126.52811723292518;
   selectedMarker;
@@ -40,7 +41,21 @@ export class RoomListComponent {
     url: 'https://i.dlpng.com/static/png/510666_thumb.png',
     scaledSize: { width: 50, height: 60 }
   };
-  appUrl: string = environment.appUrl;
+  Glat: number;
+  Glng: number;
+
+  // datepicker 데이터
+  myDateValue: Date;
+  Allcounter = 0;
+  Adultcounter = 0;
+  Childcounter = 0;
+  Youngcounter = 0;
+  dateCustomClasses: DatepickerDateCustomClasses[];
+  datestyle = {
+    width: '52px'
+  };
+
+  // price range 데이터
   minValue: number = 0;
   maxValue: number = 100000;
   options: Options = {
@@ -48,23 +63,19 @@ export class RoomListComponent {
     ceil: 100000,
     translate: (value: number): string => {
       return '￦' + value;
-    },
-    combineLabels: (minValue: string, maxValue: string): string => {
-      return 'from ' + minValue + ' up to ' + maxValue;
     }
   };
   priceToggle: boolean;
-  dateCustomClasses: DatepickerDateCustomClasses[];
-  title: string;
-  Glat: number;
-  Glng: number;
-  roomList = [];
+
+  // 방 목록
+  roomimage: string;
+  address: string;
 
   constructor(
-    private http: HttpClient,
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
-    private reservationInfoService: ReservationInfoService
+    private reservationInfoService: ReservationInfoService,
+    private roomListService: RoomListService
   ) {
     this.currentIW = null;
     this.previousIW = null;
@@ -80,105 +91,60 @@ export class RoomListComponent {
       { date: twoDaysAhead, classes: ['bg-warning'] },
       { date: fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
     ];
-
-    console.log(this.reservationInfoService.reservationInfoObj.destination);
-
-    this.http
-      .get(
-        `${this.appUrl}/rooms/?search=${
-          this.reservationInfoService.reservationInfoObj.destination
-        }&ordering=price&page_size=12&page=1`
-      )
-      .subscribe((res: any) => {
-        console.log(res);
-        for (let i = 1; i < res.length; i++) {
-          this.addRoomlist(res[i]);
-          this.makeMarker(res[i]);
-        }
-      });
   }
 
-  datestyle = {
-    width: '52px'
-  };
-  roomimage: string;
-  address: string;
+  ngOnInit() {
+    if (!this.reservationInfoService.reservationInfoObj.destination) {
+      this.reservationInfoService.reservationInfoObj.destination = 'seoul';
+    }
 
-  addRoomlist(res) {
-    this.http.get(`${this.appUrl}/rooms/${res.id}`).subscribe((res: any) => {
-      const { image, id, title, capacity, bedroom, bathroom } = res;
-      let { room_type, space, bed_type } = res;
-      if (room_type === 1) {
-        room_type = '아파트';
-      } else if (room_type === 2) {
-        room_type = '개인집';
-      } else if (room_type === 3) {
-        room_type = '가든하우스';
-      } else if (room_type === 4) {
-        room_type = '침대와 아침식사';
-      } else if (room_type === 5) {
-        room_type = '빌라';
-      } else if (room_type === 6) {
-        room_type = '카라반';
-      } else if (room_type === 50) {
-        room_type = '사무실';
-      } else {
-        room_type = '';
+    this.roomListService.roomListUpDated.subscribe(roomList => {
+      this.roomList = roomList;
+    });
+    this.getRoomInfo();
+  }
+
+  getRoomInfo() {
+    this.roomListService.getRoomList().subscribe(res => {
+      for (const room of res.results) {
+        this.roomListService.roomList.push(room);
       }
-      if (space === 1) {
-        space = '전체';
-      } else if (space === 2) {
-        space = '개인 방';
-      } else if (space === 3) {
-        space = '공동사용';
-      } else {
-        space = '';
-      }
-      if (bed_type === 1) {
-        bed_type = '개인 침실';
-      } else if (bed_type === 2) {
-        bed_type = '공용 침실';
-      } else {
-        bed_type = '';
-      }
-      const roominfo = {
-        id,
-        image,
-        title,
-        room_type,
-        capacity,
-        space,
-        bed_type,
-        bedroom,
-        bathroom
-      };
-      this.roomList.push(roominfo);
     });
   }
 
-  makeMarker(res) {
-    this.getAddress(res);
-  }
+  // getRoomDetailinfo(res) {
+  //   this.roomListService.getRoomDetailinfoService(res);
+  // }
 
-  getAddress(res) {
-    const { image, id, title } = res;
-    this.mapsService.getLatLan(res.address).subscribe(result => {
-      this.ngzone.run(() => {
-        this.Glat = result.lat();
-        this.Glng = result.lng();
-        const makerInfo = {
-          id,
-          lat: this.Glat,
-          lng: this.Glng,
-          alpha: 1,
-          content: title,
-          url: image,
-          disabled: false
-        };
-        this.markers.push(makerInfo);
-      });
-    });
-  }
+  // setPrice() {
+  //   const minValueTest = this.minValue;
+  //   const maxValueTest = this.maxValue;
+  //   this.roomListService.setPriceService(minValueTest, maxValueTest);
+  //   console.log(this.roomListService.roomList);
+  //   this.roomList = this.roomListService.roomList;
+  //   console.log(this.roomList);
+  // }
+
+  // makeMarker(res) {
+  //   const { image, id, title } = res;
+  //   console.log(res.address);
+  //   this.mapsService.getLatLan(res.address).subscribe(result => {
+  //     this.ngzone.run(() => {
+  //       this.Glat = result.lat();
+  //       this.Glng = result.lng();
+  //       const makerInfo = {
+  //         id,
+  //         lat: this.Glat,
+  //         lng: this.Glng,
+  //         alpha: 1,
+  //         content: title,
+  //         url: image,
+  //         disabled: false
+  //       };
+  //       this.markers.push(makerInfo);
+  //     });
+  //   });
+  // }
 
   chageStyle() {
     this.datestyle.width = 'auto';
@@ -221,9 +187,9 @@ export class RoomListComponent {
     // console.log(n)
     if (n === 1) {
       this.Adultcounter++;
-    } else if (n == 2) {
+    } else if (n === 2) {
       this.Childcounter++;
-    } else if (n == 3) {
+    } else if (n === 3) {
       this.Youngcounter++;
     }
     this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
