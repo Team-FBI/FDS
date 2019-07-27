@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Component, OnInit, NgZone, OnChanges, DoCheck } from '@angular/core';
-=======
-import { Component, OnInit, NgZone } from '@angular/core';
->>>>>>> rmorigin/develop
+import { Component, OnInit, NgZone} from '@angular/core';
 import {
   ZoomControlOptions,
   ControlPosition,
@@ -24,7 +20,7 @@ import { RoomList, Result } from '../../core/interface/roomList.interface';
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent implements OnInit, OnChanges {
+export class RoomListComponent implements OnInit{
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
   roomList = this.roomListService.roomList;
@@ -73,7 +69,6 @@ export class RoomListComponent implements OnInit, OnChanges {
   priceToggle: boolean;
 
   // 방 목록
-  roomList = [];
   roomimage: string;
   address: string;
 
@@ -102,64 +97,6 @@ export class RoomListComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.getRoomInfo();
 
-<<<<<<< HEAD
-  ngOnChanges() {
-    console.log('hello');
-  }
-
-  getRoomInfo() {
-    this.roomList = [];
-    this.roomListService.getRoomList()
-    .subscribe((res: any) => {
-      for (let i = 0; i < res.results.length; i++) {
-        this.getRoomDetailinfo(res.results[i]);
-        this.makeMarker(res.results[i]);
-      }
-    });
-  }
-
-  getRoomDetailinfo(res) {
-    this.roomListService.getRoomDetailinfoService(res)
-      .subscribe((res: any) => {
-        const {
-          image,
-          id,
-          title,
-          capacity,
-          bedroom,
-          bathroom,
-          room_type,
-          space
-        } = res;
-        const roominfo = {
-          id,
-          image,
-          title,
-          room_type,
-          capacity,
-          space,
-          bedroom,
-          bathroom
-        };
-        this.roomList.push(roominfo);
-      });
-  }
-
-  setPrice() {
-    this.roomList = [];
-    const minValue = this.minValue;
-    const maxValue = this.maxValue;
-    this.roomListService.setPriceService(minValue, maxValue)
-      .subscribe((res: any) => {
-        for (let j = 0; j < res.results.length; j++) {
-          console.log(res.results);
-          this.getRoomInfo();
-        }
-        // console.log(res);
-      });
-    ;
-  }
-=======
     this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
     });
@@ -202,7 +139,6 @@ export class RoomListComponent implements OnInit, OnChanges {
   //     });
   //   });
   // }
->>>>>>> rmorigin/develop
 
   makeMarker(res) {
     const { image, id, title } = res;
