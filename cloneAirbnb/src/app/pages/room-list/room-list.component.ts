@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, OnChanges } from '@angular/core';
+import { Component, OnInit, NgZone, OnChanges, DoCheck } from '@angular/core';
 import {
   ZoomControlOptions,
   ControlPosition,
@@ -18,7 +18,7 @@ import { RoomListService } from 'src/app/core/service/room-list.service';
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent implements OnInit {
+export class RoomListComponent implements OnInit, OnChanges {
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
 
@@ -66,6 +66,7 @@ export class RoomListComponent implements OnInit {
   priceToggle: boolean;
 
   // 방 목록
+  roomList = [];
   roomimage: string;
   address: string;
 
@@ -99,48 +100,85 @@ export class RoomListComponent implements OnInit {
     this.getRoomInfo();
   }
 
+  ngOnChanges() {
+    console.log('hello');
+  }
+
   getRoomInfo() {
-    this.roomListService.roomList = [];
-    this.roomListService.getRoomList();
+    this.roomList = [];
+    this.roomListService.getRoomList()
+    .subscribe((res: any) => {
+      for (let i = 0; i < res.results.length; i++) {
+        this.getRoomDetailinfo(res.results[i]);
+        this.makeMarker(res.results[i]);
+      }
+    });
   }
 
   getRoomDetailinfo(res) {
-    this.roomListService.getRoomDetailinfoService(res);
+    this.roomListService.getRoomDetailinfoService(res)
+      .subscribe((res: any) => {
+        const {
+          image,
+          id,
+          title,
+          capacity,
+          bedroom,
+          bathroom,
+          room_type,
+          space
+        } = res;
+        const roominfo = {
+          id,
+          image,
+          title,
+          room_type,
+          capacity,
+          space,
+          bedroom,
+          bathroom
+        };
+        this.roomList.push(roominfo);
+      });
   }
 
   setPrice() {
-    const minValueTest = this.minValue;
-    const maxValueTest = this.maxValue;
-    this.roomListService.setPriceService(minValueTest, maxValueTest);
+    this.roomList = [];
+    const minValue = this.minValue;
+    const maxValue = this.maxValue;
+    this.roomListService.setPriceService(minValue, maxValue)
+      .subscribe((res: any) => {
+        for (let j = 0; j < res.results.length; j++) {
+          console.log(res.results);
+          this.getRoomInfo();
+        }
+        // console.log(res);
+      });
+    ;
   }
 
-  // makeMarker(res) {
-  //   const { image, id, title } = res;
-  //   console.log(res.address);
-  //   this.mapsService.getLatLan(res.address).subscribe(result => {
-  //     this.ngzone.run(() => {
-  //       this.Glat = result.lat();
-  //       this.Glng = result.lng();
-  //       const makerInfo = {
-  //         id,
-  //         lat: this.Glat,
-  //         lng: this.Glng,
-  //         alpha: 1,
-  //         content: title,
-  //         url: image,
-  //         disabled: false
-  //       };
-  //       this.markers.push(makerInfo);
-  //     });
-  //   });
-  // }
+  makeMarker(res) {
+    const { image, id, title } = res;
+    this.mapsService.getLatLan(res.address).subscribe(result => {
+      this.ngzone.run(() => {
+        this.Glat = result.lat();
+        this.Glng = result.lng();
+        const makerInfo = {
+          id,
+          lat: this.Glat,
+          lng: this.Glng,
+          alpha: 1,
+          content: title,
+          url: image,
+          disabled: false
+        };
+        this.markers.push(makerInfo);
+      });
+    });
+  }
 
   chageStyle() {
     this.datestyle.width = 'auto';
-  }
-
-  savePirce() {
-    console.log(this.minValue, this.maxValue);
   }
 
   max(coordType: 'lat' | 'lng'): number {
