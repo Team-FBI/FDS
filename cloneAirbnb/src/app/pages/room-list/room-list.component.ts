@@ -1,17 +1,23 @@
+<<<<<<< HEAD
 import { Component, OnInit, NgZone, OnChanges, DoCheck } from '@angular/core';
+=======
+import { Component, OnInit, NgZone } from '@angular/core';
+>>>>>>> rmorigin/develop
 import {
   ZoomControlOptions,
   ControlPosition,
   ZoomControlStyle
 } from '@agm/core/services/google-maps-types';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Options } from 'ng5-slider';
 import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
+
 import { GoogleMapService } from './google-map.service';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { RoomListService } from 'src/app/core/service/room-list.service';
+import { ThrowStmt } from '@angular/compiler';
+import { RoomList, Result } from '../../core/interface/roomList.interface';
 
 @Component({
   selector: 'app-room-list',
@@ -21,6 +27,7 @@ import { RoomListService } from 'src/app/core/service/room-list.service';
 export class RoomListComponent implements OnInit, OnChanges {
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
+  roomList = this.roomListService.roomList;
 
   // 지도관련 변수
   latitude = 33.36995865711402;
@@ -71,7 +78,6 @@ export class RoomListComponent implements OnInit, OnChanges {
   address: string;
 
   constructor(
-    private http: HttpClient,
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
     private reservationInfoService: ReservationInfoService,
@@ -94,12 +100,9 @@ export class RoomListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if (!this.reservationInfoService.reservationInfoObj.destination) {
-      this.reservationInfoService.reservationInfoObj.destination = 'seoul';
-    }
     this.getRoomInfo();
-  }
 
+<<<<<<< HEAD
   ngOnChanges() {
     console.log('hello');
   }
@@ -156,6 +159,50 @@ export class RoomListComponent implements OnInit, OnChanges {
       });
     ;
   }
+=======
+    this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
+      this.roomList = roomList;
+    });
+  }
+
+  getRoomInfo() {
+    this.roomListService.getRoomList().subscribe((res: RoomList) => {
+      for (const room of res.results) {
+        this.roomListService.roomList.push(room);
+      }
+    });
+  }
+
+  // setPrice() {
+  //   const minValueTest = this.minValue;
+  //   const maxValueTest = this.maxValue;
+  //   this.roomListService.setPriceService(minValueTest, maxValueTest);
+  //   console.log(this.roomListService.roomList);
+  //   this.roomList = this.roomListService.roomList;
+  //   console.log(this.roomList);
+  // }
+
+  // makeMarker(res) {
+  //   const { image, id, title } = res;
+  //   console.log(res.address);
+  //   this.mapsService.getLatLan(res.address).subscribe(result => {
+  //     this.ngzone.run(() => {
+  //       this.Glat = result.lat();
+  //       this.Glng = result.lng();
+  //       const makerInfo = {
+  //         id,
+  //         lat: this.Glat,
+  //         lng: this.Glng,
+  //         alpha: 1,
+  //         content: title,
+  //         url: image,
+  //         disabled: false
+  //       };
+  //       this.markers.push(makerInfo);
+  //     });
+  //   });
+  // }
+>>>>>>> rmorigin/develop
 
   makeMarker(res) {
     const { image, id, title } = res;

@@ -9,10 +9,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [NavigationComponent, NotFoundComponent],
+  declarations: [NavigationComponent, NotFoundComponent, FooterComponent],
   imports: [CommonModule, RouterModule, BsDropdownModule],
-  exports: [NavigationComponent, NotFoundComponent]
+  exports: [NavigationComponent, NotFoundComponent, FooterComponent]
 })
 export class SharedModule {}

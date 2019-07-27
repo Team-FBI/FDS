@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { ReservationInfoService } from 'src/app/core/service/reservation-info.service';
+import { RoomListService } from 'src/app/core/service/room-list.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
-    public reservationInfoService: ReservationInfoService
+    public reservationInfoService: ReservationInfoService,
+    private roomListService: RoomListService
   ) {}
 
   ngOnInit() {
@@ -42,7 +44,8 @@ export class HomeComponent implements OnInit {
       destination.value;
     this.reservationInfoService.reservationInfoObj.checkIn = checkIn.value;
     this.reservationInfoService.reservationInfoObj.checkOut = checkOut.value;
-    
+
+    this.roomListService.roomList = [];
     this.router.navigate(['roomList']);
   }
 
