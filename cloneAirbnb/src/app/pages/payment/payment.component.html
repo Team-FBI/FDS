@@ -52,8 +52,8 @@
   <div class="paymentReceipt">
     <ul>
       <li>
-        <span>₩{{ price }} x {{ dayDiff }}박</span>
-        <span>₩{{ price * dayDiff }}</span>
+        <span>₩{{ price | number }} x {{ dayDiff }}박</span>
+        <span>₩{{ price * dayDiff | number }}</span>
       </li>
       <li>
         <span>청소비</span>
