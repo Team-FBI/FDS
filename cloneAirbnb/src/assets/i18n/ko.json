@@ -1,4 +1,15 @@
 {
+  "navigation": {
+    "searchBarPlaceholder": "'서울'에 가보는건 어떠세요?",
+    "favorites": "저장목록",
+    "myTrip": "여행",
+    "signUp": "회원가입",
+    "signIn": "로그인",
+    "profile": "프로필",
+    "account": "계정",
+    "signOut": "로그아웃"
+  },
+  "home": {},
   "hello": "안녕하세요",
   "btn_eng": "영어",
   "btn_kor": "한국어"

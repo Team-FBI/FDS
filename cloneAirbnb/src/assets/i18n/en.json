@@ -1,4 +1,15 @@
 {
+  "navigation": {
+    "searchBarPlaceholder": "Try 'seoul'",
+    "favorites": "Favorites",
+    "myTrip": "My Trip",
+    "signUp": "Sign Up",
+    "signIn": "Sign In",
+    "profile": "Profile",
+    "account": "Account",
+    "signOut": "Sign Out"
+  },
+  "home": {},
   "hello": "welcome",
   "btn_eng": "English",
   "btn_kor": "Korean"
