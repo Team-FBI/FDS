@@ -45,6 +45,7 @@ export class SignUpComponent implements OnInit {
     }
 
     this.singUp = this.fb.group({
+      userName: ['', [Validators.required]],
       userEmail: [
         '',
         [
@@ -84,6 +85,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(
+    userName: HTMLInputElement,
     userEmail: HTMLInputElement,
     userFirstName: HTMLInputElement,
     userLastName: HTMLInputElement,
@@ -95,7 +97,8 @@ export class SignUpComponent implements OnInit {
     this.previousUrl = this.urlRemember.currentUrl;
 
     const payload: SignUpObj = {
-      username: userEmail.value,
+      username: userName.value,
+      email: userEmail.value,
       first_name: userFirstName.value,
       last_name: userLastName.value,
       password: userPassword.value
@@ -116,6 +119,10 @@ export class SignUpComponent implements OnInit {
 
   passwordClicked() {
     this.passwordDisplay = false;
+  }
+
+  get userName() {
+    return this.singUp.get('userName');
   }
 
   get userEmail() {

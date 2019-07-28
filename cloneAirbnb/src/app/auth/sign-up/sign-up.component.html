@@ -5,6 +5,7 @@
       [formGroup]="singUp"
       (ngSubmit)="
         onSubmit(
+          inputUserName,
           inputUserEmail,
           firstName,
           lastName,
@@ -17,6 +18,27 @@
     >
       <p class="title">회원가입</p>
       <div class="divideLine"></div>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivUserName)"
+        (focusout)="inputDivUnclicked(inputDivUserName)"
+        #inputDivUserName
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="ID"
+          formControlName="userName"
+          #inputUserName
+        />
+        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+      </div>
+      <p
+        *ngIf="userName.errors?.required && userName.touched"
+        class="warningMessage"
+      >
+        ID를 입력해 주세요
+      </p>
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivEmail)"
