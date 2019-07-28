@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { ReservationInfoService } from 'src/app/core/service/reservation-info.service';
+import { LanguageService } from 'src/app/core/service/language.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-room-regulation',
@@ -28,11 +30,14 @@ export class RoomRegulationComponent implements OnInit {
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
-    private reservationInfo: ReservationInfoService
+    private reservationInfo: ReservationInfoService,
+    private translate: TranslateService,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
+    this.translate.setDefaultLang(`${this.languageService.currentLanguage()}`);
   }
 
   checkDay(day: string) {

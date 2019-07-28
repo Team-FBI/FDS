@@ -2,7 +2,7 @@
 <div class="background">
   <div class="formClass">
     <form [formGroup]="singIn" (ngSubmit)="onSubmit(userId, userPassword)">
-      <p class="title">로그인</p>
+      <p class="title">로그인 {{ 'hello' | translate }}</p>
       <div *ngIf="signInFail">
         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
         <span class="signInFailMessage">
