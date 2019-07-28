@@ -9,7 +9,24 @@
     "account": "계정",
     "signOut": "로그아웃"
   },
-  "home": {},
+  "home": {
+    "searchFormTitle": "특색 있는 숙소와 즐길 거리를 예약하세요.",
+    "destinationLabel": "목적지",
+    "destinationPlaceholder": "모든 위치",
+    "checkInLabel": "체크인",
+    "checkInPlaceholder": "월/일/년",
+    "checkOutLabel": "체크아웃",
+    "checkOutPlaceholder": "월/일/년",
+    "guestsLabel": "게스트",
+    "guestCountOne": "명",
+    "guestCountOverOne": "명",
+    "adults": "성인",
+    "children": "어린이",
+    "childrenSpan": "2~12세",
+    "infants": "유아",
+    "infantsSpan": "2세 미만",
+    "searchBtn": "검색"
+  },
   "hello": "안녕하세요",
   "btn_eng": "영어",
   "btn_kor": "한국어"
