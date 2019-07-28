@@ -5,13 +5,16 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root'
 })
 export class LanguageService {
+  language = 'en';
+
   constructor(public translate: TranslateService) {}
 
   currentLanguage() {
-    return 'en';
+    return this.language;
   }
 
   switchLanguageService(language: string) {
+    this.language = language;
     return this.translate.use(language);
   }
 }
