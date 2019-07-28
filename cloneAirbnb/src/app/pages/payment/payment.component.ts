@@ -27,6 +27,16 @@ export class PaymentComponent implements OnInit {
     (this.checkOutNewDate.getTime() - this.checkInNewDate.getTime()) /
     (1000 * 60 * 60 * 24);
 
+  totalPriceBeforeTex = this.price * this.dayDiff;
+  cleaningExpenses = 10000;
+  serviceFee = this.totalPriceBeforeTex * 0.1;
+  accommodationsTax = this.serviceFee * 0.1;
+  totalPriceAfterTex =
+    this.totalPriceBeforeTex +
+    this.cleaningExpenses +
+    this.serviceFee +
+    this.accommodationsTax;
+
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
