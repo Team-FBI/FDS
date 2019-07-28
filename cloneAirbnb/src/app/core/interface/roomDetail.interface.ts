@@ -1,13 +1,16 @@
 export interface RoomDetail {
   id: number;
   title: string;
-  host: string;
+  host: string[];
   address: string;
   state: number;
   postal_code: string;
   mobile: number;
   image: string;
-  images: number;
+  image_1: string;
+  image_2: string;
+  image_3: string;
+  image_4: string;
   total_rating: number;
   capacity: number;
   space: string;
@@ -24,5 +27,12 @@ export interface RoomDetail {
   reservations: string[][];
   updated_at: string;
   created_at: string;
-  label?: string;
+  label: string;
+  accuracy_score: number;
+  location_score: number;
+  communication_score: number;
+  checkin_score: number;
+  clean_score: number;
+  value_score: number;
+  super_host: string;
 }
