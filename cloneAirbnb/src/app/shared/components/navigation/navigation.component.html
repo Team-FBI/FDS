@@ -104,6 +104,12 @@
             </ul>
           </div>
         </li>
+        <button (click)="switchLanguage('en')">
+          {{ 'btn_eng' | translate }}
+        </button>
+        <button (click)="switchLanguage('ko')">
+          {{ 'btn_kor' | translate }}
+        </button>
       </ul>
     </nav>
   </div>
