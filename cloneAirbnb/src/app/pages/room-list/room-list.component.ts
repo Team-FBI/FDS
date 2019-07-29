@@ -12,7 +12,7 @@ import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 import { GoogleMapService } from './google-map.service';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { RoomListService } from 'src/app/core/service/room-list.service';
-import { ThrowStmt } from '@angular/compiler';
+import { MakerInfo } from '../../core/interface/maker-info.interface';
 import { RoomList, Result } from '../../core/interface/roomList.interface';
 
 @Component({
@@ -26,13 +26,14 @@ export class RoomListComponent implements OnInit{
   roomList = this.roomListService.roomList;
 
   // 지도관련 변수
-  latitude = 33.36995865711402;
-  longitude = 126.52811723292518;
+  map: any;
+  markers = this.roomListService.markers;
+  latitude = this.roomListService.centerLat;
+  longitude = this.roomListService.centerLng;
   selectedMarker;
   infowindowManager: InfoWindowManager;
   currentIW: AgmInfoWindow;
   previousIW: AgmInfoWindow;
-  markers = [];
   zoomControlOptions: ZoomControlOptions = {
     position: ControlPosition.LEFT_TOP,
     style: ZoomControlStyle.LARGE
@@ -58,10 +59,10 @@ export class RoomListComponent implements OnInit{
 
   // price range 데이터
   minValue: number = 0;
-  maxValue: number = 100000;
+  maxValue: number = 1000000;
   options: Options = {
     floor: 0,
-    ceil: 100000,
+    ceil: 1000000,
     translate: (value: number): string => {
       return '￦' + value;
     }
@@ -96,68 +97,33 @@ export class RoomListComponent implements OnInit{
 
   ngOnInit() {
     this.getRoomInfo();
+    // this.map.setCenter({lat: })
 
     this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
     });
+    this.roomListService.markersUpDated.subscribe((marker: MakerInfo[]) => {
+      this.markers = marker;
+    })
   }
 
   getRoomInfo() {
     this.roomListService.getRoomList().subscribe((res: RoomList) => {
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
+        this.makeMarker(room);
       }
     });
   }
 
   setPrice() {
-    const minValueTest = this.minValue;
-    const maxValueTest = this.maxValue;
-    this.roomListService.setPriceService(minValueTest, maxValueTest);
-    console.log(this.roomListService.roomList);
-    this.roomList = this.roomListService.roomList;
-    console.log(this.roomList);
+    this.roomListService.minPrice = this.minValue;
+    this.roomListService.maxPrice = this.maxValue;
+    this.getRoomInfo();
   }
 
-  // makeMarker(res) {
-  //   const { image, id, title } = res;
-  //   console.log(res.address);
-  //   this.mapsService.getLatLan(res.address).subscribe(result => {
-  //     this.ngzone.run(() => {
-  //       this.Glat = result.lat();
-  //       this.Glng = result.lng();
-  //       const makerInfo = {
-  //         id,
-  //         lat: this.Glat,
-  //         lng: this.Glng,
-  //         alpha: 1,
-  //         content: title,
-  //         url: image,
-  //         disabled: false
-  //       };
-  //       this.markers.push(makerInfo);
-  //     });
-  //   });
-  // }
-
-  makeMarker(res) {
-    const { image, id, title } = res;
-    this.mapsService.getLatLan(res.address).subscribe(result => {
-      this.ngzone.run(() => {
-        this.Glat = result.lat();
-        this.Glng = result.lng();
-        const makerInfo = {
-          id,
-          lat: this.Glat,
-          lng: this.Glng,
-          alpha: 1,
-          content: title,
-          url: image,
-          disabled: false
-        };
-        this.markers.push(makerInfo);
-      });
-    });
+  makeMarker(room) {
+    this.roomListService.getMarkerLatLan(room);
   }
 
   chageStyle() {

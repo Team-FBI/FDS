@@ -314,9 +314,13 @@
           <p>{{ room.room_type }} {{ room.space }}</p>
           <p>{{ room.title }}</p>
           <p>
-            인원{{ room.capacity }}·{{ room.bed_type }}·침실{{
-              room.bedroom
-            }}개·욕실{{ room.bathroom }}개
+            인원{{ room.capacity }}명·침실{{room.bedroom}}개·침대{{room.beds}}개·욕실{{ room.bathroom }}개
+          </p>
+          <p>
+            {{room.facilities}}
+          </p>
+          <p>
+            {{room.total_rating}}
           </p>
         </div>
       </li>
