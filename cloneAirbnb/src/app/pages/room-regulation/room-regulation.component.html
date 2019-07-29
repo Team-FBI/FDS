@@ -11,7 +11,14 @@
     <h2>{{ 'roomRegulation.roomRegulationTitle' | translate }}</h2>
     <div class="regulationInfo">
       <!-- regulationInfo -->
-      <h3>{{ title }}, {{ destination }} {{ dayDiff }} {{ 'roomRegulation.night' | translate }}</h3>
+      <h3 *ngIf="dayDiff === 1">
+        {{ title }}, {{ destination }} {{ dayDiff }}
+        {{ 'roomRegulation.night' | translate }}
+      </h3>
+      <h3 *ngIf="dayDiff > 1">
+        {{ title }}, {{ destination }} {{ dayDiff }}
+        {{ 'roomRegulation.nights' | translate }}
+      </h3>
       <!-- room에 따라 내용 변경되어야 함-->
       <div class="regulationCheckIn">
         <div class="regulationDate">
@@ -31,7 +38,9 @@
           <p>{{ checkOutArray[1] }}</p>
         </div>
         <div class="regulationTime">
-          <p>{{ 'roomRegulation.checkOut' | translate }} {{ getCheckOutDay }}</p>
+          <p>
+            {{ 'roomRegulation.checkOut' | translate }} {{ getCheckOutDay }}
+          </p>
           <p>11:00</p>
         </div>
       </div>
@@ -42,7 +51,9 @@
       <ul>
         <li>
           <img src="https://i.postimg.cc/zX3MwCFX/child.png" />
-          <span>{{ 'roomRegulation.suitableForChildrenAndInfants' | translate }}</span>
+          <span>{{
+            'roomRegulation.suitableForChildrenAndInfants' | translate
+          }}</span>
         </li>
         <li>
           <img src="https://i.postimg.cc/pddqxxcV/animal.png" />
@@ -58,7 +69,9 @@
         </li>
       </ul>
     </div>
-    <button class="agreeBtn">{{ 'roomRegulation.agreeAndContinue' | translate }}</button>
+    <button class="agreeBtn">
+      {{ 'roomRegulation.agreeAndContinue' | translate }}
+    </button>
   </section>
   <!-- //roomRegulation -->
 
