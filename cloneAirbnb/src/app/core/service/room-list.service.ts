@@ -14,6 +14,8 @@ import { RoomList } from '../interface/roomList.interface';
 export class RoomListService {
   appUrl: string = environment.appUrl;
   roomList = [];
+  minPrice = 0;
+  maxPrice = 1000000;
   roomListUpDated: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -22,6 +24,8 @@ export class RoomListService {
   ) {}
 
   getRoomList() {
+    const minPrice = this.minPrice;
+    const maxPrice = this.maxPrice;
     if (!this.reservationInfoService.reservationInfoObj.destination) {
       this.reservationInfoService.reservationInfoObj.destination = 'seoul';
     }
@@ -29,7 +33,7 @@ export class RoomListService {
     return this.http.get<RoomList>(
       `${this.appUrl}/rooms/?search=${
         this.reservationInfoService.reservationInfoObj.destination
-      }&ordering=price&page_size=12&page=1`
+      }&ordering=price&page_size=12&page=1&min_price=${minPrice}&max_price=${maxPrice}`
     );
   }
 

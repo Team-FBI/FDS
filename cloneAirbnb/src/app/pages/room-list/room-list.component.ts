@@ -57,11 +57,11 @@ export class RoomListComponent implements OnInit {
   };
 
   // price range 데이터
-  minValue: number = 0;
-  maxValue: number = 100000;
+  minValue = 0;
+  maxValue = 1000000;
   options: Options = {
     floor: 0,
-    ceil: 100000,
+    ceil: 1000000,
     translate: (value: number): string => {
       return '￦' + value;
     }
@@ -110,14 +110,19 @@ export class RoomListComponent implements OnInit {
     });
   }
 
-  // setPrice() {
-  //   const minValueTest = this.minValue;
-  //   const maxValueTest = this.maxValue;
-  //   this.roomListService.setPriceService(minValueTest, maxValueTest);
-  //   console.log(this.roomListService.roomList);
-  //   this.roomList = this.roomListService.roomList;
-  //   console.log(this.roomList);
-  // }
+  setPrice() {
+    const minValue = this.minValue;
+    const maxValue = this.maxValue;
+    this.roomListService.minPrice = minValue;
+    this.roomListService.maxPrice = maxValue;
+
+    this.roomListService.getRoomList().subscribe(res => {
+      for (const room of res.results) {
+        this.roomListService.roomList.push(room);
+      }
+      this.roomListService.roomChangeDetect();
+    });
+  }
 
   // makeMarker(res) {
   //   const { image, id, title } = res;
