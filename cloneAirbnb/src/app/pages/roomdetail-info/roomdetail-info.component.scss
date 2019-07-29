@@ -52,15 +52,18 @@
 ::ng-deep.form-group{
   height : 300px;
 
-  .form-control{
-    margin-left: 120%;
+  .infodate{
+    margin-left: 110%;
+    
   }
-  
+  .bottom ng-tns-c4-4 ng-star-inserted{
+    top:-50px;
+  }
 }
 
-::ng-deep.theme-green{
-  top:-50px;
-}
+// ::bs-datepicker{
+//   top:-50px;
+// }
 
 
 

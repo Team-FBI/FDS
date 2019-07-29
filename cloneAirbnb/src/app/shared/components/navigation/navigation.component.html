@@ -20,9 +20,10 @@
       <i class="fa fa-search" aria-hidden="true"></i>
       <input
         type="text"
-        (keyup.enter)="showroomList()"
-        placeholder="검색"
+        (keyup.enter)="showRoomList(input.value)"
+        placeholder="{{ 'navigation.searchBarPlaceholder' | translate }}"
         class="searchInput"
+        #input
       />
     </div>
     <nav class="headerNav">
@@ -32,8 +33,10 @@
           class="borderColor555"
           [class.borderColorWhite]="isMain"
         >
-          <a routerLink="/storageList" [style.color]="isMain ? '#fff' : '#000'"
-            >저장목록</a
+          <a
+            routerLink="/storageList"
+            [style.color]="isMain ? '#fff' : '#000'"
+            >{{ 'navigation.favorites' | translate }}</a
           >
         </li>
         <li
@@ -41,27 +44,27 @@
           class="borderColor555"
           [class.borderColorWhite]="isMain"
         >
-          <a routerLink="/yourTrip" [style.color]="isMain ? '#fff' : '#000'"
-            >여행</a
-          >
+          <a routerLink="/yourTrip" [style.color]="isMain ? '#fff' : '#000'">{{
+            'navigation.myTrip' | translate
+          }}</a>
         </li>
         <li
           *ngIf="!authService.loggedIn()"
           class="borderColor555"
           [class.borderColorWhite]="isMain"
         >
-          <a routerLink="/signUp" [style.color]="isMain ? '#fff' : '#000'"
-            >회원가입</a
-          >
+          <a routerLink="/signUp" [style.color]="isMain ? '#fff' : '#000'">{{
+            'navigation.signUp' | translate
+          }}</a>
         </li>
         <li
           *ngIf="!authService.loggedIn()"
           class="borderColor555"
           [class.borderColorWhite]="isMain"
         >
-          <a routerLink="/signIn" [style.color]="isMain ? '#fff' : '#000'"
-            >로그인</a
-          >
+          <a routerLink="/signIn" [style.color]="isMain ? '#fff' : '#000'">{{
+            'navigation.signIn' | translate
+          }}</a>
         </li>
         <!-- <li class="myPageBtn" (click)="myPage= !myPage">
           <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt="">
@@ -90,19 +93,29 @@
               aria-labelledby="button-basic"
             >
               <li role="menuitem">
-                <a class="dropdown-item" href="#">프로필</a>
+                <a class="dropdown-item" href="#">{{
+                  'navigation.profile' | translate
+                }}</a>
               </li>
               <li role="menuitem">
-                <a class="dropdown-item" href="#">계정</a>
+                <a class="dropdown-item" href="#">{{
+                  'navigation.account' | translate
+                }}</a>
               </li>
               <li role="menuitem">
-                <a class="dropdown-item" href="#" (click)="signOutBtn()"
-                  >로그아웃</a
-                >
+                <button class="dropdown-item" (click)="signOutBtn()">
+                  {{ 'navigation.signOut' | translate }}
+                </button>
               </li>
             </ul>
           </div>
         </li>
+        <button (click)="switchLanguage('en')">
+          {{ 'btn_eng' | translate }}
+        </button>
+        <button (click)="switchLanguage('ko')">
+          {{ 'btn_kor' | translate }}
+        </button>
       </ul>
     </nav>
   </div>

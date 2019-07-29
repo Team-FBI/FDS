@@ -20,7 +20,7 @@ export class RoomdetailInfoComponent implements OnInit {
   bedroom: number;
   room_type:any;
   facilities:any;
-  dkd : string;
+  facility : string;
   strArray
 
 
@@ -65,46 +65,46 @@ export class RoomdetailInfoComponent implements OnInit {
       this.facilities = res.facilities;
       this.facilities.forEach(element => {
         if(element === "queen-size bed"){
-          this.dkd = '퀸사이즈침대';
+          this.facility = '퀸사이즈침대';
         }
         if(element === "swimming pool"){
-          this.dkd += '수영장';
+          this.facility += '수영장';
         }
         if(element === "parking lot"){
-          this.dkd += '주차장';
+          this.facility += '주차장';
         }
         if(element === "ethernet"){
-          this.dkd += '이더넷';
+          this.facility += '이더넷';
         }
         if(element === "work space"){
-          this.dkd += '작업공간';
+          this.facility += '작업공간';
         }
         if(element === "television"){
-          this.dkd += 'TV';
+          this.facility += 'TV';
         }
         if(element === "kitchen"){
-          this.dkd += '주방';
+          this.facility += '주방';
         }
         if(element === "elevator"){
-          this.dkd += '엘리베이터';
+          this.facility += '엘리베이터';
         }
         if(element === "cloth iron"){
-          this.dkd += '다리미';
+          this.facility += '다리미';
         }
         if(element === "cloth dryer"){
-          this.dkd += '옷걸이';
+          this.facility += '옷걸이';
         }
         if(element === "wifi"){
-          this.dkd += '와이파이';
+          this.facility += '와이파이';
         }
         if(element === "breakfast service"){
-          this.dkd += '아침식사';
+          this.facility += '아침식사';
         }
         if(element === "coffee maker"){
-          this.dkd += '커피머신';
+          this.facility += '커피머신';
         }
         if(element === "air conditioner"){
-          this.dkd += '에어컨';
+          this.facility += '에어컨';
         }
       })
     })
