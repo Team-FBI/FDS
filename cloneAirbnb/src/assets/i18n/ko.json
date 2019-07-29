@@ -58,9 +58,11 @@
     "signUpTitle": "회원가입",
     "idPlaceholder": "아이디",
     "idWarningMessage": "ID를 입력해 주세요.",
+    "userNameDuplicate": "유저네임이 이미 존재합니다.",
     "emailPlaceholder": "이메일 주소",
     "emailRequiredWarningMessage": "이메일을 입력해 주세요.",
     "emailPatternWarningMessage": "이메일 형식이 올바르지 않습니다.",
+    "userEmailDuplicate": "이메일이 이미 존재합니다.",
     "firstNamePlaceholder": "이름(예: 길동)",
     "firstNameRequiredWarningMessage": "이름을 입력해 주세요.",
     "firstNamePatternWarningMessage": "이름 형식이 올바르지 않습니다.",
@@ -87,5 +89,20 @@
     "signInBtn": "로그인",
     "signUpBtn": "회원가입"
   },
+  "roomList": {},
+  "roomDetail": {},
+  "roomRegulation": {
+    "roomRegulationTitle": "숙소 이용규칙 확인하기",
+    "night": "박",
+    "checkIn": "체크인:",
+    "checkOut": "체크아웃:",
+    "precautions": "주의사항",
+    "suitableForChildrenAndInfants": "어린아이와 유아에게 적합함",
+    "noPets": "반려동물 동반 불가",
+    "noPartiesAndEvent": "파티나 이벤트 금지",
+    "noSmoking": "흡연 금지",
+    "agreeAndContinue": "동의 및 계속하기"
+  },
+  "payment": {},
   "hello": "안녕하세요"
 }

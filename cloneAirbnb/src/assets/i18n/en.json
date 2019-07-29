@@ -58,9 +58,11 @@
     "signUpTitle": "Sign Up",
     "idPlaceholder": "ID",
     "idWarningMessage": "ID is required.",
+    "userNameDuplicate": "Username is already exist",
     "emailPlaceholder": "Email address",
     "emailRequiredWarningMessage": "Email is required.",
     "emailPatternWarningMessage": "Enter a valid email.",
+    "userEmailDuplicate": "Email is already exist",
     "firstNamePlaceholder": "First name",
     "firstNameRequiredWarningMessage": "First name is required.",
     "firstNamePatternWarningMessage": "Enter a valid first name.",
@@ -87,5 +89,20 @@
     "signInBtn": "Log in",
     "signUpBtn": "Sign Up"
   },
+  "roomList": {},
+  "roomDetail": {},
+  "roomRegulation": {
+    "roomRegulationTitle": "Review house rules",
+    "night": "night",
+    "checkIn": "check-in:",
+    "checkOut": "check-out:",
+    "precautions": "Things to keep in mind",
+    "suitableForChildrenAndInfants": "Suitable for children and infants",
+    "noPets": "No pets",
+    "noPartiesAndEvent": "No parties and event",
+    "noSmoking": "No smoking",
+    "agreeAndContinue": "Agree and continue"
+  },
+  "payment": {},
   "hello": "welcome"
 }
