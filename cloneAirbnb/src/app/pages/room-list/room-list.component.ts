@@ -110,14 +110,14 @@ export class RoomListComponent implements OnInit{
     });
   }
 
-  // setPrice() {
-  //   const minValueTest = this.minValue;
-  //   const maxValueTest = this.maxValue;
-  //   this.roomListService.setPriceService(minValueTest, maxValueTest);
-  //   console.log(this.roomListService.roomList);
-  //   this.roomList = this.roomListService.roomList;
-  //   console.log(this.roomList);
-  // }
+  setPrice() {
+    const minValueTest = this.minValue;
+    const maxValueTest = this.maxValue;
+    this.roomListService.setPriceService(minValueTest, maxValueTest);
+    console.log(this.roomListService.roomList);
+    this.roomList = this.roomListService.roomList;
+    console.log(this.roomList);
+  }
 
   // makeMarker(res) {
   //   const { image, id, title } = res;
