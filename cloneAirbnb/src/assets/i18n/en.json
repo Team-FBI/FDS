@@ -1,4 +1,6 @@
 {
+  "btn_eng": "English",
+  "btn_kor": "Korean",
   "navigation": {
     "searchBarPlaceholder": "Try 'seoul'",
     "favorites": "Favorites",
@@ -8,6 +10,31 @@
     "profile": "Profile",
     "account": "Account",
     "signOut": "Sign Out"
+  },
+  "footer": {
+    "airbnb": "Airbnb",
+    "careers": "Careers",
+    "news": "News",
+    "policies": "Policies",
+    "help": "Help",
+    "diversityAndBelonging": "Diversity & Belonging",
+    "accessibility": "Accessibility",
+    "discover": "Discover",
+    "trustAndSafety": "Trust & Safety",
+    "airbnbCitizen": "Airbnb Citizen",
+    "businessProgram": "Business Program",
+    "guideBook": "Guide Book",
+    "airbnbmag": "Airbnbmag",
+    "hosting": "Hosting",
+    "whyHost": "Why Host",
+    "hospitality": "Hospitality",
+    "responsibleHosting": "Responsible Hosting",
+    "communityCenter": "Community Center",
+    "hostAnExperience": "Host an Experience",
+    "openHomes": "Open Homes",
+    "termsAndConditions": "Terms and Conditions",
+    "privacy": "Privacy",
+    "siteMap": "Site Map"
   },
   "home": {
     "searchFormTitle": "Book unique places to stay and things to do.",
@@ -27,7 +54,38 @@
     "infantsSpan": "Under 2",
     "searchBtn": "Search"
   },
-  "hello": "welcome",
-  "btn_eng": "English",
-  "btn_kor": "Korean"
+  "signUp": {
+    "signUpTitle": "Sign Up",
+    "idPlaceholder": "ID",
+    "idWarningMessage": "ID is required.",
+    "emailPlaceholder": "Email address",
+    "emailRequiredWarningMessage": "Email is required.",
+    "emailPatternWarningMessage": "Enter a valid email.",
+    "firstNamePlaceholder": "First name",
+    "firstNameRequiredWarningMessage": "First name is required.",
+    "firstNamePatternWarningMessage": "Enter a valid first name.",
+    "lastNamePlaceholder": "Last name",
+    "lastNameRequiredWarningMessage": "Last name is required.",
+    "lastNamePatternWarningMessage": "Enter a valid last name.",
+    "passwordPlaceholder": "Create a Password",
+    "passwordNameRequiredWarningMessage": "Please enter at least 8 digits.",
+    "passwordNamePatternWarningMessage": "Make it a combination of numbers, letters, and special characters.",
+    "birthdayTitle": "Birthday",
+    "selectMonth": "Month",
+    "selectDay": "Day",
+    "selectYear": "Year",
+    "promotionMessage": "We’ll send you marketing promotions, special offers, inspiration, and policy updates via email.",
+    "submitBtn": "Sign up"
+  },
+  "signIn": {
+    "signInTitle": "Log in",
+    "signInFailMessage": "Please check your email address/ID or password!",
+    "emailIDPlaceholder": "Email address or ID",
+    "emailIDRequiredWarningMessage": "Email or ID is required.",
+    "passwordPlaceholder": "Password",
+    "passwordRequiredWarningMessage": "Password is required.",
+    "signInBtn": "Log in",
+    "signUpBtn": "Sign Up"
+  },
+  "hello": "welcome"
 }
