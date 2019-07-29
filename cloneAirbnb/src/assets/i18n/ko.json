@@ -94,6 +94,7 @@
   "roomRegulation": {
     "roomRegulationTitle": "숙소 이용규칙 확인하기",
     "night": "박",
+    "nights": "박",
     "checkIn": "체크인:",
     "checkOut": "체크아웃:",
     "precautions": "주의사항",
@@ -103,6 +104,15 @@
     "noSmoking": "흡연 금지",
     "agreeAndContinue": "동의 및 계속하기"
   },
-  "payment": {},
+  "payment": {
+    "guest": "명",
+    "guests": "명",
+    "night": "박",
+    "nights": "박",
+    "cleaningExpenses": "Cleaning expenses",
+    "serviceFee": "Service fee",
+    "occupancyTex": "Occupancy tex",
+    "total": "Total"
+  },
   "hello": "안녕하세요"
 }

@@ -22,7 +22,12 @@
           fill-rule="evenodd"
         ></path>
       </svg>
-      게스트 {{ personnel }}명
+      <span *ngIf="personnel === 1"
+        >{{ personnel }} {{ 'payment.guest' | translate }}</span
+      >
+      <span *ngIf="personnel > 1"
+        >{{ personnel }} {{ 'payment.guests' | translate }}</span
+      >
     </div>
     <div class="paymentDate">
       <svg
@@ -38,42 +43,51 @@
         ></path>
       </svg>
       <div class="paymentCheckIn">
-        {{ checkInArray[2] }}년 {{ checkInArray[0] }}월 {{ checkInArray[1] }}일
+        {{ checkInArray[1] }}/{{ checkInArray[0] }}/{{ checkInArray[2] }}
       </div>
       <div class="paymentDateLine">
         <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
       </div>
       <div class="paymentCheckOut">
-        {{ checkOutArray[2] }}년 {{ checkOutArray[0] }}월
-        {{ checkOutArray[1] }}일
+        {{ checkOutArray[1] }}/{{ checkOutArray[0] }}/{{ checkOutArray[2] }}
       </div>
     </div>
   </div>
   <div class="paymentReceipt">
     <ul>
-      <li>
-        <span>₩{{ price | number }} x {{ dayDiff }}박</span>
+      <li *ngIf="dayDiff === 1">
+        <span
+          >₩{{ price | number }} x {{ dayDiff }}
+          {{ 'payment.night' | translate }}</span
+        >
+        <span>₩{{ totalPriceBeforeTex | number }}</span>
+      </li>
+      <li *ngIf="dayDiff > 1">
+        <span
+          >₩{{ price | number }} x {{ dayDiff }}
+          {{ 'payment.nights' | translate }}</span
+        >
         <span>₩{{ totalPriceBeforeTex | number }}</span>
       </li>
       <li>
-        <span>청소비</span>
+        <span>{{ 'payment.cleaningExpenses' | translate }}</span>
         <span>₩{{ cleaningExpenses | number }}</span>
       </li>
       <li>
-        <span>서비스 수수료</span>
+        <span>{{ 'payment.serviceFee' | translate }}</span>
         <span>₩{{ serviceFee | number }}</span>
       </li>
       <li>
-        <span>숙박세와 수수료</span>
+        <span>{{ 'payment.occupancyTex' | translate }}</span>
         <span>₩{{ accommodationsTax | number }}</span>
       </li>
       <li class="total">
-        <span>총 합계 (KRW)</span>
+        <span>{{ 'payment.total' | translate }} (KRW)</span>
         <span>₩{{ totalPriceAfterTex | number }}</span>
       </li>
     </ul>
   </div>
-  <div class="paymentDateNow">
+  <!-- <div class="paymentDateNow">
     <ul>
       <li>
         <span class="bold">지급일: 지금</span>
@@ -96,6 +110,6 @@
     <div>
       이미지
     </div>
-  </div>
+  </div> -->
 </section>
 <!-- //roomPayment -->

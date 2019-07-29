@@ -94,6 +94,7 @@
   "roomRegulation": {
     "roomRegulationTitle": "Review house rules",
     "night": "night",
+    "nights": "nights",
     "checkIn": "check-in:",
     "checkOut": "check-out:",
     "precautions": "Things to keep in mind",
@@ -103,6 +104,15 @@
     "noSmoking": "No smoking",
     "agreeAndContinue": "Agree and continue"
   },
-  "payment": {},
+  "payment": {
+    "guest": "guest",
+    "guests": "guests",
+    "night": "night",
+    "nights": "nights",
+    "cleaningExpenses": "Cleaning expenses",
+    "serviceFee": "Service fee",
+    "occupancyTex": "Occupancy tex",
+    "total": "Total"
+  },
   "hello": "welcome"
 }
