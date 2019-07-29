@@ -1,4 +1,6 @@
 {
+  "btn_eng": "English",
+  "btn_kor": "한국어",
   "navigation": {
     "searchBarPlaceholder": "'서울'에 가보는건 어떠세요?",
     "favorites": "저장목록",
@@ -8,6 +10,31 @@
     "profile": "프로필",
     "account": "계정",
     "signOut": "로그아웃"
+  },
+  "footer": {
+    "airbnb": "에어비앤비",
+    "careers": "채용정보",
+    "news": "뉴스",
+    "policies": "정책",
+    "help": "도움말",
+    "diversityAndBelonging": "다양성과 소속감",
+    "accessibility": "접근성",
+    "discover": "여행하기",
+    "trustAndSafety": "신뢰와 안전",
+    "airbnbCitizen": "Airbnb Citizen",
+    "businessProgram": "비즈니스 프로그램",
+    "guideBook": "가이드북",
+    "airbnbmag": "Airbnbmag",
+    "hosting": "호스팅하기",
+    "whyHost": "호스팅의 장점",
+    "hospitality": "호스팅 기준",
+    "responsibleHosting": "책임감 있는 호스팅 하기",
+    "communityCenter": "커뮤니티 센터",
+    "hostAnExperience": "트립 호스팅",
+    "openHomes": "Open Homes 프로그램",
+    "termsAndConditions": "이용약관",
+    "privacy": "개인정보 처리방침",
+    "siteMap": "여행지 찾기"
   },
   "home": {
     "searchFormTitle": "특색 있는 숙소와 즐길 거리를 예약하세요.",
@@ -27,7 +54,38 @@
     "infantsSpan": "2세 미만",
     "searchBtn": "검색"
   },
-  "hello": "안녕하세요",
-  "btn_eng": "영어",
-  "btn_kor": "한국어"
+  "signUp": {
+    "signUpTitle": "회원가입",
+    "idPlaceholder": "아이디",
+    "idWarningMessage": "ID를 입력해 주세요.",
+    "emailPlaceholder": "이메일 주소",
+    "emailRequiredWarningMessage": "이메일을 입력해 주세요.",
+    "emailPatternWarningMessage": "이메일 형식이 올바르지 않습니다.",
+    "firstNamePlaceholder": "이름(예: 길동)",
+    "firstNameRequiredWarningMessage": "이름을 입력해 주세요.",
+    "firstNamePatternWarningMessage": "이름 형식이 올바르지 않습니다.",
+    "lastNamePlaceholder": "성(예: 홍)",
+    "lastNameRequiredWarningMessage": "성을 입력해 주세요.",
+    "lastNamePatternWarningMessage": "이름 형식이 올바르지 않습니다.",
+    "passwordPlaceholder": "비밀번호 설정",
+    "passwordNameRequiredWarningMessage": " 8자리 이상 입력해 주세요.",
+    "passwordNamePatternWarningMessage": "숫자, 문자, 특수문자의 조합으로 만들어 주세요.",
+    "birthdayTitle": "생일",
+    "selectMonth": "월",
+    "selectDay": "일",
+    "selectYear": "년",
+    "promotionMessage": "에어비앤비의 마케팅 프로모션, 특별 할인 및 추천 여행 정보, 정책 변경사항을 이메일로 보내드립니다.",
+    "submitBtn": "가입하기"
+  },
+  "signIn": {
+    "signInTitle": "로그인",
+    "signInFailMessage": " 이메일주소/아이디 또는 비밀번호를 확인해 주세요!",
+    "emailIDPlaceholder": "이메일 or 아이디",
+    "emailIDRequiredWarningMessage": "이메일 또는 아이디를 입력해 주세요.",
+    "passwordPlaceholder": "비밀번호",
+    "passwordRequiredWarningMessage": "비밀번호를 입력해 주세요.",
+    "signInBtn": "로그인",
+    "signUpBtn": "회원가입"
+  },
+  "hello": "안녕하세요"
 }

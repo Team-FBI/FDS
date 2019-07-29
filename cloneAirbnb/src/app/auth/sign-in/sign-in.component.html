@@ -1,12 +1,12 @@
 <app-navigation></app-navigation>
 <div class="background">
   <div class="formClass">
-    <form [formGroup]="singIn" (ngSubmit)="onSubmit(userId, userPassword)">
-      <p class="title">로그인 {{ 'hello' | translate }}</p>
+    <form [formGroup]="singIn" (ngSubmit)="onSubmit(userId, userInputPassword)">
+      <p class="title">{{ 'signIn.signInTitle' | translate }}</p>
       <div *ngIf="signInFail">
         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
         <span class="signInFailMessage">
-          이메일주소/아이디 또는 비밀번호를 확인해 주세요!
+          {{ 'signIn.signInFailMessage' | translate }}
         </span>
       </div>
       <div
@@ -18,7 +18,7 @@
         <input
           class="input"
           type="text"
-          placeholder="이메일 or 아이디"
+          placeholder="{{ 'signIn.emailIDPlaceholder' | translate }}"
           formControlName="userEmail"
           #userId
         />
@@ -28,7 +28,7 @@
         *ngIf="userEmail.errors?.required && userEmail.touched"
         class="warningMessage"
       >
-        이메일 또는 아이디를 입력해 주세요
+        {{ 'signIn.emailIDRequiredWarningMessage' | translate }}
       </p>
       <div
         class="inputDiv"
@@ -39,9 +39,9 @@
         <input
           class="input"
           type="password"
-          placeholder="비밀번호 설정"
+          placeholder="{{ 'signIn.passwordPlaceholder' | translate }}"
           formControlName="userPassword"
-          #userPassword
+          #userInputPassword
         />
         <i class="fa fa-eye-slash" aria-hidden="true"></i>
       </div>
@@ -49,7 +49,7 @@
         *ngIf="userPassword.errors?.required && userPassword.touched"
         class="warningMessage"
       >
-        비밀번호를 입력해 주세요.
+        {{ 'signIn.passwordRequiredWarningMessage' | translate }}
       </p>
       <button
         type="submit"
@@ -57,12 +57,12 @@
         [disabled]="singIn.invalid"
         [class.disable]="singIn.invalid"
       >
-        로그인
+        {{ 'signIn.signInBtn' | translate }}
       </button>
     </form>
     <div class="divideLine"></div>
     <button type="button" class="toSignUp" (click)="toSignUp()">
-      회원가입
+      {{ 'signIn.signUpBtn' | translate }}
     </button>
   </div>
 </div>
