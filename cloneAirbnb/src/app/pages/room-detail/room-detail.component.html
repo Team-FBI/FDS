@@ -83,28 +83,33 @@
       <form class="dialog-mid">
         <div class="dialogwrraper">
           
-          <div id="datepick">날짜
-            <div class="string">
-                <!-- <div class="row">
-                    <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group">
-                      <input class="form-control"
-                            placeholder="Datepicker"
-                            ngModel
-                            bsDatepicker
-                            [minDate]="minDate"
-                            [maxDate]="maxDate">
-                    </div> -->
-                    <!-- <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group">
-                      <input class="form-control"
-                            placeholder="Daterangepicker"
-                            ngModel
-                            bsDaterangepicker
-                            [minDate]="minDate"
-                            [maxDate]="maxDate">
-                    </div> -->
+          <div id="datepick">Dates
+            
+              <div class="mainDate">
+                  <div class="checkIn form-group">
+                    <!-- <label for="">체크인</label> -->
+                    <input
+                      type="text"
+                      placeholder="체크인"
+                      class="form-control"
+                      bsDatepicker
+                      [bsConfig]="{ isAnimated: true }"
+                      #checkIn
+                    />
                   </div>
-            </div>
-          </div>
+                  <div class="checkOut form-group">
+                    <!-- <label for="">체크아웃</label> -->
+                    <input
+                      type="text"
+                      placeholder="체크아웃"
+                      class="form-control"
+                      bsDatepicker
+                      [bsConfig]="{ isAnimated: true }"
+                      #checkOut
+                    />
+                  </div>
+                </div>
+              </div>
           
           <div class="peoplewrraper">인원
               <div class="btn-group guest-dropdown" dropdown #dropdown="bs-dropdown" [autoClose]="false">
