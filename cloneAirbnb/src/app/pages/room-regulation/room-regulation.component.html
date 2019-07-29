@@ -8,58 +8,57 @@
 <section class="roomContainer clear-fix">
   <section class="roomRegulation">
     <!-- roomRegulation -->
-    <h2>숙소 이용규칙 확인하기 {{ 'hello' | translate }}</h2>
+    <h2>{{ 'roomRegulation.roomRegulationTitle' | translate }}</h2>
     <div class="regulationInfo">
       <!-- regulationInfo -->
-      <h3>{{ title }}, {{ destination }} {{ dayDiff }}박</h3>
+      <h3>{{ title }}, {{ destination }} {{ dayDiff }} {{ 'roomRegulation.night' | translate }}</h3>
       <!-- room에 따라 내용 변경되어야 함-->
       <div class="regulationCheckIn">
         <div class="regulationDate">
           <!-- 선택한 날짜가 넘어와야 함 -->
-          <span>{{ checkInArray[0] }}월</span>
+          <span>{{ checkInArray[0] }}</span>
           <p>{{ checkInArray[1] }}</p>
         </div>
         <div class="regulationTime">
-          <p>체크인: {{ getCheckInDay }}</p>
+          <p>{{ 'roomRegulation.checkIn' | translate }} {{ getCheckInDay }}</p>
           <p>16:00 - 22:00</p>
         </div>
       </div>
       <div class="regulationCheckOut">
         <div class="regulationDate">
           <!-- 선택한 날짜가 넘어와야 함 -->
-          <span>{{ checkOutArray[0] }}월</span>
+          <span>{{ checkOutArray[0] }}</span>
           <p>{{ checkOutArray[1] }}</p>
         </div>
         <div class="regulationTime">
-          <p>체크아웃: {{ getCheckOutDay }}</p>
+          <p>{{ 'roomRegulation.checkOut' | translate }} {{ getCheckOutDay }}</p>
           <p>11:00</p>
         </div>
       </div>
     </div>
     <!-- //regulationInfo -->
     <div class="precautions">
-      <h3>주의할 사항</h3>
+      <h3>{{ 'roomRegulation.precautions' | translate }}</h3>
       <ul>
         <li>
           <img src="https://i.postimg.cc/zX3MwCFX/child.png" />
-          <span>어린이와 유아에게 적합함</span>
+          <span>{{ 'roomRegulation.suitableForChildrenAndInfants' | translate }}</span>
         </li>
         <li>
           <img src="https://i.postimg.cc/pddqxxcV/animal.png" />
-          <span>반려동물 동반 불가</span>
+          <span>{{ 'roomRegulation.noPets' | translate }}</span>
         </li>
         <li>
           <img src="https://i.postimg.cc/tCHkJFvM/noevent.png" />
-          <span>파티나 이벤트 금지</span>
+          <span>{{ 'roomRegulation.noPartiesAndEvent' | translate }}</span>
         </li>
         <li>
           <img src="https://i.postimg.cc/9fSth9q1/smoking.png" />
-          <span>흡연 금지</span>
+          <span>{{ 'roomRegulation.noSmoking' | translate }}</span>
         </li>
       </ul>
-      <a class="more">더 보기</a>
     </div>
-    <button class="agreeBtn">동의 및 계속하기</button>
+    <button class="agreeBtn">{{ 'roomRegulation.agreeAndContinue' | translate }}</button>
   </section>
   <!-- //roomRegulation -->
 
