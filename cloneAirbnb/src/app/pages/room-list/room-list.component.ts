@@ -193,38 +193,37 @@ export class RoomListComponent implements OnInit{
     this.previousIW = infoWindow;
   }
 
-  increase(n: number) {
-    // console.log(n)
-    if (n === 1) {
-      this.Adultcounter++;
-    } else if (n === 2) {
-      this.Childcounter++;
-    } else if (n === 3) {
-      this.Youngcounter++;
-    }
-    this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
+  increase(personnelType: HTMLSpanElement) {
+    this.reservationInfoService.reservationInfoObj[personnelType.id]++;
+
+    this.reservationInfoService.reservationInfoObj.personnel++;
   }
-  decrease(n: number) {
-    if (n == 1) {
-      if (this.Adultcounter === 0) {
-        return;
-      }
-      this.Adultcounter--;
-    } else if (n == 2) {
-      if (this.Childcounter === 0) {
-        return;
-      }
-      this.Childcounter--;
-    } else if (n == 3) {
-      if (this.Youngcounter === 0) {
-        return;
-      }
-      this.Youngcounter--;
+
+  decrease(personnelType: HTMLSpanElement) {
+    if (this.reservationInfoService.reservationInfoObj[personnelType.id] > 0) {
+      this.reservationInfoService.reservationInfoObj[personnelType.id]--;
+
+      this.reservationInfoService.reservationInfoObj.personnel--;
     }
-    this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
   }
 
   toggleRemoveText(binput) {
     console.log(binput);
+  }
+
+  get adults() {
+    return this.reservationInfoService.reservationInfoObj.adults;
+  }
+
+  get children() {
+    return this.reservationInfoService.reservationInfoObj.children;
+  }
+
+  get infants() {
+    return this.reservationInfoService.reservationInfoObj.infants;
+  }
+
+  get personnel() {
+    return this.reservationInfoService.reservationInfoObj.personnel;
   }
 }

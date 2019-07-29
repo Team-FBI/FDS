@@ -52,24 +52,24 @@
   <div class="paymentReceipt">
     <ul>
       <li>
-        <span>₩{{ price }} x {{ dayDiff }}박</span>
-        <span>₩{{ price * dayDiff }}</span>
+        <span>₩{{ price | number }} x {{ dayDiff }}박</span>
+        <span>₩{{ totalPriceBeforeTex | number }}</span>
       </li>
       <li>
         <span>청소비</span>
-        <span>₩10,000</span>
+        <span>₩{{ cleaningExpenses | number }}</span>
       </li>
       <li>
         <span>서비스 수수료</span>
-        <span>₩20,382</span>
+        <span>₩{{ serviceFee | number }}</span>
       </li>
       <li>
         <span>숙박세와 수수료</span>
-        <span>₩2,038</span>
+        <span>₩{{ accommodationsTax | number }}</span>
       </li>
       <li class="total">
         <span>총 합계 (KRW)</span>
-        <span>₩180,420</span>
+        <span>₩{{ totalPriceAfterTex | number }}</span>
       </li>
     </ul>
   </div>

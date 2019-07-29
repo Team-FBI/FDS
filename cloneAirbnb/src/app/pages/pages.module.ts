@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+import { HttpClient } from '@angular/common/http';
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -36,6 +40,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   slidesPerView: 'auto'
 };
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -49,7 +57,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     RoomdetailpaymentComponent,
     RoomdetailInfoComponent,
     CheckPaymentComponent,
-    ScrollDirective,
+    ScrollDirective
   ],
   imports: [
     CommonModule,
@@ -66,7 +74,14 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA3mYS53qBU6qHCKhyxke8JoYzrD5r2LJo'
     }),
-    FontAwesomeModule
+    FontAwesomeModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   exports: [
     RoomListComponent
