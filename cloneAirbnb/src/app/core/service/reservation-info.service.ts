@@ -14,15 +14,15 @@ export class ReservationInfoService {
     1}/${this.date.getDate()}/${this.date.getFullYear()}`;
 
   reservationInfoObj: ReservationInfo = {
-    title: '숙소이름',
-    destination: '제주',
+    title: '',
+    destination: '',
     checkIn: this.checkInDate,
     checkOut: this.checkOutDate,
     personnel: 1,
     adults: 1,
     children: 0,
     infants: 0,
-    price: 300000,
-    roomType: '펜션'
+    price: 0,
+    roomType: ''
   };
 }

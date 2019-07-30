@@ -7,10 +7,11 @@
       <input
         type="text"
         class="filterButton"
-        [bsConfig]="{ rangeInputFormat: 'MM월 DD일', isAnimated: true }"
+        [bsConfig]="{ rangeInputFormat: 'MM/DD', isAnimated: true }"
         bsDaterangepicker
-        [ngStyle]="datestyle"
-        (bsValueChange)="chageStyle()"
+        [ngStyle]="dateStyle"
+        (bsValueChange)="onValueChange($event)"
+        (bsValueChange)="changeStyle()"
         [dateCustomClasses]="dateCustomClasses"
         placeholder="날짜"
       />
@@ -33,87 +34,60 @@
         class="personnel-dropdown-menu dropdown-menu"
         role="menu"
       >
-      <div class="counterLine">
-        <div class="people">
-          <p class="top">성인</p>
+        <div class="counterLine">
+          <div class="people">
+            <p class="top">성인</p>
+          </div>
+          <div class="counterCheck">
+            <button type="button" class="decrease" (click)="decrease(adult)">
+              -
+            </button>
+            <span class="counter" id="adults" #adult>{{ adults }}</span>
+            <button type="button" class="increase" (click)="increase(adult)">
+              +
+            </button>
+          </div>
         </div>
-        <div class="counterCheck">
-          <button
-            type="button"
-            class="decrease"
-            (click)="decrease(adult)"
-          >
-            -
-          </button>
-          <span class="counter" id="adults" #adult>{{ adults }}</span>
-          <button
-            type="button"
-            class="increase"
-            (click)="increase(adult)"
-          >
-            +
-          </button>
-        </div>
-      </div>
 
-    <div role="menuitem">
-      <div class="counterLine">
-        <div class="people">
-          <p>어린이</p>
-          <span>2~12세</span>
+        <div role="menuitem">
+          <div class="counterLine">
+            <div class="people">
+              <p>어린이</p>
+              <span>2~12세</span>
+            </div>
+            <div class="counterCheck">
+              <button type="button" class="decrease" (click)="decrease(child)">
+                -
+              </button>
+              <span class="counter" id="children" #child>{{ children }}</span>
+              <button type="button" class="increase" (click)="increase(child)">
+                +
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="counterCheck">
-          <button
-            type="button"
-            class="decrease"
-            (click)="decrease(child)"
-          >
-            -
-          </button>
-          <span class="counter" id="children" #child>{{
-            children
-          }}</span>
-          <button
-            type="button"
-            class="increase"
-            (click)="increase(child)"
-          >
-            +
-          </button>
+        <div role="menuitem">
+          <div class="counterLine">
+            <div class="people">
+              <p>유아</p>
+              <span>2세 미만</span>
+            </div>
+            <div class="counterCheck">
+              <button type="button" class="decrease" (click)="decrease(infant)">
+                -
+              </button>
+              <span class="counter" id="infants" #infant>{{ infants }}</span>
+              <button type="button" class="increase" (click)="increase(infant)">
+                +
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div role="menuitem">
-      <div class="counterLine">
-        <div class="people">
-          <p>유아</p>
-          <span>2세 미만</span>
-        </div>
-        <div class="counterCheck">
-          <button
-            type="button"
-            class="decrease"
-            (click)="decrease(infant)"
-          >
-            -
-          </button>
-          <span class="counter" id="infants" #infant>{{
-            infants
-          }}</span>
-          <button
-            type="button"
-            class="increase"
-            (click)="increase(infant)"
-          >
-            +
-          </button>
-        </div>
-      </div>
-    </div>
         <button
           class="personnelSaveBtn"
           type="button"
           (click)="personnelDropdown.isOpen = !personnelDropdown.isOpen"
+          (click)="changePersonnel()"
         >
           저장
         </button>

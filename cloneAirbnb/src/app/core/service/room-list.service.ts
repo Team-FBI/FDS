@@ -18,7 +18,6 @@ export class RoomListService {
   maxPrice = 1000000;
   checkInDate = this.reservationInfoService.reservationInfoObj.checkIn;
   checkOutDate = this.reservationInfoService.reservationInfoObj.checkOut;
-  capacity = this.reservationInfoService.reservationInfoObj.personnel;
   roomListUpDated: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -44,7 +43,7 @@ export class RoomListService {
     const maxPrice = this.maxPrice;
     const checkInDate = this.dateRefactoring(this.checkInDate);
     const checkOutDate = this.dateRefactoring(this.checkOutDate);
-    const capacity = this.capacity;
+    const capacity = this.reservationInfoService.reservationInfoObj.personnel;
 
     if (!this.reservationInfoService.reservationInfoObj.destination) {
       this.reservationInfoService.reservationInfoObj.destination = 'seoul';
@@ -61,19 +60,4 @@ export class RoomListService {
     this.roomListUpDated.emit(this.roomList);
     this.roomList = [];
   }
-
-  // setPriceService(minValueTest, maxValueTest) {
-  //   return this.http
-  //     .get(
-  //       `${this.appUrl}/rooms/?search=${
-  //         this.reservationInfoService.reservationInfoObj.destination
-  //       }&ordering=price&page_size=12&page=1&min_price=${minValueTest}&max_price=${maxValueTest}`
-  //     )
-  //     .subscribe((res: any) => {
-  //       for (let j = 0; j < res.results.length; j++) {
-  //         console.log(res.results);
-  //         this.getRoomDetailinfoService(res.results[j]);
-  //       }
-  //     });
-  // }
 }
