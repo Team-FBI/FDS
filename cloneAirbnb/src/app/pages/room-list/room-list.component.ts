@@ -52,7 +52,7 @@ export class RoomListComponent implements OnInit {
   Childcounter = 0;
   Youngcounter = 0;
   dateCustomClasses: DatepickerDateCustomClasses[];
-  datestyle = {
+  dateStyle = {
     width: '52px'
   };
 
@@ -110,13 +110,9 @@ export class RoomListComponent implements OnInit {
     });
   }
 
-  setPrice() {
-    const minValue = this.minValue;
-    const maxValue = this.maxValue;
-    this.roomListService.minPrice = minValue;
-    this.roomListService.maxPrice = maxValue;
-
-    this.roomListService.getRoomList().subscribe(res => {
+  setRoomList() {
+    this.roomListService.roomList = [];
+    return this.roomListService.getRoomList().subscribe(res => {
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
       }
@@ -124,29 +120,31 @@ export class RoomListComponent implements OnInit {
     });
   }
 
-  // makeMarker(res) {
-  //   const { image, id, title } = res;
-  //   console.log(res.address);
-  //   this.mapsService.getLatLan(res.address).subscribe(result => {
-  //     this.ngzone.run(() => {
-  //       this.Glat = result.lat();
-  //       this.Glng = result.lng();
-  //       const makerInfo = {
-  //         id,
-  //         lat: this.Glat,
-  //         lng: this.Glng,
-  //         alpha: 1,
-  //         content: title,
-  //         url: image,
-  //         disabled: false
-  //       };
-  //       this.markers.push(makerInfo);
-  //     });
-  //   });
-  // }
+  onValueChange(value: Date): void {
+    this.reservationInfoService.reservationInfoObj.checkIn = `${value[0].getMonth() +
+      1}/${value[0].getDate()}/${value[0].getFullYear()}`;
 
-  chageStyle() {
-    this.datestyle.width = 'auto';
+    this.reservationInfoService.reservationInfoObj.checkOut = `${value[1].getMonth() +
+      1}/${value[1].getDate()}/${value[1].getFullYear()}`;
+
+    this.setRoomList();
+  }
+
+  changeStyle() {
+    this.dateStyle.width = '150px';
+  }
+
+  changePersonnel() {
+    this.setRoomList();
+  }
+
+  setPrice() {
+    const minValue = this.minValue;
+    const maxValue = this.maxValue;
+    this.roomListService.minPrice = minValue;
+    this.roomListService.maxPrice = maxValue;
+
+    this.setRoomList();
   }
 
   savePirce() {
