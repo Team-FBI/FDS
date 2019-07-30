@@ -52,16 +52,16 @@ export class RoomListComponent implements OnInit {
   Childcounter = 0;
   Youngcounter = 0;
   dateCustomClasses: DatepickerDateCustomClasses[];
-  datestyle = {
-    width: '52px'
+  dateStyle = {
+    width: '65px'
   };
 
   // price range 데이터
-  minValue: number = 0;
-  maxValue: number = 100000;
+  minValue = 0;
+  maxValue = 1000000;
   options: Options = {
     floor: 0,
-    ceil: 100000,
+    ceil: 1000000,
     translate: (value: number): string => {
       return '￦' + value;
     }
@@ -110,38 +110,41 @@ export class RoomListComponent implements OnInit {
     });
   }
 
-  // setPrice() {
-  //   const minValueTest = this.minValue;
-  //   const maxValueTest = this.maxValue;
-  //   this.roomListService.setPriceService(minValueTest, maxValueTest);
-  //   console.log(this.roomListService.roomList);
-  //   this.roomList = this.roomListService.roomList;
-  //   console.log(this.roomList);
-  // }
+  setRoomList() {
+    this.roomListService.roomList = [];
+    return this.roomListService.getRoomList().subscribe(res => {
+      for (const room of res.results) {
+        this.roomListService.roomList.push(room);
+      }
+      this.roomListService.roomChangeDetect();
+    });
+  }
 
-  // makeMarker(res) {
-  //   const { image, id, title } = res;
-  //   console.log(res.address);
-  //   this.mapsService.getLatLan(res.address).subscribe(result => {
-  //     this.ngzone.run(() => {
-  //       this.Glat = result.lat();
-  //       this.Glng = result.lng();
-  //       const makerInfo = {
-  //         id,
-  //         lat: this.Glat,
-  //         lng: this.Glng,
-  //         alpha: 1,
-  //         content: title,
-  //         url: image,
-  //         disabled: false
-  //       };
-  //       this.markers.push(makerInfo);
-  //     });
-  //   });
-  // }
+  onValueChange(value: Date): void {
+    this.reservationInfoService.reservationInfoObj.checkIn = `${value[0].getMonth() +
+      1}/${value[0].getDate()}/${value[0].getFullYear()}`;
 
-  chageStyle() {
-    this.datestyle.width = 'auto';
+    this.reservationInfoService.reservationInfoObj.checkOut = `${value[1].getMonth() +
+      1}/${value[1].getDate()}/${value[1].getFullYear()}`;
+
+    this.setRoomList();
+  }
+
+  changeStyle() {
+    this.dateStyle.width = '150px';
+  }
+
+  changePersonnel() {
+    this.setRoomList();
+  }
+
+  setPrice() {
+    const minValue = this.minValue;
+    const maxValue = this.maxValue;
+    this.roomListService.minPrice = minValue;
+    this.roomListService.maxPrice = maxValue;
+
+    this.setRoomList();
   }
 
   savePirce() {
@@ -184,10 +187,18 @@ export class RoomListComponent implements OnInit {
   }
 
   decrease(personnelType: HTMLSpanElement) {
-    if (this.reservationInfoService.reservationInfoObj[personnelType.id] > 0) {
-      this.reservationInfoService.reservationInfoObj[personnelType.id]--;
+    if (
+      personnelType.id === 'adults' &&
+      this.reservationInfoService.reservationInfoObj[personnelType.id] === 1
+    ) {
+    } else {
+      if (
+        this.reservationInfoService.reservationInfoObj[personnelType.id] > 0
+      ) {
+        this.reservationInfoService.reservationInfoObj[personnelType.id]--;
 
-      this.reservationInfoService.reservationInfoObj.personnel--;
+        this.reservationInfoService.reservationInfoObj.personnel--;
+      }
     }
   }
 

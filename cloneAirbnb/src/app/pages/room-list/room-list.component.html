@@ -7,12 +7,13 @@
       <input
         type="text"
         class="filterButton"
-        [bsConfig]="{ rangeInputFormat: 'MM월 DD일', isAnimated: true }"
+        [bsConfig]="{ rangeInputFormat: 'MM/DD', isAnimated: true }"
         bsDaterangepicker
-        [ngStyle]="datestyle"
-        (bsValueChange)="chageStyle()"
+        [ngStyle]="dateStyle"
+        (bsValueChange)="onValueChange($event)"
+        (bsValueChange)="changeStyle()"
         [dateCustomClasses]="dateCustomClasses"
-        placeholder="날짜"
+        placeholder="{{ 'roomList.datePlaceholder' | translate }}"
       />
       <!-- date filterbutton -->
     </div>
@@ -26,96 +27,74 @@
     >
       <!-- personnel filterbutton -->
       <button class="filterButton" dropdownToggle type="button">
-        인원
+        <span *ngIf="personnel === 1"
+          >{{ personnel }} {{ 'roomList.guest' | translate }}</span
+        >
+        <span *ngIf="personnel > 1"
+          >{{ personnel }} {{ 'roomList.guests' | translate }}</span
+        >
       </button>
       <ul
         *dropdownMenu
         class="personnel-dropdown-menu dropdown-menu"
         role="menu"
       >
-      <div class="counterLine">
-        <div class="people">
-          <p class="top">성인</p>
+        <div class="counterLine">
+          <div class="people">
+            <p class="top">{{ 'roomList.adults' | translate }}</p>
+          </div>
+          <div class="counterCheck">
+            <button type="button" class="decrease" (click)="decrease(adult)">
+              -
+            </button>
+            <span class="counter" id="adults" #adult>{{ adults }}</span>
+            <button type="button" class="increase" (click)="increase(adult)">
+              +
+            </button>
+          </div>
         </div>
-        <div class="counterCheck">
-          <button
-            type="button"
-            class="decrease"
-            (click)="decrease(adult)"
-          >
-            -
-          </button>
-          <span class="counter" id="adults" #adult>{{ adults }}</span>
-          <button
-            type="button"
-            class="increase"
-            (click)="increase(adult)"
-          >
-            +
-          </button>
-        </div>
-      </div>
 
-    <div role="menuitem">
-      <div class="counterLine">
-        <div class="people">
-          <p>어린이</p>
-          <span>2~12세</span>
+        <div role="menuitem">
+          <div class="counterLine">
+            <div class="people">
+              <p>{{ 'roomList.children' | translate }}</p>
+              <span>{{ 'roomList.childrenSpan' | translate }}</span>
+            </div>
+            <div class="counterCheck">
+              <button type="button" class="decrease" (click)="decrease(child)">
+                -
+              </button>
+              <span class="counter" id="children" #child>{{ children }}</span>
+              <button type="button" class="increase" (click)="increase(child)">
+                +
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="counterCheck">
-          <button
-            type="button"
-            class="decrease"
-            (click)="decrease(child)"
-          >
-            -
-          </button>
-          <span class="counter" id="children" #child>{{
-            children
-          }}</span>
-          <button
-            type="button"
-            class="increase"
-            (click)="increase(child)"
-          >
-            +
-          </button>
+        <div role="menuitem">
+          <div class="counterLine">
+            <div class="people">
+              <p>{{ 'roomList.infants' | translate }}</p>
+              <span>{{ 'roomList.infantsSpan' | translate }}</span>
+            </div>
+            <div class="counterCheck">
+              <button type="button" class="decrease" (click)="decrease(infant)">
+                -
+              </button>
+              <span class="counter" id="infants" #infant>{{ infants }}</span>
+              <button type="button" class="increase" (click)="increase(infant)">
+                +
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div role="menuitem">
-      <div class="counterLine">
-        <div class="people">
-          <p>유아</p>
-          <span>2세 미만</span>
-        </div>
-        <div class="counterCheck">
-          <button
-            type="button"
-            class="decrease"
-            (click)="decrease(infant)"
-          >
-            -
-          </button>
-          <span class="counter" id="infants" #infant>{{
-            infants
-          }}</span>
-          <button
-            type="button"
-            class="increase"
-            (click)="increase(infant)"
-          >
-            +
-          </button>
-        </div>
-      </div>
-    </div>
         <button
           class="personnelSaveBtn"
           type="button"
           (click)="personnelDropdown.isOpen = !personnelDropdown.isOpen"
+          (click)="changePersonnel()"
         >
-          저장
+          {{ 'roomList.saveBtn' | translate }}
         </button>
       </ul>
     </div>
@@ -129,7 +108,7 @@
     >
       <!-- businesstrip filterbutton -->
       <button class="businesstrip filterButton" dropdownToggle type="button">
-        출장
+        {{ 'roomList.workTrip' | translate }}
       </button>
       <ul
         *dropdownMenu
@@ -137,24 +116,26 @@
         role="menu"
       >
         <input class="businesstrip-checkbox" type="checkbox" #binput />
-        <p><strong>출장을 떠나시나요?</strong></p>
-        <p class="personnel-content-second">
-          출장자에게 별점 5점을 받은 숙소와 부티크<br />호텔 둘러보기
+        <p>
+          <strong>{{ 'roomList.workTripTitle' | translate }}</strong>
         </p>
-        <button
+        <p class="personnel-content-second">
+          {{ 'roomList.workTripContents' | translate }}
+        </p>
+        <!-- <button
           *ngIf="binput.checked"
           (click)="binput.checked = false"
           class="personnelremoveBtn"
           type="button"
         >
           삭제
-        </button>
+        </button> -->
         <button
           class="personnelSaveBtn"
           type="button"
           (click)="businesstripDropdown.isOpen = !businesstripDropdown.isOpen"
         >
-          저장
+          {{ 'roomList.saveBtn' | translate }}
         </button>
       </ul>
     </div>
@@ -168,7 +149,7 @@
     >
       <!-- roomtype filterbutton -->
       <button class="roomtype filterButton" dropdownToggle type="button">
-        숙소유형
+        {{ 'roomList.typeOfPlace' | translate }}
       </button>
       <ul
         *dropdownMenu
@@ -178,34 +159,40 @@
         <li>
           <input class="roomtype-checkbox" type="checkbox" />
           <div class="roomtype-text">
-            <p><strong>집 전체</strong></p>
-            <p>집 전체를 단독으로 사용합니다.</p>
+            <p>
+              <strong>{{ 'roomList.entirePlace' | translate }}</strong>
+            </p>
+            <p>{{ 'roomList.entirePlaceContents' | translate }}</p>
           </div>
         </li>
         <li>
           <input class="roomtype-checkbox" type="checkbox" />
           <div class="roomtype-text">
-            <p><strong>개인실</strong></p>
             <p>
-              침실은 단독으로 쓰고, 이외의 공간은 호스트나 다른 게스트와 함께
-              이용할 수도 있습니다.
+              <strong>{{ 'roomList.privateRoom' | translate }}</strong>
+            </p>
+            <p>
+              {{ 'roomList.privateRoomContents' | translate }}
             </p>
           </div>
         </li>
         <li>
           <input class="roomtype-checkbox" type="checkbox" />
           <div class="roomtype-text">
-            <p><strong>호텔 객실</strong></p>
-            <p>부티크 호텔, 호스텔 등의 개인실이나 다인실을 이용합니다</p>
+            <p>
+              <strong>{{ 'roomList.hotelRoom' | translate }}</strong>
+            </p>
+            <p>{{ 'roomList.hotelRoomContents' | translate }}</p>
           </div>
         </li>
         <li>
           <input class="roomtype-checkbox" type="checkbox" />
           <div class="roomtype-text">
-            <p><strong>다인실</strong></p>
             <p>
-              사적 공간 없이, 침실이나 욕실 등을 호스트나 다른 게스트와 함께
-              이용합니다
+              <strong>{{ 'roomList.sharedRoom' | translate }}</strong>
+            </p>
+            <p>
+              {{ 'roomList.sharedRoomContents' | translate }}
             </p>
           </div>
         </li>
@@ -214,7 +201,7 @@
           type="button"
           (click)="roomtypeDropdown.isOpen = !roomtypeDropdown.isOpen"
         >
-          저장
+          {{ 'roomList.saveBtn' | translate }}
         </button>
       </ul>
       <!-- roomtype filterbutton -->
@@ -228,7 +215,7 @@
     >
       <!-- price filterbutton -->
       <button class="price filterButton" dropdownToggle type="button">
-        가격
+        {{ 'roomList.price' | translate }}
       </button>
       <ul *dropdownMenu class="price-dropdown-menu dropdown-menu" role="menu">
         <ng5-slider
@@ -242,7 +229,7 @@
           (click)="priceDropdown.isOpen = !priceDropdown.isOpen"
           (click)="setPrice()"
         >
-          저장
+          {{ 'roomList.saveBtn' | translate }}
         </button>
       </ul>
     </div>
@@ -290,7 +277,7 @@
   </div>
 
   <div class="filterRight">
-    <span>지도 보기</span>
+    <span> {{ 'roomList.showMap' | translate }}</span>
     <input type="checkbox" checked data-toggle="toggle" />
     <button class="viewMap"></button>
   </div>
@@ -301,8 +288,7 @@
   <div class="list">
     <div class="notice">
       <p>
-        여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수 있습니다.
-        관광세가 추가로 부과될 수 있습니다. {{ 'hello' | translate }}
+        {{ 'roomList.additionalInfoForPice' | translate }}
       </p>
     </div>
     <ul>
@@ -314,9 +300,26 @@
           <p>{{ room.room_type }} {{ room.space }}</p>
           <p>{{ room.title }}</p>
           <p>
-            인원{{ room.capacity }}·{{ room.bed_type }}·침실{{
-              room.bedroom
-            }}개·욕실{{ room.bathroom }}개
+            {{ room.capacity }}
+            <span *ngIf="room.capacity === 1">{{
+              'roomList.guest' | translate
+            }}</span
+            ><span *ngIf="room.capacity > 1">{{
+              'roomList.guests' | translate
+            }}</span>
+            · {{ room.bed_type }} · {{ room.bedroom }} <span *ngIf="room.bedroom === 1">{{
+              'roomList.bedroom' | translate
+            }}</span
+            ><span *ngIf="room.bedroom > 1">{{
+              'roomList.bedrooms' | translate
+            }}</span> · {{
+              room.bathroom
+            }} <span *ngIf="room.bathroom === 1">{{
+              'roomList.bathroom' | translate
+            }}</span
+            ><span *ngIf="room.bathroom > 1">{{
+              'roomList.bathrooms' | translate
+            }}</span>
           </p>
         </div>
       </li>

@@ -20,6 +20,8 @@ export class SignUpComponent implements OnInit {
   appUrl: string = environment.appUrl;
   userInfo: SignUpObj;
   previousUrl: string;
+  userNameDuplicate: boolean;
+  userEmailDuplicate: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -104,9 +106,28 @@ export class SignUpComponent implements OnInit {
       password: userPassword.value
     };
 
-    this.authService.registerUser(payload).subscribe(res => console.log(res));
+    this.authService.registerUser(payload).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/signIn']);
+      },
+      err => {
+        if (err.error.username) {
+          this.userNameDuplicate = true;
+        }
+        if (err.error.email) {
+          this.userEmailDuplicate = true;
+        }
+      }
+    );
+  }
 
-    this.router.navigate(['/signIn']);
+  deleteUserNameWarningMessage() {
+    this.userNameDuplicate = false;
+  }
+
+  deleteEmailWarningMessage() {
+    this.userEmailDuplicate = false;
   }
 
   inputDivClicked(inputDiv: HTMLDivElement) {

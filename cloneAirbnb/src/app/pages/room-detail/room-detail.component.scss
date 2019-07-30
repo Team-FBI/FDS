@@ -2,6 +2,7 @@
 
 .box{
   position: relative;
+  margin-bottom:15px;
 
   .main{
     height: 592px;
@@ -13,6 +14,7 @@
 
     .left-big{
       width:50%;
+      height: 592px;
     }
 
     .right{
@@ -36,14 +38,17 @@
       display: inline-block;
 
       .sharebtn{
-        border: 1px solid gray;
-        background-color: rgba(0,0,0,0);
-        color: black;
-        padding: 5px; 
-        margin-left:-3px;
-        
+        height:30px;
+        line-height: 30px;
+        padding:0px 10px;
+        text-align: center;
+        border:0;
+        background-color: #ffffff;
+        color: #000000;
+        border-radius: 3px;  
+        margin-right:10px;
         .svg-share{
-          margin-left: 3px;
+          margin-right:5px;
         }
       }
     }
@@ -51,14 +56,21 @@
       display: inline-block;
 
       .savebtn{
-        border: 1px solid gray;
-        background-color: rgba(0,0,0,0);
-        color: black;
-        padding: 5px; 
-        margin-left:-3px;
-        
+        height:30px;
+        line-height: 30px;
+        padding:0px 10px;
+        text-align: center;
+        border:0;
+        background-color: #ffffff;
+        color: #000000;
+        border-radius: 3px;
+
+        .showsavebtn{
+          // display:none;
+        }
+
         .svg-save{
-          margin-left: 3px;
+          margin-right:5px;
         }
       }
     }
@@ -66,10 +78,22 @@
 
   .picwrraper{
     position: absolute;
-    backgorund-color: white;
     left: auto;
     right: 24px;
     bottom: 24px;
+    
+    .picbtn{
+      display:block;
+      height:30px;
+      line-height: 30px;
+      padding:0px 20px;
+      text-align: center;
+      border:0;
+      background-color: #ffffff;
+      color: #000000;
+      border-radius: 3px;
+    }
+
   }
 }
 
@@ -87,7 +111,6 @@
   }
 
   .dialog{
-    border : 2px solid green;
     width: 400px;
     float :right;
 
@@ -95,8 +118,7 @@
     .dialog-pad{
       padding: 24px;
       position: absolute;
-      padding:0 24px;
-      border : 2px solid pink;
+      border : 1px solid #ddd;
       width:400px;
       
       .dialog-top{
@@ -117,33 +139,51 @@
         }
 
         #ratingbutton{
-          width:326px;
+          width:50px;
           height:20px;
           border: 0;
           background-color : white;
-
+          
           .rating{
             display: block;
-            background-size: 9px 9px;
+            // width:50px;
             height: 10px;
             transform: none;
             background-repeat: space no-repeat;
             display:inline-block;
-        }
-        }
+            background-color:#ffffff;
+            color:#008489;
+          }
+        } 
       }
   
       .dialog-mid{
         width:326px;
         height:383px;
 
-        #datepick{
-          background-color:pink;
-          width:100%;
-          height:100%;
-          border:2px solid red;
-        }
 
+        .mainDate::after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+        
+        .mainDate .form-group {
+          float: left;
+          width: 50%;
+          height:40px;
+        
+          input {
+            width: 100%;
+            height: 40px;
+            padding: 7px;
+            font-size:0.8rem;
+            border: 1px solid #f1f1f1;
+            border-radius: 5px;
+          }
+          
+        }
+        
         .increase1 {
           padding: 5px 10px;
           font-size: 24px;
@@ -176,8 +216,8 @@
         }
 
         .continue{
-          width:326px;
-          height:46px;
+          width:100%;
+          height:40px;
           border: 0;
           background-color : red;
           color:white;
@@ -250,31 +290,19 @@
   border:1px solid black;
 }
 
+
 ::ng-deep.guest-dropdown{
-  width:300px;
+  // width:300px;
+  width:100%;
   background: white;
-  border: 1px solid gray;
+  border: 1px solid #f1f1f1;
 }
 
 
 .relative{
   position: relative;
 }
-// ::ng-deep .modal-content{
-//   height: 100%;
-//   max-width: 100%;
-//   position: absolute;
-//   top: 0px;
-//   right: 0px;
-//   bottom: 0px;
-//   left: 0px;
-//   margin: 0px auto;
-//   vertical-align: middle;
-//   border: 0px;
-//   opacity: 1;
-//   transform: translateX(0px);
-//   transition: opacity 150ms ease-out 0s, transform 150ms ease-out 0s;
-// }
+
 
 ::ng-deep .modal .modal-dialog {
   max-width: 100%;
@@ -302,17 +330,10 @@
   width: 100%;
   background-color: black;
 }
-// ::ng-deep .modal-body .gallery-thumbs {
-//   height: 20%;
-//   box-sizing: border-box;
-//   padding: 10px 0;
-// }
+
 ::ng-deep .modal .gallery-thumbs .swiper-slide img {
   width: 25%;
 }
-// ::ng-deep .modal-body .gallery-thumbs .swiper-slide-thumb-active {
-//   opacity: 1;
-// }
 
 .back-drop {
   position: absolute;
@@ -365,3 +386,8 @@
 .gallery-thumbs .swiper-slide-active {
   opacity: 1;
 }
+
+
+
+
+

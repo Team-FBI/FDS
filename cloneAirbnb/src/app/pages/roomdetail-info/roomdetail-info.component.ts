@@ -20,7 +20,8 @@ export class RoomdetailInfoComponent implements OnInit {
   bedroom: number;
   room_type:any;
   facilities:any;
-  dkd : string;
+  facility : string;
+  strArray
 
 
   constructor(
@@ -37,39 +38,74 @@ export class RoomdetailInfoComponent implements OnInit {
       this.title = res.title;
       this.address = res.address;
       this.description = res.description;
+      // console.log(typeof this.description);
+      this.strArray = this.description.split('\n');
+      // console.log(this.strArray);
       this.capacity = res.capacity;
       this.bedroom = res.bedroom;
       this.bathroom = res.bathroom;
       this.room_type = res.room_type;
       if (this.room_type === "Apartment"){
         this.room_type = '아파트';
-      // } else if (this.room_type === 2) {
-      //   this.room_type = '개인집';
-      // } else if (this.room_type === 3) {
-      //   this.room_type = '가든하우스';
-      // } else if (this.room_type === 4) {
-      //   this.room_type = '침대와 아침식사';
-      // } else if (this.room_type === 5) {
-      //   this.room_type = '빌라';
-      // } else if (this.room_type === 6) {
-      //   this.room_type = '카라반';
-      // } else if (this.room_type === 50) {
-      //   this.room_type = '사무실';
-      // } else {
-      //   this.room_type = '';
+      } else if (this.room_type === "House") {
+        this.room_type = '개인집';
+      } else if (this.room_type === "Garden House") {
+        this.room_type = '가든하우스';
+      } else if (this.room_type === "Bed and Breakfast") {
+        this.room_type = '침대와 아침식사';
+      } else if (this.room_type === "Villa") {
+        this.room_type = '빌라';
+      } else if (this.room_type === "Caravan") {
+        this.room_type = '카라반';
+      } else if (this.room_type === "Office") {
+        this.room_type = '사무실';
+      } else {
+        this.room_type = '';
       }
       this.facilities = res.facilities;
-      // if (this.facilities[0] === "queen-size bed"){
-      //   this.facilities = '퀸 사이즈 침대';
-      // }
       this.facilities.forEach(element => {
-        console.log(element);
         if(element === "queen-size bed"){
-          this.dkd = '퀸사이즈침대';
+          this.facility = '퀸사이즈침대';
         }
-        // if(element === "swimming pool"){
-        //   this.dkd += '수영장';
-        // }
+        if(element === "swimming pool"){
+          this.facility += '수영장';
+        }
+        if(element === "parking lot"){
+          this.facility += '주차장';
+        }
+        if(element === "ethernet"){
+          this.facility += '이더넷';
+        }
+        if(element === "work space"){
+          this.facility += '작업공간';
+        }
+        if(element === "television"){
+          this.facility += 'TV';
+        }
+        if(element === "kitchen"){
+          this.facility += '주방';
+        }
+        if(element === "elevator"){
+          this.facility += '엘리베이터';
+        }
+        if(element === "cloth iron"){
+          this.facility += '다리미';
+        }
+        if(element === "cloth dryer"){
+          this.facility += '옷걸이';
+        }
+        if(element === "wifi"){
+          this.facility += '와이파이';
+        }
+        if(element === "breakfast service"){
+          this.facility += '아침식사';
+        }
+        if(element === "coffee maker"){
+          this.facility += '커피머신';
+        }
+        if(element === "air conditioner"){
+          this.facility += '에어컨';
+        }
       })
     })
   }

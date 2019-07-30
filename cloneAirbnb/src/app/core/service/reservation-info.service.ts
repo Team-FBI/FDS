@@ -6,11 +6,21 @@ import { ReservationInfo } from '../interface/reservationInfo.interface';
   providedIn: 'root'
 })
 export class ReservationInfoService {
+  date = new Date();
+
+  initialCheckOutDate = new Date(this.date.getTime() + 2 * 1000 * 60 * 60 * 24);
+
+  checkInDate = `${this.date.getMonth() +
+    1}/${this.date.getDate()}/${this.date.getFullYear()}`;
+
+  checkOutDate = `${this.initialCheckOutDate.getMonth() +
+    1}/${this.initialCheckOutDate.getDate()}/${this.initialCheckOutDate.getFullYear()}`;
+
   reservationInfoObj: ReservationInfo = {
     title: '',
     destination: '',
-    checkIn: '',
-    checkOut: '',
+    checkIn: this.checkInDate,
+    checkOut: this.checkOutDate,
     personnel: 1,
     adults: 1,
     children: 0,

@@ -17,7 +17,15 @@ export class RoomRegulationComponent implements OnInit {
   checkIn = this.reservationInfo.reservationInfoObj.checkIn;
   checkOut = this.reservationInfo.reservationInfoObj.checkOut;
 
-  week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+  week = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ];
   checkInArray = this.checkIn.split('/');
   checkOutArray = this.checkOut.split('/');
 
