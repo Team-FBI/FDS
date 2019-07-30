@@ -54,13 +54,13 @@ export class RoomListComponent implements OnInit{
   Childcounter = 0;
   Youngcounter = 0;
   dateCustomClasses: DatepickerDateCustomClasses[];
-  datestyle = {
-    width: '52px'
+  dateStyle = {
+    width: '65px'
   };
 
   // price range 데이터
-  minValue: number = 0;
-  maxValue: number = 1000000;
+  minValue = 0;
+  maxValue = 1000000;
   options: Options = {
     floor: 0,
     ceil: 1000000,
@@ -128,12 +128,6 @@ export class RoomListComponent implements OnInit{
     });
   }
 
-  setPrice() {
-    this.roomListService.minPrice = this.minValue;
-    this.roomListService.maxPrice = this.maxValue;
-    this.getRoomInfo();
-  }
-
   mapReady(map) {
     this.map = map;
   }
@@ -142,8 +136,41 @@ export class RoomListComponent implements OnInit{
     this.roomListService.getMarkerLatLan(room);
   }
 
-  chageStyle() {
-    this.datestyle.width = 'auto';
+  setRoomList() {
+    this.roomListService.roomList = [];
+    return this.roomListService.getRoomList().subscribe(res => {
+      for (const room of res.results) {
+        this.roomListService.roomList.push(room);
+      }
+      this.roomListService.roomChangeDetect();
+    });
+  }
+
+  onValueChange(value: Date): void {
+    this.reservationInfoService.reservationInfoObj.checkIn = `${value[0].getMonth() +
+      1}/${value[0].getDate()}/${value[0].getFullYear()}`;
+
+    this.reservationInfoService.reservationInfoObj.checkOut = `${value[1].getMonth() +
+      1}/${value[1].getDate()}/${value[1].getFullYear()}`;
+
+    this.setRoomList();
+  }
+
+  changeStyle() {
+    this.dateStyle.width = '150px';
+  }
+
+  changePersonnel() {
+    this.setRoomList();
+  }
+
+  setPrice() {
+    const minValue = this.minValue;
+    const maxValue = this.maxValue;
+    this.roomListService.minPrice = minValue;
+    this.roomListService.maxPrice = maxValue;
+
+    this.setRoomList();
   }
 
   max(coordType: 'lat' | 'lng'): number {
@@ -182,10 +209,18 @@ export class RoomListComponent implements OnInit{
   }
 
   decrease(personnelType: HTMLSpanElement) {
-    if (this.reservationInfoService.reservationInfoObj[personnelType.id] > 0) {
-      this.reservationInfoService.reservationInfoObj[personnelType.id]--;
+    if (
+      personnelType.id === 'adults' &&
+      this.reservationInfoService.reservationInfoObj[personnelType.id] === 1
+    ) {
+    } else {
+      if (
+        this.reservationInfoService.reservationInfoObj[personnelType.id] > 0
+      ) {
+        this.reservationInfoService.reservationInfoObj[personnelType.id]--;
 
-      this.reservationInfoService.reservationInfoObj.personnel--;
+        this.reservationInfoService.reservationInfoObj.personnel--;
+      }
     }
   }
 

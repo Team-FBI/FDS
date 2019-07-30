@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-room-detail',
@@ -32,8 +33,11 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   image_2:string;
   image_3:string;
   image_4:string;
+  max: number = 10;
+  rate: number = 7;
 
-
+  checked: boolean = true;
+  
 
   @ViewChild('galleryTop', { static: true }) galleryTop;
   @ViewChild('galleryThumbs', { static: true }) galleryThumbs;
@@ -69,8 +73,8 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     {
     this.minDate = new Date();
     this.maxDate = new Date();
-    this.minDate.setDate(this.minDate.getDate() - 1);
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.minDate.setDate(this.minDate.getDate());
+    this.maxDate.setDate(this.maxDate.getDate() + 180);
     }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -143,4 +147,13 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.galleryTop.nativeElement.swiper.controller.control = this.galleryThumbs.nativeElement.swiper;
     this.galleryThumbs.nativeElement.swiper.controller.control = this.galleryTop.nativeElement.swiper;
   }
+
+  changesavebtn(){
+    this.checked = !this.checked;       
+  }
 }
+
+
+
+
+

@@ -23,10 +23,12 @@ export class RoomListService {
   centerLng: number;
   lat: number;
   lng: number;
-  minPrice: number;
-  maxPrice: number;
   startDate: string;
   endDate: string;
+  minPrice = 0;
+  maxPrice = 1000000;
+  checkInDate = this.reservationInfoService.reservationInfoObj.checkIn;
+  checkOutDate = this.reservationInfoService.reservationInfoObj.checkOut;
   roomListUpDated: EventEmitter<any> = new EventEmitter();
   markersUpDated: EventEmitter<any> = new EventEmitter();
   centerUpDated: EventEmitter<any> =  new EventEmitter();
@@ -41,18 +43,35 @@ export class RoomListService {
     this.maxPrice = 1000000;
   }
 
+  dateRefactoring(day: string) {
+    const splitDate = day.split('/');
+    const newDate = [];
+    for (const date of splitDate) {
+      if (date.length === 4) {
+        newDate.unshift(date);
+      } else {
+        newDate.push(date);
+      }
+    }
+    return newDate.join('-');
+  }
+
   getRoomList() {
+    const minPrice = this.minPrice;
+    const maxPrice = this.maxPrice;
+    const checkInDate = this.dateRefactoring(this.checkInDate);
+    const checkOutDate = this.dateRefactoring(this.checkOutDate);
+    const capacity = this.reservationInfoService.reservationInfoObj.personnel;
+
     if (!this.reservationInfoService.reservationInfoObj.destination) {
       this.reservationInfoService.reservationInfoObj.destination = 'seoul';
     }
-    console.log(this.centerLat);
-    return this.http
-      .get<any>(
-        `${this.appUrl}/rooms/?search=${
-          this.reservationInfoService.reservationInfoObj.destination
-        }&ordering=price&page_size=12&page=1&min_price=${this.minPrice}&max_price=${this.maxPrice}`
-      );
-  }
+
+    return this.http.get<RoomList>(
+      `${this.appUrl}/rooms/?search=${
+      this.reservationInfoService.reservationInfoObj.destination
+      }&ordering=price&page_size=12&page=1&min_price=${minPrice}&max_price=${maxPrice}&start_date=${checkInDate}&end_date=${checkOutDate}&capacity=${capacity}`)
+    }
 
   getMarkerLatLan(room) {
     const { image, id, title } = room;
@@ -78,19 +97,10 @@ export class RoomListService {
     console.log(this.markers);
   }
 
-  setPriceService(minValueTest, maxValueTest) {
-    return this.http.get<RoomList>(
-      `${this.appUrl}/rooms/?search=${
-        this.reservationInfoService.reservationInfoObj.destination
-      }&ordering=price&page_size=12&page=1&min_price=${minValueTest}&max_price=${maxValueTest}`
-    );
-  }
-
   roomChangeDetect() {
     this.roomListUpDated.emit(this.roomList);
     console.log(this.markers);
     this.markersUpDated.emit(this.markers);
-    
     this.roomList = [];
   }
 }

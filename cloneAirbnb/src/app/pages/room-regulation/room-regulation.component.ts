@@ -5,6 +5,7 @@ import { ReservationInfoService } from 'src/app/core/service/reservation-info.se
 import { LanguageService } from 'src/app/core/service/language.service';
 import { TranslateService } from '@ngx-translate/core';
 
+
 @Component({
   selector: 'app-room-regulation',
   templateUrl: './room-regulation.component.html',
@@ -16,7 +17,15 @@ export class RoomRegulationComponent implements OnInit {
   checkIn = this.reservationInfo.reservationInfoObj.checkIn;
   checkOut = this.reservationInfo.reservationInfoObj.checkOut;
 
-  week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+  week = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ];
   checkInArray = this.checkIn.split('/');
   checkOutArray = this.checkOut.split('/');
 
@@ -60,4 +69,7 @@ export class RoomRegulationComponent implements OnInit {
   get getCheckOutDay() {
     return this.week[new Date(this.checkDay(this.checkOut)).getDay()];
   }
+  
 }
+
+
