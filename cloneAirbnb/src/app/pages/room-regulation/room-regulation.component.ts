@@ -5,6 +5,7 @@ import { ReservationInfoService } from 'src/app/core/service/reservation-info.se
 import { LanguageService } from 'src/app/core/service/language.service';
 import { TranslateService } from '@ngx-translate/core';
 
+
 @Component({
   selector: 'app-room-regulation',
   templateUrl: './room-regulation.component.html',
@@ -68,4 +69,7 @@ export class RoomRegulationComponent implements OnInit {
   get getCheckOutDay() {
     return this.week[new Date(this.checkDay(this.checkOut)).getDay()];
   }
+  
 }
+
+
