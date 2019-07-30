@@ -12,8 +12,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { AuthModule } from '../auth/auth.module';
 
-import { BsDatepickerModule, BsDropdownModule } from 'ngx-bootstrap';
-import { ModalModule } from 'ngx-bootstrap/modal/';
+import { BsDatepickerModule, BsDropdownModule, RatingModule, ModalModule } from 'ngx-bootstrap';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -74,6 +73,7 @@ export function createTranslateLoader(http: HttpClient) {
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA3mYS53qBU6qHCKhyxke8JoYzrD5r2LJo'
     }),
+    RatingModule.forRoot(),
     FontAwesomeModule,
     TranslateModule.forRoot({
       loader: {
