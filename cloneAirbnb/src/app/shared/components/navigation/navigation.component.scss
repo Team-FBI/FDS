@@ -158,3 +158,18 @@ button:focus {
   background-color: #fff;
 }
 
+.language{
+  padding:0 20px 0 0;
+}
+.language button{
+  float: right;
+  padding:10px;
+  font-size:0.8rem;
+  border:0px;
+  background:transparent;
+}
+.language::after{
+  content: '';
+  clear: both;
+  display: block;
+}
