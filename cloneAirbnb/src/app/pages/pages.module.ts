@@ -34,6 +34,8 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 import { ScrollDirective } from './room-detail/scroll.directive';
 
+
+
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -56,7 +58,8 @@ export function createTranslateLoader(http: HttpClient) {
     RoomdetailpaymentComponent,
     RoomdetailInfoComponent,
     CheckPaymentComponent,
-    ScrollDirective
+    ScrollDirective,
+    
   ],
   imports: [
     CommonModule,
