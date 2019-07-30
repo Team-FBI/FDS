@@ -22,6 +22,9 @@ export interface Result {
   bedroom: number;
   capacity: number;
   bath_type: string;
-  state: string;
   address: string;
+  images: number;
+  reservations: number;
+  state: string;
+  label: string;
 }

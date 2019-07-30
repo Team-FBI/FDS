@@ -1,7 +1,7 @@
 export interface RoomDetail {
   id: number;
   title: string;
-  host: string;
+  host: string[];
   address: string;
   state: number;
   postal_code: string;
@@ -27,4 +27,12 @@ export interface RoomDetail {
   reservations: string[][];
   updated_at: string;
   created_at: string;
+  label: string;
+  accuracy_score: number;
+  location_score: number;
+  communication_score: number;
+  checkin_score: number;
+  clean_score: number;
+  value_score: number;
+  super_host: string;
 }

@@ -13,6 +13,7 @@ import { GoogleMapService } from './google-map.service';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { RoomListService } from 'src/app/core/service/room-list.service';
 import { ThrowStmt } from '@angular/compiler';
+import { RoomList, Result } from '../../core/interface/roomList.interface';
 
 @Component({
   selector: 'app-room-list',
@@ -94,27 +95,20 @@ export class RoomListComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.reservationInfoService.reservationInfoObj.destination) {
-      this.reservationInfoService.reservationInfoObj.destination = 'seoul';
-    }
+    this.getRoomInfo();
 
-    this.roomListService.roomListUpDated.subscribe(roomList => {
+    this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
     });
-    this.getRoomInfo();
   }
 
   getRoomInfo() {
-    this.roomListService.getRoomList().subscribe(res => {
+    this.roomListService.getRoomList().subscribe((res: RoomList) => {
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
       }
     });
   }
-
-  // getRoomDetailinfo(res) {
-  //   this.roomListService.getRoomDetailinfoService(res);
-  // }
 
   // setPrice() {
   //   const minValueTest = this.minValue;
@@ -183,38 +177,37 @@ export class RoomListComponent implements OnInit {
     this.previousIW = infoWindow;
   }
 
-  increase(n: number) {
-    // console.log(n)
-    if (n === 1) {
-      this.Adultcounter++;
-    } else if (n === 2) {
-      this.Childcounter++;
-    } else if (n === 3) {
-      this.Youngcounter++;
-    }
-    this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
+  increase(personnelType: HTMLSpanElement) {
+    this.reservationInfoService.reservationInfoObj[personnelType.id]++;
+
+    this.reservationInfoService.reservationInfoObj.personnel++;
   }
-  decrease(n: number) {
-    if (n == 1) {
-      if (this.Adultcounter === 0) {
-        return;
-      }
-      this.Adultcounter--;
-    } else if (n == 2) {
-      if (this.Childcounter === 0) {
-        return;
-      }
-      this.Childcounter--;
-    } else if (n == 3) {
-      if (this.Youngcounter === 0) {
-        return;
-      }
-      this.Youngcounter--;
+
+  decrease(personnelType: HTMLSpanElement) {
+    if (this.reservationInfoService.reservationInfoObj[personnelType.id] > 0) {
+      this.reservationInfoService.reservationInfoObj[personnelType.id]--;
+
+      this.reservationInfoService.reservationInfoObj.personnel--;
     }
-    this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
   }
 
   toggleRemoveText(binput) {
     console.log(binput);
+  }
+
+  get adults() {
+    return this.reservationInfoService.reservationInfoObj.adults;
+  }
+
+  get children() {
+    return this.reservationInfoService.reservationInfoObj.children;
+  }
+
+  get infants() {
+    return this.reservationInfoService.reservationInfoObj.infants;
+  }
+
+  get personnel() {
+    return this.reservationInfoService.reservationInfoObj.personnel;
   }
 }

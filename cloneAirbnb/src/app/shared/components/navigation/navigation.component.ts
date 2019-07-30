@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/core/service/auth.service';
 import { ReservationInfoService } from '../../../core/service/reservation-info.service';
 import { RoomListService } from 'src/app/core/service/room-list.service';
 import { Result } from 'src/app/core/interface/roomList.interface';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from 'src/app/core/service/language.service';
 
 @Component({
   selector: 'app-navigation',
@@ -18,12 +20,18 @@ export class NavigationComponent implements OnInit {
     private router: Router,
     public authService: AuthService,
     public reservationInfoService: ReservationInfoService,
-    private roomListService: RoomListService
-  ) {}
+    private roomListService: RoomListService,
+    private translate: TranslateService,
+    private languageService: LanguageService
+  ) {
+    this.translate = translate;
+  }
 
   ngOnInit() {
     this.isMain = this.router.url === '/home' ? true : false;
+    this.translate.setDefaultLang(`${this.languageService.currentLanguage()}`);
   }
+
   showRoomList(destination: string) {
     this.roomListService.roomList = [];
     this.reservationInfoService.reservationInfoObj.destination = destination;
@@ -39,5 +47,9 @@ export class NavigationComponent implements OnInit {
 
   signOutBtn() {
     this.authService.signOutUser();
+  }
+
+  switchLanguage(language: string) {
+    this.languageService.switchLanguageService(language);
   }
 }

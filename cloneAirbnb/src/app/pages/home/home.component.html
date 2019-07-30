@@ -3,25 +3,27 @@
   <div class="mainSearch">
     <form action="">
       <fieldset>
-        <legend>숙소 예약</legend>
-        <h2>특색 있는 숙소와 즐길 거리를 예약하세요.</h2>
+        <legend>Room Reservation</legend>
+        <h2>
+          {{ 'home.searchFormTitle' | translate }}
+        </h2>
         <div class="mainLine">
-          <label for="">목적지</label>
+          <label for="">{{ 'home.destinationLabel' | translate }}</label>
           <input
             type="text"
             name=""
             id=""
             value=""
-            placeholder="모든 위치"
+            placeholder="{{ 'home.destinationLabel' | translate }}"
             #destination
           />
         </div>
         <div class="mainDate">
           <div class="checkIn form-group">
-            <label for="">체크인</label>
+            <label for="">{{ 'home.checkInLabel' | translate }}</label>
             <input
               type="text"
-              placeholder="월/일/년"
+              placeholder="{{ 'home.checkInPlaceholder' | translate }}"
               class="form-control"
               bsDatepicker
               [bsConfig]="{ isAnimated: true }"
@@ -29,10 +31,10 @@
             />
           </div>
           <div class="checkOut form-group">
-            <label for="">체크아웃</label>
+            <label for="">{{ 'home.checkOutLabel' | translate }}</label>
             <input
               type="text"
-              placeholder="월/일/년"
+              placeholder="{{ 'home.checkOutPlaceholder' | translate }}"
               class="form-control"
               bsDatepicker
               [bsConfig]="{ isAnimated: true }"
@@ -42,7 +44,7 @@
         </div>
         <div class="btn-group" dropdown [insideClick]="true">
           <div>
-            <p class="personnelLabel">인원</p>
+            <p class="personnelLabel">{{ 'home.guestsLabel' | translate }}</p>
             <button
               id="button-basic"
               dropdownToggle
@@ -50,7 +52,13 @@
               class="btn dropdown-toggle"
               aria-controls="dropdown-basic"
             >
-              게스트 {{ personnel }} 명<span class="caret"></span>
+              <span class="caret" *ngIf="personnel === 1 || personnel === 0"
+                >{{ personnel }} {{ 'home.guestCountOne' | translate }}</span
+              >
+              <span class="caret" *ngIf="personnel > 1"
+                >{{ personnel }}
+                {{ 'home.guestCountOverOne' | translate }}</span
+              >
             </button>
           </div>
           <div
@@ -63,7 +71,7 @@
             <div role="menuitem">
               <div class="counterLine">
                 <div class="people">
-                  <p class="top">성인</p>
+                  <p class="top">{{ 'home.adults' | translate }}</p>
                 </div>
                 <div class="counterCheck">
                   <button
@@ -87,8 +95,8 @@
             <div role="menuitem">
               <div class="counterLine">
                 <div class="people">
-                  <p>어린이</p>
-                  <span>2~12세</span>
+                  <p>{{ 'home.children' | translate }}</p>
+                  <span>{{ 'home.childrenSpan' | translate }}</span>
                 </div>
                 <div class="counterCheck">
                   <button
@@ -114,8 +122,8 @@
             <div role="menuitem">
               <div class="counterLine">
                 <div class="people">
-                  <p>유아</p>
-                  <span>2세 미만</span>
+                  <p>{{ 'home.infants' | translate }}</p>
+                  <span>{{ 'home.infantsSpan' | translate }}</span>
                 </div>
                 <div class="counterCheck">
                   <button
@@ -146,7 +154,7 @@
           class="mainBtn"
           (click)="sendReservationInfo(destination, checkIn, checkOut)"
         >
-          검색
+          {{ 'home.searchBtn' | translate }}
         </button>
       </fieldset>
     </form>

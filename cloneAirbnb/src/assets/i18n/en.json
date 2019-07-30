@@ -1,0 +1,33 @@
+{
+  "navigation": {
+    "searchBarPlaceholder": "Try 'seoul'",
+    "favorites": "Favorites",
+    "myTrip": "My Trip",
+    "signUp": "Sign Up",
+    "signIn": "Sign In",
+    "profile": "Profile",
+    "account": "Account",
+    "signOut": "Sign Out"
+  },
+  "home": {
+    "searchFormTitle": "Book unique places to stay and things to do.",
+    "destinationLabel": "WHERE",
+    "destinationPlaceholder": "Anywhere",
+    "checkInLabel": "CHECK-IN",
+    "checkInPlaceholder": "mm/dd/yyyy",
+    "checkOutLabel": "CHECKOUT",
+    "checkOutPlaceholder": "mm/dd/yyyy",
+    "guestsLabel": "GUESTS",
+    "guestCountOne": "guest",
+    "guestCountOverOne": "guests",
+    "adults": "Adults",
+    "children": "Children",
+    "childrenSpan": "Ages 2~12",
+    "infants": "Infants",
+    "infantsSpan": "Under 2",
+    "searchBtn": "Search"
+  },
+  "hello": "welcome",
+  "btn_eng": "English",
+  "btn_kor": "Korean"
+}

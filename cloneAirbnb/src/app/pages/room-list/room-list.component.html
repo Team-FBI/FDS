@@ -33,50 +33,83 @@
         class="personnel-dropdown-menu dropdown-menu"
         role="menu"
       >
-        <div class="counterLine">
-          <div class="people">
-            <p class="top">성인</p>
-          </div>
-          <div class="counterCheck">
-            <button class="decrease" type="button" (click)="decrease(1)">
-              -
-            </button>
-            <span class="counter">{{ Adultcounter }}</span>
-            <button class="increase" (click)="increase(1)" type="button">
-              +
-            </button>
-          </div>
+      <div class="counterLine">
+        <div class="people">
+          <p class="top">성인</p>
         </div>
-        <div class="counterLine">
-          <div class="people">
-            <p>어린이</p>
-            <span>2~12세</span>
-          </div>
-          <div class="counterCheck">
-            <button class="decrease" type="button" (click)="decrease(2)">
-              -
-            </button>
-            <span class="counter">{{ Childcounter }}</span>
-            <button class="increase" type="button" (click)="increase(2)">
-              +
-            </button>
-          </div>
+        <div class="counterCheck">
+          <button
+            type="button"
+            class="decrease"
+            (click)="decrease(adult)"
+          >
+            -
+          </button>
+          <span class="counter" id="adults" #adult>{{ adults }}</span>
+          <button
+            type="button"
+            class="increase"
+            (click)="increase(adult)"
+          >
+            +
+          </button>
         </div>
-        <div class="counterLine">
-          <div class="people">
-            <p>유아</p>
-            <span>2세 미만</span>
-          </div>
-          <div class="counterCheck">
-            <button class="decrease" type="button" (click)="decrease(3)">
-              -
-            </button>
-            <span class="counter">{{ Youngcounter }}</span>
-            <button class="increase" type="button" (click)="increase(3)">
-              +
-            </button>
-          </div>
+      </div>
+
+    <div role="menuitem">
+      <div class="counterLine">
+        <div class="people">
+          <p>어린이</p>
+          <span>2~12세</span>
         </div>
+        <div class="counterCheck">
+          <button
+            type="button"
+            class="decrease"
+            (click)="decrease(child)"
+          >
+            -
+          </button>
+          <span class="counter" id="children" #child>{{
+            children
+          }}</span>
+          <button
+            type="button"
+            class="increase"
+            (click)="increase(child)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+    <div role="menuitem">
+      <div class="counterLine">
+        <div class="people">
+          <p>유아</p>
+          <span>2세 미만</span>
+        </div>
+        <div class="counterCheck">
+          <button
+            type="button"
+            class="decrease"
+            (click)="decrease(infant)"
+          >
+            -
+          </button>
+          <span class="counter" id="infants" #infant>{{
+            infants
+          }}</span>
+          <button
+            type="button"
+            class="increase"
+            (click)="increase(infant)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </div>
         <button
           class="personnelSaveBtn"
           type="button"
@@ -269,7 +302,7 @@
     <div class="notice">
       <p>
         여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수 있습니다.
-        관광세가 추가로 부과될 수 있습니다.
+        관광세가 추가로 부과될 수 있습니다. {{ 'hello' | translate }}
       </p>
     </div>
     <ul>
