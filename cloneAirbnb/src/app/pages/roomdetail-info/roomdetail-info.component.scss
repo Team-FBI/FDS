@@ -49,22 +49,17 @@
   left:100px;
   top:0px;
 }
+::ng-deep.theme-green{
+  top:-40px;
+}
 ::ng-deep.form-group{
   height : 300px;
+  
 
   .infodate{
     margin-left: 110%;
-    
-  }
-  .bottom ng-tns-c4-4 ng-star-inserted{
-    top:-50px;
   }
 }
-
-// ::bs-datepicker{
-//   top:-50px;
-// }
-
 
 
 
