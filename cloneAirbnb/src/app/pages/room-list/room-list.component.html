@@ -330,13 +330,14 @@
   <div class="map">
     <div class="mapWrap">
       <agm-map
-        [latitude]="latitude"
-        [longitude]="longitude"
+        [(latitude)]="latitude"
+        [(longitude)]="longitude"
         [zoom]="12"
         [zoomControl]="true"
         [zoomControlOptions]="zoomControlOptions"
         [scrollwheel]="false"
         (mapClick)="mapClick()"
+        (mapReady)="mapReady($event)"
       >
         <agm-marker
           *ngFor="let marker of markers"

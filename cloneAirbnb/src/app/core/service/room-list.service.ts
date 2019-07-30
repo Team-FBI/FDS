@@ -21,12 +21,15 @@ export class RoomListService {
   Glng: number;
   centerLat: number;
   centerLng: number;
+  lat: number;
+  lng: number;
   minPrice: number;
   maxPrice: number;
   startDate: string;
   endDate: string;
   roomListUpDated: EventEmitter<any> = new EventEmitter();
   markersUpDated: EventEmitter<any> = new EventEmitter();
+  centerUpDated: EventEmitter<any> =  new EventEmitter();
 
   constructor(
     private http: HttpClient,
@@ -34,17 +37,15 @@ export class RoomListService {
     private mapService: GoogleMapService,
     private ngzone: NgZone
   ) {
-    
     this.minPrice = 0;
     this.maxPrice = 1000000;
-
   }
 
   getRoomList() {
     if (!this.reservationInfoService.reservationInfoObj.destination) {
       this.reservationInfoService.reservationInfoObj.destination = 'seoul';
     }
-
+    console.log(this.centerLat);
     return this.http
       .get<any>(
         `${this.appUrl}/rooms/?search=${
@@ -70,7 +71,11 @@ export class RoomListService {
         };
         this.markers.push(makerInfo);
       });
+      this.centerLat = this.Glat;
+      this.centerLng = this.Glng;
+      this.centerUpDated.emit([this.centerLat, this.centerLng]);
     });
+    console.log(this.markers);
   }
 
   setPriceService(minValueTest, maxValueTest) {
@@ -83,7 +88,9 @@ export class RoomListService {
 
   roomChangeDetect() {
     this.roomListUpDated.emit(this.roomList);
+    console.log(this.markers);
     this.markersUpDated.emit(this.markers);
+    
     this.roomList = [];
   }
 }

@@ -4,6 +4,7 @@ import {
   ControlPosition,
   ZoomControlStyle
 } from '@agm/core/services/google-maps-types';
+import { GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
 import { environment } from 'src/environments/environment';
 import { Options } from 'ng5-slider';
@@ -28,8 +29,8 @@ export class RoomListComponent implements OnInit{
   // 지도관련 변수
   map: any;
   markers = this.roomListService.markers;
-  latitude = this.roomListService.centerLat;
-  longitude = this.roomListService.centerLng;
+  latitude: number;
+  longitude: number;
   selectedMarker;
   infowindowManager: InfoWindowManager;
   currentIW: AgmInfoWindow;
@@ -77,7 +78,8 @@ export class RoomListComponent implements OnInit{
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
     private reservationInfoService: ReservationInfoService,
-    private roomListService: RoomListService
+    private roomListService: RoomListService,
+    private gMaps: GoogleMapsAPIWrapper
   ) {
     this.currentIW = null;
     this.previousIW = null;
@@ -97,14 +99,24 @@ export class RoomListComponent implements OnInit{
 
   ngOnInit() {
     this.getRoomInfo();
-    // this.map.setCenter({lat: })
 
     this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
     });
     this.roomListService.markersUpDated.subscribe((marker: MakerInfo[]) => {
+      console.log(this.markers);
       this.markers = marker;
-    })
+      console.log(marker);
+      console.log(this.markers);
+      
+    });
+    this.roomListService.centerUpDated.subscribe((latlng) => {
+
+      console.log(1);
+      this.latitude = latlng[0];
+      this.longitude = latlng[1];
+      this.map.setCenter({ lat: this.latitude, lng: this.longitude });
+    });
   }
 
   getRoomInfo() {
@@ -120,6 +132,10 @@ export class RoomListComponent implements OnInit{
     this.roomListService.minPrice = this.minValue;
     this.roomListService.maxPrice = this.maxValue;
     this.getRoomInfo();
+  }
+
+  mapReady(map) {
+    this.map = map;
   }
 
   makeMarker(room) {

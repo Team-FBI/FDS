@@ -6,6 +6,7 @@ import { RoomListService } from 'src/app/core/service/room-list.service';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/service/language.service';
 import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
+import { GoogleMapsAPIWrapper } from '@agm/core';
 
 @Component({
   selector: 'app-navigation',
@@ -23,7 +24,6 @@ export class NavigationComponent implements OnInit {
     private roomListService: RoomListService,
     private translate: TranslateService,
     private languageService: LanguageService,
-    private mapService: GoogleMapService
   ) {
     this.translate = translate;
   }
