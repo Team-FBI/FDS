@@ -53,7 +53,7 @@ export class RoomListComponent implements OnInit {
   Youngcounter = 0;
   dateCustomClasses: DatepickerDateCustomClasses[];
   dateStyle = {
-    width: '52px'
+    width: '65px'
   };
 
   // price range 데이터
@@ -187,10 +187,18 @@ export class RoomListComponent implements OnInit {
   }
 
   decrease(personnelType: HTMLSpanElement) {
-    if (this.reservationInfoService.reservationInfoObj[personnelType.id] > 0) {
-      this.reservationInfoService.reservationInfoObj[personnelType.id]--;
+    if (
+      personnelType.id === 'adults' &&
+      this.reservationInfoService.reservationInfoObj[personnelType.id] === 1
+    ) {
+    } else {
+      if (
+        this.reservationInfoService.reservationInfoObj[personnelType.id] > 0
+      ) {
+        this.reservationInfoService.reservationInfoObj[personnelType.id]--;
 
-      this.reservationInfoService.reservationInfoObj.personnel--;
+        this.reservationInfoService.reservationInfoObj.personnel--;
+      }
     }
   }
 

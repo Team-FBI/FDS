@@ -28,10 +28,18 @@ export class HomeComponent implements OnInit {
   }
 
   decrease(personnelType: HTMLSpanElement) {
-    if (this.reservationInfoService.reservationInfoObj[personnelType.id] > 0) {
-      this.reservationInfoService.reservationInfoObj[personnelType.id]--;
+    if (
+      personnelType.id === 'adults' &&
+      this.reservationInfoService.reservationInfoObj[personnelType.id] === 1
+    ) {
+    } else {
+      if (
+        this.reservationInfoService.reservationInfoObj[personnelType.id] > 0
+      ) {
+        this.reservationInfoService.reservationInfoObj[personnelType.id]--;
 
-      this.reservationInfoService.reservationInfoObj.personnel--;
+        this.reservationInfoService.reservationInfoObj.personnel--;
+      }
     }
   }
 
