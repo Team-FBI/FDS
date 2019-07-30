@@ -5,11 +5,19 @@ import { ReservationInfo } from '../interface/reservationInfo.interface';
   providedIn: 'root'
 })
 export class ReservationInfoService {
+  date = new Date();
+
+  checkInDate = `${this.date.getMonth() +
+    1}/${this.date.getDate()}/${this.date.getFullYear()}`;
+
+  checkOutDate = `${this.date.getMonth() +
+    1}/${this.date.getDate()}/${this.date.getFullYear()}`;
+
   reservationInfoObj: ReservationInfo = {
     title: '숙소이름',
     destination: '제주',
-    checkIn: '07/26/2019',
-    checkOut: '07/28/2019',
+    checkIn: this.checkInDate,
+    checkOut: this.checkOutDate,
     personnel: 1,
     adults: 1,
     children: 0,
