@@ -35,7 +35,9 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   image_4:string;
   max: number = 10;
   rate: number = 7;
-  isReadonly: boolean = true;
+
+  checked: boolean = true;
+  
 
   @ViewChild('galleryTop', { static: true }) galleryTop;
   @ViewChild('galleryThumbs', { static: true }) galleryThumbs;
@@ -145,5 +147,13 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.galleryTop.nativeElement.swiper.controller.control = this.galleryThumbs.nativeElement.swiper;
     this.galleryThumbs.nativeElement.swiper.controller.control = this.galleryTop.nativeElement.swiper;
   }
+
+  changesavebtn(){
+    this.checked = !this.checked;       
+  }
 }
+
+
+
+
 
