@@ -4,7 +4,6 @@ import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ReservationInfoService } from 'src/app/core/service/reservation-info.service';
-import { ScrollTopService } from 'src/app/core/service/scroll-top.service';
 
 @Component({
   selector: 'app-roomdetail-info',
@@ -29,15 +28,12 @@ export class RoomdetailInfoComponent implements OnInit {
     private router: Router,
     private urlRemember: UrlRememberService,
     private http: HttpClient,
-    private reservationInfoService: ReservationInfoService,
-    private scrollTopService: ScrollTopService
+    private reservationInfoService: ReservationInfoService
   ) {}
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
     this.id = this.reservationInfoService.id;
-
-    this.scrollTopService.scrollTop();
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
       this.title = res.title;

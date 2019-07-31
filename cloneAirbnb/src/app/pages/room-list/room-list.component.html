@@ -234,52 +234,6 @@
       </ul>
     </div>
     <!-- price filterbutton -->
-
-    <div
-      class="instantreservation"
-      dropdown
-      #instantreservationDropdown="bs-dropdown"
-      [insideClick]="true"
-    >
-      <!-- instantreservation filterbutton -->
-      <button
-        class="instantreservation filterButton"
-        dropdownToggle
-        type="button"
-      >
-        즉시 예약
-      </button>
-      <ul
-        *dropdownMenu
-        class="instantreservation-dropdown-menu dropdown-menu"
-        role="menu"
-      >
-        <input class="instantreservation-checkbox" type="checkbox" #ibinput />
-        <p><strong>즉시 예약</strong></p>
-        <p class="personnel-content-second">
-          호스트 승인을 기다릴 필요 없이 예약할 수 <br />
-          있는 숙소
-        </p>
-        <button
-          class="personnelSaveBtn"
-          type="button"
-          (click)="
-            instantreservationDropdown.isOpen = !instantreservationDropdown.isOpen
-          "
-        >
-          저장
-        </button>
-      </ul>
-    </div>
-    <!-- instantreservation filterbutton -->
-
-    <button class="addfilter filterButton">필터 추가하기</button>
-  </div>
-
-  <div class="filterRight">
-    <span> {{ 'roomList.showMap' | translate }}</span>
-    <input type="checkbox" checked data-toggle="toggle" />
-    <button class="viewMap"></button>
   </div>
 </div>
 <!-- //filter -->
@@ -292,6 +246,7 @@
       </p>
     </div>
     <ul>
+      <p class="roomCount">{{roomCount}}개 이상의 숙소</p>
       <li class="detailList" *ngFor="let room of roomList" (click)="sendResvationId(room.id)">
         <div class="detailImg">
           <img class="img1" src="{{ room.image }}" />
@@ -351,11 +306,12 @@
           <agm-info-window [isOpen]="marker.disabled" #iw>
             <div class="infowindow">
               <div>
-                <img class="infoimg" src="{{ marker.url }}" />
+                <img class="infoimg" src="{{ marker.image }}" />
               </div>
               <div>
-                <p>{{ marker.content }} 집 전체·침대1개</p>
-                <p>제주도를 가로지르는 아름다운 1100로위 "jeju901"</p>
+                <p>{{ marker.room_type }} {{marker.beds}}</p>
+                <p>{{ marker.title }}</p>
+                <p>{{ marker.total_rating }}</p>
               </div>
             </div>
             `

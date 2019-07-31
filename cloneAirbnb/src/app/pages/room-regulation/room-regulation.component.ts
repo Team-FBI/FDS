@@ -79,6 +79,9 @@ export class RoomRegulationComponent implements OnInit {
     return this.week[new Date(this.checkDay(this.checkOut)).getDay()];
   }
   
+  toGuestInfo() {
+    this.router.navigate(['guestinfo']);
+  }
 }
 
 

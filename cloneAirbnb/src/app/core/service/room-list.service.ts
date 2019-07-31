@@ -27,11 +27,13 @@ export class RoomListService {
   endDate: string;
   minPrice = 0;
   maxPrice = 1000000;
+  roomCount: number;
   checkInDate = this.reservationInfoService.reservationInfoObj.checkIn;
   checkOutDate = this.reservationInfoService.reservationInfoObj.checkOut;
   roomListUpDated: EventEmitter<any> = new EventEmitter();
   markersUpDated: EventEmitter<any> = new EventEmitter();
-  centerUpDated: EventEmitter<any> = new EventEmitter();
+  centerUpDated: EventEmitter<any> =  new EventEmitter();
+  roomCountUpDated: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private http: HttpClient,
@@ -75,7 +77,7 @@ export class RoomListService {
   }
 
   getMarkerLatLan(room) {
-    const { image, id, title } = room;
+    const { image, image_1, image_2, image_3, image_4, room_type, beds, total_rating, id, title } = room;
     this.mapService.getLatLan(room.address).subscribe(result => {
       this.ngzone.run(() => {
         this.Glat = result.lat();
@@ -85,8 +87,15 @@ export class RoomListService {
           lat: this.Glat,
           lng: this.Glng,
           alpha: 1,
-          content: title,
-          url: image,
+          title,
+          image,
+          image_1,
+          image_2,
+          image_3,
+          image_4,
+          room_type,
+          beds,
+          total_rating,
           disabled: false
         };
         this.markers.push(makerInfo);
@@ -100,6 +109,7 @@ export class RoomListService {
   roomChangeDetect() {
     this.roomListUpDated.emit(this.roomList);
     this.markersUpDated.emit(this.markers);
+    this.roomCountUpDated.emit(this.roomCount);
     this.roomList = [];
   }
 }

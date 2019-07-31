@@ -107,7 +107,7 @@ button:focus {
 .filter {
   width: 100%;
   height: 48px;
-  padding: 0 72px;
+  padding: 0 12px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ddd;
@@ -138,29 +138,47 @@ button:focus {
 
 .filterRight{
   position: absolute;
-  right: 100px;
+  right: 30px;
 }
+
+.filterRight button{
+  display: inherit;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  border-radius: 32px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(0, 132, 137);
+}
+
 .filterRight span{
   padding-right:8px;
 }
 
 .list{
   float: left;
-  width:60%;
+  width: 50%;
   padding:25px;
-  border:2px solid red
 }
 
 .map{
   float: left;
-  width: 40%;
+  width: 50%;
 }
 .mapWrap{
   width: 100%;
   height: 100%;
 }
+
+.roomCount {
+  font-weight: 800;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
 .notice {
-  margin-bottom:50px;
+  margin-bottom:35px;
   padding-bottom:30px;
   border-bottom: 1px solid #ddd;
   p{
@@ -173,7 +191,13 @@ button:focus {
   padding:5px;
   border:1px solid #ddd;
   border-radius: 5px;
+  cursor: pointer;
 }
+
+.detailList:hover{
+  box-shadow: 1px 1px 10px gray;
+}
+
 .detailList::after{
   clear: both;
   content: "";
