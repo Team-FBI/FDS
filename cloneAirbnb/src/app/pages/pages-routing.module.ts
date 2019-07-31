@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'yourTrip', component: YourTripComponent, canActivate: [AuthGuard] },
   { path: 'roomList', component: RoomListComponent },
   {
-    path: 'roomdetail',
+    path: 'roomdetail/:id',
     component: RoomDetailComponent
   },
   {
