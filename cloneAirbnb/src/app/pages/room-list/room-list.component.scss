@@ -1,59 +1,60 @@
-
-
-.header {
+.positionTop {
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 80px;
-  background: transparent;
-  border-bottom: 1px solid #ddd;
-  // position: fixed;
-
-  .logo {
-    width: 50px;
-    float: left;
-    margin: 20px 15px 0 20px;
-    font-size: 0;
-  }
-
-  a {
-    margin-right: 10px;
-  }
-
-  ::after {
-    display: block;
-    content: '';
-    clear: both;
-  }
+  background: #fff;
 }
 
-.headerNav {
-  float: right;
-  font-weight: bold;
+.filter {
+  width: 100%;
+  height: 48px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+.filterButton {
+  margin: 0px 4px 0px 8px;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgb(72, 72, 72);
+  padding-top: 6px;
+  padding-bottom: 6px;
+  cursor: pointer;
+  display: inline-block;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: relative;
+  background: none;
+  text-align: center;
+  width: auto;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(220, 224, 224);
+  border-image: initial;
+  border-radius: 4px;
+  text-decoration: none;
+}
 
-  button {
-    padding: 10px 20px;
-    background: transparent;
-    border: 0px;
-    font-weight: bold;
-  }
+.filterRight {
+  position: absolute;
+  right: 30px;
+}
 
-  
+.filterRight button {
+  display: inherit;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  border-radius: 32px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(0, 132, 137);
+}
 
-  ul {
-    li {
-      float: left;
-      height: 78px;
-      line-height: 78px;
-
-      a {
-        display: inline-block;
-        padding: 0px 20px;
-      }
-    }
-
-    li:hover {
-      border-bottom: 2px solid #bbb;
-    }
-  }
+.filterRight span {
+  padding-right: 8px;
 }
 
 ::ng-deep.bs-datepicker {
@@ -62,7 +63,6 @@
   height: 350px;
   position: relative;
 }
-
 
 .custom-content {
   position: absolute;
@@ -75,7 +75,13 @@
 button:focus {
   outline: none;
 }
-.date, .personnel, .businesstrip, .roomtype, .price, .instantreservation, .addfilter{
+.date,
+.personnel,
+.businesstrip,
+.roomtype,
+.price,
+.instantreservation,
+.addfilter {
   display: inline;
 }
 
@@ -99,75 +105,35 @@ button:focus {
   font-size: 17px;
 }
 
+.roomListWrap {
+  margin-top: 128px;
+}
+
 .fa-search {
   font-size: 17px;
   margin-right: 10px;
 }
 
-.filter {
-  width: 100%;
-  height: 48px;
-  padding: 0 12px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  position: relative;
-}
-.filterButton {
-    margin: 0px 4px 0px 8px;
-    font-size: 14px;
-    line-height: 18px;
-    color: rgb(72, 72, 72) ;
-    padding-top: 6px ;
-    padding-bottom: 6px;
-    cursor: pointer;
-    display: inline-block;
-    padding-left: 12px;
-    padding-right: 12px;
-    position: relative;
-    background: none;
-    text-align: center;
-    width: auto;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(220, 224, 224);
-    border-image: initial;
-    border-radius: 4px;
-    text-decoration: none;
-}
-
-.filterRight{
-  position: absolute;
-  right: 30px;
-}
-
-.filterRight button{
-  display: inherit;
-  transition-property: opacity;
-  transition-duration: 250ms;
-  transition-timing-function: ease-in-out;
-  border-radius: 32px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(0, 132, 137);
-}
-
-.filterRight span{
-  padding-right:8px;
-}
-
-.list{
+.list {
   float: left;
   width: 50%;
-  padding:25px;
+  padding: 25px;
 }
 
-.map{
+.map {
   float: left;
+  position: fixed;
+  top: 128px;
+  left: 50%;
   width: 50%;
+  height: calc(100vh - 128px);
 }
-.mapWrap{
+.mapWrap {
   width: 100%;
+  height: 100%;
+}
+
+.mapSize {
   height: 100%;
 }
 
@@ -178,44 +144,45 @@ button:focus {
 }
 
 .notice {
-  margin-bottom:35px;
-  padding-bottom:30px;
+  margin-bottom: 35px;
+  padding-bottom: 30px;
   border-bottom: 1px solid #ddd;
-  p{
-    font-size:14px;
+  p {
+    font-size: 14px;
   }
 }
 
-.detailList{
+.detailList {
   margin-bottom: 20px;
-  padding:5px;
-  border:1px solid #ddd;
+  padding: 5px;
+  border: 1px solid #ddd;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.detailList:hover{
+.detailList:hover {
   box-shadow: 1px 1px 10px gray;
 }
 
-.detailList::after{
+.detailList::after {
   clear: both;
-  content: "";
+  content: '';
   display: block;
 }
 
-.detailImg{
+.detailImg {
   float: left;
   width: 35%;
   border-radius: 5px;
 }
-.detailText{
+.detailText {
   float: left;
   width: 65%;
-  padding:10px;
+  padding: 10px;
 }
 
-.img1, .img2{
+.img1,
+.img2 {
   width: 100%;
   border-radius: 5px;
 }
@@ -224,83 +191,82 @@ agm-map {
   height: 500px;
 }
 
-.infowindow{
+.infowindow {
   width: 250px;
   height: 300px;
   padding: 0;
 }
 
-.infoimg{
+.infoimg {
   width: 100%;
   height: 50%;
-
 }
 
-.counterWrap{
-  padding:30px 20px 60px;
-  border:1px solid black;
-  }
-  .counterLine{
+.counterWrap {
+  padding: 30px 20px 60px;
+  border: 1px solid black;
+}
+.counterLine {
   position: relative;
-  height:40px;
-  margin-bottom:20px;
+  height: 40px;
+  margin-bottom: 20px;
 }
-.people{
-  p{
+.people {
+  p {
     display: inline;
-    font-size:18px;
+    font-size: 18px;
     font-weight: 600;
-    margin:0;
+    margin: 0;
   }
-  span{
+  span {
     display: block;
-    margin-top:8px;
-    font-size:12px;
+    margin-top: 8px;
+    font-size: 12px;
   }
 }
-.counterCheck{
+.counterCheck {
   position: absolute;
-  top:0;
-  right:0;
-  
-  button{
-    width:40px;
-    height:40px;
-    padding:5px;
-    margin:0;
-    border:1px solid #008489;
+  top: 0;
+  right: 0;
+
+  button {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    margin: 0;
+    border: 1px solid #008489;
     border-radius: 50%;
     background: #fff;
   }
-  .counter{
-    padding:0px 20px;
+  .counter {
+    padding: 0px 20px;
   }
 }
-.personnelSaveBtn{
+.personnelSaveBtn {
   float: right;
-  margin-top:10px;
-  border:0;
+  margin-top: 10px;
+  border: 0;
   color: #008489;
   background: #fff;
 }
 
-.personnelremoveBtn{
+.personnelremoveBtn {
   float: left;
-  margin-top:10px;
-  border:0;
+  margin-top: 10px;
+  border: 0;
   color: black;
   background: #fff;
 }
 
-.dateAdjust{
+.dateAdjust {
   float: right;
-  margin-top:10px;
-  border:0;
+  margin-top: 10px;
+  border: 0;
   color: #008489;
   background: #fff;
 }
 
-::ng-deep.personnel-dropdown-menu{
+::ng-deep.personnel-dropdown-menu {
   margin-left: 143px;
   width: 400px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
@@ -309,7 +275,7 @@ agm-map {
   padding: 24px !important;
   line-height: 150%;
 }
-::ng-deep.businesstrip-dropdown-menu{
+::ng-deep.businesstrip-dropdown-menu {
   margin-left: 207px;
   width: 400px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
@@ -318,7 +284,7 @@ agm-map {
   padding: 24px !important;
   line-height: 150%;
 }
-::ng-deep.roomtype-dropdown-menu{
+::ng-deep.roomtype-dropdown-menu {
   margin-left: 207px;
   width: 400px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
@@ -327,7 +293,7 @@ agm-map {
   padding: 24px !important;
   line-height: 150%;
 }
-::ng-deep.price-dropdown-menu{
+::ng-deep.price-dropdown-menu {
   margin-left: 360px;
   width: 400px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
@@ -336,7 +302,7 @@ agm-map {
   padding: 24px !important;
   line-height: 150%;
 }
-::ng-deep.instantreservation-dropdown-menu{
+::ng-deep.instantreservation-dropdown-menu {
   margin-left: 424px;
   width: 400px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
@@ -345,24 +311,25 @@ agm-map {
   padding: 24px !important;
   line-height: 150%;
 }
-.roomtype-checkbox{
+.roomtype-checkbox {
   float: left;
   margin-right: 10px;
   margin-top: 5px;
 }
-.roomtype-text{
+.roomtype-text {
   margin-left: 20px;
   margin-top: 10px;
 }
 
-.personnel-content-second{
+.personnel-content-second {
   margin-bottom: 30px;
 }
 
-.businesstrip-checkbox, .instantreservation-checkbox{
+.businesstrip-checkbox,
+.instantreservation-checkbox {
   float: right;
-  margin-top:10px;
-  border:0;
+  margin-top: 10px;
+  border: 0;
   color: #008489;
   background: #fff;
 }
