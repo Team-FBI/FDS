@@ -183,3 +183,7 @@
 //   height: 0;
 //   background-color: rgba(255, 255, 255, 1);
 // }
+::ng-deep.bs-datepicker {
+  margin-left: 0px !important;
+  height: auto !important;
+}
