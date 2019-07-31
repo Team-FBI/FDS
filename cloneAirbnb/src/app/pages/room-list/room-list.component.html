@@ -246,8 +246,17 @@
       </p>
     </div>
     <ul>
-      <p class="roomCount">{{roomCount}}개 이상의 숙소</p>
-      <li class="detailList" *ngFor="let room of roomList" (click)="sendResvationId(room.id)">
+      <p class="roomCount" *ngIf="roomCount === 1">
+        {{ roomCount }} {{ 'roomList.placeToStay' | translate }}
+      </p>
+      <p class="roomCount" *ngIf="roomCount > 1">
+        {{ roomCount }} {{ 'roomList.placesToStay' | translate }}
+      </p>
+      <li
+        class="detailList"
+        *ngFor="let room of roomList"
+        (click)="sendResvationId(room.id)"
+      >
         <div class="detailImg">
           <img class="img1" src="{{ room.image }}" />
         </div>
@@ -262,21 +271,22 @@
             ><span *ngIf="room.capacity > 1">{{
               'roomList.guests' | translate
             }}</span>
-            · {{ room.bed_type }} · {{ room.bedroom }} <span *ngIf="room.bedroom === 1">{{
+            · {{ room.bed_type }} · {{ room.bedroom }}
+            <span *ngIf="room.bedroom === 1">{{
               'roomList.bedroom' | translate
             }}</span
             ><span *ngIf="room.bedroom > 1">{{
               'roomList.bedrooms' | translate
-            }}</span> · {{
-              room.bathroom
-            }} <span *ngIf="room.bathroom === 1">{{
+            }}</span>
+            · {{ room.bathroom }}
+            <span *ngIf="room.bathroom === 1">{{
               'roomList.bathroom' | translate
             }}</span
             ><span *ngIf="room.bathroom > 1">{{
               'roomList.bathrooms' | translate
             }}</span>
-            <span>{{room.facilities}}</span>
-            <span>{{room.total_rating}}</span>
+            <span>{{ room.facilities }}</span>
+            <span>{{ room.total_rating }}</span>
           </p>
         </div>
       </li>
@@ -309,7 +319,7 @@
                 <img class="infoimg" src="{{ marker.image }}" />
               </div>
               <div>
-                <p>{{ marker.room_type }} {{marker.beds}}</p>
+                <p>{{ marker.room_type }} {{ marker.beds }}</p>
                 <p>{{ marker.title }}</p>
                 <p>{{ marker.total_rating }}</p>
               </div>
