@@ -16,6 +16,7 @@ import { GoogleMapsAPIWrapper } from '@agm/core';
 export class NavigationComponent implements OnInit {
   isMain: boolean;
   myPage = false;
+  switchLang = true;
 
   constructor(
     private router: Router,
@@ -52,7 +53,9 @@ export class NavigationComponent implements OnInit {
     this.authService.signOutUser();
   }
 
-  switchLanguage(language: string) {
+  switchLanguage() {
+    const language = this.switchLang ? 'ko' : 'en';
     this.languageService.switchLanguageService(language);
+    this.switchLang = !this.switchLang;
   }
 }
