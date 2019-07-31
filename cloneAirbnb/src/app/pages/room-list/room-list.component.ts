@@ -75,7 +75,13 @@ export class RoomListComponent implements OnInit {
   roomimage: string;
   address: string;
 
+  // 전체 방 개수
   roomCount = this.roomListService.roomCount;
+  
+  // 별점
+  max = 5;
+  rate: number;
+  isReadonly = true;
 
   constructor(
     private mapsService: GoogleMapService,
@@ -124,6 +130,7 @@ export class RoomListComponent implements OnInit {
   getRoomInfo() {
     this.roomListService.getRoomList().subscribe((res: RoomList) => {
       this.roomCount = res.count;
+      console.log(res.results);
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
         this.makeMarker(room);
@@ -185,7 +192,7 @@ export class RoomListComponent implements OnInit {
   }
 
   mapClick() {
-    if (this.previousIW) {
+    if (this.previousIW != null) {
       this.previousIW.close();
     }
   }
