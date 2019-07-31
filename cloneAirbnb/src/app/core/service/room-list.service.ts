@@ -77,7 +77,7 @@ export class RoomListService {
   }
 
   getMarkerLatLan(room) {
-    const { image, id, title } = room;
+    const { image, image_1, image_2, image_3, image_4, room_type, beds, total_rating, id, title } = room;
     this.mapService.getLatLan(room.address).subscribe(result => {
       this.ngzone.run(() => {
         this.Glat = result.lat();
@@ -87,8 +87,15 @@ export class RoomListService {
           lat: this.Glat,
           lng: this.Glng,
           alpha: 1,
-          content: title,
-          url: image,
+          title,
+          image,
+          image_1,
+          image_2,
+          image_3,
+          image_4,
+          room_type,
+          beds,
+          total_rating,
           disabled: false
         };
         this.markers.push(makerInfo);
