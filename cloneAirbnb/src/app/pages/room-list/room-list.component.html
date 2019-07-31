@@ -253,8 +253,8 @@
         </div>
         <div class="detailText">
           <p>{{ room.room_type }} {{ room.space }}</p>
-          <p>{{ room.title }}</p>
-          <p>
+          <p class="test">{{ room.title }}</p>
+          <div class="test">
             {{ room.capacity }}
             <span *ngIf="room.capacity === 1">{{
               'roomList.guest' | translate
@@ -287,7 +287,7 @@
             <span>
               <rating [(ngModel)]="room.total_rating" [max]="max" [readonly]="isReadonly"></rating>
             </span>
-          </p>
+          </div>
         </div>
       </li>
     </ul>

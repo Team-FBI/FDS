@@ -206,13 +206,19 @@ button:focus {
 
 .detailImg{
   float: left;
-  width: 35%;
+  width: 40%;
   border-radius: 5px;
 }
 .detailText{
   float: left;
-  width: 65%;
-  padding:10px;
+  width: 60%;
+  padding:10px 20px;
+  .test{
+    border:2px solid red
+  }
+  span{
+    font-weight: 300;
+  }
 }
 
 .img1, .img2{
