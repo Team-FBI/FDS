@@ -228,9 +228,7 @@ export class RoomListComponent implements OnInit {
     }
   }
 
-  toggleRemoveText(binput) {
-    console.log(binput);
-  }
+  toggleRemoveText(binput) {}
 
   get adults() {
     return this.reservationInfoService.reservationInfoObj.adults;
