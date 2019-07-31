@@ -1,3 +1,21 @@
+<div class="roomHeader">
+  <h1 class="logo">
+      <a routerLink="/home"
+      ><img
+        *ngIf="!isMain"
+        src="https://i.postimg.cc/zDhvQrxH/logo.png"
+        alt="Airbnb"
+        class="mainLogo"
+      />
+      </a>
+  </h1>
+  <div class="language">
+    <button (click)="switchLanguage()">
+      {{ switchLang ? 'KOR' : 'ENG' }}
+    </button>
+  </div>
+</div>
+
 <section class="checkpaymentContainer">
   <section class="checkpayment">
     <h2>확인 및 결제</h2>

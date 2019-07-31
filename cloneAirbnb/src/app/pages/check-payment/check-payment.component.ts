@@ -18,6 +18,7 @@ export class CheckPaymentComponent implements OnInit {
   faCcVisa = faCcVisa;
   faCcAmex = faCcAmex;
   toggleCard = false;
+  switchLang = true;
 
   constructor(
     private translate: TranslateService,
@@ -39,5 +40,11 @@ export class CheckPaymentComponent implements OnInit {
 
   toYourTrip() {
     this.router.navigate(['yourTrip']);
+  }
+
+  switchLanguage() {
+    const language = this.switchLang ? 'ko' : 'en';
+    this.languageService.switchLanguageService(language);
+    this.switchLang = !this.switchLang;
   }
 }
