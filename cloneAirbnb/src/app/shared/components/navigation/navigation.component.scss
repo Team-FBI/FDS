@@ -51,14 +51,14 @@
         padding: 0px 20px;
       }
 
-    .borderColor555:hover {
-      border-bottom: 2px solid #555;
-    }
-    .borderColorWhite:hover {
-      border-bottom: 2px solid #fff;
+      .borderColor555:hover {
+        border-bottom: 2px solid #555;
+      }
+      .borderColorWhite:hover {
+        border-bottom: 2px solid #fff;
+      }
     }
   }
-}
 }
 
 button:focus {
@@ -133,7 +133,6 @@ button:focus {
   }
 }
 
-
 .btn-group:focus {
   outline: none;
 }
@@ -158,17 +157,18 @@ button:focus {
   background-color: #fff;
 }
 
-.language{
-  padding:0 20px 0 0;
+.language {
+  height: 78px;
+  padding: 22px 20px 0 0;
 }
-.language button{
+.language button {
+  width: 45px;
   float: right;
-  padding:10px;
-  font-size:0.8rem;
-  border:0px;
-  background:transparent;
+  padding: 10px;
+  font-size: 0.8rem;
+  background: transparent;
 }
-.language::after{
+.language::after {
   content: '';
   clear: both;
   display: block;

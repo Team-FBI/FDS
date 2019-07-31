@@ -1,11 +1,3 @@
-<div class="language">
-  <button (click)="switchLanguage('ko')" [style.color]="isMain ? '#fff' : '#000'">
-    {{ 'btn_kor' | translate }}
-  </button>
-  <button (click)="switchLanguage('en')" [style.color]="isMain ? '#fff' : '#000'">
-    {{ 'btn_eng' | translate }}
-  </button>
-</div>
 <header class="header clear-fix" [class.isMain]="isMain">
   <div class="header-fixed">
     <h1 class="logo">
@@ -74,6 +66,17 @@
             'navigation.signIn' | translate
           }}</a>
         </li>
+        <li>
+          <div class="language">
+            <button
+              (click)="switchLanguage()"
+              [style.color]="isMain ? '#fff' : '#000'"
+              [style.border]="isMain ? '1px solid #fff' : '1px solid #000'"
+            >
+              {{ switchLang ? 'Kor' : 'Eng' }}
+            </button>
+          </div>
+        </li>
         <!-- <li class="myPageBtn" (click)="myPage= !myPage">
           <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt="">
         </li> -->
@@ -118,14 +121,6 @@
             </ul>
           </div>
         </li>
-        <!-- <li class="test">
-          <button (click)="switchLanguage('en')">
-            {{ 'btn_eng' | translate }}
-          </button>
-          <button (click)="switchLanguage('ko')">
-            {{ 'btn_kor' | translate }}
-          </button>
-        </li> -->
       </ul>
     </nav>
   </div>
