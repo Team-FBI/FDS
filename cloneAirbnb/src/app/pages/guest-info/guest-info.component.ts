@@ -23,4 +23,8 @@ export class GuestInfoComponent implements OnInit {
     this.urlRemember.currentUrl = this.router.url;
     this.translate.setDefaultLang(`${this.languageService.currentLanguage()}`);
   }
+
+  toCheckPayment() {
+    this.router.navigate(['checkpayment']);
+  }
 }
