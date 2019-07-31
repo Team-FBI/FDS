@@ -15,6 +15,7 @@ import { ReservationInfoService } from '../../core/service/reservation-info.serv
 import { RoomListService } from 'src/app/core/service/room-list.service';
 import { MakerInfo } from '../../core/interface/maker-info.interface';
 import { RoomList, Result } from '../../core/interface/roomList.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-room-list',
@@ -79,7 +80,7 @@ export class RoomListComponent implements OnInit{
     private ngzone: NgZone,
     private reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService,
-    private gMaps: GoogleMapsAPIWrapper
+    private router: Router,
   ) {
     this.currentIW = null;
     this.previousIW = null;
@@ -171,6 +172,11 @@ export class RoomListComponent implements OnInit{
     this.roomListService.maxPrice = maxValue;
 
     this.setRoomList();
+  }
+
+  sendResvationId(id){
+    this.reservationInfoService.id = id;
+    this.router.navigate(['roomdetail']);
   }
 
   max(coordType: 'lat' | 'lng'): number {

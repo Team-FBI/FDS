@@ -292,7 +292,7 @@
       </p>
     </div>
     <ul>
-      <li class="detailList" *ngFor="let room of roomList">
+      <li class="detailList" *ngFor="let room of roomList" (click)="sendResvationId(room.id)">
         <div class="detailImg">
           <img class="img1" src="{{ room.image }}" />
         </div>
@@ -320,8 +320,8 @@
             ><span *ngIf="room.bathroom > 1">{{
               'roomList.bathrooms' | translate
             }}</span>
-            <p>{{room.facilities}}</p>
-            <p>{{room.total_rating}}</p>
+            <span>{{room.facilities}}</span>
+            <span>{{room.total_rating}}</span>
           </p>
         </div>
       </li>
