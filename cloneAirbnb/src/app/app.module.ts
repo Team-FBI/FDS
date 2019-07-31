@@ -12,6 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { AuthInterceptorService } from './core/service/auth-interceptor.service';
+import { GoogleMapsAPIWrapper } from '@agm/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +31,8 @@ import { AuthInterceptorService } from './core/service/auth-interceptor.service'
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-    }
+    },
+    GoogleMapsAPIWrapper
   ],
   bootstrap: [AppComponent]
 })

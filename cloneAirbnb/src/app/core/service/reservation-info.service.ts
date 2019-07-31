@@ -28,4 +28,5 @@ export class ReservationInfoService {
     price: 0,
     roomType: ''
   };
+  id: number;
 }
