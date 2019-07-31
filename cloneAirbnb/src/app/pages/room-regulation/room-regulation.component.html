@@ -10,11 +10,7 @@
       </a>
   </h1>
   <div class="language">
-    <button
-      (click)="switchLanguage()"
-      [style.color]="isMain ? '#fff' : '#000'"
-      [style.border]="isMain ? '1px solid #fff' : '1px solid #000'"
-    >
+    <button (click)="switchLanguage()">
       {{ switchLang ? 'KOR' : 'ENG' }}
     </button>
   </div>
