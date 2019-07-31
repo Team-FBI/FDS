@@ -12,9 +12,8 @@
           bsDaterangepicker
           [ngStyle]="dateStyle"
           (bsValueChange)="onValueChange($event)"
-          (bsValueChange)="changeStyle()"
           [dateCustomClasses]="dateCustomClasses"
-          placeholder="{{ 'roomList.datePlaceholder' | translate }}"
+          placeholder="{{ initialCheckInDate }}"
         />
         <!-- date filterbutton -->
       </div>

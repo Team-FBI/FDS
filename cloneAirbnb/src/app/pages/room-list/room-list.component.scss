@@ -37,6 +37,10 @@
   text-decoration: none;
 }
 
+.filterButton::placeholder {
+  color: #484848;
+}
+
 .filterRight {
   position: absolute;
   right: 30px;
