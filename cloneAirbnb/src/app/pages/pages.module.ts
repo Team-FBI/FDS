@@ -86,6 +86,9 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
+  exports: [
+    RoomListComponent
+  ],
   providers: [
     {
       provide: SWIPER_CONFIG,

@@ -292,7 +292,7 @@
       </p>
     </div>
     <ul>
-      <li class="detailList" *ngFor="let room of roomList">
+      <li class="detailList" *ngFor="let room of roomList" (click)="sendResvationId(room.id)">
         <div class="detailImg">
           <img class="img1" src="{{ room.image }}" />
         </div>
@@ -320,6 +320,8 @@
             ><span *ngIf="room.bathroom > 1">{{
               'roomList.bathrooms' | translate
             }}</span>
+            <span>{{room.facilities}}</span>
+            <span>{{room.total_rating}}</span>
           </p>
         </div>
       </li>
@@ -329,13 +331,14 @@
   <div class="map">
     <div class="mapWrap">
       <agm-map
-        [latitude]="latitude"
-        [longitude]="longitude"
+        [(latitude)]="latitude"
+        [(longitude)]="longitude"
         [zoom]="12"
         [zoomControl]="true"
         [zoomControlOptions]="zoomControlOptions"
         [scrollwheel]="false"
         (mapClick)="mapClick()"
+        (mapReady)="mapReady($event)"
       >
         <agm-marker
           *ngFor="let marker of markers"

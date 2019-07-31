@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ReservationInfoService } from '../../core/service/reservation-info.service';
 
 @Component({
   selector: 'app-room-detail',
@@ -35,8 +36,10 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   image_4:string;
   max: number = 10;
   rate: number = 7;
+  id: number;
 
   checked: boolean = true;
+
   
 
   @ViewChild('galleryTop', { static: true }) galleryTop;
@@ -68,7 +71,8 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     private modalService: BsModalService,
     private http: HttpClient,
     private router: Router,
-    private urlRemember: UrlRememberService
+    private urlRemember: UrlRememberService,
+    private reservationInfoService: ReservationInfoService
     ) 
     {
     this.minDate = new Date();
@@ -87,11 +91,11 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
-
+    this.id = this.reservationInfoService.id;
     // this.http.get(`${this.appUrl}/rooms/`)
     //   .subscribe(res => console.log(res))
 
-    this.http.get(`${this.appUrl}/rooms/5/`)
+    this.http.get(`${this.appUrl}/rooms/${this.id}/`)
       .subscribe( (res: any) => { 
         console.log(res)
         this.price = res.price;
@@ -151,6 +155,11 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   changesavebtn(){
     this.checked = !this.checked;       
   }
+  
+  toGuestInfo() {
+    this.router.navigate(['roomregulation']);
+  }
+
 }
 
 

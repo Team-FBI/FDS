@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { ReservationInfoService } from '../../../core/service/reservation-info.service';
 import { RoomListService } from 'src/app/core/service/room-list.service';
-import { Result } from 'src/app/core/interface/roomList.interface';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/service/language.service';
+import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
+import { GoogleMapsAPIWrapper } from '@agm/core';
 
 @Component({
   selector: 'app-navigation',
@@ -15,6 +16,7 @@ import { LanguageService } from 'src/app/core/service/language.service';
 export class NavigationComponent implements OnInit {
   isMain: boolean;
   myPage = false;
+  switchLang = true;
 
   constructor(
     private router: Router,
@@ -22,7 +24,7 @@ export class NavigationComponent implements OnInit {
     public reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
   ) {
     this.translate = translate;
   }
@@ -34,10 +36,12 @@ export class NavigationComponent implements OnInit {
 
   showRoomList(destination: string) {
     this.roomListService.roomList = [];
+    this.roomListService.markers = [];
     this.reservationInfoService.reservationInfoObj.destination = destination;
     this.roomListService.getRoomList().subscribe(res => {
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
+        this.roomListService.getMarkerLatLan(room);
       }
       this.roomListService.roomChangeDetect();
     });
@@ -49,7 +53,9 @@ export class NavigationComponent implements OnInit {
     this.authService.signOutUser();
   }
 
-  switchLanguage(language: string) {
+  switchLanguage() {
+    const language = this.switchLang ? 'ko' : 'en';
     this.languageService.switchLanguageService(language);
+    this.switchLang = !this.switchLang;
   }
 }
