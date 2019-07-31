@@ -176,7 +176,7 @@ export class RoomListComponent implements OnInit{
 
   sendResvationId(id){
     this.reservationInfoService.id = id;
-    this.router.navigate(['roomdetail']);
+    this.router.navigate([`roomdetail/${id}`]);
   }
 
   max(coordType: 'lat' | 'lng'): number {
