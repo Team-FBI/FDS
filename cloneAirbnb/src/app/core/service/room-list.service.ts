@@ -27,11 +27,13 @@ export class RoomListService {
   endDate: string;
   minPrice = 0;
   maxPrice = 1000000;
+  roomCount: number;
   checkInDate = this.reservationInfoService.reservationInfoObj.checkIn;
   checkOutDate = this.reservationInfoService.reservationInfoObj.checkOut;
   roomListUpDated: EventEmitter<any> = new EventEmitter();
   markersUpDated: EventEmitter<any> = new EventEmitter();
   centerUpDated: EventEmitter<any> =  new EventEmitter();
+  roomCountUpDated: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private http: HttpClient,
@@ -94,13 +96,12 @@ export class RoomListService {
       this.centerLng = this.Glng;
       this.centerUpDated.emit([this.centerLat, this.centerLng]);
     });
-    console.log(this.markers);
   }
 
   roomChangeDetect() {
     this.roomListUpDated.emit(this.roomList);
-    console.log(this.markers);
     this.markersUpDated.emit(this.markers);
+    this.roomCountUpDated.emit(this.roomCount);
     this.roomList = [];
   }
 }

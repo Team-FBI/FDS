@@ -38,6 +38,7 @@ export class NavigationComponent implements OnInit {
     this.roomListService.markers = [];
     this.reservationInfoService.reservationInfoObj.destination = destination;
     this.roomListService.getRoomList().subscribe(res => {
+      this.roomListService.roomCount = res.count;
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
         this.roomListService.getMarkerLatLan(room);
