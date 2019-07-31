@@ -245,13 +245,13 @@
         {{ 'roomList.additionalInfoForPice' | translate }}
       </p>
     </div>
+    <p class="roomCount" *ngIf="roomCount === 1 || roomCount === 0">
+      {{ roomCount }} {{ 'roomList.placeToStay' | translate }}
+    </p>
+    <p class="roomCount" *ngIf="roomCount > 1">
+      {{ roomCount }} {{ 'roomList.placesToStay' | translate }}
+    </p>
     <ul>
-      <p class="roomCount" *ngIf="roomCount === 1">
-        {{ roomCount }} {{ 'roomList.placeToStay' | translate }}
-      </p>
-      <p class="roomCount" *ngIf="roomCount > 1">
-        {{ roomCount }} {{ 'roomList.placesToStay' | translate }}
-      </p>
       <li
         class="detailList"
         *ngFor="let room of roomList"
@@ -271,47 +271,34 @@
             ><span *ngIf="room.capacity > 1">{{
               'roomList.guests' | translate
             }}</span>
-<<<<<<< HEAD
-            · {{ room.bed_type }} · {{ room.bedroom }}
-            <span *ngIf="room.bedroom === 1">{{
-=======
-            · {{ room.bedroom }}<span *ngIf="room.bedroom === 1">{{
->>>>>>> rmorigin/develop
+            · {{ room.bedroom
+            }}<span *ngIf="room.bedroom === 1">{{
               'roomList.bedroom' | translate
             }}</span>
             <span *ngIf="room.bedroom > 1">{{
               'roomList.bedrooms' | translate
             }}</span>
-<<<<<<< HEAD
-            · {{ room.bathroom }}
-            <span *ngIf="room.bathroom === 1">{{
-=======
-            · {{ room.beds }}<span *ngIf="room.beds === 1">{{
+            · {{ room.beds
+            }}<span *ngIf="room.beds === 1">{{
               'roomList.bed' | translate
             }}</span>
-            <span *ngIf="room.beds > 1">{{
-              'roomList.beds' | translate
-            }}</span> · {{
-              room.bathroom
-            }} <span *ngIf="room.bathroom === 1">{{
->>>>>>> rmorigin/develop
+            <span *ngIf="room.beds > 1">{{ 'roomList.beds' | translate }}</span>
+            · {{ room.bathroom }}
+            <span *ngIf="room.bathroom === 1">{{
               'roomList.bathroom' | translate
             }}</span
             ><span *ngIf="room.bathroom > 1">{{
               'roomList.bathrooms' | translate
-<<<<<<< HEAD
-            }}</span>
-            <span>{{ room.facilities }}</span>
-            <span>{{ room.total_rating }}</span>
-=======
-            }}</span><br>
+            }}</span
+            ><br />
+            <span> {{ room.facilities }} </span><br />
             <span>
-              {{room.facilities}}
-            </span><br>
-            <span>
-              <rating [(ngModel)]="room.total_rating" [max]="max" [readonly]="isReadonly"></rating>
+              <rating
+                [(ngModel)]="room.total_rating"
+                [max]="max"
+                [readonly]="isReadonly"
+              ></rating>
             </span>
->>>>>>> rmorigin/develop
           </p>
         </div>
       </li>
@@ -346,7 +333,11 @@
               <div>
                 <p>{{ marker.room_type }} {{ marker.beds }}</p>
                 <p>{{ marker.title }}</p>
-                <rating [(ngModel)]="marker.total_rating" [max]="max" [readonly]="isReadonly"></rating>
+                <rating
+                  [(ngModel)]="marker.total_rating"
+                  [max]="max"
+                  [readonly]="isReadonly"
+                ></rating>
               </div>
             </div>
             `
