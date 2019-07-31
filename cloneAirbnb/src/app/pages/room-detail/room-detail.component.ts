@@ -37,6 +37,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   rate: number = 7;
 
   checked: boolean = true;
+
   
 
   @ViewChild('galleryTop', { static: true }) galleryTop;
@@ -151,6 +152,8 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   changesavebtn(){
     this.checked = !this.checked;       
   }
+  
+
 }
 
 
