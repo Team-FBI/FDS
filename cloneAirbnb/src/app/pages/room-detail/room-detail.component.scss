@@ -65,8 +65,13 @@
         color: #000000;
         border-radius: 3px;
 
-        .showsavebtn{
-          // display:none;
+        .savemodal{
+          position :fixed;
+          bottom:10px;
+          left:10px;
+          width:300px;
+          height:40px;
+          background-color:red;
         }
 
         .svg-save{
