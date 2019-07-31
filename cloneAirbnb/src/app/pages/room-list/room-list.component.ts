@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone} from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {
   ZoomControlOptions,
   ControlPosition,
@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent implements OnInit{
+export class RoomListComponent implements OnInit {
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
   roomList = this.roomListService.roomList;
@@ -82,7 +82,7 @@ export class RoomListComponent implements OnInit{
     private ngzone: NgZone,
     private reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService,
-    private router: Router,
+    private router: Router
   ) {
     this.currentIW = null;
     this.previousIW = null;
@@ -106,11 +106,12 @@ export class RoomListComponent implements OnInit{
     this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
     });
+
     this.roomListService.markersUpDated.subscribe((marker: MakerInfo[]) => {
       this.markers = marker;
     });
-    this.roomListService.centerUpDated.subscribe((latlng) => {
 
+    this.roomListService.centerUpDated.subscribe(latlng => {
       this.latitude = latlng[0];
       this.longitude = latlng[1];
       this.map.setCenter({ lat: this.latitude, lng: this.longitude });
@@ -176,8 +177,10 @@ export class RoomListComponent implements OnInit{
     this.setRoomList();
   }
 
-  sendResvationId(id){
+  sendResvationId(id) {
     this.reservationInfoService.id = id;
+    this.roomListService.roomList = [];
+    this.roomListService.markers = [];
     this.router.navigate([`roomdetail/${id}`]);
   }
 

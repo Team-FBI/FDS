@@ -71,9 +71,10 @@ export class RoomListService {
 
     return this.http.get<RoomList>(
       `${this.appUrl}/rooms/?search=${
-      this.reservationInfoService.reservationInfoObj.destination
-      }&ordering=price&page_size=12&page=1&min_price=${minPrice}&max_price=${maxPrice}&start_date=${checkInDate}&end_date=${checkOutDate}&capacity=${capacity}`)
-    }
+        this.reservationInfoService.reservationInfoObj.destination
+      }&ordering=price&page_size=12&page=1&min_price=${minPrice}&max_price=${maxPrice}&start_date=${checkInDate}&end_date=${checkOutDate}&capacity=${capacity}`
+    );
+  }
 
   getMarkerLatLan(room) {
     const { image, id, title } = room;
