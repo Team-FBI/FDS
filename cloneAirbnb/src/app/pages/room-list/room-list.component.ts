@@ -56,9 +56,8 @@ export class RoomListComponent implements OnInit {
   Youngcounter = 0;
   dateCustomClasses: DatepickerDateCustomClasses[];
   dateStyle = {
-    width: '150px'
+    width: '65px'
   };
-  initialCheckInDate = this.reservationInfoService.checkInOutDateMMDD;
 
   // price range 데이터
   minValue = 0;
@@ -162,6 +161,10 @@ export class RoomListComponent implements OnInit {
       1}/${value[1].getDate()}/${value[1].getFullYear()}`;
 
     this.setRoomList();
+  }
+
+  widthChange() {
+    this.dateStyle = {width: '150px'};
   }
 
   changePersonnel() {

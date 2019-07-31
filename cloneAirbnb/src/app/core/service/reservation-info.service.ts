@@ -15,29 +15,6 @@ export class ReservationInfoService {
   checkOutDate = `${this.initialCheckOutDate.getMonth() +
     1}/${this.initialCheckOutDate.getDate()}/${this.initialCheckOutDate.getFullYear()}`;
 
-  checkInOutDateMMDD = `${
-    this.date.getMonth() + 1 < 10
-      ? `0${this.date.getMonth() + 1}`
-      : `${this.date.getMonth() + 1}`
-  }/${
-    this.date.getDate() < 10
-      ? `0${this.date.getDate()}`
-      : `${this.date.getDate()}`
-  } - ${
-    this.date.getMonth() + 1 < 10
-      ? `0${this.initialCheckOutDate.getMonth() + 1}`
-      : `${this.initialCheckOutDate.getMonth() + 1}`
-  }/${
-    this.date.getDate() < 10
-      ? `0${this.initialCheckOutDate.getDate()}`
-      : `${this.initialCheckOutDate.getDate()}`
-  }`;
-
-  checkOutDateMM =
-    this.date.getMonth() + 1 < 10
-      ? `0${this.initialCheckOutDate.getMonth() + 1}`
-      : `${this.initialCheckOutDate.getMonth() + 1}`;
-
   reservationInfoObj: ReservationInfo = {
     title: '',
     destination: '',
