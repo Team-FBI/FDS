@@ -129,6 +129,9 @@ button:focus {
       a:hover {
         border-bottom: 1px solid #333;
       }
+      .signOutBtn{
+        padding-left:0;
+      }
     }
   }
 }
@@ -157,19 +160,10 @@ button:focus {
   background-color: #fff;
 }
 
-.language {
-  height: 78px;
-  padding: 22px 20px 0 0;
-}
+
 .language button {
   width: 50px;
-  float: right;
   padding: 10px;
   font-size: 0.8rem;
   background: transparent;
-}
-.language::after {
-  content: '';
-  clear: both;
-  display: block;
 }
