@@ -97,10 +97,11 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     //   .subscribe(res => console.log(res))
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
+      console.log(res);
       this.price = res.price;
       this.min_stay = res.min_stay;
       this.totalprice = this.price * this.min_stay * this.Allcounter;
-      this.serviceprice = this.totalprice * 0.13;
+      this.serviceprice = this.totalprice * 0.1;
       this.Accommodation = this.serviceprice * 0.1;
       this.finalprice =
         this.totalprice + this.serviceprice + this.Accommodation;
@@ -162,7 +163,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.checked = !this.checked;
   }
 
-  toGuestInfo() {
+  toRoomRegulation() {
     this.router.navigate(['roomregulation']);
   }
 }
