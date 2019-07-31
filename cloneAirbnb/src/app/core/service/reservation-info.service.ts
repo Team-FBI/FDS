@@ -38,11 +38,6 @@ export class ReservationInfoService {
       ? `0${this.initialCheckOutDate.getMonth() + 1}`
       : `${this.initialCheckOutDate.getMonth() + 1}`;
 
-  // `this.date.getMonth() +
-  // 1 <10 ? '0${this.date.getMonth() + 1}' : '${this.date.getMonth() +
-  //   1}'/${this.date.getDate()} - ${this.initialCheckOutDate.getMonth() +
-  //   1}/${this.initialCheckOutDate.getDate()}`;
-
   reservationInfoObj: ReservationInfo = {
     title: '',
     destination: '',
