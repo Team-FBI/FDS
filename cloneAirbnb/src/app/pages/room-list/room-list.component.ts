@@ -75,6 +75,8 @@ export class RoomListComponent implements OnInit {
   roomimage: string;
   address: string;
 
+  roomCount = this.roomListService.roomCount;
+
   constructor(
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
@@ -114,10 +116,14 @@ export class RoomListComponent implements OnInit {
       this.longitude = latlng[1];
       this.map.setCenter({ lat: this.latitude, lng: this.longitude });
     });
+    this.roomListService.roomCountUpDated.subscribe((count) => {
+      this.roomCount = count;
+    });
   }
 
   getRoomInfo() {
     this.roomListService.getRoomList().subscribe((res: RoomList) => {
+      this.roomCount = res.count;
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
         this.makeMarker(room);
@@ -136,6 +142,7 @@ export class RoomListComponent implements OnInit {
   setRoomList() {
     this.roomListService.roomList = [];
     return this.roomListService.getRoomList().subscribe(res => {
+      this.roomCount = res.count;
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
       }
@@ -177,21 +184,6 @@ export class RoomListComponent implements OnInit {
     this.router.navigate([`roomdetail/${id}`]);
   }
 
-  max(coordType: 'lat' | 'lng'): number {
-    return Math.max(...this.markers.map(marker => marker[coordType]));
-  }
-
-  min(coordType: 'lat' | 'lng'): number {
-    return Math.min(...this.markers.map(marker => marker[coordType]));
-  }
-
-  selectMarker(event) {
-    this.selectedMarker = {
-      lat: event.latitude,
-      lng: event.longitude
-    };
-  }
-
   mapClick() {
     if (this.previousIW) {
       this.previousIW.close();
@@ -227,8 +219,6 @@ export class RoomListComponent implements OnInit {
       }
     }
   }
-
-  toggleRemoveText(binput) {}
 
   get adults() {
     return this.reservationInfoService.reservationInfoObj.adults;

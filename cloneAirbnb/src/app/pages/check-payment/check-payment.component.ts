@@ -5,6 +5,7 @@ import { faCcVisa } from '@fortawesome/free-brands-svg-icons/faCcVisa';
 import { faCcAmex } from '@fortawesome/free-brands-svg-icons/faCcAmex';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/service/language.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-check-payment',
@@ -17,10 +18,12 @@ export class CheckPaymentComponent implements OnInit {
   faCcVisa = faCcVisa;
   faCcAmex = faCcAmex;
   toggleCard = false;
+  switchLang = true;
 
   constructor(
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -33,5 +36,15 @@ export class CheckPaymentComponent implements OnInit {
     } else {
       this.toggleCard = true;
     }
+  }
+
+  toYourTrip() {
+    this.router.navigate(['yourTrip']);
+  }
+
+  switchLanguage() {
+    const language = this.switchLang ? 'ko' : 'en';
+    this.languageService.switchLanguageService(language);
+    this.switchLang = !this.switchLang;
   }
 }

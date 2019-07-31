@@ -3,6 +3,7 @@
 .box{
   position: relative;
   margin-bottom:15px;
+  border:2px solid red;
 
   .main{
     height: 592px;
@@ -11,6 +12,7 @@
     overflow: hidden;
     display: flex;
     width:100%;
+    border:2px solid blue;
 
     .left-big{
       width:50%;
