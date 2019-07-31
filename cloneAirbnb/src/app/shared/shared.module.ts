@@ -7,6 +7,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { RouterModule } from '@angular/router';
 
+// import { PagesModule } from '../pages/pages.module';
+
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { NavigationComponent } from './components/navigation/navigation.component';

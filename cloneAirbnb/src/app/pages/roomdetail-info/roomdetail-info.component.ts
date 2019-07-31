@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { ReservationInfoService } from 'src/app/core/service/reservation-info.service';
 
 
 @Component({
@@ -21,19 +22,22 @@ export class RoomdetailInfoComponent implements OnInit {
   room_type:any;
   facilities:any;
   facility : string;
-  strArray
+  strArray;
+  id: number;
 
 
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
-    private http: HttpClient
+    private http: HttpClient,
+    private reservationInfoService: ReservationInfoService
   ) { }
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
+    this.id = this.reservationInfoService.id;
 
-    this.http.get(`${this.appUrl}/rooms/5/`)
+    this.http.get(`${this.appUrl}/rooms/${this.id}/`)
       .subscribe( (res: any) => { 
       this.title = res.title;
       this.address = res.address;
