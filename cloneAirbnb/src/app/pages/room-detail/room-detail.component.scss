@@ -240,6 +240,12 @@
   }
 }
 
+.detailcontent::after{
+  clear:both;
+  display:block;
+  content:'';
+}
+
 .counterLine{
   position: relative;
   height:40px;
@@ -393,6 +399,11 @@
 }
 
 
-
+// .bs-datepicker-container{
+// .mainDate {
+//   margin-left: 485px;
+//   margin-top: 44px;
+//   background: red;
+// }
 
 

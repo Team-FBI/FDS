@@ -40,15 +40,15 @@ export class RoomdetailInfoComponent implements OnInit {
     this.http.get(`${this.appUrl}/rooms/${this.id}/`)
       .subscribe( (res: any) => { 
       this.title = res.title;
+      this.reservationInfoService.reservationInfoObj.title = this.title;
       this.address = res.address;
       this.description = res.description;
-      // console.log(typeof this.description);
       this.strArray = this.description.split('\n');
-      // console.log(this.strArray);
       this.capacity = res.capacity;
       this.bedroom = res.bedroom;
       this.bathroom = res.bathroom;
       this.room_type = res.room_type;
+      this.reservationInfoService.reservationInfoObj.roomType = this.room_type;
       if (this.room_type === "Apartment"){
         this.room_type = '아파트';
       } else if (this.room_type === "House") {

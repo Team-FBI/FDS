@@ -45,21 +45,26 @@
   display:block;
 }
 
-::ng-deep.bsDaterangepicker{
-  left:100px;
+::ng-deep.bs-datepicker{
+  left:0px;
   top:0px;
+  margin-left:0px !important;
+  height:300px;
+  //이부분 css를 먹였지만, roomlist것을 나중에 불러와서 덮어쓴다
 }
-::ng-deep.theme-green{
-  top:-40px;
-}
-::ng-deep.form-group{
-  height : 300px;
+
+// ::ng-deep.theme-green{
+//   top:-40px;
+// }
+
+// ::ng-deep.form-group{
+//   height : 300px;
   
 
-  .infodate{
-    margin-left: 110%;
-  }
-}
+//   .infodate{
+//     margin-left: 110%;
+//   }
+// }
 
 
 

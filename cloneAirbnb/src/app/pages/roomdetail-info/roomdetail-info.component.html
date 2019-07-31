@@ -31,12 +31,17 @@
 
     <div>
         <div class="col-xs-12 col-12 col-md-4 form-group">
-            <input type="text"
+            <!-- <input type="text"
                   placeholder="Daterangepicker"
                   class="form-control infodate"
                   bsDaterangepicker
                   [isOpen]="true"
-                  [outsideClick]="false">
+                  [outsideClick]="false"
+            > -->
+            <div style="background-color:pink; height:350px; width:620px;" >
+            <bs-datepicker-inline bsDaterangepicker style="width:50%; float:left;"></bs-datepicker-inline>
+            <bs-datepicker-inline bsDaterangepicker style="width:50%; float:right;"></bs-datepicker-inline>
+            </div>
         </div>
     </div>
 
