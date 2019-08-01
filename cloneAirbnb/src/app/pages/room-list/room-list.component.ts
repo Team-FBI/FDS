@@ -153,10 +153,12 @@ export class RoomListComponent implements OnInit {
   setRoomList() {
     this.currentPage = 1;
     this.roomListService.roomList = [];
+    this.roomListService.markers = [];
     return this.roomListService.getRoomList().subscribe(res => {
       this.totalRooms = res.count;
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
+        this.makeMarker(room);
       }
       this.roomListService.roomChangeDetect();
     });
