@@ -9,6 +9,7 @@ import { ReservationInfoService } from '../../core/service/reservation-info.serv
 import { RoomList } from '../interface/roomList.interface';
 import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
 import { MakerInfo } from '../interface/maker-info.interface';
+import { state } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -76,6 +77,8 @@ export class RoomListService {
     );
   }
 
+
+
   getMarkerLatLan(room) {
     const { image, image_1, image_2, image_3, image_4, room_type, beds, total_rating, id, title } = room;
     this.mapService.getLatLan(room.address).subscribe(result => {
@@ -112,4 +115,6 @@ export class RoomListService {
     this.roomCountUpDated.emit(this.roomCount);
     this.roomList = [];
   }
+
+
 }

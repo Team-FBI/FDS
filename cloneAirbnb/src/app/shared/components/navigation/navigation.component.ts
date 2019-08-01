@@ -7,6 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/service/language.service';
 import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
 import { GoogleMapsAPIWrapper } from '@agm/core';
+import { State } from 'src/app/core/interface/state.interface';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-navigation',
@@ -18,13 +20,15 @@ export class NavigationComponent implements OnInit {
   myPage = false;
   switchLang = true;
 
+
   constructor(
     private router: Router,
     public authService: AuthService,
     public reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService,
     private translate: TranslateService,
-    private languageService: LanguageService,
+    private languageService: LanguageService
+
   ) {
     this.translate = translate;
   }
@@ -35,6 +39,7 @@ export class NavigationComponent implements OnInit {
   }
 
   showRoomList(destination: string) {
+    console.log(destination)
     this.roomListService.roomList = [];
     this.roomListService.markers = [];
     this.reservationInfoService.reservationInfoObj.destination = destination;
@@ -50,6 +55,9 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(['roomList']);
   }
 
+
+
+
   signOutBtn() {
     this.authService.signOutUser();
   }
@@ -59,4 +67,6 @@ export class NavigationComponent implements OnInit {
     this.languageService.switchLanguageService(language);
     this.switchLang = !this.switchLang;
   }
+
+
 }
