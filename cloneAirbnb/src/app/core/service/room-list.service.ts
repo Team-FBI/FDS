@@ -29,11 +29,10 @@ export class RoomListService {
   maxPrice = 1000000;
   checkInDate = this.reservationInfoService.reservationInfoObj.checkIn;
   checkOutDate = this.reservationInfoService.reservationInfoObj.checkOut;
+  page = 1;
   roomListUpDated: EventEmitter<any> = new EventEmitter();
   markersUpDated: EventEmitter<any> = new EventEmitter();
   centerUpDated: EventEmitter<any> = new EventEmitter();
-
-
 
   constructor(
     private http: HttpClient,
@@ -72,17 +71,15 @@ export class RoomListService {
     return this.http.get<RoomList>(
       `${this.appUrl}/rooms/?search=${
         this.reservationInfoService.reservationInfoObj.destination
-      }&ordering=price&page_size=12&page=1&min_price=${minPrice}&max_price=${maxPrice}&start_date=${checkInDate}&end_date=${checkOutDate}&capacity=${capacity}`
+      }&ordering=price&page_size=10&page=${
+        this.page
+      }&min_price=${minPrice}&max_price=${maxPrice}&start_date=${checkInDate}&end_date=${checkOutDate}&capacity=${capacity}`
     );
   }
 
   getState(state: string) {
     return this.http.get(`${this.appUrl}/locations/state/?search=${state}`);
   }
-
-    getstate(v){
-      return this.http.get(`${this.appUrl}/locations/state/?search=${v}`)
-    }
 
   getMarkerLatLan(room) {
     const {
@@ -123,18 +120,10 @@ export class RoomListService {
       this.centerLng = this.Glng;
       this.centerUpDated.emit([this.centerLat, this.centerLng]);
     });
-<<<<<<< HEAD
-    // console.log(this.markers);
-=======
->>>>>>> rmorigin/develop
   }
 
   roomChangeDetect() {
     this.roomListUpDated.emit(this.roomList);
-<<<<<<< HEAD
-    // console.log(this.markers);
-=======
->>>>>>> rmorigin/develop
     this.markersUpDated.emit(this.markers);
     this.roomList = [];
   }
