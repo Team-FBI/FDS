@@ -7,8 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/service/language.service';
 import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
 import { GoogleMapsAPIWrapper } from '@agm/core';
-import { States } from 'src/app/core/interface/states.interface';
-import { RoomListComponent } from 'src/app/pages/room-list/room-list.component';
+import { States } from '../../../core/interface/states.interface';
+import { RoomListComponent } from '../../../pages/room-list/room-list.component';
 
 @Component({
   selector: 'app-navigation',
@@ -21,7 +21,6 @@ export class NavigationComponent implements OnInit {
   switchLang = true;
   states = [];
   searchInputFocus = false;
-
 
   constructor(
     private router: Router,

@@ -77,11 +77,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     private router: Router,
     private urlRemember: UrlRememberService,
     private reservationInfoService: ReservationInfoService
-<<<<<<< HEAD
-    ) {
-=======
   ) {
->>>>>>> rmorigin/develop
     this.minDate = new Date();
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
@@ -97,34 +93,17 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
     this.id = this.reservationInfoService.id;
-    
+
     // this.http.get(`${this.appUrl}/rooms/`)
     //   .subscribe(res => console.log(res))
 
-<<<<<<< HEAD
-    this.http.get(`${this.appUrl}/rooms/${this.id}/`)
-      .subscribe( (res: any) => { 
-        // console.log(res)
-        this.price = res.price;
-        this.reservationInfoService.reservationInfoObj.price = res.price;
-        this.min_stay = res.min_stay;
-        this.totalprice = this.price* this.min_stay * this.Allcounter;
-        this.serviceprice = this.totalprice * 0.13;
-        this.Accommodation = this.serviceprice *0.10;
-        this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
-        this.total_rating = res.total_rating;
-        this.image = res.image;
-        this.image_1 = res.image_1;
-        this.image_2 = res.image_2;
-        this.image_3 = res.image_3;
-        this.image_4 = res.image_4;
-=======
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res)
       this.price = res.price;
+      this.reservationInfoService.reservationInfoObj.price = res.price;
       this.min_stay = res.min_stay;
       this.totalprice = this.price * this.min_stay * this.personnel;
-      this.serviceprice = this.totalprice * 0.1;
+      this.serviceprice = this.totalprice * 0.13;
       this.Accommodation = this.serviceprice * 0.1;
       this.finalprice =
         this.totalprice + this.serviceprice + this.Accommodation;
@@ -134,7 +113,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.image_2 = res.image_2;
       this.image_3 = res.image_3;
       this.image_4 = res.image_4;
->>>>>>> rmorigin/develop
     });
   }
 
@@ -183,31 +161,15 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.galleryThumbs.nativeElement.swiper.controller.control = this.galleryTop.nativeElement.swiper;
   }
 
-<<<<<<< HEAD
-  changesavebtn(){
-=======
   changesavebtn() {
->>>>>>> rmorigin/develop
     this.checked = !this.checked;
   }
 
   toRoomRegulation() {
     this.router.navigate(['roomregulation']);
   }
-<<<<<<< HEAD
 
-  setregulation(){
+  setregulation() {
     this.reservationInfoService.reservationInfoObj.price = this.price;
   }
-  
-
 }
-
-
-
-
-
-
-=======
-}
->>>>>>> rmorigin/develop
