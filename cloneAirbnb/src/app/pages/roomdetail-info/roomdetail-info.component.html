@@ -39,8 +39,11 @@
                   [outsideClick]="false"
             > -->
             <div style="background-color:pink; height:350px; width:620px;" >
-            <bs-datepicker-inline bsDaterangepicker style="width:50%; float:left;"></bs-datepicker-inline>
-            <bs-datepicker-inline bsDaterangepicker style="width:50%; float:right;"></bs-datepicker-inline>
+            <bs-datepicker-inline [bsValue]="bsInlineValue" style="width:50%; float:left;" [bsConfig]="{ selectFromOtherMonth: true }" (bsValueChange)="onValueChange($event)" [dateCustomClasses]="dateCustomClasses" [datesDisabled]="disabledDates"
+            ></bs-datepicker-inline>
+            
+            <bs-datepicker-inline [bsValue]="bsInlineValue2" [bsConfig]="{ selectFromOtherMonth: true }" style="width:50%; float:right;" [dateCustomClasses]="dateCustomClasses"
+            [datesDisabled]="disabledDates"></bs-datepicker-inline>
             </div>
         </div>
     </div>

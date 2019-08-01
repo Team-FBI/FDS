@@ -100,3 +100,15 @@
   background: #ffffff;
   display:block;
 }
+
+::ng-deep .theme-green {
+  .bs-datepicker-body {
+    table {
+      td {
+        span.selected {
+          background-color: #5cb85c !important;
+        }
+      }
+    }
+  }
+}

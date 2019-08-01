@@ -33,6 +33,8 @@ export class RoomListService {
   markersUpDated: EventEmitter<any> = new EventEmitter();
   centerUpDated: EventEmitter<any> =  new EventEmitter();
 
+
+
   constructor(
     private http: HttpClient,
     private reservationInfoService: ReservationInfoService,
@@ -73,6 +75,10 @@ export class RoomListService {
       }&ordering=price&page_size=12&page=1&min_price=${minPrice}&max_price=${maxPrice}&start_date=${checkInDate}&end_date=${checkOutDate}&capacity=${capacity}`)
     }
 
+    getstate(v){
+      return this.http.get(`${this.appUrl}/locations/state/?search=${v}`)
+    }
+
   getMarkerLatLan(room) {
     const { image, id, title } = room;
     this.mapService.getLatLan(room.address).subscribe(result => {
@@ -94,12 +100,12 @@ export class RoomListService {
       this.centerLng = this.Glng;
       this.centerUpDated.emit([this.centerLat, this.centerLng]);
     });
-    console.log(this.markers);
+    // console.log(this.markers);
   }
 
   roomChangeDetect() {
     this.roomListUpDated.emit(this.roomList);
-    console.log(this.markers);
+    // console.log(this.markers);
     this.markersUpDated.emit(this.markers);
     this.roomList = [];
   }

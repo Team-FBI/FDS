@@ -17,6 +17,7 @@ export class NavigationComponent implements OnInit {
   isMain: boolean;
   myPage = false;
 
+
   constructor(
     private router: Router,
     public authService: AuthService,

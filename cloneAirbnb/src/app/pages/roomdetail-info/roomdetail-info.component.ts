@@ -4,6 +4,7 @@ import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ReservationInfoService } from 'src/app/core/service/reservation-info.service';
+import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 
 
 @Component({
@@ -24,6 +25,22 @@ export class RoomdetailInfoComponent implements OnInit {
   facility : string;
   strArray;
   id: number;
+  bsInlineValue = this.reservationInfoService.date;
+  bsInlineValue3 = new Date();
+  bsInlineValue2 = this.bsInlineValue3.getMonth()+2;
+  minDate: Date;
+  maxDate: Date;
+  minDate1: number
+  maxDate1: number;
+  inputData: Date;
+  dateCustomClasses: DatepickerDateCustomClasses[];
+  now = new Date();
+  fourDaysAhead = new Date();
+
+  disabledDates = [
+    new Date('2019-08-16'),
+    new Date('2019-08-17')
+  ];
 
 
   constructor(
@@ -31,14 +48,20 @@ export class RoomdetailInfoComponent implements OnInit {
     private urlRemember: UrlRememberService,
     private http: HttpClient,
     private reservationInfoService: ReservationInfoService
-  ) { }
+  ) {
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    // this.bsInlineValue2.setDate(this.bsInlineValue.getDate() + 32); 
+    //다음달 달력만들때 필요한것
+  }
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
     this.id = this.reservationInfoService.id;
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`)
-      .subscribe( (res: any) => { 
+      .subscribe( (res: any) => {
+      console.log(res) 
       this.title = res.title;
       this.reservationInfoService.reservationInfoObj.title = this.title;
       this.address = res.address;
@@ -48,6 +71,17 @@ export class RoomdetailInfoComponent implements OnInit {
       this.bedroom = res.bedroom;
       this.bathroom = res.bathroom;
       this.room_type = res.room_type;
+      this.minDate1 = res.min_stay;
+      this.maxDate1 = res.max_stay;
+      this.minDate.setDate(this.minDate1);
+      this.maxDate.setDate(this.maxDate1);
+      // this.fourDaysAhead.setDate(this.now.getDate() + this.maxDate1);
+      // this.dateCustomClasses = [
+      //   { date: this.now, classes: [] },
+      //   { date: this.fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
+      // ];
+      console.log(this.bsInlineValue);
+
       this.reservationInfoService.reservationInfoObj.roomType = this.room_type;
       if (this.room_type === "Apartment"){
         this.room_type = '아파트';
@@ -113,7 +147,18 @@ export class RoomdetailInfoComponent implements OnInit {
       })
     })
   }
+  onValueChange(value: Date): void {
+    this.inputData = value;
+    // console.log(this.inputData);
+    // this.bsInlineValue = this.inputData;
+    console.log(this.bsInlineValue);
+    // this.now = this.bsInlineValue;
+    console.log(this.now)
+    // this.fourDaysAhead.setDate(this.now.getDate() + this.maxDate1);
+    // 나중에 서버에 보낼 input data
+  }
 }
+
 
 
 

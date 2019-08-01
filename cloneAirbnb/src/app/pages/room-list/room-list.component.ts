@@ -105,15 +105,15 @@ export class RoomListComponent implements OnInit{
       this.roomList = roomList;
     });
     this.roomListService.markersUpDated.subscribe((marker: MakerInfo[]) => {
-      console.log(this.markers);
+      // console.log(this.markers);
       this.markers = marker;
-      console.log(marker);
-      console.log(this.markers);
+      // console.log(marker);
+      // console.log(this.markers);
       
     });
     this.roomListService.centerUpDated.subscribe((latlng) => {
 
-      console.log(1);
+      // console.log(1);
       this.latitude = latlng[0];
       this.longitude = latlng[1];
       this.map.setCenter({ lat: this.latitude, lng: this.longitude });

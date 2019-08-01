@@ -164,6 +164,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   setregulation(){
     this.reservationInfoService.reservationInfoObj.price = this.price;
   }
+  
 
 }
 
