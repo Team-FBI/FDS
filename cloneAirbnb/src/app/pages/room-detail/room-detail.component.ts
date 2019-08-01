@@ -162,7 +162,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.checked = !this.checked;
   }
 
-  toGuestInfo() {
+  toRoomRegulation() {
     this.router.navigate(['roomregulation']);
   }
 }
