@@ -1,5 +1,5 @@
 <div class="positionTop">
-  <app-navigation></app-navigation>
+  <app-navigation (initializeCurrentPage) = "initializeCurrentPage()"></app-navigation>
 
   <div class="filter">
     <!-- filter -->
@@ -325,7 +325,7 @@
       <div class="paginationStyle">
         <div>
           <pagination
-            [totalItems]="50"
+            [totalItems]="totalRooms"
             [rotate]="!rotate"
             [maxSize]="maxSize"
             [(ngModel)]="currentPage"

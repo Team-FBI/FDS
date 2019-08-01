@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { ReservationInfoService } from '../../../core/service/reservation-info.service';
@@ -16,6 +16,7 @@ import { RoomListComponent } from '../../../pages/room-list/room-list.component'
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+  @Output() initializeCurrentPage = new EventEmitter();
   isMain: boolean;
   myPage = false;
   switchLang = true;
@@ -28,8 +29,7 @@ export class NavigationComponent implements OnInit {
     public reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService,
     private translate: TranslateService,
-    private languageService: LanguageService,
-    private roomListComponent: RoomListComponent
+    private languageService: LanguageService
   ) {
     this.translate = translate;
   }
@@ -43,7 +43,6 @@ export class NavigationComponent implements OnInit {
     this.roomListService.roomList = [];
     this.roomListService.markers = [];
     this.roomListService.page = 1;
-    this.roomListComponent.currentPage = 1;
     input.value = '';
     this.searchInputFocus = false;
     this.reservationInfoService.reservationInfoObj.destination = destination;

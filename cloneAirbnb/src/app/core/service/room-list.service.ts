@@ -71,7 +71,7 @@ export class RoomListService {
     return this.http.get<RoomList>(
       `${this.appUrl}/rooms/?search=${
         this.reservationInfoService.reservationInfoObj.destination
-      }&ordering=price&page_size=1&page=${
+      }&ordering=price&page_size=10&page=${
         this.page
       }&min_price=${minPrice}&max_price=${maxPrice}&start_date=${checkInDate}&end_date=${checkOutDate}&capacity=${capacity}`
     );
@@ -79,10 +79,6 @@ export class RoomListService {
 
   getState(state: string) {
     return this.http.get(`${this.appUrl}/locations/state/?search=${state}`);
-  }
-
-  getstate(v) {
-    return this.http.get(`${this.appUrl}/locations/state/?search=${v}`);
   }
 
   getMarkerLatLan(room) {

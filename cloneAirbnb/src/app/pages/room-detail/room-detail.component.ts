@@ -98,7 +98,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     //   .subscribe(res => console.log(res))
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
-      // console.log(res)
       this.price = res.price;
       this.reservationInfoService.reservationInfoObj.price = res.price;
       this.min_stay = res.min_stay;

@@ -237,6 +237,10 @@ export class RoomListComponent implements OnInit {
     }
   }
 
+  initializeCurrentPage() {
+    this.currentPage = 1;
+  }
+
   pageChanged(event: any): void {
     this.page = event.page;
     this.roomListService.page = this.page;
