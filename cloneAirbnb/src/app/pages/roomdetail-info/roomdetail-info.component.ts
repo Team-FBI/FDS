@@ -52,15 +52,13 @@ export class RoomdetailInfoComponent implements OnInit {
     // this.bsInlineValue2.setDate(this.bsInlineValue.getDate() + 32); 
     //다음달 달력만들때 필요한것
   }
-  ) {}
+  
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
     this.id = this.reservationInfoService.id;
 
-    this.http.get(`${this.appUrl}/rooms/${this.id}/`)
-      .subscribe( (res: any) => {
-      console.log(res) 
+
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
       this.title = res.title;
       this.reservationInfoService.reservationInfoObj.title = this.title;
