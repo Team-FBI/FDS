@@ -7,8 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/service/language.service';
 import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
 import { GoogleMapsAPIWrapper } from '@agm/core';
-import { State } from 'src/app/core/interface/state.interface';
-import { state } from '@angular/animations';
+import { States } from 'src/app/core/interface/states.interface';
 
 @Component({
   selector: 'app-navigation',
@@ -19,6 +18,9 @@ export class NavigationComponent implements OnInit {
   isMain: boolean;
   myPage = false;
   switchLang = true;
+  states = [];
+  searchInputFocus = false;
+
 
 
   constructor(
@@ -28,7 +30,6 @@ export class NavigationComponent implements OnInit {
     private roomListService: RoomListService,
     private translate: TranslateService,
     private languageService: LanguageService
-
   ) {
     this.translate = translate;
   }
@@ -38,13 +39,13 @@ export class NavigationComponent implements OnInit {
     this.translate.setDefaultLang(`${this.languageService.currentLanguage()}`);
   }
 
-  showRoomList(destination: string) {
-    console.log(destination)
+  showRoomList(destination: string, input: HTMLInputElement) {
     this.roomListService.roomList = [];
     this.roomListService.markers = [];
+    input.value = '';
+    this.searchInputFocus = false;
     this.reservationInfoService.reservationInfoObj.destination = destination;
     this.roomListService.getRoomList().subscribe(res => {
-      this.roomListService.roomCount = res.count;
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
         this.roomListService.getMarkerLatLan(room);
@@ -55,8 +56,22 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(['roomList']);
   }
 
+  stateSuggestion(input: HTMLInputElement) {
+    this.states = [];
+    this.roomListService
+      .getState(input.value)
+      .subscribe((res: Array<States>) => {
+        for (const state of res) {
+          this.states.push(state);
+        }
+      });
+  }
 
-
+  searchInputFocusout() {
+    setTimeout(() => {
+      this.searchInputFocus = false;
+    }, 200);
+  }
 
   signOutBtn() {
     this.authService.signOutUser();

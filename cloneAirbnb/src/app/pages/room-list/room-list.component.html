@@ -1,239 +1,241 @@
-<app-navigation></app-navigation>
+<div class="positionTop">
+  <app-navigation></app-navigation>
 
-<div class="filter">
-  <!-- filter -->
-  <div class="filterLeft">
-    <div class="date">
-      <input
-        type="text"
-        class="filterButton"
-        [bsConfig]="{ rangeInputFormat: 'MM/DD', isAnimated: true }"
-        bsDaterangepicker
-        [ngStyle]="dateStyle"
-        (bsValueChange)="onValueChange($event)"
-        (bsValueChange)="changeStyle()"
-        [dateCustomClasses]="dateCustomClasses"
-        placeholder="{{ 'roomList.datePlaceholder' | translate }}"
-      />
+  <div class="filter">
+    <!-- filter -->
+    <div class="filterLeft">
+      <div class="date">
+        <input
+          type="text"
+          class="filterButton"
+          [bsConfig]="{ rangeInputFormat: 'MM/DD', isAnimated: true }"
+          bsDaterangepicker
+          [ngStyle]="dateStyle"
+          (bsValueChange)="onValueChange($event)"
+          (bsValueChange)="widthChange()"
+          [dateCustomClasses]="dateCustomClasses"
+          placeholder="{{ 'roomList.datePlaceholder' | translate }}"
+        />
+        <!-- date filterbutton -->
+      </div>
       <!-- date filterbutton -->
-    </div>
-    <!-- date filterbutton -->
 
-    <div
-      class="personnel"
-      dropdown
-      #personnelDropdown="bs-dropdown"
-      [insideClick]="true"
-    >
+      <div
+        class="personnel"
+        dropdown
+        #personnelDropdown="bs-dropdown"
+        [insideClick]="true"
+      >
+        <!-- personnel filterbutton -->
+        <button class="filterButton" dropdownToggle type="button">
+          <span *ngIf="personnel === 1"
+            >{{ personnel }} {{ 'roomList.guest' | translate }}</span
+          >
+          <span *ngIf="personnel > 1"
+            >{{ personnel }} {{ 'roomList.guests' | translate }}</span
+          >
+        </button>
+        <ul
+          *dropdownMenu
+          class="personnel-dropdown-menu dropdown-menu"
+          role="menu"
+        >
+          <div class="counterLine">
+            <div class="people">
+              <p class="top">{{ 'roomList.adults' | translate }}</p>
+            </div>
+            <div class="counterCheck">
+              <button type="button" class="decrease" (click)="decrease(adult)">
+                -
+              </button>
+              <span class="counter" id="adults" #adult>{{ adults }}</span>
+              <button type="button" class="increase" (click)="increase(adult)">
+                +
+              </button>
+            </div>
+          </div>
+
+          <div role="menuitem">
+            <div class="counterLine">
+              <div class="people">
+                <p>{{ 'roomList.children' | translate }}</p>
+                <span>{{ 'roomList.childrenSpan' | translate }}</span>
+              </div>
+              <div class="counterCheck">
+                <button type="button" class="decrease" (click)="decrease(child)">
+                  -
+                </button>
+                <span class="counter" id="children" #child>{{ children }}</span>
+                <button type="button" class="increase" (click)="increase(child)">
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+          <div role="menuitem">
+            <div class="counterLine">
+              <div class="people">
+                <p>{{ 'roomList.infants' | translate }}</p>
+                <span>{{ 'roomList.infantsSpan' | translate }}</span>
+              </div>
+              <div class="counterCheck">
+                <button type="button" class="decrease" (click)="decrease(infant)">
+                  -
+                </button>
+                <span class="counter" id="infants" #infant>{{ infants }}</span>
+                <button type="button" class="increase" (click)="increase(infant)">
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+          <button
+            class="personnelSaveBtn"
+            type="button"
+            (click)="personnelDropdown.isOpen = !personnelDropdown.isOpen"
+            (click)="changePersonnel()"
+          >
+            {{ 'roomList.saveBtn' | translate }}
+          </button>
+        </ul>
+      </div>
       <!-- personnel filterbutton -->
-      <button class="filterButton" dropdownToggle type="button">
-        <span *ngIf="personnel === 1"
-          >{{ personnel }} {{ 'roomList.guest' | translate }}</span
-        >
-        <span *ngIf="personnel > 1"
-          >{{ personnel }} {{ 'roomList.guests' | translate }}</span
-        >
-      </button>
-      <ul
-        *dropdownMenu
-        class="personnel-dropdown-menu dropdown-menu"
-        role="menu"
+
+      <div
+        class="businesstrip"
+        dropdown
+        #businesstripDropdown="bs-dropdown"
+        [insideClick]="true"
       >
-        <div class="counterLine">
-          <div class="people">
-            <p class="top">{{ 'roomList.adults' | translate }}</p>
-          </div>
-          <div class="counterCheck">
-            <button type="button" class="decrease" (click)="decrease(adult)">
-              -
-            </button>
-            <span class="counter" id="adults" #adult>{{ adults }}</span>
-            <button type="button" class="increase" (click)="increase(adult)">
-              +
-            </button>
-          </div>
-        </div>
-
-        <div role="menuitem">
-          <div class="counterLine">
-            <div class="people">
-              <p>{{ 'roomList.children' | translate }}</p>
-              <span>{{ 'roomList.childrenSpan' | translate }}</span>
-            </div>
-            <div class="counterCheck">
-              <button type="button" class="decrease" (click)="decrease(child)">
-                -
-              </button>
-              <span class="counter" id="children" #child>{{ children }}</span>
-              <button type="button" class="increase" (click)="increase(child)">
-                +
-              </button>
-            </div>
-          </div>
-        </div>
-        <div role="menuitem">
-          <div class="counterLine">
-            <div class="people">
-              <p>{{ 'roomList.infants' | translate }}</p>
-              <span>{{ 'roomList.infantsSpan' | translate }}</span>
-            </div>
-            <div class="counterCheck">
-              <button type="button" class="decrease" (click)="decrease(infant)">
-                -
-              </button>
-              <span class="counter" id="infants" #infant>{{ infants }}</span>
-              <button type="button" class="increase" (click)="increase(infant)">
-                +
-              </button>
-            </div>
-          </div>
-        </div>
-        <button
-          class="personnelSaveBtn"
-          type="button"
-          (click)="personnelDropdown.isOpen = !personnelDropdown.isOpen"
-          (click)="changePersonnel()"
-        >
-          {{ 'roomList.saveBtn' | translate }}
+        <!-- businesstrip filterbutton -->
+        <button class="businesstrip filterButton" dropdownToggle type="button">
+          {{ 'roomList.workTrip' | translate }}
         </button>
-      </ul>
-    </div>
-    <!-- personnel filterbutton -->
-
-    <div
-      class="businesstrip"
-      dropdown
-      #businesstripDropdown="bs-dropdown"
-      [insideClick]="true"
-    >
+        <ul
+          *dropdownMenu
+          class="businesstrip-dropdown-menu dropdown-menu"
+          role="menu"
+        >
+          <input class="businesstrip-checkbox" type="checkbox" #binput />
+          <p>
+            <strong>{{ 'roomList.workTripTitle' | translate }}</strong>
+          </p>
+          <p class="personnel-content-second">
+            {{ 'roomList.workTripContents' | translate }}
+          </p>
+          <!-- <button
+            *ngIf="binput.checked"
+            (click)="binput.checked = false"
+            class="personnelremoveBtn"
+            type="button"
+          >
+            삭제
+          </button> -->
+          <button
+            class="personnelSaveBtn"
+            type="button"
+            (click)="businesstripDropdown.isOpen = !businesstripDropdown.isOpen"
+          >
+            {{ 'roomList.saveBtn' | translate }}
+          </button>
+        </ul>
+      </div>
       <!-- businesstrip filterbutton -->
-      <button class="businesstrip filterButton" dropdownToggle type="button">
-        {{ 'roomList.workTrip' | translate }}
-      </button>
-      <ul
-        *dropdownMenu
-        class="businesstrip-dropdown-menu dropdown-menu"
-        role="menu"
-      >
-        <input class="businesstrip-checkbox" type="checkbox" #binput />
-        <p>
-          <strong>{{ 'roomList.workTripTitle' | translate }}</strong>
-        </p>
-        <p class="personnel-content-second">
-          {{ 'roomList.workTripContents' | translate }}
-        </p>
-        <!-- <button
-          *ngIf="binput.checked"
-          (click)="binput.checked = false"
-          class="personnelremoveBtn"
-          type="button"
-        >
-          삭제
-        </button> -->
-        <button
-          class="personnelSaveBtn"
-          type="button"
-          (click)="businesstripDropdown.isOpen = !businesstripDropdown.isOpen"
-        >
-          {{ 'roomList.saveBtn' | translate }}
-        </button>
-      </ul>
-    </div>
-    <!-- businesstrip filterbutton -->
 
-    <div
-      class="roomtype"
-      dropdown
-      #roomtypeDropdown="bs-dropdown"
-      [insideClick]="true"
-    >
-      <!-- roomtype filterbutton -->
-      <button class="roomtype filterButton" dropdownToggle type="button">
-        {{ 'roomList.typeOfPlace' | translate }}
-      </button>
-      <ul
-        *dropdownMenu
-        class="roomtype-dropdown-menu dropdown-menu"
-        role="menu"
+      <div
+        class="roomtype"
+        dropdown
+        #roomtypeDropdown="bs-dropdown"
+        [insideClick]="true"
       >
-        <li>
-          <input class="roomtype-checkbox" type="checkbox" />
-          <div class="roomtype-text">
-            <p>
-              <strong>{{ 'roomList.entirePlace' | translate }}</strong>
-            </p>
-            <p>{{ 'roomList.entirePlaceContents' | translate }}</p>
-          </div>
-        </li>
-        <li>
-          <input class="roomtype-checkbox" type="checkbox" />
-          <div class="roomtype-text">
-            <p>
-              <strong>{{ 'roomList.privateRoom' | translate }}</strong>
-            </p>
-            <p>
-              {{ 'roomList.privateRoomContents' | translate }}
-            </p>
-          </div>
-        </li>
-        <li>
-          <input class="roomtype-checkbox" type="checkbox" />
-          <div class="roomtype-text">
-            <p>
-              <strong>{{ 'roomList.hotelRoom' | translate }}</strong>
-            </p>
-            <p>{{ 'roomList.hotelRoomContents' | translate }}</p>
-          </div>
-        </li>
-        <li>
-          <input class="roomtype-checkbox" type="checkbox" />
-          <div class="roomtype-text">
-            <p>
-              <strong>{{ 'roomList.sharedRoom' | translate }}</strong>
-            </p>
-            <p>
-              {{ 'roomList.sharedRoomContents' | translate }}
-            </p>
-          </div>
-        </li>
-        <button
-          class="personnelSaveBtn"
-          type="button"
-          (click)="roomtypeDropdown.isOpen = !roomtypeDropdown.isOpen"
-        >
-          {{ 'roomList.saveBtn' | translate }}
+        <!-- roomtype filterbutton -->
+        <button class="roomtype filterButton" dropdownToggle type="button">
+          {{ 'roomList.typeOfPlace' | translate }}
         </button>
-      </ul>
-      <!-- roomtype filterbutton -->
-    </div>
+        <ul
+          *dropdownMenu
+          class="roomtype-dropdown-menu dropdown-menu"
+          role="menu"
+        >
+          <li>
+            <input class="roomtype-checkbox" type="checkbox" />
+            <div class="roomtype-text">
+              <p>
+                <strong>{{ 'roomList.entirePlace' | translate }}</strong>
+              </p>
+              <p>{{ 'roomList.entirePlaceContents' | translate }}</p>
+            </div>
+          </li>
+          <li>
+            <input class="roomtype-checkbox" type="checkbox" />
+            <div class="roomtype-text">
+              <p>
+                <strong>{{ 'roomList.privateRoom' | translate }}</strong>
+              </p>
+              <p>
+                {{ 'roomList.privateRoomContents' | translate }}
+              </p>
+            </div>
+          </li>
+          <li>
+            <input class="roomtype-checkbox" type="checkbox" />
+            <div class="roomtype-text">
+              <p>
+                <strong>{{ 'roomList.hotelRoom' | translate }}</strong>
+              </p>
+              <p>{{ 'roomList.hotelRoomContents' | translate }}</p>
+            </div>
+          </li>
+          <li>
+            <input class="roomtype-checkbox" type="checkbox" />
+            <div class="roomtype-text">
+              <p>
+                <strong>{{ 'roomList.sharedRoom' | translate }}</strong>
+              </p>
+              <p>
+                {{ 'roomList.sharedRoomContents' | translate }}
+              </p>
+            </div>
+          </li>
+          <button
+            class="personnelSaveBtn"
+            type="button"
+            (click)="roomtypeDropdown.isOpen = !roomtypeDropdown.isOpen"
+          >
+            {{ 'roomList.saveBtn' | translate }}
+          </button>
+        </ul>
+        <!-- roomtype filterbutton -->
+      </div>
 
-    <div
-      class="price"
-      dropdown
-      #priceDropdown="bs-dropdown"
-      [insideClick]="true"
-    >
+      <div
+        class="price"
+        dropdown
+        #priceDropdown="bs-dropdown"
+        [insideClick]="true"
+      >
+        <!-- price filterbutton -->
+        <button class="price filterButton" dropdownToggle type="button">
+          {{ 'roomList.price' | translate }}
+        </button>
+        <ul *dropdownMenu class="price-dropdown-menu dropdown-menu" role="menu">
+          <ng5-slider
+            [(value)]="minValue"
+            [(highValue)]="maxValue"
+            [options]="options"
+          ></ng5-slider>
+          <button
+            class="personnelSaveBtn"
+            type="button"
+            (click)="priceDropdown.isOpen = !priceDropdown.isOpen"
+            (click)="setPrice()"
+          >
+            {{ 'roomList.saveBtn' | translate }}
+          </button>
+        </ul>
+      </div>
       <!-- price filterbutton -->
-      <button class="price filterButton" dropdownToggle type="button">
-        {{ 'roomList.price' | translate }}
-      </button>
-      <ul *dropdownMenu class="price-dropdown-menu dropdown-menu" role="menu">
-        <ng5-slider
-          [(value)]="minValue"
-          [(highValue)]="maxValue"
-          [options]="options"
-        ></ng5-slider>
-        <button
-          class="personnelSaveBtn"
-          type="button"
-          (click)="priceDropdown.isOpen = !priceDropdown.isOpen"
-          (click)="setPrice()"
-        >
-          {{ 'roomList.saveBtn' | translate }}
-        </button>
-      </ul>
     </div>
-    <!-- price filterbutton -->
   </div>
 </div>
 <!-- //filter -->
@@ -245,9 +247,18 @@
         {{ 'roomList.additionalInfoForPice' | translate }}
       </p>
     </div>
+    <p class="roomCount" *ngIf="roomCount === 1 || roomCount === 0">
+      {{ roomCount }} {{ 'roomList.placeToStay' | translate }}
+    </p>
+    <p class="roomCount" *ngIf="roomCount > 1">
+      {{ roomCount }} {{ 'roomList.placesToStay' | translate }}
+    </p>
     <ul>
-      <p class="roomCount">{{roomCount}}개 이상의 숙소</p>
-      <li class="detailList" *ngFor="let room of roomList" (click)="sendResvationId(room.id)">
+      <li
+        class="detailList"
+        *ngFor="let room of roomList"
+        (click)="sendResvationId(room.id)"
+      >
         <div class="detailImg">
           <img class="img1" src="{{ room.image }}" />
         </div>
@@ -262,30 +273,33 @@
             ><span *ngIf="room.capacity > 1">{{
               'roomList.guests' | translate
             }}</span>
-            · {{ room.bedroom }}<span *ngIf="room.bedroom === 1">{{
+            · {{ room.bedroom
+            }}<span *ngIf="room.bedroom === 1">{{
               'roomList.bedroom' | translate
             }}</span>
             <span *ngIf="room.bedroom > 1">{{
               'roomList.bedrooms' | translate
             }}</span>
-            · {{ room.beds }}<span *ngIf="room.beds === 1">{{
+            · {{ room.beds
+            }}<span *ngIf="room.beds === 1">{{
               'roomList.bed' | translate
             }}</span>
-            <span *ngIf="room.beds > 1">{{
-              'roomList.beds' | translate
-            }}</span> · {{
-              room.bathroom
-            }} <span *ngIf="room.bathroom === 1">{{
+            <span *ngIf="room.beds > 1">{{ 'roomList.beds' | translate }}</span>
+            · {{ room.bathroom }}
+            <span *ngIf="room.bathroom === 1">{{
               'roomList.bathroom' | translate
             }}</span
             ><span *ngIf="room.bathroom > 1">{{
               'roomList.bathrooms' | translate
-            }}</span><br>
+            }}</span
+            ><br />
+            <span> {{ room.facilities }} </span><br />
             <span>
-              {{room.facilities}}
-            </span><br>
-            <span>
-              <rating [(ngModel)]="room.total_rating" [max]="max" [readonly]="isReadonly"></rating>
+              <rating
+                [(ngModel)]="room.total_rating"
+                [max]="max"
+                [readonly]="isReadonly"
+              ></rating>
             </span>
           </div>
         </div>
@@ -296,6 +310,7 @@
   <div class="map">
     <div class="mapWrap">
       <agm-map
+        class="mapSize"
         [(latitude)]="latitude"
         [(longitude)]="longitude"
         [zoom]="12"
@@ -319,9 +334,13 @@
                 <img class="infoimg" src="{{ marker.image }}" />
               </div>
               <div>
-                <p>{{ marker.room_type }} {{marker.beds}}</p>
+                <p>{{ marker.room_type }} {{ marker.beds }}</p>
                 <p>{{ marker.title }}</p>
-                <rating [(ngModel)]="marker.total_rating" [max]="max" [readonly]="isReadonly"></rating>
+                <rating
+                  [(ngModel)]="marker.total_rating"
+                  [max]="max"
+                  [readonly]="isReadonly"
+                ></rating>
               </div>
             </div>
             `
