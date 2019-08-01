@@ -20,11 +20,33 @@
       <i class="fa fa-search" aria-hidden="true"></i>
       <input
         type="text"
-        (keyup.enter)="showRoomList(input.value)"
+        (input)="
+          input.value ? (searchInputFocus = true) : (searchInputFocus = false)
+        "
+        (focus)="
+          input.value ? (searchInputFocus = true) : (searchInputFocus = false)
+        "
+        (focusout)="searchInputFocusout()"
+        (keyup.enter)="showRoomList(input.value, input)"
+        (keyup.enter)="initializeCurrentPage.emit()"
+        (input)="stateSuggestion(input)"
         placeholder="{{ 'navigation.searchBarPlaceholder' | translate }}"
         class="searchInput"
         #input
       />
+      <ul *ngIf="searchInputFocus" class="statesList">
+        <li
+          *ngFor="let state of states | slice: 0:5; index as i"
+          (click)="showRoomList(states[i].name, input)"
+          (click)="initializeCurrentPage.emit()"
+        >
+          <span class="float-left"
+            ><i class="fa fa-map-marker" aria-hidden="true"></i>
+            {{ states[i].name }}</span
+          >
+          <span class="float-right">{{ states[i].rooms }} rooms available</span>
+        </li>
+      </ul>
     </div>
     <nav class="headerNav">
       <ul class="clear-fix">

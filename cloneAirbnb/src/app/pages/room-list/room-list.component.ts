@@ -72,16 +72,22 @@ export class RoomListComponent implements OnInit {
   priceToggle: boolean;
 
   // 방 목록
+  totalRooms: number;
   roomimage: string;
   address: string;
 
   // 전체 방 개수
-  roomCount = this.roomListService.roomCount;
-  
+  roomCount: number;
+
   // 별점
   max = 5;
   rate: number;
   isReadonly = true;
+
+  rotate = true;
+  maxSize = 5;
+  currentPage = 1;
+  page = this.roomListService.page;
 
   constructor(
     private mapsService: GoogleMapService,
@@ -111,6 +117,7 @@ export class RoomListComponent implements OnInit {
 
     this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
+      this.roomCount = this.roomList.length;
     });
 
     this.roomListService.markersUpDated.subscribe((marker: MakerInfo[]) => {
@@ -122,19 +129,16 @@ export class RoomListComponent implements OnInit {
       this.longitude = latlng[1];
       this.map.setCenter({ lat: this.latitude, lng: this.longitude });
     });
-    this.roomListService.roomCountUpDated.subscribe((count) => {
-      this.roomCount = count;
-    });
   }
 
   getRoomInfo() {
     this.roomListService.getRoomList().subscribe((res: RoomList) => {
-      this.roomCount = res.count;
-      console.log(res.results);
+      this.totalRooms = res.count;
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
         this.makeMarker(room);
       }
+      this.roomCount = this.roomList.length;
     });
   }
 
@@ -147,11 +151,14 @@ export class RoomListComponent implements OnInit {
   }
 
   setRoomList() {
+    this.currentPage = 1;
     this.roomListService.roomList = [];
+    this.roomListService.markers = [];
     return this.roomListService.getRoomList().subscribe(res => {
-      this.roomCount = res.count;
+      this.totalRooms = res.count;
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
+        this.makeMarker(room);
       }
       this.roomListService.roomChangeDetect();
     });
@@ -164,14 +171,16 @@ export class RoomListComponent implements OnInit {
     this.reservationInfoService.reservationInfoObj.checkOut = `${value[1].getMonth() +
       1}/${value[1].getDate()}/${value[1].getFullYear()}`;
 
+    this.roomListService.page = 1;
     this.setRoomList();
   }
 
-  changeStyle() {
-    this.dateStyle.width = '150px';
+  widthChange() {
+    this.dateStyle = { width: '150px' };
   }
 
   changePersonnel() {
+    this.roomListService.page = 1;
     this.setRoomList();
   }
 
@@ -181,6 +190,7 @@ export class RoomListComponent implements OnInit {
     this.roomListService.minPrice = minValue;
     this.roomListService.maxPrice = maxValue;
 
+    this.roomListService.page = 1;
     this.setRoomList();
   }
 
@@ -225,6 +235,16 @@ export class RoomListComponent implements OnInit {
         this.reservationInfoService.reservationInfoObj.personnel--;
       }
     }
+  }
+
+  initializeCurrentPage() {
+    this.currentPage = 1;
+  }
+
+  pageChanged(event: any): void {
+    this.page = event.page;
+    this.roomListService.page = this.page;
+    this.setRoomList();
   }
 
   get adults() {

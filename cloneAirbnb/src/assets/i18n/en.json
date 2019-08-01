@@ -113,6 +113,8 @@
     "sharedRoomContents": "Stay in a shared space, like a common room",
     "price": "Price",
     "additionalInfoForPice": "Additional fees apply. Taxes may be added.",
+    "placeToStay": "place to stay",
+    "placesToStay": "places to stay",
     "showMap": "Show Map",
     "bedroom": "bedroom",
     "bedrooms": "bedrooms",
@@ -144,6 +146,33 @@
     "serviceFee": "Service fee",
     "occupancyTex": "Occupancy tex",
     "total": "Total"
+  },
+  "guestInfo": {
+    "whoIsComing": "Who's coming?",
+    "guestsCap": "Guests",
+    "guests": "guests",
+    "guest": "guest",
+    "tellToHost": "Tell host about your trip",
+    "tellToHostBrief": "Briefly introduce yourself and tell us about your travel goals.",
+    "continue": "Continue"
+  },
+  "checkPayment": {
+    "confirmAndPay": "Confirm and pay",
+    "payWith": "Pay with",
+    "creditOrDebitCard": "Credit or debit card",
+    "addPaymentMethod": "ADD PAYMENT METHOD",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "cardInfo": "Card info",
+    "cardNumber": "Card number",
+    "expiration": "Expiration",
+    "CVV": "CVV",
+    "billingInfo": "Billing info",
+    "zipCode": "Zip code",
+    "billingCountry": "Billing Country",
+    "Korea": "Korea",
+    "policy": "I agree to the House Rules, Cancellation Policy, and the Guest Refund Policy. I also agree to pay the total amount shown, which includes Occupancy Taxes and Service Fees. Airbnb now collects and remits government-imposed Occupancy Taxes in this location.",
+    "requestToBook": "Request to BooK"
   },
   "hello": "welcome"
 }

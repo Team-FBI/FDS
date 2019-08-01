@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { LanguageService } from 'src/app/core/service/language.service';
+import { ReservationInfoService } from 'src/app/core/service/reservation-info.service';
 
 @Component({
   selector: 'app-guest-info',
@@ -12,14 +13,15 @@ import { LanguageService } from 'src/app/core/service/language.service';
   styleUrls: ['./guest-info.component.scss']
 })
 export class GuestInfoComponent implements OnInit {
-
+  personnel = this.rerservationInfoService.reservationInfoObj.personnel;
   switchLang = true;
 
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private rerservationInfoService: ReservationInfoService
   ) {}
 
   ngOnInit() {

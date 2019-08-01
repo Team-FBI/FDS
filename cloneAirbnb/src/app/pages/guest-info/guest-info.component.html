@@ -1,13 +1,13 @@
 <div class="roomHeader">
   <h1 class="logo">
-      <a routerLink="/home"
+    <a routerLink="/home"
       ><img
         *ngIf="!isMain"
         src="https://i.postimg.cc/zDhvQrxH/logo.png"
         alt="Airbnb"
         class="mainLogo"
       />
-      </a>
+    </a>
   </h1>
   <div class="language">
     <button (click)="switchLanguage()">
@@ -17,30 +17,41 @@
 </div>
 <section class="guestInfoContainer">
   <section class="guestInfo">
-    <h2>일행이 있나요?</h2>
+    <h2>{{ 'guestInfo.whoIsComing' | translate }}</h2>
     <div class="peopleNumber">
-      <h3>인원</h3>
-      <button class="peopleNumberBtn">게스트 2명</button>
+      <h3>{{ 'guestInfo.guestsCap' | translate }}</h3>
+      <div class="peopleNumberBtn" *ngIf="personnel === 1">
+        {{ personnel }} {{ 'guestInfo.guest' | translate }}
+      </div>
+      <div class="peopleNumberBtn" *ngIf="personnel > 1">
+        {{ personnel }} {{ 'guestInfo.guests' | translate }}
+      </div>
     </div>
-    <div class="businessTrip">
+    <!-- <div class="businessTrip">
       <h3>출장을 떠나시나요?</h3>
       <button>출장버튼</button>
-    </div>
+    </div> -->
     <div class="hostMessageContainer">
       <div class="flexContainer">
         <div class="hostInfo">
-          <h3>호스트에게 인사하기</h3>
-          <p>Debb님에게 간단히 자신을 소개하고 여행 목적에 대해 알려주세요.</p>
+          <h3>{{ 'guestInfo.tellToHost' | translate }}</h3>
+          <p>{{ 'guestInfo.tellToHostBrief' | translate }}</p>
         </div>
         <div class="hostMark">
           마크
         </div>
       </div>
       <div class="hostMessage">
-        <textarea name="" id="" placeholder="숙소에서 보낼 멋질 **박이 기다려 집니다!"></textarea>
+        <textarea
+          name=""
+          id=""
+          placeholder="숙소에서 보낼 멋질 **박이 기다려 집니다!"
+        ></textarea>
       </div>
     </div>
-    <button class="guestInfoBtn" (click)="toCheckPayment()">계속하기</button>
+    <button class="guestInfoBtn" (click)="toCheckPayment()">
+      {{ 'guestInfo.continue' | translate }}
+    </button>
   </section>
   <app-payment></app-payment>
-</section> 
+</section>
