@@ -66,7 +66,7 @@ export class RoomListService {
     if (!this.reservationInfoService.reservationInfoObj.destination) {
       this.reservationInfoService.reservationInfoObj.destination = 'seoul';
     }
-
+    
     return this.http.get<RoomList>(
       `${this.appUrl}/rooms/?search=${
         this.reservationInfoService.reservationInfoObj.destination

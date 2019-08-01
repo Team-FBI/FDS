@@ -187,6 +187,35 @@ export class RoomListComponent implements OnInit {
     this.router.navigate([`roomdetail/${id}`]);
   }
 
+  // filterSpace(roomtypeDropdown, checkEntire, checkPrivate, checkHotel, checkShare) {
+  //   roomtypeDropdown.isOpen = !roomtypeDropdown.isOpen;
+    
+  //   this.roomList = this.copyList;
+
+  //   if (checkEntire.checked) {
+  //     this.entireroomList = this.roomList.filter((room) => room.space === checkEntire.name);
+  //   } else {
+  //     this.entireroomList = [];
+  //   }
+  //   if (checkPrivate.checked) {
+  //     this.privateroomList = this.roomList.filter((room) => room.space === checkPrivate.name);
+  //   } else {
+  //     this.privateroomList = [];
+  //   }
+  //   if (checkHotel.checked) {
+  //     this.hotelroomList = this.roomList.filter((room) => room.space === checkHotel.name);
+  //   } else {
+  //     this.hotelroomList = [];
+  //   }
+  //   if (checkShare.checked) {
+  //     this.sharedroomList = this.roomList.filter((room) => room.space === checkShare.name);
+  //   } else {
+  //     this.sharedroomList = [];
+  //   }
+  //   this.roomList = [...this.entireroomList, ...this.privateroomList, ...this.hotelroomList, ...this.sharedroomList];
+  //   this.roomCount = this.roomList.length;
+  // }
+
   mapClick() {
     if (this.previousIW != null) {
       this.previousIW.close();

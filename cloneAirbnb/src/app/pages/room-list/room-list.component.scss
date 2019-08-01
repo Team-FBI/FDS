@@ -68,14 +68,6 @@
   position: relative;
 }
 
-.custom-content {
-  position: absolute;
-  z-index: 1081;
-  top: 390px;
-  cursor: pointer;
-  align-self: center;
-}
-
 button:focus {
   outline: none;
 }
@@ -179,6 +171,11 @@ button:focus {
   width: 35%;
   border-radius: 5px;
 }
+
+carousel slide{
+  z-index: -10;
+}
+
 .detailText {
   float: left;
   width: 65%;
