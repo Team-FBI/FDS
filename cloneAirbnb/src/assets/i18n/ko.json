@@ -113,6 +113,8 @@
     "sharedRoomContents": "사적 공간 없이, 침실이나 욕실 등을 호스트나 다른 게스트와 함께 이용합니다.",
     "price": "가격",
     "additionalInfoForPice": "관광세가 추가로 부과될 수 있습니다.",
+    "placeToStay": "개 이상의 숙소",
+    "placesToStay": "개 이상의 숙소",
     "showMap": "지도보기",
     "bedroom": "bedroom",
     "bedrooms": "bedrooms",
@@ -140,10 +142,13 @@
     "guests": "명",
     "night": "박",
     "nights": "박",
-    "cleaningExpenses": "Cleaning expenses",
-    "serviceFee": "Service fee",
-    "occupancyTex": "Occupancy tex",
+    "cleaningExpenses": "청소비",
+    "serviceFee": "서비스비",
+    "occupancyTex": "숙박세",
     "total": "Total"
+  },
+  "guestInfo": {
+    "whoIsComing": "일행이 있나요?"
   },
   "hello": "안녕하세요"
 }

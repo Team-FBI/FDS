@@ -113,6 +113,8 @@
     "sharedRoomContents": "Stay in a shared space, like a common room",
     "price": "Price",
     "additionalInfoForPice": "Additional fees apply. Taxes may be added.",
+    "placeToStay": "place to stay",
+    "placesToStay": "places to stay",
     "showMap": "Show Map",
     "bedroom": "bedroom",
     "bedrooms": "bedrooms",
@@ -144,6 +146,9 @@
     "serviceFee": "Service fee",
     "occupancyTex": "Occupancy tex",
     "total": "Total"
+  },
+  "guestInfo": {
+    "whoIsComing": "Who's coming?"
   },
   "hello": "welcome"
 }

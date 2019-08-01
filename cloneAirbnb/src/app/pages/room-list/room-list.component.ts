@@ -76,8 +76,8 @@ export class RoomListComponent implements OnInit {
   address: string;
 
   // 전체 방 개수
-  roomCount = this.roomListService.roomCount;
-  
+  roomCount: number;
+
   // 별점
   max = 5;
   rate: number;
@@ -111,6 +111,7 @@ export class RoomListComponent implements OnInit {
 
     this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
+      this.roomCount = this.roomList.length;
     });
 
     this.roomListService.markersUpDated.subscribe((marker: MakerInfo[]) => {
@@ -122,19 +123,15 @@ export class RoomListComponent implements OnInit {
       this.longitude = latlng[1];
       this.map.setCenter({ lat: this.latitude, lng: this.longitude });
     });
-    this.roomListService.roomCountUpDated.subscribe((count) => {
-      this.roomCount = count;
-    });
   }
 
   getRoomInfo() {
     this.roomListService.getRoomList().subscribe((res: RoomList) => {
-      this.roomCount = res.count;
-      console.log(res.results);
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
         this.makeMarker(room);
       }
+      this.roomCount = this.roomList.length;
     });
   }
 
@@ -149,7 +146,6 @@ export class RoomListComponent implements OnInit {
   setRoomList() {
     this.roomListService.roomList = [];
     return this.roomListService.getRoomList().subscribe(res => {
-      this.roomCount = res.count;
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
       }
@@ -167,8 +163,8 @@ export class RoomListComponent implements OnInit {
     this.setRoomList();
   }
 
-  changeStyle() {
-    this.dateStyle.width = '150px';
+  widthChange() {
+    this.dateStyle = {width: '150px'};
   }
 
   changePersonnel() {

@@ -1,13 +1,13 @@
 <div class="roomHeader">
   <h1 class="logo">
-      <a routerLink="/home"
+    <a routerLink="/home"
       ><img
         *ngIf="!isMain"
         src="https://i.postimg.cc/zDhvQrxH/logo.png"
         alt="Airbnb"
         class="mainLogo"
       />
-      </a>
+    </a>
   </h1>
   <div class="language">
     <button (click)="switchLanguage()">
@@ -17,7 +17,7 @@
 </div>
 <section class="guestInfoContainer">
   <section class="guestInfo">
-    <h2>일행이 있나요?</h2>
+    <h2>{{ 'guestInfo.whoIsComing' | translate }}</h2>
     <div class="peopleNumber">
       <h3>인원</h3>
       <button class="peopleNumberBtn">게스트 2명</button>
@@ -37,10 +37,14 @@
         </div>
       </div>
       <div class="hostMessage">
-        <textarea name="" id="" placeholder="숙소에서 보낼 멋질 **박이 기다려 집니다!"></textarea>
+        <textarea
+          name=""
+          id=""
+          placeholder="숙소에서 보낼 멋질 **박이 기다려 집니다!"
+        ></textarea>
       </div>
     </div>
     <button class="guestInfoBtn" (click)="toCheckPayment()">계속하기</button>
   </section>
   <app-payment></app-payment>
-</section> 
+</section>
