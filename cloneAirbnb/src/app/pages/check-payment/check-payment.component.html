@@ -1,13 +1,13 @@
 <div class="roomHeader">
   <h1 class="logo">
-      <a routerLink="/home"
+    <a routerLink="/home"
       ><img
         *ngIf="!isMain"
         src="https://i.postimg.cc/zDhvQrxH/logo.png"
         alt="Airbnb"
         class="mainLogo"
       />
-      </a>
+    </a>
   </h1>
   <div class="language">
     <button (click)="switchLanguage()">
@@ -18,23 +18,30 @@
 
 <section class="checkpaymentContainer">
   <section class="checkpayment">
-    <h2>확인 및 결제</h2>
+    <h2>{{ 'checkPayment.confirmAndPay' | translate }}</h2>
     <div class="paymentType">
-      <h3>결제수단</h3>
+      <h3>{{ 'checkPayment.payWith' | translate }}</h3>
       <div class="cardIcon">
         <fa-icon [icon]="faCcVisa" size="lg" class="visaIcon"></fa-icon>
-        <fa-icon [icon]="faCcAmex" size="lg"  class="amexIcon"></fa-icon>
+        <fa-icon [icon]="faCcAmex" size="lg" class="amexIcon"></fa-icon>
         <fa-icon [icon]="faCcMastercard" size="lg" class="maserIcon"></fa-icon>
       </div>
       <div class="paymentTypeBtn">
         <div class="btn-group" dropdown>
           <button dropdownToggle type="button" class="dropdown-toggle">
-            <fa-icon [icon]="faCreditCard" size="lg" [styles]="{'color': 'gray'}"></fa-icon><span class="caret">신용카드 또는 체크카드</span>
+            <fa-icon
+              [icon]="faCreditCard"
+              size="lg"
+              [styles]="{ color: 'gray' }"
+            ></fa-icon
+            ><span class="caret">{{ 'checkPayment.creditOrDebitCard' | translate }}</span>
           </button>
           <ul *dropdownMenu class="dropdown-menu" role="menu">
-            <li style="font-size:14px"><strong>결제 수단 추가</strong></li>
+            <li style="font-size:14px"><strong>{{ 'checkPayment.addPaymentMethod' | translate }}</strong></li>
             <li class="divider dropdown-divider"></li>
-            <li role="menuitem" (click)="addCard()">신용카드 또는 체크카드 추가</li>
+            <li role="menuitem" (click)="addCard()">
+              {{ 'checkPayment.creditOrDebitCard' | translate }}
+            </li>
           </ul>
         </div>
       </div>
@@ -42,32 +49,35 @@
     <div *ngIf="toggleCard">
       <div class="paymentName">
         <div class="paymentLastName">
-          <h3>이름</h3>
-          <input type="text" class="nameBtn">
+          <h3>{{ 'checkPayment.firstName' | translate }}</h3>
+          <input type="text" class="nameBtn" />
         </div>
         <div class="paymentFristName">
-          <h3>성</h3>
-          <input type="text" class="nameBtn">
+          <h3>{{ 'checkPayment.lastName' | translate }}</h3>
+          <input type="text" class="nameBtn" />
         </div>
       </div>
       <div class="cardInfo">
-        <h3>카드 정보</h3>
-        <input type="text" class="cardNumInfo" placeholder="카드 번호">
-        <input type="text" class="cardBtn" placeholder="만료일">
-        <input type="text" class="cardBtn" placeholder="CVV">
+        <h3>{{ 'checkPayment.cardInfo' | translate }}</h3>
+        <input type="text" class="cardNumInfo" placeholder="{{ 'checkPayment.cardNumber' | translate }}" />
+        <input type="text" class="cardBtn" placeholder="{{ 'checkPayment.expiration' | translate }}" />
+        <input type="text" class="cardBtn" placeholder="{{ 'checkPayment.CVV' | translate }}" />
       </div>
       <div class="otherInfo">
         <div class="paymentAddress">
-          <h3>청구지 정보</h3>
-          <input type="text"class="otherBtn" placeholder="우편번호">
+          <h3>{{ 'checkPayment.billingInfo' | translate }}</h3>
+          <input type="text" class="otherBtn" placeholder="{{ 'checkPayment.zipCode' | translate }}" />
         </div>
         <div class="paymentCountry">
-          <h3>결제 국가</h3>
-          <input type="text" class="otherBtn" placeholder="한국" disabled>
+          <h3>{{ 'checkPayment.billingCountry' | translate }}</h3>
+          <input type="text" class="otherBtn" placeholder="{{ 'checkPayment.Korea' | translate }}" disabled />
         </div>
       </div>
+      <div>
+        {{ 'checkPayment.policy' | translate }}
+      </div>
     </div>
-    <button class="requstResBtn" (click)="toYourTrip()">예약 요청하기</button>
+    <button class="requstResBtn" (click)="toYourTrip()">{{ 'checkPayment.requestToBook' | translate }}</button>
   </section>
   <app-payment></app-payment>
 </section>
