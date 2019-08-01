@@ -22,6 +22,7 @@ export class NavigationComponent implements OnInit {
   states = [];
   searchInputFocus = false;
 
+
   constructor(
     private router: Router,
     public authService: AuthService,
