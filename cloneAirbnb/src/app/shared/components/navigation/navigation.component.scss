@@ -51,14 +51,14 @@
         padding: 0px 20px;
       }
 
-    .borderColor555:hover {
-      border-bottom: 2px solid #555;
-    }
-    .borderColorWhite:hover {
-      border-bottom: 2px solid #fff;
+      .borderColor555:hover {
+        border-bottom: 2px solid #555;
+      }
+      .borderColorWhite:hover {
+        border-bottom: 2px solid #fff;
+      }
     }
   }
-}
 }
 
 button:focus {
@@ -71,6 +71,7 @@ button:focus {
 }
 
 .search {
+  width: 455px;
   float: left;
   height: 50px;
   margin-top: 15px;
@@ -80,6 +81,7 @@ button:focus {
 }
 
 .searchInput {
+  position: relative;
   width: 400px;
   border: 0;
   font-size: 17px;
@@ -89,6 +91,26 @@ button:focus {
 .fa-search {
   font-size: 17px;
   margin-right: 10px;
+}
+
+.statesList {
+  position: absolute;
+  left: 85px;
+  top: 62px;
+  width: 455px;
+  z-index: 100;
+  box-shadow: 1px 1px 10px gray;
+  border-top: 0px;
+  border-radius: 0 0 5px 5px;
+  background: rgba(255, 255, 255, 1);
+
+  li {
+    font-size: 14px;
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+  }
 }
 
 .mypage {
@@ -129,10 +151,12 @@ button:focus {
       a:hover {
         border-bottom: 1px solid #333;
       }
+      .signOutBtn {
+        padding-left: 0;
+      }
     }
   }
 }
-
 
 .btn-group:focus {
   outline: none;
@@ -158,18 +182,9 @@ button:focus {
   background-color: #fff;
 }
 
-.language{
-  padding:0 20px 0 0;
-}
-.language button{
-  float: right;
-  padding:10px;
-  font-size:0.8rem;
-  border:0px;
-  background:transparent;
-}
-.language::after{
-  content: '';
-  clear: both;
-  display: block;
+.language button {
+  width: 50px;
+  padding: 10px;
+  font-size: 0.8rem;
+  background: transparent;
 }

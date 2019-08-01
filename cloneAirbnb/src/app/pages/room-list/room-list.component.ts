@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone} from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {
   ZoomControlOptions,
   ControlPosition,
@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent implements OnInit{
+export class RoomListComponent implements OnInit {
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
   roomList = this.roomListService.roomList;
@@ -75,12 +75,20 @@ export class RoomListComponent implements OnInit{
   roomimage: string;
   address: string;
 
+  // 전체 방 개수
+  roomCount: number;
+
+  // 별점
+  max = 5;
+  rate: number;
+  isReadonly = true;
+
   constructor(
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
     private reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService,
-    private router: Router,
+    private router: Router
   ) {
     this.currentIW = null;
     this.previousIW = null;
@@ -103,17 +111,26 @@ export class RoomListComponent implements OnInit{
 
     this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
+      this.roomCount = this.roomList.length;
     });
+
     this.roomListService.markersUpDated.subscribe((marker: MakerInfo[]) => {
+<<<<<<< HEAD
       // console.log(this.markers);
       this.markers = marker;
       // console.log(marker);
       // console.log(this.markers);
       
+=======
+      this.markers = marker;
+>>>>>>> rmorigin/develop
     });
-    this.roomListService.centerUpDated.subscribe((latlng) => {
 
+<<<<<<< HEAD
       // console.log(1);
+=======
+    this.roomListService.centerUpDated.subscribe(latlng => {
+>>>>>>> rmorigin/develop
       this.latitude = latlng[0];
       this.longitude = latlng[1];
       this.map.setCenter({ lat: this.latitude, lng: this.longitude });
@@ -126,6 +143,7 @@ export class RoomListComponent implements OnInit{
         this.roomListService.roomList.push(room);
         this.makeMarker(room);
       }
+      this.roomCount = this.roomList.length;
     });
   }
 
@@ -157,8 +175,8 @@ export class RoomListComponent implements OnInit{
     this.setRoomList();
   }
 
-  changeStyle() {
-    this.dateStyle.width = '150px';
+  widthChange() {
+    this.dateStyle = {width: '150px'};
   }
 
   changePersonnel() {
@@ -174,28 +192,15 @@ export class RoomListComponent implements OnInit{
     this.setRoomList();
   }
 
-  sendResvationId(id){
+  sendResvationId(id) {
     this.reservationInfoService.id = id;
+    this.roomListService.roomList = [];
+    this.roomListService.markers = [];
     this.router.navigate([`roomdetail/${id}`]);
   }
 
-  max(coordType: 'lat' | 'lng'): number {
-    return Math.max(...this.markers.map(marker => marker[coordType]));
-  }
-
-  min(coordType: 'lat' | 'lng'): number {
-    return Math.min(...this.markers.map(marker => marker[coordType]));
-  }
-
-  selectMarker(event) {
-    this.selectedMarker = {
-      lat: event.latitude,
-      lng: event.longitude
-    };
-  }
-
   mapClick() {
-    if (this.previousIW) {
+    if (this.previousIW != null) {
       this.previousIW.close();
     }
   }
@@ -228,10 +233,6 @@ export class RoomListComponent implements OnInit{
         this.reservationInfoService.reservationInfoObj.personnel--;
       }
     }
-  }
-
-  toggleRemoveText(binput) {
-    console.log(binput);
   }
 
   get adults() {

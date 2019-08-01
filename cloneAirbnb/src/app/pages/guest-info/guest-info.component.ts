@@ -12,6 +12,9 @@ import { LanguageService } from 'src/app/core/service/language.service';
   styleUrls: ['./guest-info.component.scss']
 })
 export class GuestInfoComponent implements OnInit {
+
+  switchLang = true;
+
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
@@ -22,5 +25,15 @@ export class GuestInfoComponent implements OnInit {
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
     this.translate.setDefaultLang(`${this.languageService.currentLanguage()}`);
+  }
+
+  toCheckPayment() {
+    this.router.navigate(['checkpayment']);
+  }
+
+  switchLanguage() {
+    const language = this.switchLang ? 'ko' : 'en';
+    this.languageService.switchLanguageService(language);
+    this.switchLang = !this.switchLang;
   }
 }

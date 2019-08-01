@@ -1,10 +1,20 @@
-<!-- <header class="regulationHeader">
-  <ul>
-    <li class="active">1. 숙소 이용규칙 확인</li>
-    <li>2. 게스트 정보 입력</li>
-    <li>3. 확인 및 결제</li>
-  </ul>
-</header> -->
+<div class="roomHeader">
+  <h1 class="logo">
+      <a routerLink="/home"
+      ><img
+        *ngIf="!isMain"
+        src="https://i.postimg.cc/zDhvQrxH/logo.png"
+        alt="Airbnb"
+        class="mainLogo"
+      />
+      </a>
+  </h1>
+  <div class="language">
+    <button (click)="switchLanguage()">
+      {{ switchLang ? 'KOR' : 'ENG' }}
+    </button>
+  </div>
+</div>
 <section class="roomContainer clear-fix">
   <section class="roomRegulation">
     <!-- roomRegulation -->
@@ -69,7 +79,7 @@
         </li>
       </ul>
     </div>
-    <button class="agreeBtn">
+    <button class="agreeBtn" (click)="toGuestInfo()">
       {{ 'roomRegulation.agreeAndContinue' | translate }}
     </button>
   </section>

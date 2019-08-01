@@ -20,11 +20,14 @@ export interface Result {
   space: string;
   total_rating: number;
   bedroom: number;
+  beds: number;
+  bathroom: number;
   capacity: number;
   bath_type: string;
   address: string;
-  images: number;
   reservations: number;
   state: string;
   label: string;
+  super_host: string;
+  facilities: string[];
 }

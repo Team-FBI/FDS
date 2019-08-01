@@ -36,12 +36,15 @@ export class RoomRegulationComponent implements OnInit {
     (this.checkOutNewDate.getTime() - this.checkInNewDate.getTime()) /
     (1000 * 60 * 60 * 24);
 
+  switchLang = true;
+
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
     private reservationInfo: ReservationInfoService,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    
   ) {}
 
   ngOnInit() {
@@ -62,6 +65,12 @@ export class RoomRegulationComponent implements OnInit {
     return newDate.join('-');
   }
 
+  switchLanguage() {
+    const language = this.switchLang ? 'ko' : 'en';
+    this.languageService.switchLanguageService(language);
+    this.switchLang = !this.switchLang;
+  }
+
   get getCheckInDay() {
     return this.week[new Date(this.checkDay(this.checkIn)).getDay()];
   }
@@ -70,6 +79,9 @@ export class RoomRegulationComponent implements OnInit {
     return this.week[new Date(this.checkDay(this.checkOut)).getDay()];
   }
   
+  toGuestInfo() {
+    this.router.navigate(['guestinfo']);
+  }
 }
 
 

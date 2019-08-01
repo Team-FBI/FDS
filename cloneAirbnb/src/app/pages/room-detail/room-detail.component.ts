@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+  AfterViewInit
+} from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -22,25 +28,23 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   Childcounter = 0;
   Youngcounter = 0;
   price: number;
-  min_stay:number;
+  min_stay: number;
   appUrl: string = environment.appUrl;
-  totalprice:number;
-  serviceprice:number;
-  Accommodation:number;
-  finalprice:number;
-  total_rating:number;
+  totalprice: number;
+  serviceprice: number;
+  Accommodation: number;
+  finalprice: number;
+  total_rating: number;
   image: string;
-  image_1:string;
-  image_2:string;
-  image_3:string;
-  image_4:string;
+  image_1: string;
+  image_2: string;
+  image_3: string;
+  image_4: string;
   max: number = 10;
   rate: number = 7;
   id: number;
 
   checked: boolean = true;
-
-  
 
   @ViewChild('galleryTop', { static: true }) galleryTop;
   @ViewChild('galleryThumbs', { static: true }) galleryThumbs;
@@ -51,7 +55,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     effect: 'fade',
     navigation: {
       nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      prevEl: '.swiper-button-prev'
     }
   };
   galleryThumbsConfig: SwiperConfigInterface = {
@@ -60,7 +64,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     centeredSlides: true,
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
-    slideToClickedSlide: true,
+    slideToClickedSlide: true
   };
 
   config = {
@@ -73,20 +77,22 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     private router: Router,
     private urlRemember: UrlRememberService,
     private reservationInfoService: ReservationInfoService
+<<<<<<< HEAD
     ) {
+=======
+  ) {
+>>>>>>> rmorigin/develop
     this.minDate = new Date();
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
     this.maxDate.setDate(this.maxDate.getDate() + 180);
-    }
+  }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
   roomlistopenModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
   }
-
-  
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
@@ -95,6 +101,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     // this.http.get(`${this.appUrl}/rooms/`)
     //   .subscribe(res => console.log(res))
 
+<<<<<<< HEAD
     this.http.get(`${this.appUrl}/rooms/${this.id}/`)
       .subscribe( (res: any) => { 
         // console.log(res)
@@ -111,40 +118,63 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
         this.image_2 = res.image_2;
         this.image_3 = res.image_3;
         this.image_4 = res.image_4;
+=======
+    this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
+      console.log(res);
+      this.price = res.price;
+      this.min_stay = res.min_stay;
+      this.totalprice = this.price * this.min_stay * this.Allcounter;
+      this.serviceprice = this.totalprice * 0.1;
+      this.Accommodation = this.serviceprice * 0.1;
+      this.finalprice =
+        this.totalprice + this.serviceprice + this.Accommodation;
+      this.total_rating = res.total_rating;
+      this.image = res.image;
+      this.image_1 = res.image_1;
+      this.image_2 = res.image_2;
+      this.image_3 = res.image_3;
+      this.image_4 = res.image_4;
+>>>>>>> rmorigin/develop
     });
   }
 
   increase(n: number) {
     // console.log(n)
-    if(n === 1){
+    if (n === 1) {
       this.Adultcounter++;
-    } else if (n== 2) {
+    } else if (n == 2) {
       this.Childcounter++;
-    } else if (n==3) {
+    } else if (n == 3) {
       this.Youngcounter++;
     }
     this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
-    this.totalprice = this.price* this.min_stay * this.Allcounter;
+    this.totalprice = this.price * this.min_stay * this.Allcounter;
     this.serviceprice = this.totalprice * 0.13;
-    this.Accommodation = this.serviceprice *0.10;
+    this.Accommodation = this.serviceprice * 0.1;
     this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
   }
 
-  decrease(n : number) {
-    if(n==1){
-      if (this.Adultcounter === 0) { return; }
+  decrease(n: number) {
+    if (n == 1) {
+      if (this.Adultcounter === 0) {
+        return;
+      }
       this.Adultcounter--;
-    } else if (n==2) {
-      if (this.Childcounter === 0) { return; }
+    } else if (n == 2) {
+      if (this.Childcounter === 0) {
+        return;
+      }
       this.Childcounter--;
-    } else if (n==3) {
-      if (this.Youngcounter === 0) { return; }
+    } else if (n == 3) {
+      if (this.Youngcounter === 0) {
+        return;
+      }
       this.Youngcounter--;
     }
     this.Allcounter = this.Adultcounter + this.Childcounter + this.Youngcounter;
-    this.totalprice = this.price* this.min_stay * this.Allcounter;
+    this.totalprice = this.price * this.min_stay * this.Allcounter;
     this.serviceprice = this.totalprice * 0.13;
-    this.Accommodation = this.serviceprice *0.10;
+    this.Accommodation = this.serviceprice * 0.1;
     this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
   }
 
@@ -153,13 +183,18 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.galleryThumbs.nativeElement.swiper.controller.control = this.galleryTop.nativeElement.swiper;
   }
 
+<<<<<<< HEAD
   changesavebtn(){
+=======
+  changesavebtn() {
+>>>>>>> rmorigin/develop
     this.checked = !this.checked;
   }
-  
-  toGuestInfo() {
+
+  toRoomRegulation() {
     this.router.navigate(['roomregulation']);
   }
+<<<<<<< HEAD
 
   setregulation(){
     this.reservationInfoService.reservationInfoObj.price = this.price;
@@ -173,3 +208,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
 
 
+=======
+}
+>>>>>>> rmorigin/develop
