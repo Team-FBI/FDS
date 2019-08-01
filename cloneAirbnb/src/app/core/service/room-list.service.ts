@@ -9,6 +9,7 @@ import { ReservationInfoService } from '../../core/service/reservation-info.serv
 import { RoomList } from '../interface/roomList.interface';
 import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
 import { MakerInfo } from '../interface/maker-info.interface';
+import { state } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -127,4 +128,6 @@ export class RoomListService {
     this.markersUpDated.emit(this.markers);
     this.roomList = [];
   }
+
+
 }
