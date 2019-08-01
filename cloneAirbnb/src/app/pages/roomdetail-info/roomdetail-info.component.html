@@ -31,12 +31,20 @@
 
     <div>
         <div class="col-xs-12 col-12 col-md-4 form-group">
-            <input type="text"
+            <!-- <input type="text"
                   placeholder="Daterangepicker"
                   class="form-control infodate"
                   bsDaterangepicker
                   [isOpen]="true"
-                  [outsideClick]="false">
+                  [outsideClick]="false"
+            > -->
+            <div style="background-color:pink; height:350px; width:620px;" >
+            <bs-datepicker-inline [bsValue]="bsInlineValue" style="width:50%; float:left;" [bsConfig]="{ selectFromOtherMonth: true }" (bsValueChange)="onValueChange($event)" [dateCustomClasses]="dateCustomClasses" [datesDisabled]="disabledDates"
+            ></bs-datepicker-inline>
+            
+            <bs-datepicker-inline [bsValue]="bsInlineValue2" [bsConfig]="{ selectFromOtherMonth: true }" style="width:50%; float:right;" [dateCustomClasses]="dateCustomClasses"
+            [datesDisabled]="disabledDates"></bs-datepicker-inline>
+            </div>
         </div>
     </div>
 
