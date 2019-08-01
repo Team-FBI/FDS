@@ -8,6 +8,7 @@ import { LanguageService } from 'src/app/core/service/language.service';
 import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
 import { GoogleMapsAPIWrapper } from '@agm/core';
 import { States } from 'src/app/core/interface/states.interface';
+import { RoomListComponent } from 'src/app/pages/room-list/room-list.component';
 
 @Component({
   selector: 'app-navigation',
@@ -27,7 +28,8 @@ export class NavigationComponent implements OnInit {
     public reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private roomListComponent: RoomListComponent
   ) {
     this.translate = translate;
   }
@@ -40,6 +42,8 @@ export class NavigationComponent implements OnInit {
   showRoomList(destination: string, input: HTMLInputElement) {
     this.roomListService.roomList = [];
     this.roomListService.markers = [];
+    this.roomListService.page = 1;
+    this.roomListComponent.currentPage = 1;
     input.value = '';
     this.searchInputFocus = false;
     this.reservationInfoService.reservationInfoObj.destination = destination;

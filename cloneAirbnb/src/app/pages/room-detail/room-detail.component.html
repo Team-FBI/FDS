@@ -128,7 +128,7 @@
               <div class="btn-group guest-dropdown" dropdown #dropdown="bs-dropdown" [autoClose]="false">
                   <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle guest-dropdown"
                           aria-controls="dropdown-basic">
-                    게스트 {{Allcounter}}명
+                    게스트 {{personnel}}명
                   </button>
                   <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
                       role="menu" aria-labelledby="button-basic">
@@ -140,7 +140,7 @@
                           <div class="counterCheck">
                             <button class="decrease" type="button" (click)="decrease(1)">
                               -</button>
-                            <span class="counter">{{Adultcounter}}</span>
+                            <span class="counter">{{adults}}</span>
                             <button class="increase" (click)="increase(1)" type="button">+</button>
                           </div>
                       </div>
@@ -151,7 +151,7 @@
                           </div>
                           <div class="counterCheck">
                             <button class="decrease" type="button" (click)="decrease(2)">-</button>
-                            <span class="counter">{{Childcounter}}</span>
+                            <span class="counter">{{children}}</span>
                             <button class="increase" type="button" (click)="increase(2)">+</button>
                           </div>
                       </div>
@@ -162,7 +162,7 @@
                           </div>
                           <div class="counterCheck">
                             <button class="decrease" type="button" (click)="decrease(3)">-</button>
-                            <span class="counter">{{Youngcounter}}</span>
+                            <span class="counter">{{infants}}</span>
                             <button class="increase" type="button" (click)="increase(3)">+</button>
                           </div>
                       

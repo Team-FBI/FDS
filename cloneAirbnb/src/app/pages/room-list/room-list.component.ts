@@ -72,6 +72,7 @@ export class RoomListComponent implements OnInit {
   priceToggle: boolean;
 
   // 방 목록
+  totalRooms: number;
   roomimage: string;
   address: string;
 
@@ -82,6 +83,11 @@ export class RoomListComponent implements OnInit {
   max = 5;
   rate: number;
   isReadonly = true;
+
+  rotate = true;
+  maxSize = 5;
+  currentPage = 1;
+  page = this.roomListService.page;
 
   constructor(
     private mapsService: GoogleMapService,
@@ -127,6 +133,7 @@ export class RoomListComponent implements OnInit {
 
   getRoomInfo() {
     this.roomListService.getRoomList().subscribe((res: RoomList) => {
+      this.totalRooms = res.count;
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
         this.makeMarker(room);
@@ -144,8 +151,10 @@ export class RoomListComponent implements OnInit {
   }
 
   setRoomList() {
+    this.currentPage = 1;
     this.roomListService.roomList = [];
     return this.roomListService.getRoomList().subscribe(res => {
+      this.totalRooms = res.count;
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
       }
@@ -160,14 +169,16 @@ export class RoomListComponent implements OnInit {
     this.reservationInfoService.reservationInfoObj.checkOut = `${value[1].getMonth() +
       1}/${value[1].getDate()}/${value[1].getFullYear()}`;
 
+    this.roomListService.page = 1;
     this.setRoomList();
   }
 
   widthChange() {
-    this.dateStyle = {width: '150px'};
+    this.dateStyle = { width: '150px' };
   }
 
   changePersonnel() {
+    this.roomListService.page = 1;
     this.setRoomList();
   }
 
@@ -177,6 +188,7 @@ export class RoomListComponent implements OnInit {
     this.roomListService.minPrice = minValue;
     this.roomListService.maxPrice = maxValue;
 
+    this.roomListService.page = 1;
     this.setRoomList();
   }
 
@@ -221,6 +233,12 @@ export class RoomListComponent implements OnInit {
         this.reservationInfoService.reservationInfoObj.personnel--;
       }
     }
+  }
+
+  pageChanged(event: any): void {
+    this.page = event.page;
+    this.roomListService.page = this.page;
+    this.setRoomList();
   }
 
   get adults() {

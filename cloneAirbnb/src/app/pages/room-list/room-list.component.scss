@@ -124,7 +124,17 @@ button:focus {
   padding: 25px;
 }
 
+.warpPagination {
+  width: 100%;
+}
+
+.paginationStyle {
+  display: inline-block;
+  margin: 30px auto;
+}
+
 .map {
+  z-index: -10;
   float: left;
   position: fixed;
   top: 128px;
