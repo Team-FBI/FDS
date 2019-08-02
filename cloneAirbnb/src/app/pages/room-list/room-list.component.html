@@ -1,7 +1,7 @@
-<div class="positionTop">
+<div class="positionTop" >
   <app-navigation (initializeCurrentPage) = "initializeCurrentPage()"></app-navigation>
-
-  <div class="filter">
+  
+  <div class="filter" >
     <!-- filter -->
     <div class="filterLeft">
       <div class="date">
@@ -256,7 +256,7 @@
 </div>
 <!-- //filter -->
 
-<div class="roomListWrap clear-fix">
+<div class="roomListWrap clear-fix" *ngIf="!(isLoading$ | async)">
   <div class="list">
     <div class="notice">
       <p>
@@ -293,7 +293,7 @@
             </slide>
           </carousel>
         </div>
-        <div class="detailText">
+        <div class="detailText" (click)="sendResvationId(room.id)">
           <p class="roomType">{{ room.room_type }} {{ room.space }}</p>
           <p class="roomTitle">{{ room.title }}</p>
           <div class="roomExplanation">
@@ -351,7 +351,7 @@
     </div>
   </div>
 
-  <div class="map">
+  <div class="map clear-fix">
     <div class="mapWrap">
       <agm-map
         class="mapSize"
@@ -410,3 +410,4 @@
     </div>
   </div>
 </div>
+<div *ngIf="isLoading$ | async" class="loading"><img src="../../../assets/spinner.gif" alt="loading"></div>
