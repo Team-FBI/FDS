@@ -116,7 +116,17 @@ button:focus {
   padding: 25px;
 }
 
+.warpPagination {
+  width: 100%;
+}
+
+.paginationStyle {
+  display: inline-block;
+  margin: 30px auto;
+}
+
 .map {
+  z-index: -1;
   float: left;
   position: fixed;
   top: 128px;
@@ -168,7 +178,7 @@ button:focus {
 
 .detailImg {
   float: left;
-  width: 35%;
+  width: 40%;
   border-radius: 5px;
 }
 

@@ -12,7 +12,14 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { AuthModule } from '../auth/auth.module';
 
-import { BsDatepickerModule, BsDropdownModule, RatingModule, ModalModule, CarouselModule } from 'ngx-bootstrap';
+import {
+  BsDatepickerModule,
+  BsDropdownModule,
+  RatingModule,
+  ModalModule,
+  CarouselModule,
+  PaginationModule
+} from 'ngx-bootstrap';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -33,8 +40,6 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 import { ScrollDirective } from './room-detail/scroll.directive';
-
-
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -58,8 +63,7 @@ export function createTranslateLoader(http: HttpClient) {
     RoomdetailpaymentComponent,
     RoomdetailInfoComponent,
     CheckPaymentComponent,
-    ScrollDirective,
-    
+    ScrollDirective
   ],
   imports: [
     CommonModule,
@@ -78,6 +82,7 @@ export function createTranslateLoader(http: HttpClient) {
       apiKey: 'AIzaSyA3mYS53qBU6qHCKhyxke8JoYzrD5r2LJo'
     }),
     RatingModule.forRoot(),
+    PaginationModule.forRoot(),
     FontAwesomeModule,
     TranslateModule.forRoot({
       loader: {
@@ -87,9 +92,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  exports: [
-    RoomListComponent
-  ],
+  exports: [RoomListComponent],
   providers: [
     {
       provide: SWIPER_CONFIG,
