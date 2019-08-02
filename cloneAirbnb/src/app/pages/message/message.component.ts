@@ -38,8 +38,10 @@ export class MessageComponent implements OnInit {
   }
 
   sendMsg(userInput: HTMLInputElement) {
-    this.message.message = userInput.value;
-    this.chatService.messages.next(this.message);
-    userInput.value = '';
+    if (userInput.value.trim()) {
+      this.message.message = userInput.value;
+      this.chatService.messages.next(this.message);
+      userInput.value = '';
+    }
   }
 }
