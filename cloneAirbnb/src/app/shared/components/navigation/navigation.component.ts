@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { ReservationInfoService } from '../../../core/service/reservation-info.service';
@@ -7,7 +7,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/service/language.service';
 import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
 import { GoogleMapsAPIWrapper } from '@agm/core';
-import { States } from 'src/app/core/interface/states.interface';
+import { States } from '../../../core/interface/states.interface';
+import { RoomListComponent } from '../../../pages/room-list/room-list.component';
+
 
 @Component({
   selector: 'app-navigation',
@@ -15,12 +17,12 @@ import { States } from 'src/app/core/interface/states.interface';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+  @Output() initializeCurrentPage = new EventEmitter();
   isMain: boolean;
   myPage = false;
   switchLang = true;
   states = [];
   searchInputFocus = false;
-
 
 
   constructor(
@@ -42,6 +44,7 @@ export class NavigationComponent implements OnInit {
   showRoomList(destination: string, input: HTMLInputElement) {
     this.roomListService.roomList = [];
     this.roomListService.markers = [];
+    this.roomListService.page = 1;
     input.value = '';
     this.searchInputFocus = false;
     this.reservationInfoService.reservationInfoObj.destination = destination;

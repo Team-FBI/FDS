@@ -28,6 +28,7 @@
         "
         (focusout)="searchInputFocusout()"
         (keyup.enter)="showRoomList(input.value, input)"
+        (keyup.enter)="initializeCurrentPage.emit()"
         (input)="stateSuggestion(input)"
         placeholder="{{ 'navigation.searchBarPlaceholder' | translate }}"
         class="searchInput"
@@ -37,6 +38,7 @@
         <li
           *ngFor="let state of states | slice: 0:5; index as i"
           (click)="showRoomList(states[i].name, input)"
+          (click)="initializeCurrentPage.emit()"
         >
           <span class="float-left"
             ><i class="fa fa-map-marker" aria-hidden="true"></i>

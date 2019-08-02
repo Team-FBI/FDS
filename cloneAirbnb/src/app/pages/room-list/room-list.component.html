@@ -1,5 +1,5 @@
 <div class="positionTop">
-  <app-navigation></app-navigation>
+  <app-navigation (initializeCurrentPage) = "initializeCurrentPage()"></app-navigation>
 
   <div class="filter">
     <!-- filter -->
@@ -63,11 +63,19 @@
                 <span>{{ 'roomList.childrenSpan' | translate }}</span>
               </div>
               <div class="counterCheck">
-                <button type="button" class="decrease" (click)="decrease(child)">
+                <button
+                  type="button"
+                  class="decrease"
+                  (click)="decrease(child)"
+                >
                   -
                 </button>
                 <span class="counter" id="children" #child>{{ children }}</span>
-                <button type="button" class="increase" (click)="increase(child)">
+                <button
+                  type="button"
+                  class="increase"
+                  (click)="increase(child)"
+                >
                   +
                 </button>
               </div>
@@ -80,11 +88,19 @@
                 <span>{{ 'roomList.infantsSpan' | translate }}</span>
               </div>
               <div class="counterCheck">
-                <button type="button" class="decrease" (click)="decrease(infant)">
+                <button
+                  type="button"
+                  class="decrease"
+                  (click)="decrease(infant)"
+                >
                   -
                 </button>
                 <span class="counter" id="infants" #infant>{{ infants }}</span>
-                <button type="button" class="increase" (click)="increase(infant)">
+                <button
+                  type="button"
+                  class="increase"
+                  (click)="increase(infant)"
+                >
                   +
                 </button>
               </div>
@@ -306,6 +322,19 @@
         </div>
       </li>
     </ul>
+    <div class="warpPagination">
+      <div class="paginationStyle">
+        <div>
+          <pagination
+            [totalItems]="totalRooms"
+            [rotate]="!rotate"
+            [maxSize]="maxSize"
+            [(ngModel)]="currentPage"
+            (pageChanged)="pageChanged($event)"
+          ></pagination>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="map">
