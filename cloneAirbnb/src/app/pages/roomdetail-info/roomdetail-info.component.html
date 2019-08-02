@@ -1,4 +1,56 @@
-<section class="roomdetailInfoContainer">
+<section class="detailContainer">
+    <section class="detailInfo">
+      <div class="detailTitle">
+        <h2>{{title}}</h2>
+        <p>{{address}}</p>
+      </div>
+      <div class="roomInfoContainer">
+        <div class="roomInfoList">
+          <p>아파트 전체</p>
+          <span>인원 {{capacity}} 명</span>
+          <span>침실 {{bedroom}} 개</span>
+          <span>욕실 {{bathroom}} 개</span>
+        </div>
+        <div class="roomInfoList">
+          <p>높은 청결도</p>
+          <span>최근 게스트 *명이 청결하다고 후기를 남겼습니다.</span>
+        </div>
+        <div class="roomInfoList">
+          <p>셀프체크인</p>
+          <span>키패드를 이용해 체크인하세요.</span>
+        </div>
+      </div>
+      <div class="description">
+        <h3 class="greenColor">숙소의 상세사항</h3>
+      </div>
+      <div class="host">
+        <h3 class="greenColor">호스트에게 연락하기</h3>
+      </div>
+      <div class="facilities">
+        <h3>편의시설</h3>
+      </div>
+      <div class="reservation">
+        <h3>예약 가능 여부</h3>
+        <div class="calendar">
+            <bs-datepicker-inline [bsValue]="bsInlineValue" style="width:50%; float:left;" [bsConfig]="datePickerConfig" (bsValueChange)="onValueChange($event)" [dateCustomClasses]="dateCustomClasses" [datesDisabled]="disabledDates"
+            ></bs-datepicker-inline>
+            
+            <bs-datepicker-inline [bsValue]="bsInlineValue2" [bsConfig]="{ selectFromOtherMonth: true }" style="width:50%; float:right;" [dateCustomClasses]="dateCustomClasses"
+            [datesDisabled]="disabledDates"></bs-datepicker-inline>
+        </div>
+      </div>
+      <div class="review">
+        <h2>후기</h2>
+      </div>
+    </section>
+    
+  
+    <app-payment></app-payment>
+  
+  </section>
+  
+
+<!-- <section class="roomdetailInfoContainer">
   <section class="roomdetailInfo">
     <h2>{{title}}</h2>
     <h3>{{address}}</h3>
@@ -21,7 +73,7 @@
       <ul>
         <li *ngFor="let str of strArray">{{str}}</li>
       </ul>
-    </div> <!--description-->
+    </div> 
     <button class="placedetail">이 공간 자세히 알아보기</button> 
     <button class="msgbutton">호스트에게 연락하기</button>
     <hr>
@@ -30,14 +82,14 @@
     <hr>
 
     <div>
-        <div class="col-xs-12 col-12 col-md-4 form-group">
-            <!-- <input type="text"
+        <div class="col-xs-12 col-12 col-md-4 form-group" style="border:2px solid black;">
+            <input type="text"
                   placeholder="Daterangepicker"
                   class="form-control infodate"
                   bsDaterangepicker
                   [isOpen]="true"
                   [outsideClick]="false"
-            > -->
+            > 
             <div style="background-color:pink; height:350px; width:620px;" >
             <bs-datepicker-inline [bsValue]="bsInlineValue" style="width:50%; float:left;" [bsConfig]="{ selectFromOtherMonth: true }" (bsValueChange)="onValueChange($event)" [dateCustomClasses]="dateCustomClasses" [datesDisabled]="disabledDates"
             ></bs-datepicker-inline>
@@ -53,7 +105,7 @@
     <div class="commentContainer">
       <div class="comment">
         <textarea name="" id="" placeholder="후기 넣을곳"></textarea>
-      </div> <!--hostMessage-->
+      </div> 
     </div>
 
     <hr>
@@ -61,14 +113,14 @@
     <div class="commentContainer">
         <div class="comment">
           <textarea name="" id="" placeholder="유의사항 넣을곳"></textarea>
-        </div> <!--hostMessage-->
+        </div> 
     </div>
     
     
     <button class="roomdetailInfoBtn">언젠가 쓸일이 있겠지</button>
   
-  </section><!-- roomdetailInfo -->
+  </section>
 
-</section> <!-- roomdetailInfoContainer -->
+</section> 
 
-
+ -->
