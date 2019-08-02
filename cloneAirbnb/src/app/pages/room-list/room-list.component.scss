@@ -126,7 +126,7 @@ button:focus {
 }
 
 .map {
-  z-index: -1;
+  
   float: left;
   position: fixed;
   top: 128px;
@@ -188,8 +188,27 @@ carousel slide{
 
 .detailText {
   float: left;
-  width: 65%;
-  padding: 10px;
+  width: 60%;
+  height:100%;
+  padding: 10px 20px;
+
+  .roomType{
+    font-size:0.8rem;
+    font-weight: 300;
+    color:#848484;
+  }
+  .roomTitle{
+    font-size:1.4rem;
+    font-weight: bold;
+    padding:2px 0px;
+  }
+  .roomExplanation{
+    font-size:0.9rem;
+    font-weight: 300;
+  }
+  .star{
+    margin-top:20px;
+  }
 }
 
 .img1,
@@ -204,9 +223,25 @@ agm-map {
 
 .infowindow {
   width: 250px;
-  height: 300px;
   padding: 0;
+
+  .infoText{
+    padding:10px;
+    color:#484848;
+
+    span{
+      font-size:0.8rem;
+    }
+    p{
+      font-size:1.1rem;
+      font-weight: bold;
+    }
+  }
 }
+::ng-deep.gm-style .gm-style-iw-c{
+  padding:0;
+}
+
 
 .infoimg {
   width: 100%;

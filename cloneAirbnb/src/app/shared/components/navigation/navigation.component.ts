@@ -41,7 +41,6 @@ export class NavigationComponent implements OnInit {
     this.translate.setDefaultLang(`${this.languageService.currentLanguage()}`);
   }
 
-
   showRoomList(destination: string, input: HTMLInputElement) {
     this.roomListService.roomList = [];
     this.roomListService.markers = [];
@@ -76,7 +75,6 @@ export class NavigationComponent implements OnInit {
       this.searchInputFocus = false;
     }, 200);
   }
-
 
   signOutBtn() {
     this.authService.signOutUser();

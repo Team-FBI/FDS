@@ -35,7 +35,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
       useClass: AuthInterceptorService,
       multi: true
     },
-    GoogleMapsAPIWrapper
+    GoogleMapsAPIWrapper,
   ],
   bootstrap: [AppComponent]
 })
