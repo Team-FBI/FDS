@@ -26,20 +26,17 @@ export class RoomdetailInfoComponent implements OnInit {
   id: number;
   bsInlineValue = this.reservationInfoService.date;
   bsInlineValue3 = new Date();
-  bsInlineValue2 = this.bsInlineValue3.getMonth()+2;
+  bsInlineValue2 = this.bsInlineValue3.getMonth() + 2;
   minDate: Date;
   maxDate: Date;
-  minDate1: number
+  minDate1: number;
   maxDate1: number;
   inputData: Date;
   dateCustomClasses: DatepickerDateCustomClasses[];
   now = new Date();
   fourDaysAhead = new Date();
 
-  disabledDates = [
-    new Date('2019-08-16'),
-    new Date('2019-08-17')
-  ];
+  disabledDates = [new Date('2019-08-16'), new Date('2019-08-17')];
 
   constructor(
     private router: Router,
@@ -49,15 +46,13 @@ export class RoomdetailInfoComponent implements OnInit {
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
-    // this.bsInlineValue2.setDate(this.bsInlineValue.getDate() + 32); 
+    // this.bsInlineValue2.setDate(this.bsInlineValue.getDate() + 32);
     //다음달 달력만들때 필요한것
   }
-  
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
     this.id = this.reservationInfoService.id;
-
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
       this.title = res.title;
@@ -81,7 +76,7 @@ export class RoomdetailInfoComponent implements OnInit {
       console.log(this.bsInlineValue);
 
       this.reservationInfoService.reservationInfoObj.roomType = this.room_type;
-      if (this.room_type === "Apartment"){
+      if (this.room_type === 'Apartment') {
         this.room_type = '아파트';
       } else if (this.room_type === 'House') {
         this.room_type = '개인집';
@@ -151,7 +146,7 @@ export class RoomdetailInfoComponent implements OnInit {
     // this.bsInlineValue = this.inputData;
     console.log(this.bsInlineValue);
     // this.now = this.bsInlineValue;
-    console.log(this.now)
+    console.log(this.now);
     // this.fourDaysAhead.setDate(this.now.getDate() + this.maxDate1);
     // 나중에 서버에 보낼 input data
   }
