@@ -5,15 +5,7 @@
   border-top:1px solid #ddd;
 }
 
-.detailContainer{
-  width:1100px;
-  margin:50px auto 0px;
-}
-.detailContainer::after{
-  clear: both;
-  display: block;
-  content: '';
-}
+
 .detailInfo{
   float: left;
   width:700px;
@@ -57,9 +49,6 @@
   h3.greenColor{
     color:#008489
   }
-  .calendar{
-    margin-top:30px;
-  }
 }
 
 .host, .facilities, .reservation, .review{
@@ -72,8 +61,6 @@
   margin-bottom:30px;
   box-shadow: none;
 }
-
-
 
 
 

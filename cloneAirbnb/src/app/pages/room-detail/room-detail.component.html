@@ -49,7 +49,109 @@
   </div>
 </section> 
 
-<app-roomdetail-info></app-roomdetail-info>
+<section class="detailContainer">
+
+  <app-roomdetail-info></app-roomdetail-info>
+
+  <section class="detailPayment">
+    <div class="priceTitle">
+      <h2>₩{{price}} <span>/박</span></h2>
+      <div class="ratingBtn">
+        <rating [(ngModel)]="total_rating" [max]="5" [readonly]="isReadonly" class="rating"></rating>
+      </div>
+    </div>
+    <div class="date">
+      <p>날짜</p>
+      <div class="checkIn form-group">
+        <input
+          type="text"
+          placeholder="{{ 'home.checkInPlaceholder' | translate }}"
+          class="form-control"
+          bsDatepicker
+          [bsConfig]="{ isAnimated: true }"
+          #checkIn
+        />
+      </div>
+      <div class="checkOut form-group">
+        <input
+          type="text"
+          placeholder="{{ 'home.checkOutPlaceholder' | translate }}"
+          class="form-control"
+          bsDatepicker
+          [bsConfig]="{ isAnimated: true }"
+          #checkOut
+        />
+      </div>
+    </div>
+    <div class="personnel">
+      <p>인원</p>
+      <div class="btn-group guest-dropdown" dropdown #dropdown="bs-dropdown" [autoClose]="false">
+          <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle guest-dropdown"
+                  aria-controls="dropdown-basic">
+            게스트 {{Allcounter}}명
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+              
+              <div class="counterLine">
+                  <div class="people">
+                      <p class="top">성인</p>
+                  </div>
+                  <div class="counterCheck">
+                    <button class="decrease" type="button" (click)="decrease(1)">
+                      -</button>
+                    <span class="counter">{{Adultcounter}}</span>
+                    <button class="increase" (click)="increase(1)" type="button">+</button>
+                  </div>
+              </div>
+              <div class="counterLine">
+                  <div class="people">
+                    <p>어린이</p>
+                    <span>2~12세</span>
+                  </div>
+                  <div class="counterCheck">
+                    <button class="decrease" type="button" (click)="decrease(2)">-</button>
+                    <span class="counter">{{Childcounter}}</span>
+                    <button class="increase" type="button" (click)="increase(2)">+</button>
+                  </div>
+              </div>
+              <div class="counterLine">
+                  <div class="people">
+                    <p>유아</p>
+                    <span>2세 미만</span>
+                  </div>
+                  <div class="counterCheck">
+                    <button class="decrease" type="button" (click)="decrease(3)">-</button>
+                    <span class="counter">{{Youngcounter}}</span>
+                    <button class="increase" type="button" (click)="increase(3)">+</button>
+                  </div>
+              
+              </div>
+            
+            <button class="counterBtn" type="button" (click)="dropdown.isOpen = !dropdown.isOpen">닫기</button>
+          </ul>
+      </div>
+    </div>
+    <div class="detail">
+      <span>₩{{price}} x {{min_stay}} 박</span>
+      <span>₩{{totalprice}}</span>
+    </div>
+    <div class="detail">
+      <span>서비스수수료</span>
+      <span>₩{{serviceprice}}</span>
+    </div>
+    <div class="detail">
+      <span>숙박세와 수수료</span>
+      <span>₩{{Accommodation}}</span>
+    </div>
+    <div class="detail total">
+      <span>합계</span>
+      <span>₩{{finalprice}}</span>
+    </div>
+    <button class="reservationBtn">예약하기</button>
+    <p class="reservation">예약 확정 전에는 요금이 청구되지 않습니다.</p>
+  </section>
+</section>
 
 
 
@@ -274,9 +376,9 @@
       </div>
         
     </div> 
-  </div> -->
-  
-  
+  </div> 
+   -->
+
   <div class="back-drop" [class.active]="isOpen">
     <button (click)="isOpen = !isOpen" class="close-btn">X</button>
     
