@@ -12,6 +12,7 @@ import { CheckPaymentComponent } from './check-payment/check-payment.component';
 import { PaymentComponent } from './payment/payment.component';
 
 import { AuthGuard } from '../core/guard/auth.guard';
+import { MessageComponent } from './message/message.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: 'checkpayment',
     component: CheckPaymentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'message',
+    component: MessageComponent,
     canActivate: [AuthGuard]
   }
 ];
