@@ -15,24 +15,17 @@
   position: relative;
 }
 .filterButton {
+  position: relative;
+  display: inline-block;
   margin: 0px 4px 0px 8px;
   font-size: 14px;
   line-height: 18px;
   color: rgb(72, 72, 72);
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding:6px 12px;
   cursor: pointer;
-  display: inline-block;
-  padding-left: 12px;
-  padding-right: 12px;
-  position: relative;
   background: none;
   text-align: center;
-  width: auto;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(220, 224, 224);
-  border-image: initial;
+  border:1px solid rgb(220, 224, 224);
   border-radius: 4px;
   text-decoration: none;
 }
@@ -51,10 +44,8 @@
   transition-property: opacity;
   transition-duration: 250ms;
   transition-timing-function: ease-in-out;
+  border:1px solid rgb(0, 132, 137);
   border-radius: 32px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(0, 132, 137);
 }
 
 .filterRight span {
@@ -62,18 +53,16 @@
 }
 
 ::ng-deep.bs-datepicker {
-  margin-left: 550px;
-  margin-top: 10px;
-  height: 350px;
   position: relative;
+  margin:10px 0 0 550px;
 }
 
 .custom-content {
   position: absolute;
-  z-index: 1081;
   top: 390px;
   cursor: pointer;
   align-self: center;
+  z-index: 1081;
 }
 
 button:focus {
@@ -126,15 +115,26 @@ button:focus {
 
 .warpPagination {
   width: 100%;
+  text-align: center;
+  border:2px solid red;
 }
 
+.paginationStyle{
+  border:2px solid blue;
+}
+
+
+::ng-deep.page-item.active .page-link{
+  background:#ff5a5f;
+  border:1px solid #ff5a5f;
+}
 .paginationStyle {
   display: inline-block;
   margin: 30px auto;
 }
 
+
 .map {
-  
   float: left;
   position: fixed;
   top: 128px;
