@@ -26,17 +26,17 @@ export class RoomdetailInfoComponent implements OnInit {
   id: number;
   bsInlineValue = this.reservationInfoService.date;
   bsInlineValue3 = new Date();
-  bsInlineValue2 = this.bsInlineValue3.getMonth()+2;
+  bsInlineValue2 = this.bsInlineValue3.getMonth() + 2;
   minDate: Date;
   maxDate: Date;
-  minDate1: number
+  minDate1: number;
   maxDate1: number;
   inputData: Date;
   dateCustomClasses: DatepickerDateCustomClasses[];
   now = new Date();
   fourDaysAhead = new Date();
 
-  disabledDates = [
+  disabledDates = [ // 예약불가 날짜
     new Date('2019-08-16'),
     new Date('2019-08-17')
   ];
@@ -49,8 +49,8 @@ export class RoomdetailInfoComponent implements OnInit {
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
-    // this.bsInlineValue2.setDate(this.bsInlineValue.getDate() + 32); 
-    //다음달 달력만들때 필요한것
+    // this.bsInlineValue2.setDate(this.bsInlineValue.getDate() + 32);
+    // 다음달 달력만들때 필요한것
   }
   
 
@@ -81,7 +81,7 @@ export class RoomdetailInfoComponent implements OnInit {
       console.log(this.bsInlineValue);
 
       this.reservationInfoService.reservationInfoObj.roomType = this.room_type;
-      if (this.room_type === "Apartment"){
+      if (this.room_type === 'Apartment'){
         this.room_type = '아파트';
       } else if (this.room_type === 'House') {
         this.room_type = '개인집';
