@@ -45,7 +45,61 @@
     </section>
     
   
-    <app-payment></app-payment>
+    <!-- <app-payment></app-payment> -->
+    <section class="detailPayment">
+        <div class="priceTitle">
+          <h2>$ <span>/박</span></h2>
+          <p class="star">별점</p>
+        </div>
+        <div class="date">
+          <p>날짜</p>
+          <div class="checkIn form-group">
+            <input
+              type="text"
+              placeholder="{{ 'home.checkInPlaceholder' | translate }}"
+              class="form-control"
+              bsDatepicker
+              [bsConfig]="{ isAnimated: true }"
+              #checkIn
+            />
+          </div>
+          <div class="checkOut form-group">
+            <input
+              type="text"
+              placeholder="{{ 'home.checkOutPlaceholder' | translate }}"
+              class="form-control"
+              bsDatepicker
+              [bsConfig]="{ isAnimated: true }"
+              #checkOut
+            />
+          </div>
+        </div>
+        <div class="personnel">
+          <p>인원</p>
+        </div>
+        <div class="detail">
+          <span>$83,421 x 9박</span>
+          <span>$750,922</span>
+        </div>
+        <div class="detail greenColor">
+          <span>15% 주 단위 요금 할인</span>
+          <span>$120,922</span>
+        </div>
+        <div class="detail">
+          <span>청소비</span>
+          <span>15,922</span>
+        </div>
+        <div class="detail">
+          <span>서비스수수료</span>
+          <span>$80,922</span>
+        </div>
+        <div class="detail total">
+          <span>합계</span>
+          <span>$780,922</span>
+        </div>
+        <button class="reservationBtn">예약하기</button>
+        <p class="reservation">예약 확정 전에는 요금이 청구되지 않습니다.</p>
+      </section>
   
   </section>
   
