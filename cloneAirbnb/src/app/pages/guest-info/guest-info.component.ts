@@ -14,7 +14,7 @@ import { ReservationInfoService } from 'src/app/core/service/reservation-info.se
 })
 export class GuestInfoComponent implements OnInit {
   personnel = this.rerservationInfoService.reservationInfoObj.personnel;
-  switchLang = true;
+  switchLang = this.languageService.language === 'en' ? true : false;
 
   constructor(
     private router: Router,

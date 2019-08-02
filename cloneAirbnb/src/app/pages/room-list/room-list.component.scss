@@ -64,7 +64,6 @@
 ::ng-deep.bs-datepicker {
   margin-left: 550px;
   margin-top: 10px;
-  height: 350px;
   position: relative;
 }
 
@@ -134,7 +133,6 @@ button:focus {
 }
 
 .map {
-  z-index: -1;
   float: left;
   position: fixed;
   top: 128px;
