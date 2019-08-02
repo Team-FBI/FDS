@@ -1,7 +1,7 @@
-<div class="positionTop">
+<div class="positionTop" >
   <app-navigation (initializeCurrentPage) = "initializeCurrentPage()"></app-navigation>
-
-  <div class="filter">
+  
+  <div class="filter" >
     <!-- filter -->
     <div class="filterLeft">
       <div class="date">
@@ -158,14 +158,14 @@
         </ul>
       </div>
       <!-- businesstrip filterbutton -->
-
-      <div
+        
+      <!-- roomtype filterbutton -->
+      <!--<div
         class="roomtype"
         dropdown
         #roomtypeDropdown="bs-dropdown"
         [insideClick]="true"
       >
-        <!-- roomtype filterbutton -->
         <button class="roomtype filterButton" dropdownToggle type="button">
           {{ 'roomList.typeOfPlace' | translate }}
         </button>
@@ -175,7 +175,7 @@
           role="menu"
         >
           <li>
-            <input class="roomtype-checkbox" type="checkbox" />
+            <input class="roomtype-checkbox" name="Entire Room" type="checkbox" checked #checkEntire/>
             <div class="roomtype-text">
               <p>
                 <strong>{{ 'roomList.entirePlace' | translate }}</strong>
@@ -184,7 +184,7 @@
             </div>
           </li>
           <li>
-            <input class="roomtype-checkbox" type="checkbox" />
+            <input class="roomtype-checkbox" name="Private Room" type="checkbox" checked #checkPrivate/>
             <div class="roomtype-text">
               <p>
                 <strong>{{ 'roomList.privateRoom' | translate }}</strong>
@@ -195,7 +195,7 @@
             </div>
           </li>
           <li>
-            <input class="roomtype-checkbox" type="checkbox" />
+            <input class="roomtype-checkbox" name="Hotel Room" type="checkbox" checked #checkHotel/>
             <div class="roomtype-text">
               <p>
                 <strong>{{ 'roomList.hotelRoom' | translate }}</strong>
@@ -204,7 +204,7 @@
             </div>
           </li>
           <li>
-            <input class="roomtype-checkbox" type="checkbox" />
+            <input class="roomtype-checkbox" name="Shared Room" type="checkbox" checked #checkShare/>
             <div class="roomtype-text">
               <p>
                 <strong>{{ 'roomList.sharedRoom' | translate }}</strong>
@@ -217,13 +217,12 @@
           <button
             class="personnelSaveBtn"
             type="button"
-            (click)="roomtypeDropdown.isOpen = !roomtypeDropdown.isOpen"
-          >
+            (click)="filterSpace(roomtypeDropdown, checkEntire, checkPrivate, checkHotel, checkShare)">
             {{ 'roomList.saveBtn' | translate }}
           </button>
         </ul>
-        <!-- roomtype filterbutton -->
-      </div>
+        
+      </div>  --> <!-- roomtype filterbutton -->
 
       <div
         class="price"
@@ -257,7 +256,7 @@
 </div>
 <!-- //filter -->
 
-<div class="roomListWrap clear-fix">
+<div class="roomListWrap clear-fix" *ngIf="!(isLoading$ | async)">
   <div class="list">
     <div class="notice">
       <p>
@@ -274,12 +273,27 @@
       <li
         class="detailList"
         *ngFor="let room of roomList"
-        (click)="sendResvationId(room.id)"
       >
         <div class="detailImg">
-          <img class="img1" src="{{ room.image }}" />
+          <carousel [noPause]="false">
+            <slide>
+              <img src="{{room.image}}" alt="first slide" style="display: block; width: 100%;">
+            </slide>
+            <slide>
+              <img src="{{room.image_1}}" alt="first slide" style="display: block; width: 100%;">
+            </slide>
+            <slide>
+              <img src="{{room.image_2}}" alt="first slide" style="display: block; width: 100%;">
+            </slide>
+            <slide>
+              <img src="{{room.image_3}}" alt="first slide" style="display: block; width: 100%;">
+            </slide>
+            <slide>
+              <img src="{{room.image_4}}" alt="first slide" style="display: block; width: 100%;">
+            </slide>
+          </carousel>
         </div>
-        <div class="detailText">
+        <div class="detailText" (click)="sendResvationId(room.id)">
           <p class="roomType">{{ room.room_type }} {{ room.space }}</p>
           <p class="roomTitle">{{ room.title }}</p>
           <div class="roomExplanation">
@@ -337,7 +351,7 @@
     </div>
   </div>
 
-  <div class="map">
+  <div class="map clear-fix">
     <div class="mapWrap">
       <agm-map
         class="mapSize"
@@ -361,7 +375,23 @@
           <agm-info-window [isOpen]="marker.disabled" #iw>
             <div class="infowindow">
               <div>
-                <img class="infoimg" src="{{ marker.image }}" />
+                <carousel [noPause]="false">
+                  <slide>
+                    <img src="{{marker.image}}" alt="first slide" style="display: block; width: 100%;">
+                  </slide>
+                  <slide>
+                    <img src="{{marker.image_1}}" alt="first slide" style="display: block; width: 100%;">
+                  </slide>
+                  <slide>
+                    <img src="{{marker.image_2}}" alt="first slide" style="display: block; width: 100%;">
+                  </slide>
+                  <slide>
+                    <img src="{{marker.image_3}}" alt="first slide" style="display: block; width: 100%;">
+                  </slide>
+                  <slide>
+                    <img src="{{marker.image_4}}" alt="first slide" style="display: block; width: 100%;">
+                  </slide>
+                </carousel>
               </div>
               <div class="infoText">
                 <span>{{ marker.room_type }} {{ marker.beds }}</span>
@@ -380,3 +410,4 @@
     </div>
   </div>
 </div>
+<div *ngIf="isLoading$ | async" class="loading"><img src="../../../assets/spinner.gif" alt="loading"></div>

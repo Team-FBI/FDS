@@ -61,21 +61,6 @@
   padding-right: 8px;
 }
 
-::ng-deep.bs-datepicker {
-  margin-left: 550px;
-  margin-top: 10px;
-  height: 350px;
-  position: relative;
-}
-
-.custom-content {
-  position: absolute;
-  z-index: 1081;
-  top: 390px;
-  cursor: pointer;
-  align-self: center;
-}
-
 button:focus {
   outline: none;
 }
@@ -124,6 +109,12 @@ button:focus {
   padding: 25px;
 }
 
+.loading {
+  position: absolute;
+  top: calc(50vh - 128px);
+  left: calc(50vw - 128px);
+}
+
 .warpPagination {
   width: 100%;
 }
@@ -134,7 +125,6 @@ button:focus {
 }
 
 .map {
-  
   float: left;
   position: fixed;
   top: 128px;
@@ -189,6 +179,12 @@ button:focus {
   width: 40%;
   border-radius: 5px;
 }
+
+carousel slide{
+  z-index: -10;
+  height: 170px;
+}
+
 .detailText {
   float: left;
   width: 60%;

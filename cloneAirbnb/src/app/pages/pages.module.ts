@@ -17,6 +17,7 @@ import {
   BsDropdownModule,
   RatingModule,
   ModalModule,
+  CarouselModule,
   PaginationModule
 } from 'ngx-bootstrap';
 import { Ng5SliderModule } from 'ng5-slider';
@@ -78,6 +79,7 @@ export function createTranslateLoader(http: HttpClient) {
     ModalModule.forRoot(),
     SwiperModule,
     BsDropdownModule.forRoot(),
+    CarouselModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA3mYS53qBU6qHCKhyxke8JoYzrD5r2LJo'
     }),
