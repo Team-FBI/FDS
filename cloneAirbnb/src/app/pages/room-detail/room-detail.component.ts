@@ -46,6 +46,10 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   checked: boolean = true;
 
+  isVisible: boolean = false;
+  saveMsg = '삭제되었습니다';
+  timeOutID;
+
   @ViewChild('galleryTop', { static: true }) galleryTop;
   @ViewChild('galleryThumbs', { static: true }) galleryThumbs;
   isOpen = false;
@@ -165,8 +169,17 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.galleryThumbs.nativeElement.swiper.controller.control = this.galleryTop.nativeElement.swiper;
   }
 
-  changesavebtn() {
+  changeSaveBtn() {
     this.checked = !this.checked;
+    this.isVisible = true;
+    clearTimeout(this.timeOutID);
+    if (this.saveMsg === '삭제되었습니다') {
+      this.saveMsg = '저장되었습니다';
+    } else {
+      this.saveMsg = '삭제되었습니다';
+    }
+    this.timeOutID = setTimeout(()=> {
+      this.isVisible = false; }, 3000);
   }
 
   toRoomRegulation() {

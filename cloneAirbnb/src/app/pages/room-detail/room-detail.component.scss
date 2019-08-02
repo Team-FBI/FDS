@@ -63,6 +63,26 @@
     margin-left:10px;
   }
 
+  .saveModal{ //저장버튼 
+    position :fixed;
+    height:40px;
+    padding:0px 15px;
+    line-height: 35px;
+    font-size:0.9rem;
+    background: #fff;
+    border-radius: 5px;
+    border:1px solid #fff;
+    
+    max-width: 100%;
+    z-index: 1;
+    border: 1px solid #EBEBEB;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+    width: 375px;
+    bottom: 24px;
+    left: 24px;
+  }
+
   .picture{
     position: absolute;
     bottom:20px;

@@ -22,12 +22,16 @@
       </div>
       <div class="description">
         <h3 class="greenColor">숙소의 상세사항</h3>
+          <ul>
+            <li *ngFor="let str of strArray">{{str}}</li>
+          </ul>
       </div>
       <div class="host">
         <h3 class="greenColor">호스트에게 연락하기</h3>
       </div>
       <div class="facilities">
         <h3>편의시설</h3>
+        {{facility}}
       </div>
       <div class="reservation">
         <h3>예약 가능 여부</h3>
