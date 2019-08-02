@@ -16,8 +16,14 @@
       </div>
     </div>
     <div *ngFor="let message of messages">
-      <p class="userName">{{ message.author.username }}</p>
-      <p class="message">{{ message.text }}</p>
+      <div *ngIf="message.is_host" class="hostMessage">
+        <p class="userName">{{ message.author.username }}</p>
+        <p class="message">{{ message.text }}</p>
+      </div>
+      <div *ngIf="!message.is_host" class="userMessage">
+        <p class="userName">{{ message.author.username }}</p>
+        <p class="message">{{ message.text }}</p>
+      </div>
     </div>
   </div>
 </div>
