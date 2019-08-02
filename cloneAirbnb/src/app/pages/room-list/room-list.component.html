@@ -363,8 +363,8 @@
               <div>
                 <img class="infoimg" src="{{ marker.image }}" />
               </div>
-              <div>
-                <p>{{ marker.room_type }} {{ marker.beds }}</p>
+              <div class="infoText">
+                <span>{{ marker.room_type }} {{ marker.beds }}</span>
                 <p>{{ marker.title }}</p>
                 <rating
                   [(ngModel)]="marker.total_rating"
