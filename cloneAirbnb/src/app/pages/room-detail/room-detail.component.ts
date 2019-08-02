@@ -115,6 +115,11 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     });
   }
 
+  test() {
+    this.isOpen = !this.isOpen
+    console.log(1)
+  }
+
   increase(n: number) {
     // console.log(n)
     if (n === 1) {

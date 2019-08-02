@@ -11,6 +11,7 @@
           [bsConfig]="{ rangeInputFormat: 'MM/DD', isAnimated: true }"
           bsDaterangepicker
           [ngStyle]="dateStyle"
+          placement = "bottom right"
           (bsValueChange)="onValueChange($event)"
           (bsValueChange)="widthChange()"
           [dateCustomClasses]="dateCustomClasses"
@@ -279,9 +280,9 @@
           <img class="img1" src="{{ room.image }}" />
         </div>
         <div class="detailText">
-          <p>{{ room.room_type }} {{ room.space }}</p>
-          <p class="test">{{ room.title }}</p>
-          <div class="test">
+          <p class="roomType">{{ room.room_type }} {{ room.space }}</p>
+          <p class="roomTitle">{{ room.title }}</p>
+          <div class="roomExplanation">
             {{ room.capacity }}
             <span *ngIf="room.capacity === 1">{{
               'roomList.guest' | translate
@@ -309,14 +310,14 @@
               'roomList.bathrooms' | translate
             }}</span
             ><br />
-            <span> {{ room.facilities }} </span><br />
-            <span>
-              <rating
-                [(ngModel)]="room.total_rating"
-                [max]="max"
-                [readonly]="isReadonly"
-              ></rating>
-            </span>
+            <span> {{ room.facilities }} </span>
+          </div>
+          <div class="star">
+            <rating
+              [(ngModel)]="room.total_rating"
+              [max]="max"
+              [readonly]="isReadonly"
+            ></rating>
           </div>
         </div>
       </li>

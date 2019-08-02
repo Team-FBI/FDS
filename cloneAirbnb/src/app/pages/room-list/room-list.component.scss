@@ -191,8 +191,27 @@ button:focus {
 }
 .detailText {
   float: left;
-  width: 65%;
-  padding: 10px;
+  width: 60%;
+  height:100%;
+  padding: 10px 20px;
+
+  .roomType{
+    font-size:0.8rem;
+    font-weight: 300;
+    color:#848484;
+  }
+  .roomTitle{
+    font-size:1.4rem;
+    font-weight: bold;
+    padding:2px 0px;
+  }
+  .roomExplanation{
+    font-size:0.9rem;
+    font-weight: 300;
+  }
+  .star{
+    margin-top:20px;
+  }
 }
 
 .img1,
