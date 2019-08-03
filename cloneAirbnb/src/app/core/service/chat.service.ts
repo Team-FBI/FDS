@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs/Rx';
 import { WebsocketService } from './websocket.service';
 
 const CHAT_URL =
-  'ws://airbnb.tthae.com/ws/chat/44/?token=b3e432dca9f9379d5d640cfdc29603053a788433';
+  'ws://airbnb.tthae.com/ws/chat/48/?token=d584b9535d1dd79c8d132539f9515de4fc713c6e';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,7 @@ export class ChatService {
       .connect(CHAT_URL)
       .map((response: MessageEvent) => {
         const data = JSON.parse(response.data);
+        console.log(data);
         return {
           type: data.type,
           author: data.author,

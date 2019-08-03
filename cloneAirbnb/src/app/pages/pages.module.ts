@@ -41,6 +41,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 import { ScrollDirective } from './room-detail/scroll.directive';
 import { MessageComponent } from './message/message.component';
+import { MessageListComponent } from './message-list/message-list.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -65,7 +66,8 @@ export function createTranslateLoader(http: HttpClient) {
     RoomdetailInfoComponent,
     CheckPaymentComponent,
     ScrollDirective,
-    MessageComponent
+    MessageComponent,
+    MessageListComponent
   ],
   imports: [
     CommonModule,

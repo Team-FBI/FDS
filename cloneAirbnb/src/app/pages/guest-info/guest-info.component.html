@@ -46,10 +46,11 @@
           name=""
           id=""
           placeholder="숙소에서 보낼 멋질 **박이 기다려 집니다!"
+          #userMessage
         ></textarea>
       </div>
     </div>
-    <button class="guestInfoBtn" (click)="toCheckPayment()">
+    <button class="guestInfoBtn" (click)="toCheckPayment(userMessage)">
       {{ 'guestInfo.continue' | translate }}
     </button>
   </section>
