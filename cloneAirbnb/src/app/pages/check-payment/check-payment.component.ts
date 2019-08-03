@@ -18,7 +18,7 @@ export class CheckPaymentComponent implements OnInit {
   faCcVisa = faCcVisa;
   faCcAmex = faCcAmex;
   toggleCard = false;
-  switchLang = true;
+  switchLang = this.languageService.language === 'en' ? true : false;
 
   constructor(
     private translate: TranslateService,

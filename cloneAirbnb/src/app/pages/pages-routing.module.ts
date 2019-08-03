@@ -14,6 +14,8 @@ import { TripListComponent } from './trip-list/trip-list.component';
 
 
 import { AuthGuard } from '../core/guard/auth.guard';
+import { MessageComponent } from './message/message.component';
+import { MessageListComponent } from './message-list/message-list.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -44,6 +46,16 @@ const routes: Routes = [
   {
     path: 'checkpayment',
     component: CheckPaymentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'messageList',
+    component: MessageListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'message/:id',
+    component: MessageComponent,
     canActivate: [AuthGuard]
   }
 ];
