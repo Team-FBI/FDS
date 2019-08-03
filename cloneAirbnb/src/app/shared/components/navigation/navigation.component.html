@@ -71,6 +71,17 @@
           }}</a>
         </li>
         <li
+          *ngIf="authService.loggedIn()"
+          class="borderColor555"
+          [class.borderColorWhite]="isMain"
+        >
+          <a
+            routerLink="/messageList"
+            [style.color]="isMain ? '#fff' : '#000'"
+            >{{ 'navigation.message' | translate }}</a
+          >
+        </li>
+        <li
           *ngIf="!authService.loggedIn()"
           class="borderColor555"
           [class.borderColorWhite]="isMain"
