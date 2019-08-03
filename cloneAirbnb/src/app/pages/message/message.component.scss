@@ -1,12 +1,57 @@
 .messageDisplay {
-  margin: 30px 100px;
-  border: 1px solid #000;
   width: 700px;
   height: 500px;
+  margin: 30px 100px;
+  border: 1px solid #000;
   background: #eee;
   overflow-y: scroll;
 }
 
+.hostMessage{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:flex-start;
+}
+.userMessage{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:flex-end;
+}
+.hostMessage .hostName{
+  width:150px;
+  border:2px solid yellow;
+  font-size:0.8rem;
+  font-weight: 300;
+}
+
+.userMessage .userName{
+  width:150px;
+  text-align: right;
+  border:2px solid yellow;
+  font-size:0.8rem;
+  font-weight: 300;
+}
+
 .userMessage {
   margin-left: 100px;
+  margin-top:20px;
+  border:2px solid red;
+
+}
+.hostMessage{
+  margin-top:20px;
+  border:2px solid green;
+}
+
+.hostMessage .message{
+  padding:10px;
+  background: #fff;
+  font-size:0.9rem;
+  border:2px solid black;
+}
+.userMessage .message{
+  padding:10px;
+  text-align: right;
+  font-size:0.9rem;
+  background: yellow
 }
