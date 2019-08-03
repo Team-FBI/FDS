@@ -10,14 +10,14 @@
     <div *ngFor="let message of messageHistory">
       <div *ngIf="message.is_host" class="hostMessage">
         <div class="userImage">
-          <img src="https://i.postimg.cc/RFtppDcT/image.png">
+          <img src="https://i.postimg.cc/RFtppDcT/image.png" />
         </div>
         <div class="hostName">
           <p>
             {{ message.author.username }}
           </p>
           <div class="message triangle">
-              {{ message.text }}
+            {{ message.text }}
           </div>
         </div>
       </div>
@@ -27,30 +27,28 @@
             {{ message.author.username }}
           </p>
           <div class="message triangleUser">
-              {{ message.text }}
+            {{ message.text }}
           </div>
         </div>
         <div class="userImage">
-            <img src="https://i.postimg.cc/RFtppDcT/image.png">
+          <img src="https://i.postimg.cc/RFtppDcT/image.png" />
         </div>
       </div>
     </div>
-
-
 
     <div *ngFor="let message of messages">
       <div *ngIf="message.is_host" class="hostMessage">
-          <div class="userImage">
-            <img src="https://i.postimg.cc/RFtppDcT/image.png">
+        <div class="userImage">
+          <img src="https://i.postimg.cc/RFtppDcT/image.png" />
+        </div>
+        <div class="hostName">
+          <p>
+            {{ message.author.username }}
+          </p>
+          <div class="message triangle">
+            {{ message.text }}
           </div>
-          <div class="hostName">
-            <p>
-              {{ message.author.username }}
-            </p>
-            <div class="message triangle">
-                {{ message.text }}
-            </div>
-          </div>
+        </div>
       </div>
       <div *ngIf="!message.is_host" class="userMessage">
         <div class="userName">
@@ -58,25 +56,26 @@
             {{ message.author.username }}
           </p>
           <div class="message triangleUser">
-              {{ message.text }}
+            {{ message.text }}
           </div>
         </div>
         <div class="userImage">
-            <img src="https://i.postimg.cc/RFtppDcT/image.png">
+          <img src="https://i.postimg.cc/RFtppDcT/image.png" />
         </div>
       </div>
     </div>
-
-
-
   </div>
 </div>
-<input class="messageText"
+<input
+  class="messageText"
   type="text"
   placeholder="메세지 입력"
   #userInput
   (keyup.enter)="sendMsg(userInput)"
 />
 
+<div *ngIf="isLoading$ | async" class="loading">
+  <img src="../../../assets/spinner.gif" alt="loading" class="spinnerImg" />
+</div>
 
 <app-footer></app-footer>

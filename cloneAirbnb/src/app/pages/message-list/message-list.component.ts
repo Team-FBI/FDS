@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MessageList } from 'src/app/core/interface/messageList.interface';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-message-list',
@@ -10,19 +11,25 @@ import { MessageList } from 'src/app/core/interface/messageList.interface';
   styleUrls: ['./message-list.component.scss']
 })
 export class MessageListComponent implements OnInit {
+  isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   appUrl: string = environment.appUrl;
 
   constructor(private router: Router, private http: HttpClient) {}
   messageList = [];
 
   ngOnInit() {
-    this.http
-      .get(`${this.appUrl}/chat/`)
-      .subscribe((res: Array<MessageList>) => {
+    this.isLoading$.next(true);
+    this.http.get(`${this.appUrl}/chat/`).subscribe(
+      (res: Array<MessageList>) => {
         for (const message of res) {
           this.messageList.push(message);
         }
-      });
+      },
+      err => {},
+      () => {
+        this.isLoading$.next(false);
+      }
+    );
   }
 
   toMessage(id: number) {

@@ -3,6 +3,7 @@ import { WebsocketService } from 'src/app/core/service/websocket.service';
 import { ChatService } from 'src/app/core/service/chat.service';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-message',
@@ -11,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
   providers: [WebsocketService, ChatService]
 })
 export class MessageComponent implements OnInit {
+  isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   appUrl: string = environment.appUrl;
   messages = [];
   messageHistory = [];
@@ -29,13 +31,20 @@ export class MessageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get(`${this.appUrl}/chat/${this.id}/`).subscribe((res: any) => {
-      console.log(res);
-      for (const prvMessage of res.messages) {
-        this.messageHistory.push(prvMessage);
+    this.isLoading$.next(true);
+    this.http.get(`${this.appUrl}/chat/${this.id}/`).subscribe(
+      (res: any) => {
+        console.log(res);
+        for (const prvMessage of res.messages) {
+          this.messageHistory.push(prvMessage);
+        }
+        console.log(this.messageHistory);
+      },
+      err => {},
+      () => {
+        this.isLoading$.next(false);
       }
-      console.log(this.messageHistory);
-    });
+    );
   }
 
   sendMsg(userInput: HTMLInputElement) {
