@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MessageList } from 'src/app/core/interface/messageList.interface';
+import { ChatService } from 'src/app/core/service/chat.service';
 
 @Component({
   selector: 'app-message-list',
@@ -12,7 +13,11 @@ import { MessageList } from 'src/app/core/interface/messageList.interface';
 export class MessageListComponent implements OnInit {
   appUrl: string = environment.appUrl;
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private chatService: ChatService
+  ) {}
   messageList = [];
 
   ngOnInit() {
@@ -25,7 +30,8 @@ export class MessageListComponent implements OnInit {
       });
   }
 
-  toMessage(id: string) {
+  toMessage(id: number) {
+    localStorage.setItem('messageId', id.toString());
     this.router.navigate([`message/${id}`]);
   }
 }

@@ -14,6 +14,7 @@ export class MessageComponent implements OnInit {
   appUrl: string = environment.appUrl;
   messages = [];
   messageHistory = [];
+  id = this.chatService.chatRoomId;
 
   message = {
     message: ''
@@ -28,7 +29,7 @@ export class MessageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get(`${this.appUrl}/chat/48/`).subscribe((res: any) => {
+    this.http.get(`${this.appUrl}/chat/${this.id}/`).subscribe((res: any) => {
       console.log(res);
       for (const prvMessage of res.messages) {
         this.messageHistory.push(prvMessage);
