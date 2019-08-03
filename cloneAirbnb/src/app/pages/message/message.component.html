@@ -35,6 +35,7 @@
         <p class="message">{{ message.text }}</p>
       </div>
     </div>
+<<<<<<< HEAD
 
 
 
@@ -42,6 +43,18 @@
 
 
     
+=======
+    <div *ngFor="let message of messages">
+      <div *ngIf="message.is_host" class="hostMessage">
+        <p class="userName">{{ message.author.username }}</p>
+        <p class="message">{{ message.text }}</p>
+      </div>
+      <div *ngIf="!message.is_host" class="userMessage">
+        <p class="userName">{{ message.author.username }}</p>
+        <p class="message">{{ message.text }}</p>
+      </div>
+    </div>
+>>>>>>> rmorigin/develop
   </div>
 </div>
 <input

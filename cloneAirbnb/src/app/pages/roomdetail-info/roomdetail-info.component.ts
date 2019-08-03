@@ -78,7 +78,6 @@ export class RoomdetailInfoComponent implements OnInit {
       //   { date: this.now, classes: [] },
       //   { date: this.fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
       // ];
-      console.log(this.bsInlineValue);
 
       this.reservationInfoService.reservationInfoObj.roomType = this.room_type;
       if (this.room_type === 'Apartment') {
@@ -149,9 +148,9 @@ export class RoomdetailInfoComponent implements OnInit {
     this.inputData = value;
     // console.log(this.inputData);
     // this.bsInlineValue = this.inputData;
-    console.log(this.bsInlineValue);
+    // console.log(this.bsInlineValue);
     // this.now = this.bsInlineValue;
-    console.log(this.now);
+    // console.log(this.now);
     // this.fourDaysAhead.setDate(this.now.getDate() + this.maxDate1);
     // 나중에 서버에 보낼 input data
   }

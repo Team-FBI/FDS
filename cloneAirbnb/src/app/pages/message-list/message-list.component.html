@@ -1,0 +1,25 @@
+<app-navigation></app-navigation>
+
+<div
+  *ngFor="let message of messageList"
+  class="messageDiv"
+  (click)="toMessage(message.id)"
+>
+  <div>
+    {{ message.room.host.image }}
+  </div>
+  <div>
+    <p>{{ message.room.host.username }}</p>
+    <p>{{ message.messages.created }}</p>
+  </div>
+  <div>
+    <p class="lastMessage">
+      {{ message.messages.author.username }}: {{ message.messages.text }}
+    </p>
+  </div>
+  <div>
+    <p class="reservationInfo">
+      {{ message.room.price }}
+    </p>
+  </div>
+</div>
