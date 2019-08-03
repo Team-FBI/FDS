@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { ReservationInfoService } from 'src/app/core/service/reservation-info.service';
 import { RoomListService } from 'src/app/core/service/room-list.service';
-import { NgxSpinnerService } from "ngx-spinner";
+// import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-home',
@@ -15,19 +15,18 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private urlRemember: UrlRememberService,
     public reservationInfoService: ReservationInfoService,
-    private roomListService: RoomListService,
-    private spinner: NgxSpinnerService
-  ) {}
+    private roomListService: RoomListService
+  ) // private spinner: NgxSpinnerService
+  {}
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
-    this.spinner.show();
+    // this.spinner.show();
 
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 1500);
+    // setTimeout(() => {
+    //   this.spinner.hide();
+    // }, 1500);
   }
-
 
   increase(personnelType: HTMLSpanElement) {
     this.reservationInfoService.reservationInfoObj[personnelType.id]++;

@@ -116,7 +116,7 @@ export class RoomListComponent implements OnInit {
 
   ngOnInit() {
     this.getRoomInfo();
-    
+
     this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
       this.roomCount = this.roomList.length;
@@ -164,7 +164,6 @@ export class RoomListComponent implements OnInit {
     this.roomListService.roomList = [];
     this.roomListService.markers = [];
     return this.roomListService.getRoomList().subscribe(res => {
-      
       this.totalRooms = res.count;
       for (const room of res.results) {
         this.roomListService.roomList.push(room);
@@ -213,7 +212,7 @@ export class RoomListComponent implements OnInit {
 
   // filterSpace(roomtypeDropdown, checkEntire, checkPrivate, checkHotel, checkShare) {
   //   roomtypeDropdown.isOpen = !roomtypeDropdown.isOpen;
-    
+
   //   this.roomList = this.copyList;
 
   //   if (checkEntire.checked) {

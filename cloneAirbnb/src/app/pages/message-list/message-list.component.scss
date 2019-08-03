@@ -1,37 +1,46 @@
-@import "../../../styles.scss";
+@import '../../../styles.scss';
 
-.messageContainer{
-  width:900px;
-  margin:50px auto 0;
+.messageContainer {
+  width: 900px;
+  margin: 50px auto 0;
 }
 .messageDiv {
   @include flexContainer(space-between);
   // justify-content: space-between
-  height:80px;
-  margin-top:10px;
-  border:1px solid #ddd;
+  height: 80px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
 
-  .userName, .lastMessage, .reservationInfo{
-    padding:5px 20px;
+  .userName,
+  .lastMessage,
+  .reservationInfo {
+    padding: 5px 20px;
   }
-  .date, .message{
-    margin-top:5px;
-    font-size:0.8rem;
+  .date,
+  .message {
+    margin-top: 5px;
+    font-size: 0.8rem;
     font-weight: 300;
   }
 }
 
-.hostImage{
-  width:80px;
-  height:80px;
+.hostImage {
+  width: 80px;
+  height: 80px;
 
-  img{
-    width:100%;
+  img {
+    width: 100%;
   }
 }
-.userName{
+.userName {
   width: 200px;
 }
-.lastMessage{
-  width:500px;
+.lastMessage {
+  width: 500px;
+}
+
+.loading {
+  position: absolute;
+  top: 100px;
+  left: calc(50vw - 128px);
 }
