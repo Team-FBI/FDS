@@ -10,6 +10,7 @@ import { GoogleMapsAPIWrapper } from '@agm/core';
 import { States } from '../../../core/interface/states.interface';
 import { RoomListComponent } from '../../../pages/room-list/room-list.component';
 
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -22,6 +23,7 @@ export class NavigationComponent implements OnInit {
   switchLang = true;
   states = [];
   searchInputFocus = false;
+
 
   constructor(
     private router: Router,
@@ -83,4 +85,6 @@ export class NavigationComponent implements OnInit {
     this.languageService.switchLanguageService(language);
     this.switchLang = !this.switchLang;
   }
+
+
 }

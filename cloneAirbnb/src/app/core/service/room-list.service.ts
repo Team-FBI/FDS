@@ -9,6 +9,7 @@ import { ReservationInfoService } from '../../core/service/reservation-info.serv
 import { RoomList } from '../interface/roomList.interface';
 import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
 import { MakerInfo } from '../interface/maker-info.interface';
+import { state } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -67,7 +68,6 @@ export class RoomListService {
     if (!this.reservationInfoService.reservationInfoObj.destination) {
       this.reservationInfoService.reservationInfoObj.destination = 'seoul';
     }
-
     return this.http.get<RoomList>(
       `${this.appUrl}/rooms/?search=${
         this.reservationInfoService.reservationInfoObj.destination
@@ -127,4 +127,6 @@ export class RoomListService {
     this.markersUpDated.emit(this.markers);
     this.roomList = [];
   }
+
+
 }

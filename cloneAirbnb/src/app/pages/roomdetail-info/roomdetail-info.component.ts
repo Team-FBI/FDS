@@ -4,7 +4,7 @@ import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ReservationInfoService } from 'src/app/core/service/reservation-info.service';
-import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
+import { DatepickerDateCustomClasses, BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-roomdetail-info',
@@ -24,6 +24,7 @@ export class RoomdetailInfoComponent implements OnInit {
   facility: string;
   strArray;
   id: number;
+  datePickerConfig:Partial<BsDatepickerConfig>;
   bsInlineValue = this.reservationInfoService.date;
   bsInlineValue3 = new Date();
   bsInlineValue2 = this.bsInlineValue3.getMonth() + 2;
@@ -44,6 +45,10 @@ export class RoomdetailInfoComponent implements OnInit {
     private http: HttpClient,
     private reservationInfoService: ReservationInfoService
   ) {
+    this.datePickerConfig = Object.assign({}, {
+      containerClass: 'theme-red',
+      selectFromOtherMonth: true
+    })
     this.minDate = new Date();
     this.maxDate = new Date();
     // this.bsInlineValue2.setDate(this.bsInlineValue.getDate() + 32);
