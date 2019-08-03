@@ -15,6 +15,7 @@ import { AuthInterceptorService } from './core/service/auth-interceptor.service'
 import { GoogleMapsAPIWrapper } from '@agm/core';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

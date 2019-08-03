@@ -1,12 +1,141 @@
+@import "../../../styles.scss";
+
 .messageDisplay {
-  margin: 30px 100px;
-  border: 1px solid #000;
   width: 700px;
   height: 500px;
-  background: #eee;
+  margin: 30px auto 0;
+  padding:10px;
+  background: #b2c7d9;
   overflow-y: scroll;
 }
 
-.userMessage {
-  margin-left: 100px;
+.messageDisplay::-webkit-scrollbar{
+  display: none;
+}
+
+.hostMessage{
+  width:100%;
+  margin-top:20px;
+
+  .userImage{
+    float: left;
+    width:50px;
+
+    img{
+      width:100%;
+    }
+  }
+  .hostName{
+    float: left;
+    margin-left:10px;
+  }
+  .message{
+    padding:5px 10px;
+    background: #fff;
+    font-size:0.9rem;
+    border-radius: 5px;
+    border:1px solid #fff;
+  }
+  &:after{
+    clear: both;
+    display: block;
+    content: '';
+  }
+}
+
+
+.userMessage{
+  @include flexContainer(flex-end);
+  margin-top:20px;
+
+  .userName{
+    margin-right: 10px;
+    text-align: right;
+  }
+  .message{
+    padding:5px 10px;
+    background: #ffeb33;
+    font-size:0.9rem;
+    border-radius: 5px;
+    border:1px solid #ffeb33;
+  }
+  .userImage{
+    width:50px;
+    text-align: right;
+    font-size:0.8rem;
+
+    img{
+      width:100%;
+    }
+  }
+}
+
+
+
+.triangle, .triangleUser{
+  position: relative;
+  margin-top:3px;
+}
+
+.triangle::before {
+  content:'';
+  position:absolute;
+  width:0;
+  height:0;
+  border-style:solid;
+  border-color:transparent #fff transparent transparent;
+  border-width: 7px;
+  left:-14px;
+}
+
+
+.triangleUser::after{
+  content:'';
+  position:absolute;
+  width:0;
+  height:0;
+  border-style:solid;
+  border-color:transparent transparent transparent #ffeb33;
+  border-width:7px;
+  top:5px;
+  right:-14px;
+}
+
+.hostName, .userName{
+  p{
+    font-size:0.8rem;
+    font-weight: 300;
+  }
+} 
+
+
+
+
+
+
+// .triangle.test_3:before, .triangle.test_3::after{
+//   position: absolute;
+//   content: '';
+//   left:100px;
+// }
+.triangle.test_3:after{
+  content:'';
+  position:absolute;
+  width:0;
+  height:0;
+  border-style:solid;
+  border-color: #fff transparent transparent transparent;
+  margin-top: 28px;
+  margin-left: -48px;
+  border-width: 7px;
+
+}
+
+
+.messageText{
+  display: block;
+  width:700px;
+  margin:0 auto;
+  padding:10px;
+  border:1px solid #f1f1f1
 }

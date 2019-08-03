@@ -576,6 +576,12 @@
 // ::ng-deep .modal .gallery-thumbs .swiper-slide img {
 //   width: 25%;
 // }
+.loading {
+  position: absolute;
+  top: calc(50vh - 128px);
+  left: calc(50vw - 128px);
+}
+
 
 .back-drop {
   position: absolute;

@@ -40,6 +40,7 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 import { ScrollDirective } from './room-detail/scroll.directive';
+import { TripListComponent } from './trip-list/trip-list.component';
 import { MessageComponent } from './message/message.component';
 import { MessageListComponent } from './message-list/message-list.component';
 
@@ -66,6 +67,7 @@ export function createTranslateLoader(http: HttpClient) {
     RoomdetailInfoComponent,
     CheckPaymentComponent,
     ScrollDirective,
+    TripListComponent,
     MessageComponent,
     MessageListComponent
   ],
