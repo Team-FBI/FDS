@@ -10,6 +10,8 @@ import { RoomRegulationComponent } from './room-regulation/room-regulation.compo
 import { GuestInfoComponent } from './guest-info/guest-info.component';
 import { CheckPaymentComponent } from './check-payment/check-payment.component';
 import { PaymentComponent } from './payment/payment.component';
+import { TripListComponent } from './trip-list/trip-list.component';
+
 
 import { AuthGuard } from '../core/guard/auth.guard';
 
@@ -25,6 +27,9 @@ const routes: Routes = [
   {
     path: 'roomdetail/:id',
     component: RoomDetailComponent
+  },
+  {
+    path: 'tripList', component: TripListComponent
   },
   {
     path: 'roomregulation',

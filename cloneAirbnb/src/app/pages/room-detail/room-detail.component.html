@@ -150,6 +150,8 @@
 
 <app-footer></app-footer>
 
+<div *ngIf="isLoading$ | async" class="loading"><img src="../../../assets/spinner.gif" alt="loading"></div>
+
 <!-- 
 
 <div class="box">
