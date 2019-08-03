@@ -21,10 +21,6 @@ export class YourTripComponent implements OnInit {
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
 
-    this.http
-      .get('http://airbnb.tthae.com/api/accounts/user/13/')
-      .subscribe(res => console.log(res));
-
     console.log(this.test.reservationInfoObj.destination);
     console.log(this.test.reservationInfoObj.checkIn);
     console.log(this.test.reservationInfoObj.checkOut);
