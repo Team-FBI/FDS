@@ -3,7 +3,7 @@
 .messageDisplay {
   width: 700px;
   height: 500px;
-  margin: 30px 100px;
+  margin: 30px auto 0;
   padding:10px;
   background: #b2c7d9;
   overflow-y: scroll;
@@ -129,4 +129,13 @@
   margin-left: -48px;
   border-width: 7px;
 
+}
+
+
+.messageText{
+  display: block;
+  width:700px;
+  margin:0 auto;
+  padding:10px;
+  border:1px solid #f1f1f1
 }
