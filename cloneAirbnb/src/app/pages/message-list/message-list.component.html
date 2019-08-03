@@ -1,25 +1,36 @@
 <app-navigation></app-navigation>
+<section class="messageContainer">
+    <div
+    *ngFor="let message of messageList"
+    class="messageDiv"
+    (click)="toMessage(message.id)"
+  >
+    <div class="hostImage">
+      <img src="{{ message.room.host.image }}" alt="">
+      <!-- {{ message.room.host.image }} -->
+    </div>
+    <div class="userName">
+      <p class="name">{{ message.room.host.username }}</p>
+      <p class="date">{{ message.messages.created }}</p>
+    </div>
+    <div class="lastMessage">
+      <p class="last">
+        {{ message.messages.author.username }}
+      </p>
+      <p class="message">
+        {{ message.messages.text }}
+      </p>
+    </div>
+    <div class="reservationInfo">
+      <p>
+        {{ message.room.price }}
+      </p>
+    </div>
+  </div>
+  
+</section>
 
-<div
-  *ngFor="let message of messageList"
-  class="messageDiv"
-  (click)="toMessage(message.id)"
->
-  <div>
-    {{ message.room.host.image }}
-  </div>
-  <div>
-    <p>{{ message.room.host.username }}</p>
-    <p>{{ message.messages.created }}</p>
-  </div>
-  <div>
-    <p class="lastMessage">
-      {{ message.messages.author.username }}: {{ message.messages.text }}
-    </p>
-  </div>
-  <div>
-    <p class="reservationInfo">
-      {{ message.room.price }}
-    </p>
-  </div>
-</div>
+
+
+
+<app-footer></app-footer>
