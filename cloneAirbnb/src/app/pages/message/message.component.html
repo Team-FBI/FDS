@@ -7,12 +7,30 @@
   >
     <div *ngFor="let message of messageHistory">
       <div *ngIf="message.is_host" class="hostMessage">
-        <p class="userName">{{ message.author.username }}</p>
-        <p class="message">{{ message.text }}</p>
+        <div class="userImage">
+          <img src="https://i.postimg.cc/RFtppDcT/image.png">
+        </div>
+        <div class="hostName">
+          <p>
+            {{ message.author.username }}
+          </p>
+          <div class="message triangle">
+              {{ message.text }}
+          </div>
+        </div>
       </div>
       <div *ngIf="!message.is_host" class="userMessage">
-        <p class="userName">{{ message.author.username }}</p>
-        <p class="message">{{ message.text }}</p>
+        <div class="userName">
+          <p>
+            {{ message.author.username }}
+          </p>
+          <div class="message triangleUser">
+              {{ message.text }}
+          </div>
+        </div>
+        <div class="userImage">
+            <img src="https://i.postimg.cc/RFtppDcT/image.png">
+        </div>
       </div>
     </div>
     <div *ngFor="let message of messages">
