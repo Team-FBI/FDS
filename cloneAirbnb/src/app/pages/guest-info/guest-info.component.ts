@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { LanguageService } from 'src/app/core/service/language.service';
 import { ReservationInfoService } from 'src/app/core/service/reservation-info.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-guest-info',
@@ -13,15 +15,17 @@ import { ReservationInfoService } from 'src/app/core/service/reservation-info.se
   styleUrls: ['./guest-info.component.scss']
 })
 export class GuestInfoComponent implements OnInit {
-  personnel = this.rerservationInfoService.reservationInfoObj.personnel;
+  personnel = this.reservationInfoService.reservationInfoObj.personnel;
   switchLang = this.languageService.language === 'en' ? true : false;
+  appUrl: string = environment.appUrl;
 
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
     private translate: TranslateService,
     private languageService: LanguageService,
-    private rerservationInfoService: ReservationInfoService
+    private reservationInfoService: ReservationInfoService,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
@@ -29,8 +33,20 @@ export class GuestInfoComponent implements OnInit {
     this.translate.setDefaultLang(`${this.languageService.currentLanguage()}`);
   }
 
-  toCheckPayment() {
-    this.router.navigate(['checkpayment']);
+  toCheckPayment(userMessage: HTMLTextAreaElement) {
+    if (userMessage.value.trim()) {
+      const id = this.reservationInfoService.id;
+      const payload = {
+        start_date: this.reservationInfoService.messageCheckInDate,
+        end_date: this.reservationInfoService.messageCheckOutDate,
+        message: userMessage.value
+      };
+
+      this.http.post(`${this.appUrl}/rooms/${id}`, payload).subscribe(res => {
+        console.log(res);
+      });
+      this.router.navigate(['checkpayment']);
+    }
   }
 
   switchLanguage() {

@@ -13,6 +13,7 @@ import { PaymentComponent } from './payment/payment.component';
 
 import { AuthGuard } from '../core/guard/auth.guard';
 import { MessageComponent } from './message/message.component';
+import { MessageListComponent } from './message-list/message-list.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -43,7 +44,12 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'message',
+    path: 'messageList',
+    component: MessageListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'message/:id',
     component: MessageComponent,
     canActivate: [AuthGuard]
   }

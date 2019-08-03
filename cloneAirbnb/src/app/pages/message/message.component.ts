@@ -28,7 +28,7 @@ export class MessageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get(`${this.appUrl}/chat/44/`).subscribe((res: any) => {
+    this.http.get(`${this.appUrl}/chat/48/`).subscribe((res: any) => {
       console.log(res);
       for (const prvMessage of res.messages) {
         this.messageHistory.push(prvMessage);
