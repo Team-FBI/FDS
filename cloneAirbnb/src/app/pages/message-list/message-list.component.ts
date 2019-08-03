@@ -25,7 +25,8 @@ export class MessageListComponent implements OnInit {
       });
   }
 
-  toMessage(id: string) {
+  toMessage(id: number) {
+    localStorage.setItem('messageId', id.toString());
     this.router.navigate([`message/${id}`]);
   }
 }
