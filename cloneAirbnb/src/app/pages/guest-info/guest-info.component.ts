@@ -37,8 +37,8 @@ export class GuestInfoComponent implements OnInit {
     if (userMessage.value.trim()) {
       const id = this.reservationInfoService.id;
       const payload = {
-        start_date: this.reservationInfoService.messageCheckInDate,
-        end_date: this.reservationInfoService.messageCheckOutDate,
+        start_date: this.refactoringDate('checkIn'),
+        end_date: this.refactoringDate('checkOut'),
         message: userMessage.value
       };
 
@@ -47,6 +47,21 @@ export class GuestInfoComponent implements OnInit {
       });
       this.router.navigate(['checkpayment']);
     }
+  }
+
+  refactoringDate(checkInOut: string) {
+    const messageCheckInDateArray = [];
+    const splitDate = this.reservationInfoService.reservationInfoObj[
+      checkInOut
+    ].split('/');
+    for (const date of splitDate) {
+      if (date.length === 4) {
+        messageCheckInDateArray.unshift(date);
+      } else {
+        messageCheckInDateArray.push(date);
+      }
+    }
+    return messageCheckInDateArray.join('-');
   }
 
   switchLanguage() {

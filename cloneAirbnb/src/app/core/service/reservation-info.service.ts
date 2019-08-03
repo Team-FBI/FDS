@@ -15,12 +15,6 @@ export class ReservationInfoService {
   checkOutDate = `${this.initialCheckOutDate.getMonth() +
     1}/${this.initialCheckOutDate.getDate()}/${this.initialCheckOutDate.getFullYear()}`;
 
-  messageCheckInDate = `${this.date.getFullYear()}-${this.date.getMonth() +
-    1}-${this.date.getDate()}`;
-
-  messageCheckOutDate = `${this.initialCheckOutDate.getFullYear()}-${this.initialCheckOutDate.getMonth() +
-    1}-${this.initialCheckOutDate.getDate()}`;
-
   reservationInfoObj: ReservationInfo = {
     title: '',
     destination: '',
