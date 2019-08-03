@@ -10,7 +10,7 @@
     <div *ngFor="let message of messageHistory">
       <div *ngIf="message.is_host" class="hostMessage">
         <div class="userImage">
-          <img src="https://i.postimg.cc/RFtppDcT/image.png" />
+          <img src="{{ message.author.image }}" />
         </div>
         <div class="hostName">
           <p>
@@ -39,7 +39,7 @@
     <div *ngFor="let message of messages">
       <div *ngIf="message.is_host" class="hostMessage">
         <div class="userImage">
-          <img src="https://i.postimg.cc/RFtppDcT/image.png" />
+          <img src="{{ message.author.image }}" />
         </div>
         <div class="hostName">
           <p>
