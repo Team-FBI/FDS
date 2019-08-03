@@ -1,5 +1,6 @@
 <app-navigation></app-navigation>
 <section class="messageContainer">
+  <div class="allMessage">모든 메세지({{ messageList.length }})</div>
   <div
     *ngFor="let message of messageList"
     class="messageDiv"
