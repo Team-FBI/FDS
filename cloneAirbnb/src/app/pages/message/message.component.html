@@ -7,42 +7,46 @@
         <p class="hostUserName">{{ hostInfo.room.host.username }}</p>
       </div>
       <div class="tripInfoDiv">
-        <P class="tripInfoTitle">여행세부정보</P>
+        <P class="tripInfoTitle">{{ 'message.tripDetails' | translate }}</P>
         <hr class="line" />
         <div class="checkInOutDate">
           <div class="checkInDate">
-            <p>체크인</p>
+            <p>{{ 'message.checkIn' | translate }}</p>
             <p>{{ hostInfo.start_date }}</p>
           </div>
           <i class="fa fa-angle-right" aria-hidden="true"></i>
           <div class="checkOutDate">
-            <p>체크아웃</p>
+            <p>{{ 'message.checkOut' | translate }}</p>
             <p>{{ hostInfo.end_date }}</p>
           </div>
         </div>
         <hr class="line" />
         <div class="paymentInfoDiv">
-          <p class="paymentInfoTitle">결제</p>
+          <p class="paymentInfoTitle">{{ 'message.payment' | translate }}</p>
           <div class="paymentInfo">
-            <p class="paymentInfoP">
-              <span>₩{{ hostInfo.room.price }} X {{ dayDiff }}박</span>
+            <p class="paymentInfoP" *ngIf="dayDiff === 1">
+              <span>₩{{ hostInfo.room.price }} X {{ dayDiff }} {{ 'message.night' | translate }}</span>
               <span>₩{{ totalPriceBeforeTex }}</span>
             </p>
+            <p class="paymentInfoP" *ngIf="dayDiff > 1">
+                <span>₩{{ hostInfo.room.price }} X {{ dayDiff }} {{ 'message.nights' | translate }}</span>
+                <span>₩{{ totalPriceBeforeTex }}</span>
+              </p>
             <p class="paymentInfoP">
-              <span>청소비</span>
+              <span>{{ 'message.cleaningExpenses' | translate }}</span>
               <span>₩{{ cleaningExpenses }}</span>
             </p>
             <p class="paymentInfoP">
-              <span>서비스비</span>
+              <span>{{ 'message.serviceFee' | translate }}</span>
               <span>₩{{ serviceFee }}</span>
             </p>
             <p class="paymentInfoP">
-              <span>숙박세</span>
+              <span>{{ 'message.occupancyTex' | translate }}</span>
               <span>₩{{ accommodationsTax }}</span>
             </p>
             <hr />
             <p class="paymentInfoP">
-              <span>합계</span>
+              <span>{{ 'message.total' | translate }} (KRW)</span>
               <span>₩{{ totalPriceAfterTex }}</span>
             </p>
           </div>
