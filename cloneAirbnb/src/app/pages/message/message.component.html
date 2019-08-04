@@ -25,25 +25,25 @@
           <p class="paymentInfoTitle">결제</p>
           <div class="paymentInfo">
             <p class="paymentInfoP">
-              <span>3박</span>
-              <span>₩1000</span>
+              <span>₩{{ hostInfo.room.price }} X {{ dayDiff }}박</span>
+              <span>₩{{ totalPriceBeforeTex }}</span>
             </p>
             <p class="paymentInfoP">
-              <span>3박</span>
-              <span>₩1000</span>
+              <span>청소비</span>
+              <span>₩{{ cleaningExpenses }}</span>
             </p>
             <p class="paymentInfoP">
-              <span>3박</span>
-              <span>₩1000</span>
+              <span>서비스비</span>
+              <span>₩{{ serviceFee }}</span>
             </p>
             <p class="paymentInfoP">
-              <span>3박</span>
-              <span>₩1000</span>
+              <span>숙박세</span>
+              <span>₩{{ accommodationsTax }}</span>
             </p>
             <hr />
             <p class="paymentInfoP">
-              <span>토탈</span>
-              <span>₩1000</span>
+              <span>합계</span>
+              <span>₩{{ totalPriceAfterTex }}</span>
             </p>
           </div>
         </div>
