@@ -25,29 +25,35 @@
           <p class="paymentInfoTitle">{{ 'message.payment' | translate }}</p>
           <div class="paymentInfo">
             <p class="paymentInfoP" *ngIf="dayDiff === 1">
-              <span>₩{{ hostInfo.room.price }} X {{ dayDiff }} {{ 'message.night' | translate }}</span>
+              <span
+                >₩{{ hostInfo.room.price | number }} X {{ dayDiff }}
+                {{ 'message.night' | translate }}</span
+              >
               <span>₩{{ totalPriceBeforeTex }}</span>
             </p>
             <p class="paymentInfoP" *ngIf="dayDiff > 1">
-                <span>₩{{ hostInfo.room.price }} X {{ dayDiff }} {{ 'message.nights' | translate }}</span>
-                <span>₩{{ totalPriceBeforeTex }}</span>
-              </p>
+              <span
+                >₩{{ hostInfo.room.price | number }} X {{ dayDiff }}
+                {{ 'message.nights' | translate }}</span
+              >
+              <span>₩{{ totalPriceBeforeTex }}</span>
+            </p>
             <p class="paymentInfoP">
               <span>{{ 'message.cleaningExpenses' | translate }}</span>
-              <span>₩{{ cleaningExpenses }}</span>
+              <span>₩{{ cleaningExpenses | number }}</span>
             </p>
             <p class="paymentInfoP">
               <span>{{ 'message.serviceFee' | translate }}</span>
-              <span>₩{{ serviceFee }}</span>
+              <span>₩{{ serviceFee | number }}</span>
             </p>
             <p class="paymentInfoP">
               <span>{{ 'message.occupancyTex' | translate }}</span>
-              <span>₩{{ accommodationsTax }}</span>
+              <span>₩{{ accommodationsTax | number }}</span>
             </p>
             <hr />
-            <p class="paymentInfoP">
+            <p class="paymentInfoP totalPayment">
               <span>{{ 'message.total' | translate }} (KRW)</span>
-              <span>₩{{ totalPriceAfterTex }}</span>
+              <span>₩{{ totalPriceAfterTex | number }}</span>
             </p>
           </div>
         </div>
