@@ -1,78 +1,129 @@
 <app-navigation></app-navigation>
-
-<div class="outline">
-  <div
-    class="messageDisplay"
-    style="overflow: scroll; height: xyz;"
-    #scrollMe
-    [scrollTop]="scrollMe.scrollHeight"
-  >
-    <div *ngFor="let message of messageHistory">
-      <div *ngIf="message.is_host" class="hostMessage">
-        <div class="userImage">
-          <img src="{{ message.author.image }}" />
-        </div>
-        <div class="hostName">
-          <p>
-            {{ message.author.username }}
-          </p>
-          <div class="message triangle">
-            {{ message.text }}
-          </div>
-        </div>
+<div class="whole">
+  <div class="float-left left">
+    <div class="hostInfo" *ngFor="let hostInfo of allInfo">
+      <div class="hostInfoImgDiv">
+        <img src="{{ hostInfo.room.host.image }}" class="hostInfoImg" />
+        <p class="hostUserName">{{ hostInfo.room.host.username }}</p>
       </div>
-      <div *ngIf="!message.is_host" class="userMessage">
-        <div class="userName">
-          <p>
-            {{ message.author.username }}
-          </p>
-          <div class="message triangleUser">
-            {{ message.text }}
+      <div class="tripInfoDiv">
+        <P class="tripInfoTitle">여행세부정보</P>
+        <hr class="line" />
+        <div class="checkInOutDate">
+          <div class="checkInDate">
+            <p>체크인</p>
+            <p>{{ hostInfo.start_date }}</p>
+          </div>
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+          <div class="checkOutDate">
+            <p>체크아웃</p>
+            <p>{{ hostInfo.end_date }}</p>
           </div>
         </div>
-        <div class="userImage">
-          <img src="https://i.postimg.cc/RFtppDcT/image.png" />
-        </div>
-      </div>
-    </div>
-
-    <div *ngFor="let message of messages">
-      <div *ngIf="message.is_host" class="hostMessage">
-        <div class="userImage">
-          <img src="{{ message.author.image }}" />
-        </div>
-        <div class="hostName">
-          <p>
-            {{ message.author.username }}
-          </p>
-          <div class="message triangle">
-            {{ message.text }}
+        <hr class="line" />
+        <div class="paymentInfoDiv">
+          <p class="paymentInfoTitle">결제</p>
+          <div class="paymentInfo">
+            <p class="paymentInfoP">
+              <span>3박</span>
+              <span>₩1000</span>
+            </p>
+            <p class="paymentInfoP">
+              <span>3박</span>
+              <span>₩1000</span>
+            </p>
+            <p class="paymentInfoP">
+              <span>3박</span>
+              <span>₩1000</span>
+            </p>
+            <p class="paymentInfoP">
+              <span>3박</span>
+              <span>₩1000</span>
+            </p>
+            <hr />
+            <p class="paymentInfoP">
+              <span>토탈</span>
+              <span>₩1000</span>
+            </p>
           </div>
-        </div>
-      </div>
-      <div *ngIf="!message.is_host" class="userMessage">
-        <div class="userName">
-          <p>
-            {{ message.author.username }}
-          </p>
-          <div class="message triangleUser">
-            {{ message.text }}
-          </div>
-        </div>
-        <div class="userImage">
-          <img src="https://i.postimg.cc/RFtppDcT/image.png" />
         </div>
       </div>
     </div>
   </div>
+  <div class="float-right">
+    <div
+      class="messageDisplay"
+      style="overflow: scroll; height: xyz;"
+      #scrollMe
+      [scrollTop]="scrollMe.scrollHeight"
+    >
+      <div *ngFor="let message of messageHistory">
+        <div *ngIf="message.is_host" class="hostMessage">
+          <div class="userImage">
+            <img src="{{ message.author.image }}" />
+          </div>
+          <div class="hostName">
+            <p>
+              {{ message.author.username }}
+            </p>
+            <div class="message triangle">
+              {{ message.text }}
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!message.is_host" class="userMessage">
+          <div class="userName">
+            <p>
+              {{ message.author.username }}
+            </p>
+            <div class="message triangleUser">
+              {{ message.text }}
+            </div>
+          </div>
+          <div class="userImage">
+            <img src="https://i.postimg.cc/RFtppDcT/image.png" />
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let message of messages">
+        <div *ngIf="message.is_host" class="hostMessage">
+          <div class="userImage">
+            <img src="{{ message.author.image }}" />
+          </div>
+          <div class="hostName">
+            <p>
+              {{ message.author.username }}
+            </p>
+            <div class="message triangle">
+              {{ message.text }}
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!message.is_host" class="userMessage">
+          <div class="userName">
+            <p>
+              {{ message.author.username }}
+            </p>
+            <div class="message triangleUser">
+              {{ message.text }}
+            </div>
+          </div>
+          <div class="userImage">
+            <img src="https://i.postimg.cc/RFtppDcT/image.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <input
+      class="messageText"
+      type="text"
+      placeholder="메세지 입력"
+      #userInput
+      (keyup.enter)="sendMsg(userInput)"
+    />
+  </div>
 </div>
-<input
-  class="messageText"
-  type="text"
-  placeholder="메세지 입력"
-  #userInput
-  (keyup.enter)="sendMsg(userInput)"
-/>
 
 <div *ngIf="isLoading$ | async" class="loading">
   <img src="../../../assets/spinner.gif" alt="loading" class="spinnerImg" />

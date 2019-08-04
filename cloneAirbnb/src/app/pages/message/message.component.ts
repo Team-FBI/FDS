@@ -14,6 +14,7 @@ import { BehaviorSubject } from 'rxjs';
 export class MessageComponent implements OnInit {
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   appUrl: string = environment.appUrl;
+  allInfo = [];
   messages = [];
   messageHistory = [];
   id = this.chatService.chatRoomId;
@@ -35,10 +36,12 @@ export class MessageComponent implements OnInit {
     this.http.get(`${this.appUrl}/chat/${this.id}/`).subscribe(
       (res: any) => {
         console.log(res);
+        this.allInfo.push(res);
         for (const prvMessage of res.messages) {
           this.messageHistory.push(prvMessage);
         }
         console.log(this.messageHistory);
+        console.log(this.allInfo);
       },
       err => {},
       () => {

@@ -1,5 +1,89 @@
 @import '../../../styles.scss';
 
+.whole {
+  margin: 30px auto;
+  width: 1300px;
+  padding: 50px;
+}
+
+.whole::after {
+  clear: both;
+  display: block;
+  content: '';
+}
+
+.left {
+  width: 400px;
+  margin-left: 30px;
+  height: 700px;
+  border: 1px solid #ddd;
+}
+
+.hostInfo {
+  color: gray;
+  padding: 50px;
+
+  .hostInfoImgDiv {
+    width: 170px;
+    margin: 0 auto 40px;
+
+    .hostInfoImg {
+      border: 1px solid #ddd;
+      border-radius: 200px;
+      height: auto;
+      width: 170px;
+    }
+
+    .hostUserName {
+      color: #181818;
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
+
+  .tripInfoDiv {
+    .tripInfoTitle {
+      font-size: 1.2rem;
+    }
+
+    .line {
+      color: gray;
+    }
+
+    .checkInOutDate {
+      @include flexContainer(space-between);
+
+      .checkInDate {
+      }
+
+      .fa-angle-right {
+        line-height: 40px;
+        font-size: 40px;
+      }
+
+      .checkOutDate {
+      }
+    }
+  }
+
+  .paymentInfoDiv {
+    margin-top: 30px;
+
+    .paymentInfoTitle {
+      font-size: 1.2rem;
+    }
+
+    .paymentInfo {
+      .paymentInfoP {
+        @include flexContainer(space-between);
+        width: 100%;
+      }
+    }
+  }
+}
+
 .messageDisplay {
   width: 700px;
   height: 500px;
@@ -23,6 +107,7 @@
 
     img {
       width: 100%;
+      border-radius: 100px;
     }
   }
   .hostName {

@@ -5,6 +5,13 @@
   margin: 50px auto 0;
   min-height: 500px;
 }
+
+.allMessage {
+  display: inline-block;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+}
+
 .messageDiv {
   @include flexContainer(space-between);
   // justify-content: space-between
