@@ -17,6 +17,15 @@ export class MessageComponent implements OnInit {
   allInfo = [];
   messages = [];
   messageHistory = [];
+  price: number;
+  totalPriceBeforeTex: number;
+  startDate: string;
+  endDate: string;
+  cleaningExpenses = 10000;
+  serviceFee: number;
+  accommodationsTax: number;
+  totalPriceAfterTex: number;
+  dayDiff: number;
   id = this.chatService.chatRoomId;
 
   message = {
@@ -37,17 +46,41 @@ export class MessageComponent implements OnInit {
       (res: any) => {
         console.log(res);
         this.allInfo.push(res);
+        this.price = res.room.price;
+        this.startDate = res.start_date;
+        this.endDate = res.end_date;
         for (const prvMessage of res.messages) {
           this.messageHistory.push(prvMessage);
         }
         console.log(this.messageHistory);
         console.log(this.allInfo);
+        this.dateDiff(
+          this.parseDate(this.startDate),
+          this.parseDate(this.endDate)
+        );
+        this.totalPriceBeforeTex = this.price * this.dayDiff;
+        this.serviceFee = this.totalPriceBeforeTex * 0.1;
+        this.accommodationsTax = this.serviceFee * 0.1;
+        this.totalPriceAfterTex =
+          this.totalPriceBeforeTex +
+          this.cleaningExpenses +
+          this.serviceFee +
+          this.accommodationsTax;
       },
       err => {},
       () => {
         this.isLoading$.next(false);
       }
     );
+  }
+
+  dateDiff(first, second) {
+    this.dayDiff = Math.round((second - first) / (1000 * 60 * 60 * 24));
+  }
+
+  parseDate(str) {
+    const mdy = str.split('-');
+    return new Date(mdy[0], mdy[1] - 1, mdy[2]);
   }
 
   sendMsg(userInput: HTMLInputElement) {
