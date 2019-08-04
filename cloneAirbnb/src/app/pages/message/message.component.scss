@@ -97,10 +97,10 @@
 
 .messageDisplay {
   width: 700px;
-  height: 500px;
-  margin: 30px auto 0;
+  height: 650px;
+  margin: 0 auto;
   padding: 10px;
-  background: #b2c7d9;
+  background: #fff;
   overflow-y: scroll;
 }
 
@@ -130,7 +130,16 @@
     background: #fff;
     font-size: 0.9rem;
     border-radius: 5px;
-    border: 1px solid #fff;
+    border: 1px solid #eee;
+    word-break: normal;
+    min-height: 50px;
+    width: 400px;
+
+    .messageDate {
+      margin-top: 15px;
+      font-size: 7px;
+      color: gray;
+    }
   }
   &:after {
     clear: both;
@@ -145,14 +154,23 @@
 
   .userName {
     margin-right: 10px;
-    text-align: right;
+    text-align: left;
   }
   .message {
     padding: 5px 10px;
-    background: #ffeb33;
+    background: #eee;
     font-size: 0.9rem;
     border-radius: 5px;
-    border: 1px solid #ffeb33;
+    border: 1px solid #fff;
+    word-break: normal;
+    min-height: 50px;
+    width: 400px;
+
+    .messageDate {
+      margin-top: 15px;
+      font-size: 7px;
+      color: gray;
+    }
   }
   .userImage {
     width: 50px;
@@ -177,7 +195,7 @@
   width: 0;
   height: 0;
   border-style: solid;
-  border-color: transparent #fff transparent transparent;
+  border-color: transparent #eee transparent transparent;
   border-width: 7px;
   left: -14px;
 }
@@ -188,7 +206,7 @@
   width: 0;
   height: 0;
   border-style: solid;
-  border-color: transparent transparent transparent #ffeb33;
+  border-color: transparent transparent transparent #eee;
   border-width: 7px;
   top: 5px;
   right: -14px;
@@ -222,6 +240,7 @@
 .messageText {
   display: block;
   width: 700px;
+  height: 50px;
   margin: 0 auto;
   padding: 10px;
   border: 1px solid #f1f1f1;
