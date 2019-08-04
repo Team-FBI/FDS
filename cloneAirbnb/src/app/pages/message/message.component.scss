@@ -97,7 +97,7 @@
 
 .messageDisplay {
   width: 700px;
-  height: 650px;
+  height: 620px;
   margin: 0 auto;
   padding: 10px;
   background: #fff;
@@ -118,6 +118,7 @@
 
     img {
       width: 100%;
+      border: 1px solid #eee;
       border-radius: 100px;
     }
   }
@@ -240,10 +241,15 @@
 .messageText {
   display: block;
   width: 700px;
-  height: 50px;
+  height: 80px;
   margin: 0 auto;
   padding: 10px;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #ddd;
+  resize: none;
+}
+
+.messageText::-webkit-scrollbar {
+  display: none;
 }
 
 .loading {
