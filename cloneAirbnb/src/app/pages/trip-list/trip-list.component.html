@@ -1,8 +1,192 @@
-<p>trip-list works!</p>
-<ul>
-  <li *ngFor="let trip of tripList">
-    {{trip.name}} <br>
-    {{trip.rating_score}} <br>
-    {{trip.duration_time}} <br>
-  </li>
-</ul>
+<app-navigation (initializeCurrentPage) = "initializeCurrentPage()"></app-navigation>
+
+<div class="filter" >
+    <!-- filter -->
+    <div class="filterLeft">
+      <div class="date">
+        <input
+          type="text"
+          class="filterButton"
+          [bsConfig]="{ rangeInputFormat: 'MM/DD', isAnimated: true }"
+          bsDaterangepicker
+          [ngStyle]="dateStyle"
+          placement = "bottom right"
+          (bsValueChange)="onValueChange($event)"
+          (bsValueChange)="widthChange()"
+          [dateCustomClasses]="dateCustomClasses"
+          placeholder="날짜"
+        />
+      </div>
+      <!-- date filterbutton -->
+
+      <div
+        class="personnel"
+        dropdown
+        #personnelDropdown="bs-dropdown"
+        [insideClick]="true"
+      >
+        <!-- personnel filterbutton -->
+        <button class="filterButton" dropdownToggle type="button">
+          <span *ngIf="personnel === 1"
+            >인원</span>
+          <span *ngIf="personnel > 1"
+            ></span>
+        </button>
+        <ul
+          *dropdownMenu
+          class="personnel-dropdown-menu dropdown-menu"
+          role="menu"
+        >
+          <div class="counterLine">
+            <div class="people">
+              <p class="top">{{ 'roomList.adults' | translate }}</p>
+            </div>
+            <div class="counterCheck">
+              <button type="button" class="decrease" (click)="decrease(adult)">
+                -
+              </button>
+              <span class="counter" id="adults" #adult>{{ adults }}</span>
+              <button type="button" class="increase" (click)="increase(adult)">
+                +
+              </button>
+            </div>
+          </div>
+
+          <div role="menuitem">
+            <div class="counterLine">
+              <div class="people">
+                <p>{{ 'roomList.children' | translate }}</p>
+                <span>{{ 'roomList.childrenSpan' | translate }}</span>
+              </div>
+              <div class="counterCheck">
+                <button
+                  type="button"
+                  class="decrease"
+                  (click)="decrease(child)"
+                >
+                  -
+                </button>
+                <span class="counter" id="children" #child>{{ children }}</span>
+                <button
+                  type="button"
+                  class="increase"
+                  (click)="increase(child)"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+          <div role="menuitem">
+            <div class="counterLine">
+              <div class="people">
+                <p>{{ 'roomList.infants' | translate }}</p>
+                <span>{{ 'roomList.infantsSpan' | translate }}</span>
+              </div>
+              <div class="counterCheck">
+                <button
+                  type="button"
+                  class="decrease"
+                  (click)="decrease(infant)"
+                >
+                  -
+                </button>
+                <span class="counter" id="infants" #infant>{{ infants }}</span>
+                <button
+                  type="button"
+                  class="increase"
+                  (click)="increase(infant)"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+          <button
+            class="personnelSaveBtn"
+            type="button"
+            (click)="personnelDropdown.isOpen = !personnelDropdown.isOpen"
+            (click)="changePersonnel()"
+          >
+            {{ 'roomList.saveBtn' | translate }}
+          </button>
+        </ul>
+      </div>
+      <!-- personnel filterbutton -->
+      <div
+        class="price"
+        dropdown
+        #priceDropdown="bs-dropdown"
+        [insideClick]="true"
+      >
+        <!-- price filterbutton -->
+        <button class="price filterButton" dropdownToggle type="button">
+          가격
+        </button>
+        <ul *dropdownMenu class="price-dropdown-menu dropdown-menu" role="menu">
+          <ng5-slider
+            [(value)]="minValue"
+            [(highValue)]="maxValue"
+            [options]="options"
+          ></ng5-slider>
+          <button
+            class="personnelSaveBtn"
+            type="button"
+            (click)="priceDropdown.isOpen = !priceDropdown.isOpen"
+            (click)="setPrice()"
+          >
+            {{ 'roomList.saveBtn' | translate }}
+          </button>
+        </ul>
+      </div>
+     
+      <!--language filter-->
+      <div
+        class="language"
+        dropdown
+        #priceDropdown="bs-dropdown"
+        [insideClick]="true"
+      >
+        <button class="language filterButton" dropdownToggle type="button">
+          트립 진행 언어
+        </button>
+        <ul *dropdownMenu class="price-dropdown-menu dropdown-menu" role="menu">
+          <ng5-slider
+            [(value)]="minValue"
+            [(highValue)]="maxValue"
+            [options]="options"
+          ></ng5-slider>
+          <button
+            class="personnelSaveBtn"
+            type="button"
+            (click)="priceDropdown.isOpen = !priceDropdown.isOpen"
+            (click)="setPrice()"
+          >
+            {{ 'roomList.saveBtn' | translate }}
+          </button>
+        </ul>
+      </div>
+      <!--language filter-->
+      
+    </div>
+  </div>
+<!-- //filter -->
+
+
+<div class="tripList">
+  모든 트립
+  <ul>
+    <li *ngFor="let trip of tripList">
+      <div class="tripLi">
+        <div class="tripImg">
+          <img class="tripImg1" src="https://a0.muscache.com/im/pictures/91e89440-90da-49c8-96a1-b4e1bdd0d64c.jpg?aki_policy=xl_poster">
+        </div>
+        <div class="tripText">
+          <p><strong>{{trip.name}}</strong></p>
+          <p>{{trip.duration_time}}시간 · <span *ngFor="let provide of trip.provides">{{provide}},</span> 포함</p>
+        </div>
+        {{trip.rating_score}} · {{trip.language}}로 진행
+      </div>
+    </li>
+  </ul>
+</div>
