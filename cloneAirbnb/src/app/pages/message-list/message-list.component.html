@@ -1,6 +1,8 @@
 <app-navigation></app-navigation>
 <section class="messageContainer">
-  <div class="allMessage">모든 메세지({{ messageList.length }})</div>
+  <div class="allMessage">
+    {{ 'messageList.allMessages' | translate }} ({{ messageList.length }})
+  </div>
   <div
     *ngFor="let message of messageList"
     class="messageDiv"
@@ -23,9 +25,13 @@
       </p>
     </div>
     <div class="reservationInfo">
-      <p>
-        {{ message.room.price }}
+      <p class="reservationStateBooked" *ngIf="parseDate(message.end_date)">
+        {{ 'messageList.Accepted' | translate }}
       </p>
+      <p class="reservationStatePassed" *ngIf="!parseDate(message.end_date)">
+        {{ 'messageList.notPossible' | translate }}
+      </p>
+      <p>₩{{ message.room.price | number }}</p>
     </div>
   </div>
 </section>
