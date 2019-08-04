@@ -12,7 +12,6 @@ export class ChatService {
   public messages;
 
   constructor(wsService: WebsocketService) {
-    console.log(this.chatRoomId);
     const CHAT_URL = `ws://airbnb.tthae.com/ws/chat/${this.chatRoomId}/?token=${
       this.token
     }`;

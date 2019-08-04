@@ -34,8 +34,6 @@ export class MessageComponent implements OnInit {
 
   constructor(private chatService: ChatService, private http: HttpClient) {
     chatService.messages.subscribe(msg => {
-      console.log('Response from websocket: ' + msg);
-      console.log(msg);
       this.messages.push(msg);
     });
   }
@@ -44,7 +42,6 @@ export class MessageComponent implements OnInit {
     this.isLoading$.next(true);
     this.http.get(`${this.appUrl}/chat/${this.id}/`).subscribe(
       (res: any) => {
-        console.log(res);
         this.allInfo.push(res);
         this.price = res.room.price;
         this.startDate = res.start_date;
@@ -52,8 +49,6 @@ export class MessageComponent implements OnInit {
         for (const prvMessage of res.messages) {
           this.messageHistory.push(prvMessage);
         }
-        console.log(this.messageHistory);
-        console.log(this.allInfo);
         this.dateDiff(
           this.parseDate(this.startDate),
           this.parseDate(this.endDate)
