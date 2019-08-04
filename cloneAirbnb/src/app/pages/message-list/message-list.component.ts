@@ -32,6 +32,11 @@ export class MessageListComponent implements OnInit {
     );
   }
 
+  parseDate(str) {
+    const mdy = str.split('-');
+    return new Date(mdy[0], mdy[1] - 1, mdy[2]) > new Date() ? true : false;
+  }
+
   toMessage(id: number) {
     localStorage.setItem('messageId', id.toString());
     this.router.navigate([`message/${id}`]);
