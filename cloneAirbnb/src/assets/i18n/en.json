@@ -175,5 +175,17 @@
     "policy": "I agree to the House Rules, Cancellation Policy, and the Guest Refund Policy. I also agree to pay the total amount shown, which includes Occupancy Taxes and Service Fees. Airbnb now collects and remits government-imposed Occupancy Taxes in this location.",
     "requestToBook": "Request to BooK"
   },
+  "message": {
+    "tripDetails": "Trip details",
+    "checkIn": "Check-In",
+    "checkOut": "Check-Out",
+    "payment": "Payment",
+    "night": "night",
+    "nights": "nights",
+    "cleaningExpenses": "Cleaning expenses",
+    "serviceFee": "Service fee",
+    "occupancyTex": "Occupancy tex",
+    "total": "Total"
+  },
   "hello": "welcome"
 }

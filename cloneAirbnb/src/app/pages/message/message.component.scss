@@ -46,6 +46,8 @@
   .tripInfoDiv {
     .tripInfoTitle {
       font-size: 1.2rem;
+      color: #181818;
+      font-weight: bold;
     }
 
     .line {
@@ -72,13 +74,22 @@
     margin-top: 30px;
 
     .paymentInfoTitle {
+      margin-bottom: 25px;
       font-size: 1.2rem;
+      color: #181818;
+      font-weight: bold;
     }
 
     .paymentInfo {
       .paymentInfoP {
         @include flexContainer(space-between);
         width: 100%;
+        margin: 10px 0;
+      }
+
+      .totalPayment {
+        color: #181818;
+        font-weight: bold;
       }
     }
   }
