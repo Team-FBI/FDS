@@ -1,7 +1,4 @@
-.tripLi{
-
-}
-
+@import '../../../styles.scss';
 
 .filter {
     width: 100%;
@@ -176,22 +173,63 @@
   }
 
 
+.tripList{
+  width:90%;
+  margin:50px auto 0;
 
-  .tripLi{
-    float: left;
-    width: 12.5%;
-    height: 280px;
-    padding: 8px;
-    cursor: pointer;
-    
-    .tripImg{
-        height: 80%;
-        .tripImg1{
-            width: 100%;
-            height: 100%;
-        }
-    }
-    .tripText{
-        height: 20%;
+  h2{
+    margin-bottom:20px;
+    font-size: 2em;
+    font-weight: 600;
+    color: #444;
+  }
+
+  .tripContainer{
+    @include flexContainer(flex-start);
+  }
+  .list{
+    width:16.5%;
+    margin-right:1%;
+    border-radius: 20px;
+    overflow:hidden;
+    box-shadow: 1px 1px 3px 2px #f1f1f1;
+    &:last-of-type{
+      margin-right:0%;
     }
   }
+  .tripImg{
+    width:100%;
+    height:250px;
+
+    img{
+      width:100%;
+      height: 100%;
+    }
+  }
+  .tripText{
+    padding:10px 15px;
+    color:#484848;
+    font-weight: 300;
+    font-size:0.9rem;
+    
+    .tripName{
+      margin-bottom:5px;
+      font-weight: bold;
+      font-size:1rem;
+    }
+    .rating{
+      margin-top:5px;
+      font-size:0.8rem;
+      color:#767676;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
