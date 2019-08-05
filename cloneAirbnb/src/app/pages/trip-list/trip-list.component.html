@@ -1,6 +1,6 @@
 <app-navigation (initializeCurrentPage) = "initializeCurrentPage()"></app-navigation>
 
-<div class="filter" >
+<section class="filter" >
     <!-- filter -->
     <div class="filterLeft">
       <div class="date">
@@ -169,24 +169,29 @@
       <!--language filter-->
       
     </div>
-  </div>
+</section>
 <!-- //filter -->
 
 
-<div class="tripList">
-  모든 트립
-  <ul>
-    <li *ngFor="let trip of tripList">
+<section class="tripList">
+  <h2>모든 트립</h2>
+  <div class="tripContainer tripLi">
+    <div class="list" *ngFor="let trip of tripList">
       <div class="tripLi">
         <div class="tripImg">
           <img class="tripImg1" src="https://a0.muscache.com/im/pictures/91e89440-90da-49c8-96a1-b4e1bdd0d64c.jpg?aki_policy=xl_poster">
         </div>
         <div class="tripText">
-          <p><strong>{{trip.name}}</strong></p>
+          <p class="tripName">{{trip.name}}</p>
           <p>{{trip.duration_time}}시간 · <span *ngFor="let provide of trip.provides">{{provide}},</span> 포함</p>
+          <span class="rating">
+              {{trip.rating_score}} · {{trip.language}}로 진행
+          </span>
         </div>
-        {{trip.rating_score}} · {{trip.language}}로 진행
       </div>
-    </li>
-  </ul>
-</div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
+
+
