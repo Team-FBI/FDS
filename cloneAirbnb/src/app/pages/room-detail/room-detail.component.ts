@@ -44,9 +44,14 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   image_4: string;
   max: number = 10;
   rate: number = 7;
-  id: number;
+  id = this.reservationInfoService.id;
 
   checked: boolean = true;
+
+  isVisible: boolean = false;
+  saveMsg = '삭제되었습니다';
+  flag: boolean;
+  timeOutID;
 
   @ViewChild('galleryTop', { static: true }) galleryTop;
   @ViewChild('galleryThumbs', { static: true }) galleryThumbs;
@@ -84,6 +89,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
     this.maxDate.setDate(this.maxDate.getDate() + 180);
+
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -94,7 +100,9 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
-    this.id = this.reservationInfoService.id;
+    
+    this.id = parseInt(localStorage.getItem('roomId'));
+    
 
     // this.http.get(`${this.appUrl}/rooms/`)
     //   .subscribe(res => console.log(res))
@@ -125,7 +133,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   test() {
     this.isOpen = !this.isOpen
-    console.log(1)
+    // console.log(1)
   }
 
   increase(n: number) {
@@ -173,8 +181,17 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.galleryThumbs.nativeElement.swiper.controller.control = this.galleryTop.nativeElement.swiper;
   }
 
-  changesavebtn() {
+  changeSaveBtn() {
     this.checked = !this.checked;
+    this.isVisible = true;
+    clearTimeout(this.timeOutID);
+    if (this.saveMsg === '삭제되었습니다') {
+      this.saveMsg = '저장되었습니다';
+    } else {
+      this.saveMsg = '삭제되었습니다';
+    }
+    this.timeOutID = setTimeout(()=> {
+      this.isVisible = false; }, 3000);
   }
 
   toRoomRegulation() {
