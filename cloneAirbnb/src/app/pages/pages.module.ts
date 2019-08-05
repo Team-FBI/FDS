@@ -43,6 +43,7 @@ import { ScrollDirective } from './room-detail/scroll.directive';
 import { TripListComponent } from './trip-list/trip-list.component';
 import { MessageComponent } from './message/message.component';
 import { MessageListComponent } from './message-list/message-list.component';
+import { TripDetailComponent } from './trip-detail/trip-detail.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -69,7 +70,8 @@ export function createTranslateLoader(http: HttpClient) {
     ScrollDirective,
     TripListComponent,
     MessageComponent,
-    MessageListComponent
+    MessageListComponent,
+    TripDetailComponent
   ],
   imports: [
     CommonModule,

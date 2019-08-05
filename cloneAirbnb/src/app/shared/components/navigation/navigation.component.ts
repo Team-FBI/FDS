@@ -8,8 +8,6 @@ import { LanguageService } from 'src/app/core/service/language.service';
 import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
 import { GoogleMapsAPIWrapper } from '@agm/core';
 import { States } from '../../../core/interface/states.interface';
-import { RoomListComponent } from '../../../pages/room-list/room-list.component';
-
 
 @Component({
   selector: 'app-navigation',
@@ -20,10 +18,9 @@ export class NavigationComponent implements OnInit {
   @Output() initializeCurrentPage = new EventEmitter();
   isMain: boolean;
   myPage = false;
-  switchLang = true;
+  switchLang: boolean;
   states = [];
   searchInputFocus = false;
-
 
   constructor(
     private router: Router,
@@ -37,6 +34,7 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.switchLang = this.languageService.language === 'en' ? true : false;
     this.isMain = this.router.url === '/home' ? true : false;
     this.translate.setDefaultLang(`${this.languageService.currentLanguage()}`);
   }
@@ -85,6 +83,4 @@ export class NavigationComponent implements OnInit {
     this.languageService.switchLanguageService(language);
     this.switchLang = !this.switchLang;
   }
-
-
 }
