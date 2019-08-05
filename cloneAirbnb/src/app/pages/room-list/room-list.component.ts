@@ -90,6 +90,11 @@ export class RoomListComponent implements OnInit {
   maxSize = 5;
   currentPage = 1;
   page = this.roomListService.page;
+  
+  //날짜 차이 계산
+  dayDiff: number;
+  checkInDate: Date;
+  checkOutDate: Date; 
 
   constructor(
     private mapsService: GoogleMapService,
@@ -114,12 +119,12 @@ export class RoomListComponent implements OnInit {
     ];
   }
 
-  checkInDate = new Date(this.reservationInfoService.checkInDate);
-  checkOutDate = new Date(this.reservationInfoService.checkOutDate);
-  dayDiff: number;
+  
 
   ngOnInit() {
     this.getRoomInfo();
+    this.checkInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
+    this.checkOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
     this.dayDiff =
       (this.checkOutDate.getTime() - this.checkInDate.getTime()) /
       (1000 * 60 * 60 * 24);
@@ -188,6 +193,11 @@ export class RoomListComponent implements OnInit {
       1}/${value[1].getDate()}/${value[1].getFullYear()}`;
 
     this.roomListService.page = 1;
+    this.checkInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
+    this.checkOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
+    this.dayDiff =
+      (this.checkOutDate.getTime() - this.checkInDate.getTime()) /
+      (1000 * 60 * 60 * 24);
     this.setRoomList();
   }
 
