@@ -37,7 +37,15 @@ export class RoomdetailInfoComponent implements OnInit {
   now = new Date();
   fourDaysAhead = new Date();
 
-  disabledDates = [new Date('2019-08-16'), new Date('2019-08-17')];
+  // 달력 disable
+  disabledDates = [];
+  reservationsArray = [];
+  dateMove;
+  strDate;
+  listDate = [];
+  abc = [];
+
+
 
   constructor(
     private router: Router,
@@ -61,7 +69,7 @@ export class RoomdetailInfoComponent implements OnInit {
     this.id = parseInt(localStorage.getItem('roomId'));
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       this.title = res.title;
       this.reservationInfoService.reservationInfoObj.title = this.title;
       this.address = res.address;
@@ -99,10 +107,31 @@ export class RoomdetailInfoComponent implements OnInit {
       } else {
         this.room_type = '';
       }
+
+      // console.log(res.reservations);
+      // console.log(res.reservations[0])
+      // console.log(res.reservations[0][0])
+      // this.disabledDates.push(new Date(res.reservations[0][0]) , new Date(res.reservations[0][1]));
+      this.reservationsArray.push(new Date(res.reservations[0][0]) , new Date(res.reservations[0][1]))
+      // console.log(this.reservationsArray);
+
+      // this.getDateRange('2019-08-03', '2019-08-05' , this.listDate);
+
+
+      res.reservations.forEach(element => {
+        // console.log(element)
+        // element[0] =시작날짜 elment[1]= 끝날짜
+        this.getDateRange(element[0], element[1], this.listDate);
+      });
+      console.log(this.listDate);
+      this.listDate.forEach(element => {
+        console.log(element);
+        this.disabledDates.push(new Date(element))
+      });
   
       this.facilities = res.facilities;
       this.facilities.forEach(element => {
-        
+        // console.log(element)
         this.facilitiesArray.push(element);
 
         if (element[0] === 'queen-size bed') {
@@ -148,7 +177,6 @@ export class RoomdetailInfoComponent implements OnInit {
           element[0] = '에어컨';
         }
       });
-      console.log(res.reservations)
     });
   }
   onValueChange(value: Date): void {
@@ -161,6 +189,30 @@ export class RoomdetailInfoComponent implements OnInit {
     // this.fourDaysAhead.setDate(this.now.getDate() + this.maxDate1);
     // 나중에 서버에 보낼 input data
   }
+
+  getDateRange(startDate, endDate, listDate)
+    {
+      // console.log(startDate, endDate, listDate);
+        this.dateMove = new Date(startDate);
+        // console.log('dateMove:' +this.dateMove);
+        this.strDate = startDate;
+        // console.log('strDate:' +this.strDate);
+        if (startDate === endDate) {
+            this.strDate = this.dateMove.toISOString().slice(0,10);
+            // console.log('strDate:' +this.strDate);
+            listDate.push(this.strDate);
+            // console.log('listDate:' +this.listDate);
+        } else {
+            while (this.strDate < endDate) {
+                this.strDate = this.dateMove.toISOString().slice(0, 10);
+                // console.log('strDate:' +this.strDate);
+                listDate.push(this.strDate);
+                // console.log('listDate:' +this.listDate);
+                this.dateMove.setDate(this.dateMove.getDate() + 1);
+            }
+        }
+        return listDate;
+    }
 }
 // a = {size : 침대}
 
