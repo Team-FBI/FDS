@@ -69,6 +69,8 @@
           class="form-control"
           bsDatepicker
           [bsConfig]="{ isAnimated: true }"
+          (bsValueChange)="onValueChange($event)"
+          [datesDisabled]="disabledDates"
           #checkIn
         />
       </div>
@@ -79,6 +81,7 @@
           class="form-control"
           bsDatepicker
           [bsConfig]="{ isAnimated: true }"
+          [datesDisabled]="disabledDates"
           #checkOut
         />
       </div>

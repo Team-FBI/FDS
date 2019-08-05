@@ -53,6 +53,16 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   flag: boolean;
   timeOutID;
 
+  
+  // 달력 disable
+  disabledDates = [];
+  dateMove;
+  strDate;
+  listDate = [];
+
+
+
+
   @ViewChild('galleryTop', { static: true }) galleryTop;
   @ViewChild('galleryThumbs', { static: true }) galleryThumbs;
   isOpen = false;
@@ -100,7 +110,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
-    
     this.id = parseInt(localStorage.getItem('roomId'));
     
 
@@ -123,11 +132,18 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.image_2 = res.image_2;
       this.image_3 = res.image_3;
       this.image_4 = res.image_4;
+
+      res.reservations.forEach(element => {
+        this.getDateRange(element[0], element[1], this.listDate);});
+      this.listDate.forEach(element => {
+        this.disabledDates.push(new Date(element))
+      });
     },
     err => {},
     () => {
       this.isLoading$.next(false);
     }
+    
     );
   }
 
@@ -200,5 +216,32 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   setregulation() {
     this.reservationInfoService.reservationInfoObj.price = this.price;
+  }
+
+  getDateRange(startDate, endDate, listDate){
+    this.dateMove = new Date(startDate);
+    this.strDate = startDate;
+    if (startDate === endDate) {
+      this.strDate = this.dateMove.toISOString().slice(0,10);
+      listDate.push(this.strDate);
+    } else {
+      while (this.strDate < endDate) {
+        this.strDate = this.dateMove.toISOString().slice(0, 10);
+        listDate.push(this.strDate);
+        this.dateMove.setDate(this.dateMove.getDate() + 1);
+      }
+    }
+    return listDate;
+  }
+  onValueChange(value: Date): void {
+    this.listDate = [];
+    const endDate = value.toISOString().slice(0,10);
+    this.getDateRange('2019-07-31', endDate, this.listDate);
+    this.setDisableDate();
+  }
+  setDisableDate(){
+    this.listDate.forEach(element => {
+      this.disabledDates.push(new Date(element));
+    });
   }
 }

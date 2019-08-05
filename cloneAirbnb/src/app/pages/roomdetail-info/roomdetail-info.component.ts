@@ -26,8 +26,7 @@ export class RoomdetailInfoComponent implements OnInit {
   id = this.reservationInfoService.id;
   datePickerConfig:Partial<BsDatepickerConfig>;
   bsInlineValue = this.reservationInfoService.date;
-  bsInlineValue3 = new Date();
-  bsInlineValue2 = this.bsInlineValue3.getMonth() + 2;
+  bsInlineValue2 = new Date();
   minDate: Date;
   maxDate: Date;
   minDate1: number;
@@ -39,11 +38,9 @@ export class RoomdetailInfoComponent implements OnInit {
 
   // 달력 disable
   disabledDates = [];
-  reservationsArray = [];
   dateMove;
   strDate;
   listDate = [];
-  abc = [];
 
 
 
@@ -64,9 +61,10 @@ export class RoomdetailInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.urlRemember.currentUrl = this.router.url;  
-    // localStorage.setItem('roomId', this.id.toString());
+    this.urlRemember.currentUrl = this.router.url;
     this.id = parseInt(localStorage.getItem('roomId'));
+    this.bsInlineValue2.setMonth(this.bsInlineValue.getMonth() + 1);
+    console.log(this.bsInlineValue2);
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
       // console.log(res);
@@ -108,6 +106,17 @@ export class RoomdetailInfoComponent implements OnInit {
         this.room_type = '';
       }
 
+
+      
+      res.reservations.forEach(element => {
+        this.getDateRange(element[0], element[1], this.listDate);
+      });
+      this.setDisableDate();
+      // this.disabledDates = [];
+
+      this.facilities = res.facilities;
+      this.facilities.forEach(element => {
+
       // console.log(res.reservations);
       // console.log(res.reservations[0])
       // console.log(res.reservations[0][0])
@@ -132,8 +141,8 @@ export class RoomdetailInfoComponent implements OnInit {
       this.facilities = res.facilities;
       this.facilities.forEach(element => {
         // console.log(element)
-        this.facilitiesArray.push(element);
 
+        this.facilitiesArray.push(element);
         if (element[0] === 'queen-size bed') {
           element[0] = '퀸사이즈침대';
         }
@@ -174,13 +183,18 @@ export class RoomdetailInfoComponent implements OnInit {
           element[0] = '커피머신';
         }
         if (element[0] === 'air conditioner') {
-          element[0] = '에어컨';
-        }
+
+          element[0] = '에어컨';}});
       });
     });
   }
   onValueChange(value: Date): void {
-    this.inputData = value;
+    this.listDate = [];
+    const endDate = value.toISOString().slice(0,10);
+    this.getDateRange('2019-07-31', endDate, this.listDate);
+    this.setDisableDate();
+
+    // this.inputData = value;
     // console.log(this.inputData);
     // this.bsInlineValue = this.inputData;
     // console.log(this.bsInlineValue);
@@ -190,29 +204,28 @@ export class RoomdetailInfoComponent implements OnInit {
     // 나중에 서버에 보낼 input data
   }
 
-  getDateRange(startDate, endDate, listDate)
-    {
-      // console.log(startDate, endDate, listDate);
-        this.dateMove = new Date(startDate);
-        // console.log('dateMove:' +this.dateMove);
-        this.strDate = startDate;
-        // console.log('strDate:' +this.strDate);
-        if (startDate === endDate) {
-            this.strDate = this.dateMove.toISOString().slice(0,10);
-            // console.log('strDate:' +this.strDate);
-            listDate.push(this.strDate);
-            // console.log('listDate:' +this.listDate);
-        } else {
-            while (this.strDate < endDate) {
-                this.strDate = this.dateMove.toISOString().slice(0, 10);
-                // console.log('strDate:' +this.strDate);
-                listDate.push(this.strDate);
-                // console.log('listDate:' +this.listDate);
-                this.dateMove.setDate(this.dateMove.getDate() + 1);
-            }
-        }
-        return listDate;
+
+  getDateRange(startDate, endDate, listDate){
+    this.dateMove = new Date(startDate);
+    this.strDate = startDate;
+    if (startDate === endDate) {
+      this.strDate = this.dateMove.toISOString().slice(0,10);
+      listDate.push(this.strDate);
+    } else {
+      while (this.strDate < endDate) {
+        this.strDate = this.dateMove.toISOString().slice(0, 10);
+        listDate.push(this.strDate);
+        this.dateMove.setDate(this.dateMove.getDate() + 1);
+      }
     }
+    return listDate;
+  }
+  setDisableDate(){
+    this.listDate.forEach(element => {
+      this.disabledDates.push(new Date(element));
+    });
+  }
+
 }
 // a = {size : 침대}
 
