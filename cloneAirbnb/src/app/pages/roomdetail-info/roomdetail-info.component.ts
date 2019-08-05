@@ -21,9 +21,9 @@ export class RoomdetailInfoComponent implements OnInit {
   bedroom: number;
   room_type: any;
   facilities: any;
-  facility: string;
+  facilitiesArray = [];
   strArray;
-  id: number;
+  id = this.reservationInfoService.id;
   datePickerConfig:Partial<BsDatepickerConfig>;
   bsInlineValue = this.reservationInfoService.date;
   bsInlineValue3 = new Date();
@@ -52,14 +52,16 @@ export class RoomdetailInfoComponent implements OnInit {
     this.minDate = new Date();
     this.maxDate = new Date();
     // this.bsInlineValue2.setDate(this.bsInlineValue.getDate() + 32);
-    //다음달 달력만들때 필요한것
+    // 다음달 달력만들때 필요한것
   }
 
   ngOnInit() {
-    this.urlRemember.currentUrl = this.router.url;
-    this.id = this.reservationInfoService.id;
+    this.urlRemember.currentUrl = this.router.url;  
+    // localStorage.setItem('roomId', this.id.toString());
+    this.id = parseInt(localStorage.getItem('roomId'));
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
+      console.log(res);
       this.title = res.title;
       this.reservationInfoService.reservationInfoObj.title = this.title;
       this.address = res.address;
@@ -97,51 +99,56 @@ export class RoomdetailInfoComponent implements OnInit {
       } else {
         this.room_type = '';
       }
+  
       this.facilities = res.facilities;
       this.facilities.forEach(element => {
-        if (element === 'queen-size bed') {
-          this.facility = '퀸사이즈침대';
+        
+        this.facilitiesArray.push(element);
+
+        if (element[0] === 'queen-size bed') {
+          element[0] = '퀸사이즈침대';
         }
-        if (element === 'swimming pool') {
-          this.facility += '수영장';
+        if (element[0] === 'swimming pool') {
+          element[0] = '수영장';
         }
-        if (element === 'parking lot') {
-          this.facility += '주차장';
+        if (element[0] === 'parking lot') {
+          element[0] = '주차장';
         }
-        if (element === 'ethernet') {
-          this.facility += '이더넷';
+        if (element[0] === 'ethernet') {
+          element[0] = '이더넷';
         }
-        if (element === 'work space') {
-          this.facility += '작업공간';
+        if (element[0] === 'work space') {
+          element[0] = '작업공간';
         }
-        if (element === 'television') {
-          this.facility += 'TV';
+        if (element[0] === 'television') {
+          element[0] = 'TV';
         }
-        if (element === 'kitchen') {
-          this.facility += '주방';
+        if (element[0] === 'kitchen') {
+          element[0] = '주방';
         }
-        if (element === 'elevator') {
-          this.facility += '엘리베이터';
+        if (element[0] === 'elevator') {
+          element[0] = '엘리베이터';
         }
-        if (element === 'cloth iron') {
-          this.facility += '다리미';
+        if (element[0] === 'cloth iron') {
+          element[0] = '다리미';
         }
-        if (element === 'cloth dryer') {
-          this.facility += '옷걸이';
+        if (element[0] === 'cloth dryer') {
+          element[0] = '옷걸이';
         }
-        if (element === 'wifi') {
-          this.facility += '와이파이';
+        if (element[0] === 'wifi') {
+          element[0] = '와이파이';
         }
-        if (element === 'breakfast service') {
-          this.facility += '아침식사';
+        if (element[0] === 'breakfast service') {
+          element[0] = '아침식사';
         }
-        if (element === 'coffee maker') {
-          this.facility += '커피머신';
+        if (element[0] === 'coffee maker') {
+          element[0] = '커피머신';
         }
-        if (element === 'air conditioner') {
-          this.facility += '에어컨';
+        if (element[0] === 'air conditioner') {
+          element[0] = '에어컨';
         }
       });
+      console.log(res.reservations)
     });
   }
   onValueChange(value: Date): void {
@@ -150,7 +157,7 @@ export class RoomdetailInfoComponent implements OnInit {
     // this.bsInlineValue = this.inputData;
     // console.log(this.bsInlineValue);
     // this.now = this.bsInlineValue;
-    // console.log(this.now);
+    // console.log(this.now)
     // this.fourDaysAhead.setDate(this.now.getDate() + this.maxDate1);
     // 나중에 서버에 보낼 input data
   }

@@ -12,12 +12,12 @@
         <div class="checkInOutDate">
           <div class="checkInDate">
             <p>{{ 'message.checkIn' | translate }}</p>
-            <p>{{ hostInfo.start_date }}</p>
+            <span>{{ hostInfo.start_date }}</span>
           </div>
           <i class="fa fa-angle-right" aria-hidden="true"></i>
           <div class="checkOutDate">
             <p>{{ 'message.checkOut' | translate }}</p>
-            <p>{{ hostInfo.end_date }}</p>
+            <span>{{ hostInfo.end_date }}</span>
           </div>
         </div>
         <hr class="line" />
@@ -63,7 +63,7 @@
   <div class="float-right">
     <div
       class="messageDisplay"
-      style="overflow: scroll; height: xyz;"
+      style="overflow: scroll; height: xyz; overflow-x:hidden "
       #scrollMe
       [scrollTop]="scrollMe.scrollHeight"
     >
@@ -84,7 +84,7 @@
         </div>
         <div *ngIf="!message.is_host" class="userMessage">
           <div class="userName">
-            <p>
+            <p class="nameLast">
               {{ message.author.username }}
             </p>
             <div class="message triangleUser">

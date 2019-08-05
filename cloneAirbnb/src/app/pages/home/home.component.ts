@@ -15,9 +15,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private urlRemember: UrlRememberService,
     public reservationInfoService: ReservationInfoService,
-    private roomListService: RoomListService
-  ) // private spinner: NgxSpinnerService
-  {}
+    private roomListService: RoomListService // private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
@@ -57,8 +56,10 @@ export class HomeComponent implements OnInit {
   ) {
     this.reservationInfoService.reservationInfoObj.destination =
       destination.value;
-    this.reservationInfoService.reservationInfoObj.checkIn = checkIn.value;
-    this.reservationInfoService.reservationInfoObj.checkOut = checkOut.value;
+    if (checkIn.value && checkOut.value) {
+      this.reservationInfoService.reservationInfoObj.checkIn = checkIn.value;
+      this.reservationInfoService.reservationInfoObj.checkOut = checkOut.value;
+    }
 
     this.roomListService.roomList = [];
     this.router.navigate(['roomList']);

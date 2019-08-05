@@ -56,8 +56,12 @@
 
     .checkInOutDate {
       @include flexContainer(space-between);
+      color:#000;
 
-      .checkInDate {
+
+      span{
+        font-size:0.9rem;
+        font-weight: 300;
       }
 
       .fa-angle-right {
@@ -65,13 +69,12 @@
         font-size: 40px;
       }
 
-      .checkOutDate {
-      }
     }
   }
 
   .paymentInfoDiv {
     margin-top: 30px;
+    font-weight: 300;
 
     .paymentInfoTitle {
       margin-bottom: 25px;
@@ -107,6 +110,22 @@
 .messageDisplay::-webkit-scrollbar {
   display: none;
 }
+
+// 스크롤 디자인 변경시
+// .messageDisplay::-webkit-scrollbar-track{
+// 	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.2);
+// 	background-color: #fff;
+// }
+
+// .messageDisplay::-webkit-scrollbar{
+// 	width: 12px;
+// 	background-color: #fff;
+// }
+
+// .messageDisplay::-webkit-scrollbar-thumb{
+// 	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.2);
+// 	background-color: #ff5a5f;
+// }
 
 .hostMessage {
   width: 100%;
@@ -155,7 +174,7 @@
 
   .userName {
     margin-right: 10px;
-    text-align: left;
+    text-align: right;
   }
   .message {
     padding: 5px 10px;
@@ -166,6 +185,7 @@
     word-break: normal;
     min-height: 50px;
     width: 400px;
+    text-align: left;
 
     .messageDate {
       margin-top: 15px;
