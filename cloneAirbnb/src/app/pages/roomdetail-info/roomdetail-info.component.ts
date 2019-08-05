@@ -21,7 +21,8 @@ export class RoomdetailInfoComponent implements OnInit {
   bedroom: number;
   room_type: any;
   facilities: any;
-  facility: string;
+  facility: any;
+  facilityImage = [];
   strArray;
   id: number;
   datePickerConfig:Partial<BsDatepickerConfig>;
@@ -36,11 +37,15 @@ export class RoomdetailInfoComponent implements OnInit {
   dateCustomClasses: DatepickerDateCustomClasses[];
   now = new Date();
   fourDaysAhead = new Date();
-
   disabledDates = [ // 예약불가 날짜
     new Date('2019-08-16'),
     new Date('2019-08-17')
   ];
+
+  a;
+  b = [];
+  c;
+
 
   constructor(
     private router: Router,
@@ -65,6 +70,7 @@ export class RoomdetailInfoComponent implements OnInit {
 
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
+      console.log(res);
       this.title = res.title;
       this.reservationInfoService.reservationInfoObj.title = this.title;
       this.address = res.address;
@@ -83,7 +89,7 @@ export class RoomdetailInfoComponent implements OnInit {
       //   { date: this.now, classes: [] },
       //   { date: this.fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
       // ];
-      console.log(this.bsInlineValue);
+      // console.log(this.bsInlineValue);
 
       this.reservationInfoService.reservationInfoObj.roomType = this.room_type;
       if (this.room_type === 'Apartment'){
@@ -103,45 +109,55 @@ export class RoomdetailInfoComponent implements OnInit {
       } else {
         this.room_type = '';
       }
+  
       this.facilities = res.facilities;
+      this.facility = ' ';
+      
+      
+      
       this.facilities.forEach(element => {
-        if (element === 'queen-size bed') {
+        console.log(element[0]);
+        this.facilityImage.push(element[1]);
+        
+        this.b.push(element[0])
+        
+        if (element[0] === 'queen-size bed') {
           this.facility = '퀸사이즈침대';
         }
-        if (element === 'swimming pool') {
+        if (element[0] === 'swimming pool') {
           this.facility += '수영장';
         }
-        if (element === 'parking lot') {
+        if (element[0] === 'parking lot') {
           this.facility += '주차장';
         }
-        if (element === 'ethernet') {
+        if (element[0] === 'ethernet') {
           this.facility += '이더넷';
         }
-        if (element === 'work space') {
+        if (element[0] === 'work space') {
           this.facility += '작업공간';
         }
-        if (element === 'television') {
+        if (element[0] === 'television') {
           this.facility += 'TV';
         }
-        if (element === 'kitchen') {
+        if (element[0] === 'kitchen') {
           this.facility += '주방';
         }
-        if (element === 'elevator') {
+        if (element[0] === 'elevator') {
           this.facility += '엘리베이터';
         }
-        if (element === 'cloth iron') {
+        if (element[0] === 'cloth iron') {
           this.facility += '다리미';
         }
-        if (element === 'cloth dryer') {
+        if (element[0] === 'cloth dryer') {
           this.facility += '옷걸이';
         }
-        if (element === 'wifi') {
+        if (element[0] === 'wifi') {
           this.facility += '와이파이';
         }
-        if (element === 'breakfast service') {
+        if (element[0] === 'breakfast service') {
           this.facility += '아침식사';
         }
-        if (element === 'coffee maker') {
+        if (element[0] === 'coffee maker') {
           this.facility += '커피머신';
         }
         if (element === 'air conditioner') {
@@ -154,9 +170,9 @@ export class RoomdetailInfoComponent implements OnInit {
     this.inputData = value;
     // console.log(this.inputData);
     // this.bsInlineValue = this.inputData;
-    console.log(this.bsInlineValue);
+    // console.log(this.bsInlineValue);
     // this.now = this.bsInlineValue;
-    console.log(this.now)
+    // console.log(this.now)
     // this.fourDaysAhead.setDate(this.now.getDate() + this.maxDate1);
     // 나중에 서버에 보낼 input data
   }

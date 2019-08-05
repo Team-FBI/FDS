@@ -31,7 +31,10 @@
       </div>
       <div class="facilities">
         <h3>편의시설</h3>
-        {{facility}}
+        <ul>
+            <li *ngFor="let a of facilityImage" class="fac"><img class="facImage" src="{{a}}"></li>
+            <li *ngFor="let facility of b">{{facility}}</li>
+        </ul>
       </div>
       <div class="reservation">
         <h3>예약 가능 여부</h3>
