@@ -15,24 +15,17 @@
   position: relative;
 }
 .filterButton {
+  position: relative;
+  display: inline-block;
   margin: 0px 4px 0px 8px;
   font-size: 14px;
   line-height: 18px;
   color: rgb(72, 72, 72);
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding:6px 12px;
   cursor: pointer;
-  display: inline-block;
-  padding-left: 12px;
-  padding-right: 12px;
-  position: relative;
   background: none;
   text-align: center;
-  width: auto;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(220, 224, 224);
-  border-image: initial;
+  border:1px solid rgb(220, 224, 224);
   border-radius: 4px;
   text-decoration: none;
 }
@@ -51,29 +44,12 @@
   transition-property: opacity;
   transition-duration: 250ms;
   transition-timing-function: ease-in-out;
+  border:1px solid rgb(0, 132, 137);
   border-radius: 32px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(0, 132, 137);
 }
 
 .filterRight span {
   padding-right: 8px;
-}
-
-::ng-deep.bs-datepicker {
-  margin-left: 550px;
-  margin-top: 10px;
-  height: 350px;
-  position: relative;
-}
-
-.custom-content {
-  position: absolute;
-  z-index: 1081;
-  top: 390px;
-  cursor: pointer;
-  align-self: center;
 }
 
 button:focus {
@@ -124,17 +100,29 @@ button:focus {
   padding: 25px;
 }
 
-.warpPagination {
-  width: 100%;
+.loading {
+  position: absolute;
+  top: calc(50vh - 128px);
+  left: calc(50vw - 128px);
 }
 
+.warpPagination {
+  width: 100%;
+  text-align: center;
+}
+
+
+::ng-deep.page-item.active .page-link{
+  background:#ff5a5f;
+  border:1px solid #ff5a5f;
+}
 .paginationStyle {
   display: inline-block;
   margin: 30px auto;
 }
 
+
 .map {
-  
   float: left;
   position: fixed;
   top: 128px;
@@ -189,28 +177,34 @@ button:focus {
   width: 40%;
   border-radius: 5px;
 }
+
+carousel slide {
+  z-index: -10;
+  height: 170px;
+}
+
 .detailText {
   float: left;
   width: 60%;
-  height:100%;
+  height: 100%;
   padding: 10px 20px;
 
-  .roomType{
-    font-size:0.8rem;
+  .roomType {
+    font-size: 0.8rem;
     font-weight: 300;
-    color:#848484;
+    color: #848484;
   }
-  .roomTitle{
-    font-size:1.4rem;
+  .roomTitle {
+    font-size: 1.4rem;
     font-weight: bold;
-    padding:2px 0px;
+    padding: 2px 0px;
   }
-  .roomExplanation{
-    font-size:0.9rem;
+  .roomExplanation {
+    font-size: 0.9rem;
     font-weight: 300;
   }
-  .star{
-    margin-top:20px;
+  .star {
+    margin-top: 20px;
   }
 }
 
@@ -228,23 +222,22 @@ agm-map {
   width: 250px;
   padding: 0;
 
-  .infoText{
-    padding:10px;
-    color:#484848;
+  .infoText {
+    padding: 10px;
+    color: #484848;
 
-    span{
-      font-size:0.8rem;
+    span {
+      font-size: 0.8rem;
     }
-    p{
-      font-size:1.1rem;
+    p {
+      font-size: 1.1rem;
       font-weight: bold;
     }
   }
 }
-::ng-deep.gm-style .gm-style-iw-c{
-  padding:0;
+::ng-deep.gm-style .gm-style-iw-c {
+  padding: 0;
 }
-
 
 .infoimg {
   width: 100%;

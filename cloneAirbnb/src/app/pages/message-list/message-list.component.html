@@ -1,0 +1,42 @@
+<app-navigation></app-navigation>
+<section class="messageContainer">
+  <div class="allMessage">
+    {{ 'messageList.allMessages' | translate }} ({{ messageList.length }})
+  </div>
+  <div
+    *ngFor="let message of messageList"
+    class="messageDiv"
+    (click)="toMessage(message.id)"
+  >
+    <div class="hostImage">
+      <img src="{{ message.room.host.image }}" alt="" />
+      <!-- {{ message.room.host.image }} -->
+    </div>
+    <div class="userName">
+      <p class="name">{{ message.room.host.username }}</p>
+      <p class="date">{{ message.messages.created }}</p>
+    </div>
+    <div class="lastMessage">
+      <p class="last">
+        {{ message.messages.author.username }}
+      </p>
+      <p class="message">
+        {{ message.messages.text }}
+      </p>
+    </div>
+    <div class="reservationInfo">
+      <p class="reservationStateBooked" *ngIf="parseDate(message.end_date)">
+        {{ 'messageList.Accepted' | translate }}
+      </p>
+      <p class="reservationStatePassed" *ngIf="!parseDate(message.end_date)">
+        {{ 'messageList.notPossible' | translate }}
+      </p>
+      <p>₩{{ message.room.price | number }}</p>
+    </div>
+  </div>
+</section>
+<div *ngIf="isLoading$ | async" class="loading">
+  <img src="../../../assets/spinner.gif" alt="loading" class="spinnerImg" />
+</div>
+
+<app-footer></app-footer>

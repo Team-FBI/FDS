@@ -13,6 +13,7 @@ import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-room-detail',
@@ -20,6 +21,7 @@ import { ReservationInfoService } from '../../core/service/reservation-info.serv
   styleUrls: ['./room-detail.component.scss']
 })
 export class RoomDetailComponent implements OnInit, AfterViewInit {
+  isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   minDate: Date;
   maxDate: Date;
   modalRef: BsModalRef;
@@ -100,8 +102,9 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
     // this.http.get(`${this.appUrl}/rooms/`)
     //   .subscribe(res => console.log(res))
-
-    this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
+    this.isLoading$.next(true);
+    this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe(
+      (res: any) => {
       this.price = res.price;
       this.reservationInfoService.reservationInfoObj.price = res.price;
       this.min_stay = res.min_stay;
@@ -116,7 +119,12 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.image_2 = res.image_2;
       this.image_3 = res.image_3;
       this.image_4 = res.image_4;
-    });
+    },
+    err => {},
+    () => {
+      this.isLoading$.next(false);
+    }
+    );
   }
 
   test() {

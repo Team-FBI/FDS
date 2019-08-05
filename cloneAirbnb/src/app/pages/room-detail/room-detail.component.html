@@ -148,7 +148,7 @@
       <span>합계</span>
       <span>₩{{finalprice}}</span>
     </div>
-    <button class="reservationBtn">예약하기</button>
+    <button class="reservationBtn" (click)='toRoomRegulation()'>예약하기</button>
     <p class="reservation">예약 확정 전에는 요금이 청구되지 않습니다.</p>
   </section>
 </section>
@@ -157,6 +157,8 @@
 
 
 <app-footer></app-footer>
+
+<div *ngIf="isLoading$ | async" class="loading"><img src="../../../assets/spinner.gif" alt="loading"></div>
 
 <!-- 
 

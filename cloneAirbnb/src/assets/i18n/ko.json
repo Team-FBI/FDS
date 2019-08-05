@@ -5,6 +5,7 @@
     "searchBarPlaceholder": "'서울'에 가보는건 어떠세요?",
     "favorites": "저장목록",
     "myTrip": "여행",
+    "message": "메세지",
     "signUp": "회원가입",
     "signIn": "로그인",
     "profile": "프로필",
@@ -173,6 +174,23 @@
     "Korea": "한국",
     "policy": "나는 하우스 규정, 취소 정책 및 게스트 환불 정책에 동의합니다. 또한 숙박세 및 서비스비를 포함한 총 금액을 지불하는 것에 동의합니다. 에어비앤비는 현재이 위치에서 정부에서 부과 한 점유 세금을 징수하고 납부합니다.",
     "requestToBook": "예약하기"
+  },
+  "messageList": {
+    "allMessages": "모든 메세지",
+    "Accepted": "예약 완료",
+    "notPossible": "숙박 완료"
+  },
+  "message": {
+    "tripDetails": "여행 세부 정보",
+    "checkIn": "체크인",
+    "checkOut": "체크아웃",
+    "payment": "결제",
+    "night": "박",
+    "nights": "박",
+    "cleaningExpenses": "청소비",
+    "serviceFee": "서비스비",
+    "occupancyTex": "숙박세",
+    "total": "Total"
   },
   "hello": "안녕하세요"
 }

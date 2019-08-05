@@ -1,0 +1,259 @@
+@import '../../../styles.scss';
+
+.whole {
+  margin: 30px auto;
+  width: 1300px;
+  padding: 50px;
+}
+
+.whole::after {
+  clear: both;
+  display: block;
+  content: '';
+}
+
+.left {
+  width: 400px;
+  margin-left: 30px;
+  height: 700px;
+  border: 1px solid #ddd;
+}
+
+.hostInfo {
+  color: gray;
+  padding: 50px;
+
+  .hostInfoImgDiv {
+    width: 170px;
+    margin: 0 auto 40px;
+
+    .hostInfoImg {
+      border: 1px solid #ddd;
+      border-radius: 200px;
+      height: auto;
+      width: 170px;
+    }
+
+    .hostUserName {
+      color: #181818;
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
+
+  .tripInfoDiv {
+    .tripInfoTitle {
+      font-size: 1.2rem;
+      color: #181818;
+      font-weight: bold;
+    }
+
+    .line {
+      color: gray;
+    }
+
+    .checkInOutDate {
+      @include flexContainer(space-between);
+
+      .checkInDate {
+      }
+
+      .fa-angle-right {
+        line-height: 40px;
+        font-size: 40px;
+      }
+
+      .checkOutDate {
+      }
+    }
+  }
+
+  .paymentInfoDiv {
+    margin-top: 30px;
+
+    .paymentInfoTitle {
+      margin-bottom: 25px;
+      font-size: 1.2rem;
+      color: #181818;
+      font-weight: bold;
+    }
+
+    .paymentInfo {
+      .paymentInfoP {
+        @include flexContainer(space-between);
+        width: 100%;
+        margin: 10px 0;
+      }
+
+      .totalPayment {
+        color: #181818;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.messageDisplay {
+  width: 700px;
+  height: 620px;
+  margin: 0 auto;
+  padding: 10px;
+  background: #fff;
+  overflow-y: scroll;
+}
+
+.messageDisplay::-webkit-scrollbar {
+  display: none;
+}
+
+.hostMessage {
+  width: 100%;
+  margin-top: 20px;
+
+  .userImage {
+    float: left;
+    width: 50px;
+
+    img {
+      width: 100%;
+      border: 1px solid #eee;
+      border-radius: 100px;
+    }
+  }
+  .hostName {
+    float: left;
+    margin-left: 10px;
+  }
+  .message {
+    padding: 5px 10px;
+    background: #fff;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    word-break: normal;
+    min-height: 50px;
+    width: 400px;
+
+    .messageDate {
+      margin-top: 15px;
+      font-size: 7px;
+      color: gray;
+    }
+  }
+  &:after {
+    clear: both;
+    display: block;
+    content: '';
+  }
+}
+
+.userMessage {
+  @include flexContainer(flex-end);
+  margin-top: 20px;
+
+  .userName {
+    margin-right: 10px;
+    text-align: left;
+  }
+  .message {
+    padding: 5px 10px;
+    background: #eee;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    word-break: normal;
+    min-height: 50px;
+    width: 400px;
+
+    .messageDate {
+      margin-top: 15px;
+      font-size: 7px;
+      color: gray;
+    }
+  }
+  .userImage {
+    width: 50px;
+    text-align: right;
+    font-size: 0.8rem;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.triangle,
+.triangleUser {
+  position: relative;
+  margin-top: 3px;
+}
+
+.triangle::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent #eee transparent transparent;
+  border-width: 7px;
+  left: -14px;
+}
+
+.triangleUser::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent transparent transparent #eee;
+  border-width: 7px;
+  top: 5px;
+  right: -14px;
+}
+
+.hostName,
+.userName {
+  p {
+    font-size: 0.8rem;
+    font-weight: 300;
+  }
+}
+
+// .triangle.test_3:before, .triangle.test_3::after{
+//   position: absolute;
+//   content: '';
+//   left:100px;
+// }
+.triangle.test_3:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+  margin-top: 28px;
+  margin-left: -48px;
+  border-width: 7px;
+}
+
+.messageText {
+  display: block;
+  width: 700px;
+  height: 80px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  resize: none;
+}
+
+.messageText::-webkit-scrollbar {
+  display: none;
+}
+
+.loading {
+  position: absolute;
+  top: 200px;
+  left: calc(50vw - 128px);
+}

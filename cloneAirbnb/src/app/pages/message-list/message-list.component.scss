@@ -1,0 +1,79 @@
+@import '../../../styles.scss';
+
+.messageContainer {
+  width: 900px;
+  margin: 50px auto 0;
+  min-height: 500px;
+}
+
+.allMessage {
+  display: inline-block;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+}
+
+.messageDiv {
+  @include flexContainer(space-between);
+  // justify-content: space-between
+  flex-flow: nowrap;
+  height: 80px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+
+  .userName,
+  .lastMessage {
+    padding: 17px 20px;
+  }
+
+  .date,
+  .message {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    font-weight: 300;
+  }
+
+  .reservationInfo {
+    padding-top: 17px;
+    width: 110px;
+  }
+
+  .reservationStateBooked {
+    color: #81c147;
+  }
+
+  .reservationStatePassed {
+    color: #cc3300;
+  }
+}
+
+.messageDiv:hover {
+  background: #f5fcff;
+}
+
+.hostImage {
+  margin-left: 10px;
+  width: 80px;
+  height: 80px;
+
+  img {
+    height: 74px;
+    width: auto;
+    margin-top: 3px;
+    border: 1px solid #eee;
+    border-radius: 200px;
+  }
+}
+.userName {
+  width: 200px;
+}
+.lastMessage {
+  width: 500px;
+}
+
+.loading {
+  position: absolute;
+  top: 100px;
+  left: calc(50vw - 128px);
+}

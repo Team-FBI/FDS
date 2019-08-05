@@ -1,0 +1,146 @@
+<app-navigation></app-navigation>
+<div class="whole">
+  <div class="float-left left">
+    <div class="hostInfo" *ngFor="let hostInfo of allInfo">
+      <div class="hostInfoImgDiv">
+        <img src="{{ hostInfo.room.host.image }}" class="hostInfoImg" />
+        <p class="hostUserName">{{ hostInfo.room.host.username }}</p>
+      </div>
+      <div class="tripInfoDiv">
+        <P class="tripInfoTitle">{{ 'message.tripDetails' | translate }}</P>
+        <hr class="line" />
+        <div class="checkInOutDate">
+          <div class="checkInDate">
+            <p>{{ 'message.checkIn' | translate }}</p>
+            <p>{{ hostInfo.start_date }}</p>
+          </div>
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+          <div class="checkOutDate">
+            <p>{{ 'message.checkOut' | translate }}</p>
+            <p>{{ hostInfo.end_date }}</p>
+          </div>
+        </div>
+        <hr class="line" />
+        <div class="paymentInfoDiv">
+          <p class="paymentInfoTitle">{{ 'message.payment' | translate }}</p>
+          <div class="paymentInfo">
+            <p class="paymentInfoP" *ngIf="dayDiff === 1">
+              <span
+                >₩{{ hostInfo.room.price | number }} X {{ dayDiff }}
+                {{ 'message.night' | translate }}</span
+              >
+              <span>₩{{ totalPriceBeforeTex }}</span>
+            </p>
+            <p class="paymentInfoP" *ngIf="dayDiff > 1">
+              <span
+                >₩{{ hostInfo.room.price | number }} X {{ dayDiff }}
+                {{ 'message.nights' | translate }}</span
+              >
+              <span>₩{{ totalPriceBeforeTex }}</span>
+            </p>
+            <p class="paymentInfoP">
+              <span>{{ 'message.cleaningExpenses' | translate }}</span>
+              <span>₩{{ cleaningExpenses | number }}</span>
+            </p>
+            <p class="paymentInfoP">
+              <span>{{ 'message.serviceFee' | translate }}</span>
+              <span>₩{{ serviceFee | number }}</span>
+            </p>
+            <p class="paymentInfoP">
+              <span>{{ 'message.occupancyTex' | translate }}</span>
+              <span>₩{{ accommodationsTax | number }}</span>
+            </p>
+            <hr />
+            <p class="paymentInfoP totalPayment">
+              <span>{{ 'message.total' | translate }} (KRW)</span>
+              <span>₩{{ totalPriceAfterTex | number }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="float-right">
+    <div
+      class="messageDisplay"
+      style="overflow: scroll; height: xyz;"
+      #scrollMe
+      [scrollTop]="scrollMe.scrollHeight"
+    >
+      <div *ngFor="let message of messageHistory">
+        <div *ngIf="message.is_host" class="hostMessage">
+          <div class="userImage">
+            <img src="{{ message.author.image }}" />
+          </div>
+          <div class="hostName">
+            <p>
+              {{ message.author.username }}
+            </p>
+            <div class="message triangle">
+              {{ message.text }}
+              <p class="messageDate">{{ message.created }}</p>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!message.is_host" class="userMessage">
+          <div class="userName">
+            <p>
+              {{ message.author.username }}
+            </p>
+            <div class="message triangleUser">
+              {{ message.text }}
+              <p class="messageDate">{{ message.created }}</p>
+            </div>
+          </div>
+          <div class="userImage">
+            <img src="https://i.postimg.cc/RFtppDcT/image.png" />
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let message of messages">
+        <div *ngIf="message.is_host" class="hostMessage">
+          <div class="userImage">
+            <img src="{{ message.author.image }}" />
+          </div>
+          <div class="hostName">
+            <p>
+              {{ message.author.username }}
+            </p>
+            <div class="message triangle">
+              {{ message.text }}
+              <p class="messageDate">{{ message.created }}</p>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!message.is_host" class="userMessage">
+          <div class="userName">
+            <p>
+              {{ message.author.username }}
+            </p>
+            <div class="message triangleUser">
+              {{ message.text }}
+              <p class="messageDate">{{ message.created }}</p>
+            </div>
+          </div>
+          <div class="userImage">
+            <img src="https://i.postimg.cc/RFtppDcT/image.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <textarea
+      class="messageText"
+      type="text"
+      placeholder="Enter your message"
+      #userInput
+      (keyup.enter)="sendMsg(userInput)"
+    ></textarea>
+  </div>
+</div>
+
+<div *ngIf="isLoading$ | async" class="loading">
+  <img src="../../../assets/spinner.gif" alt="loading" class="spinnerImg" />
+</div>
+
+<app-footer></app-footer>

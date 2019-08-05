@@ -37,10 +37,8 @@ export class RoomdetailInfoComponent implements OnInit {
   dateCustomClasses: DatepickerDateCustomClasses[];
   now = new Date();
   fourDaysAhead = new Date();
-  disabledDates = [ // 예약불가 날짜
-    new Date('2019-08-16'),
-    new Date('2019-08-17')
-  ];
+
+  disabledDates = [new Date('2019-08-16'), new Date('2019-08-17')];
 
   a;
   b = [];
@@ -62,12 +60,10 @@ export class RoomdetailInfoComponent implements OnInit {
     // this.bsInlineValue2.setDate(this.bsInlineValue.getDate() + 32);
     // 다음달 달력만들때 필요한것
   }
-  
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
     this.id = this.reservationInfoService.id;
-
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
       console.log(res);
@@ -89,10 +85,9 @@ export class RoomdetailInfoComponent implements OnInit {
       //   { date: this.now, classes: [] },
       //   { date: this.fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
       // ];
-      // console.log(this.bsInlineValue);
 
       this.reservationInfoService.reservationInfoObj.roomType = this.room_type;
-      if (this.room_type === 'Apartment'){
+      if (this.room_type === 'Apartment') {
         this.room_type = '아파트';
       } else if (this.room_type === 'House') {
         this.room_type = '개인집';

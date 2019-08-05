@@ -16,6 +16,7 @@ import { RoomListService } from 'src/app/core/service/room-list.service';
 import { MakerInfo } from '../../core/interface/maker-info.interface';
 import { RoomList, Result } from '../../core/interface/roomList.interface';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-room-list',
@@ -23,6 +24,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./room-list.component.scss']
 })
 export class RoomListComponent implements OnInit {
+  isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
   roomList = this.roomListService.roomList;
@@ -132,14 +134,21 @@ export class RoomListComponent implements OnInit {
   }
 
   getRoomInfo() {
-    this.roomListService.getRoomList().subscribe((res: RoomList) => {
-      this.totalRooms = res.count;
-      for (const room of res.results) {
-        this.roomListService.roomList.push(room);
-        this.makeMarker(room);
+    this.isLoading$.next(true);
+    this.roomListService.getRoomList().subscribe(
+      (res: RoomList) => {
+        this.totalRooms = res.count;
+        for (const room of res.results) {
+          this.roomListService.roomList.push(room);
+          this.makeMarker(room);
+        }
+        this.roomCount = this.roomList.length;
+      },
+      err => {},
+      () => {
+        this.isLoading$.next(false);
       }
-      this.roomCount = this.roomList.length;
-    });
+    );
   }
 
   mapReady(map) {
@@ -200,6 +209,35 @@ export class RoomListComponent implements OnInit {
     this.roomListService.markers = [];
     this.router.navigate([`roomdetail/${id}`]);
   }
+
+  // filterSpace(roomtypeDropdown, checkEntire, checkPrivate, checkHotel, checkShare) {
+  //   roomtypeDropdown.isOpen = !roomtypeDropdown.isOpen;
+
+  //   this.roomList = this.copyList;
+
+  //   if (checkEntire.checked) {
+  //     this.entireroomList = this.roomList.filter((room) => room.space === checkEntire.name);
+  //   } else {
+  //     this.entireroomList = [];
+  //   }
+  //   if (checkPrivate.checked) {
+  //     this.privateroomList = this.roomList.filter((room) => room.space === checkPrivate.name);
+  //   } else {
+  //     this.privateroomList = [];
+  //   }
+  //   if (checkHotel.checked) {
+  //     this.hotelroomList = this.roomList.filter((room) => room.space === checkHotel.name);
+  //   } else {
+  //     this.hotelroomList = [];
+  //   }
+  //   if (checkShare.checked) {
+  //     this.sharedroomList = this.roomList.filter((room) => room.space === checkShare.name);
+  //   } else {
+  //     this.sharedroomList = [];
+  //   }
+  //   this.roomList = [...this.entireroomList, ...this.privateroomList, ...this.hotelroomList, ...this.sharedroomList];
+  //   this.roomCount = this.roomList.length;
+  // }
 
   mapClick() {
     if (this.previousIW != null) {

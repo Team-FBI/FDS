@@ -39,6 +39,7 @@ export class GoogleMapService extends GoogleMapsAPIWrapper{
 
               observer.complete();
             }
+            
           });
         });
       } catch (error) {

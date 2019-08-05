@@ -1,0 +1,197 @@
+.tripLi{
+
+}
+
+
+.filter {
+    width: 100%;
+    height: 48px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+  }
+  .filterButton {
+    position: relative;
+    display: inline-block;
+    margin: 0px 4px 0px 8px;
+    font-size: 14px;
+    line-height: 18px;
+    color: rgb(72, 72, 72);
+    padding:6px 12px;
+    cursor: pointer;
+    background: none;
+    text-align: center;
+    border:1px solid rgb(220, 224, 224);
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  .filterButton::placeholder {
+    color: #484848;
+  }
+  
+  .filterRight {
+    position: absolute;
+    right: 30px;
+  }
+  
+  .filterRight button {
+    display: inherit;
+    transition-property: opacity;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+    border:1px solid rgb(0, 132, 137);
+    border-radius: 32px;
+  }
+  
+  .filterRight span {
+    padding-right: 8px;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  .date,
+  .personnel,
+  .businesstrip,
+  .price,
+  .language
+  {
+    display: inline;
+  }
+
+  .counterWrap {
+    padding: 30px 20px 60px;
+    border: 1px solid black;
+  }
+  .counterLine {
+    position: relative;
+    height: 40px;
+    margin-bottom: 20px;
+  }
+  .people {
+    p {
+      display: inline;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+    span {
+      display: block;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+  }
+  .counterCheck {
+    position: absolute;
+    top: 0;
+    right: 0;
+  
+    button {
+      width: 40px;
+      height: 40px;
+      padding: 5px;
+      margin: 0;
+      border: 1px solid #008489;
+      border-radius: 50%;
+      background: #fff;
+    }
+    .counter {
+      padding: 0px 20px;
+    }
+  }
+  
+
+  
+.personnelSaveBtn {
+    float: right;
+    margin-top: 10px;
+    border: 0;
+    color: #008489;
+    background: #fff;
+  }
+  
+  .personnelremoveBtn {
+    float: left;
+    margin-top: 10px;
+    border: 0;
+    color: black;
+    background: #fff;
+  }
+  
+  .dateAdjust {
+    float: right;
+    margin-top: 10px;
+    border: 0;
+    color: #008489;
+    background: #fff;
+  }
+  
+  ::ng-deep.personnel-dropdown-menu {
+    margin-left: 143px;
+    width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 4px !important;
+    padding: 24px !important;
+    line-height: 150%;
+  }
+  ::ng-deep.businesstrip-dropdown-menu {
+    margin-left: 207px;
+    width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 4px !important;
+    padding: 24px !important;
+    line-height: 150%;
+  }
+  ::ng-deep.roomtype-dropdown-menu {
+    margin-left: 207px;
+    width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 4px !important;
+    padding: 24px !important;
+    line-height: 150%;
+  }
+  ::ng-deep.price-dropdown-menu {
+    margin-left: 360px;
+    width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 4px !important;
+    padding: 24px !important;
+    line-height: 150%;
+  }
+  ::ng-deep.instantreservation-dropdown-menu {
+    margin-left: 424px;
+    width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 4px !important;
+    padding: 24px !important;
+    line-height: 150%;
+  }
+
+
+
+  .tripLi{
+    float: left;
+    width: 12.5%;
+    height: 280px;
+    padding: 8px;
+    cursor: pointer;
+    
+    .tripImg{
+        height: 80%;
+        .tripImg1{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .tripText{
+        height: 20%;
+    }
+  }

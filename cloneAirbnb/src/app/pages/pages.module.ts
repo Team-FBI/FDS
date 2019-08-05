@@ -17,6 +17,7 @@ import {
   BsDropdownModule,
   RatingModule,
   ModalModule,
+  CarouselModule,
   PaginationModule
 } from 'ngx-bootstrap';
 import { Ng5SliderModule } from 'ng5-slider';
@@ -39,6 +40,9 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 import { ScrollDirective } from './room-detail/scroll.directive';
+import { TripListComponent } from './trip-list/trip-list.component';
+import { MessageComponent } from './message/message.component';
+import { MessageListComponent } from './message-list/message-list.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -62,7 +66,10 @@ export function createTranslateLoader(http: HttpClient) {
     RoomdetailpaymentComponent,
     RoomdetailInfoComponent,
     CheckPaymentComponent,
-    ScrollDirective
+    ScrollDirective,
+    TripListComponent,
+    MessageComponent,
+    MessageListComponent
   ],
   imports: [
     CommonModule,
@@ -76,6 +83,7 @@ export function createTranslateLoader(http: HttpClient) {
     ModalModule.forRoot(),
     SwiperModule,
     BsDropdownModule.forRoot(),
+    CarouselModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA3mYS53qBU6qHCKhyxke8JoYzrD5r2LJo'
     }),

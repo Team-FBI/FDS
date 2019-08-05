@@ -10,8 +10,12 @@ import { RoomRegulationComponent } from './room-regulation/room-regulation.compo
 import { GuestInfoComponent } from './guest-info/guest-info.component';
 import { CheckPaymentComponent } from './check-payment/check-payment.component';
 import { PaymentComponent } from './payment/payment.component';
+import { TripListComponent } from './trip-list/trip-list.component';
+
 
 import { AuthGuard } from '../core/guard/auth.guard';
+import { MessageComponent } from './message/message.component';
+import { MessageListComponent } from './message-list/message-list.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,6 +31,9 @@ const routes: Routes = [
     component: RoomDetailComponent
   },
   {
+    path: 'tripList', component: TripListComponent
+  },
+  {
     path: 'roomregulation',
     component: RoomRegulationComponent,
     canActivate: [AuthGuard]
@@ -39,6 +46,16 @@ const routes: Routes = [
   {
     path: 'checkpayment',
     component: CheckPaymentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'messageList',
+    component: MessageListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'message/:id',
+    component: MessageComponent,
     canActivate: [AuthGuard]
   }
 ];
