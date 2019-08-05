@@ -303,6 +303,11 @@ export class RoomListComponent implements OnInit {
     this.setRoomList();
   }
 
+  // numberWithCommas(num) {
+  //   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  // }
+
+
   get adults() {
     return this.reservationInfoService.reservationInfoObj.adults;
   }

@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .positionTop {
   position: fixed;
   top: 0;
@@ -160,6 +162,7 @@ button:focus {
   border: 1px solid #ddd;
   border-radius: 5px;
   cursor: pointer;
+  height: 210px;
 }
 
 .detailList:hover {
@@ -184,10 +187,13 @@ carousel slide {
 }
 
 .detailText {
-  float: left;
+  @include flexContainer(space-between);
+  flex-flow: column;
+  z-index: -10;
   width: 60%;
   height: 100%;
   padding: 10px 20px;
+  
 
   .roomType {
     font-size: 0.8rem;
@@ -198,6 +204,9 @@ carousel slide {
     font-size: 1.4rem;
     font-weight: bold;
     padding: 2px 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .roomExplanation {
     font-size: 0.9rem;
@@ -205,6 +214,14 @@ carousel slide {
   }
   .star {
     margin-top: 20px;
+  }
+  .viewPrice{
+    font-size:16px;
+    text-align: right;
+  }
+  .finalPrice{
+    font-size:12px;
+    text-align: right;
   }
 }
 
