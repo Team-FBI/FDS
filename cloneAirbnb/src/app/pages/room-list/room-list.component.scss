@@ -157,8 +157,10 @@ button:focus {
 }
 
 .detailList {
+  @include flexContainer(space-between);
+  align-items: center;
   margin-bottom: 20px;
-  padding: 5px;
+  padding: 0px 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
   cursor: pointer;
@@ -176,7 +178,6 @@ button:focus {
 }
 
 .detailImg {
-  float: left;
   width: 40%;
   border-radius: 5px;
 }
@@ -189,7 +190,6 @@ carousel slide {
 .detailText {
   @include flexContainer(space-between);
   flex-flow: column;
-  z-index: -10;
   width: 60%;
   height: 100%;
   padding: 10px 20px;

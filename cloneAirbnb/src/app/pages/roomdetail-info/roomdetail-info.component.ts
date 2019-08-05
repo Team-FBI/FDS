@@ -123,11 +123,8 @@ export class RoomdetailInfoComponent implements OnInit {
         // element[0] =시작날짜 elment[1]= 끝날짜
         this.getDateRange(element[0], element[1], this.listDate);
       });
-      console.log(this.listDate);
-      this.listDate.forEach(element => {
-        console.log(element);
-        this.disabledDates.push(new Date(element))
-      });
+      // console.log(this.listDate);
+      this.setDisableDate();
   
       this.facilities = res.facilities;
       this.facilities.forEach(element => {
@@ -180,14 +177,16 @@ export class RoomdetailInfoComponent implements OnInit {
     });
   }
   onValueChange(value: Date): void {
-    this.inputData = value;
-    // console.log(this.inputData);
-    // this.bsInlineValue = this.inputData;
-    // console.log(this.bsInlineValue);
-    // this.now = this.bsInlineValue;
-    // console.log(this.now)
-    // this.fourDaysAhead.setDate(this.now.getDate() + this.maxDate1);
-    // 나중에 서버에 보낼 input data
+    this.listDate = [];
+    const endDate = value.toISOString().slice(0, 10);
+    this.getDateRange('2019-07-31', endDate, this.listDate);
+    this.setDisableDate();
+  }
+
+  setDisableDate() {
+    this.listDate.forEach(element => {
+      this.disabledDates.push(new Date(element))
+    });
   }
 
   getDateRange(startDate, endDate, listDate)
