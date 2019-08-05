@@ -233,4 +233,15 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     }
     return listDate;
   }
+  onValueChange(value: Date): void {
+    this.listDate = [];
+    const endDate = value.toISOString().slice(0,10);
+    this.getDateRange('2019-07-31', endDate, this.listDate);
+    this.setDisableDate();
+  }
+  setDisableDate(){
+    this.listDate.forEach(element => {
+      this.disabledDates.push(new Date(element));
+    });
+  }
 }

@@ -69,6 +69,7 @@
           class="form-control"
           bsDatepicker
           [bsConfig]="{ isAnimated: true }"
+          (bsValueChange)="onValueChange($event)"
           [datesDisabled]="disabledDates"
           #checkIn
         />

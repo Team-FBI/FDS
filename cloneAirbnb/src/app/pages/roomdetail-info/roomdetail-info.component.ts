@@ -26,8 +26,7 @@ export class RoomdetailInfoComponent implements OnInit {
   id = this.reservationInfoService.id;
   datePickerConfig:Partial<BsDatepickerConfig>;
   bsInlineValue = this.reservationInfoService.date;
-  bsInlineValue3 = new Date();
-  bsInlineValue2 = this.bsInlineValue3.getMonth() + 2;
+  bsInlineValue2 = new Date();
   minDate: Date;
   maxDate: Date;
   minDate1: number;
@@ -42,7 +41,6 @@ export class RoomdetailInfoComponent implements OnInit {
   dateMove;
   strDate;
   listDate = [];
-  aaa
 
 
 
@@ -63,9 +61,10 @@ export class RoomdetailInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.urlRemember.currentUrl = this.router.url;  
-    // localStorage.setItem('roomId', this.id.toString());
+    this.urlRemember.currentUrl = this.router.url;
     this.id = parseInt(localStorage.getItem('roomId'));
+    this.bsInlineValue2.setMonth(this.bsInlineValue.getMonth() + 1);
+    console.log(this.bsInlineValue2);
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
       // console.log(res);
@@ -111,9 +110,7 @@ export class RoomdetailInfoComponent implements OnInit {
       res.reservations.forEach(element => {
         this.getDateRange(element[0], element[1], this.listDate);
       });
-      this.listDate.forEach(element => {
-        this.disabledDates.push(new Date(element));
-      });
+      this.setDisableDate();
       // this.disabledDates = [];
 
       this.facilities = res.facilities;
@@ -163,12 +160,10 @@ export class RoomdetailInfoComponent implements OnInit {
     });
   }
   onValueChange(value: Date): void {
-    // this.disabledDates = [];
-    // console.log(value.toISOString().slice(0,10));
-    this.getDateRange('2019-07-31', value.toISOString().slice(0,10), this.listDate);
-    console.log(this.listDate);
-    this.disabledDates = [...this.listDate];
-    console.log(this.disabledDates);
+    this.listDate = [];
+    const endDate = value.toISOString().slice(0,10);
+    this.getDateRange('2019-07-31', endDate, this.listDate);
+    this.setDisableDate();
 
     // this.inputData = value;
     // console.log(this.inputData);
@@ -194,6 +189,11 @@ export class RoomdetailInfoComponent implements OnInit {
       }
     }
     return listDate;
+  }
+  setDisableDate(){
+    this.listDate.forEach(element => {
+      this.disabledDates.push(new Date(element));
+    });
   }
 }
 // a = {size : 침대}
