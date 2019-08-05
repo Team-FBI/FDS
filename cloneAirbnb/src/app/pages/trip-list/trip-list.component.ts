@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TripListService } from 'src/app/core/service/trip-list.service';
 import { Options } from 'ng5-slider';
+import { TripList } from 'src/app/core/interface/tripList.interface';
 
 @Component({
   selector: 'app-trip-list',
@@ -10,6 +11,7 @@ import { Options } from 'ng5-slider';
 export class TripListComponent implements OnInit {
 
   tripList = this.triplistservice.tripList;
+  currentPage = 1;
   personnel = 1;
   minValue = 0;
   maxValue = 1000000;
@@ -37,12 +39,16 @@ export class TripListComponent implements OnInit {
   
   getTripInfo() {
     this.triplistservice.getTripList().subscribe(
-      (triplist: any) => {
+      (triplist: TripList[]) => {
         for (const trip of triplist) {
           this.triplistservice.tripList.push(trip);
         }
       }
     );
+  }
+
+  initializeCurrentPage() {
+    this.currentPage = 1;
   }
 
   increase(personnelType: HTMLSpanElement) {
