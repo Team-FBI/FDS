@@ -39,11 +39,10 @@ export class RoomdetailInfoComponent implements OnInit {
 
   // 달력 disable
   disabledDates = [];
-  reservationsArray = [];
   dateMove;
   strDate;
   listDate = [];
-  abc = [];
+  aaa
 
 
 
@@ -108,32 +107,18 @@ export class RoomdetailInfoComponent implements OnInit {
         this.room_type = '';
       }
 
-      // console.log(res.reservations);
-      // console.log(res.reservations[0])
-      // console.log(res.reservations[0][0])
-      // this.disabledDates.push(new Date(res.reservations[0][0]) , new Date(res.reservations[0][1]));
-      this.reservationsArray.push(new Date(res.reservations[0][0]) , new Date(res.reservations[0][1]))
-      // console.log(this.reservationsArray);
-
-      // this.getDateRange('2019-08-03', '2019-08-05' , this.listDate);
-
-
+      
       res.reservations.forEach(element => {
-        // console.log(element)
-        // element[0] =시작날짜 elment[1]= 끝날짜
         this.getDateRange(element[0], element[1], this.listDate);
       });
-      console.log(this.listDate);
       this.listDate.forEach(element => {
-        console.log(element);
-        this.disabledDates.push(new Date(element))
+        this.disabledDates.push(new Date(element));
       });
-  
+      // this.disabledDates = [];
+
       this.facilities = res.facilities;
       this.facilities.forEach(element => {
-        // console.log(element)
         this.facilitiesArray.push(element);
-
         if (element[0] === 'queen-size bed') {
           element[0] = '퀸사이즈침대';
         }
@@ -174,13 +159,18 @@ export class RoomdetailInfoComponent implements OnInit {
           element[0] = '커피머신';
         }
         if (element[0] === 'air conditioner') {
-          element[0] = '에어컨';
-        }
-      });
+          element[0] = '에어컨';}});
     });
   }
   onValueChange(value: Date): void {
-    this.inputData = value;
+    // this.disabledDates = [];
+    // console.log(value.toISOString().slice(0,10));
+    this.getDateRange('2019-07-31', value.toISOString().slice(0,10), this.listDate);
+    console.log(this.listDate);
+    this.disabledDates = [...this.listDate];
+    console.log(this.disabledDates);
+
+    // this.inputData = value;
     // console.log(this.inputData);
     // this.bsInlineValue = this.inputData;
     // console.log(this.bsInlineValue);
@@ -190,29 +180,21 @@ export class RoomdetailInfoComponent implements OnInit {
     // 나중에 서버에 보낼 input data
   }
 
-  getDateRange(startDate, endDate, listDate)
-    {
-      // console.log(startDate, endDate, listDate);
-        this.dateMove = new Date(startDate);
-        // console.log('dateMove:' +this.dateMove);
-        this.strDate = startDate;
-        // console.log('strDate:' +this.strDate);
-        if (startDate === endDate) {
-            this.strDate = this.dateMove.toISOString().slice(0,10);
-            // console.log('strDate:' +this.strDate);
-            listDate.push(this.strDate);
-            // console.log('listDate:' +this.listDate);
-        } else {
-            while (this.strDate < endDate) {
-                this.strDate = this.dateMove.toISOString().slice(0, 10);
-                // console.log('strDate:' +this.strDate);
-                listDate.push(this.strDate);
-                // console.log('listDate:' +this.listDate);
-                this.dateMove.setDate(this.dateMove.getDate() + 1);
-            }
-        }
-        return listDate;
+  getDateRange(startDate, endDate, listDate){
+    this.dateMove = new Date(startDate);
+    this.strDate = startDate;
+    if (startDate === endDate) {
+      this.strDate = this.dateMove.toISOString().slice(0,10);
+      listDate.push(this.strDate);
+    } else {
+      while (this.strDate < endDate) {
+        this.strDate = this.dateMove.toISOString().slice(0, 10);
+        listDate.push(this.strDate);
+        this.dateMove.setDate(this.dateMove.getDate() + 1);
+      }
     }
+    return listDate;
+  }
 }
 // a = {size : 침대}
 

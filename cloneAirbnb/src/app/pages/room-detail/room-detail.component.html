@@ -69,6 +69,7 @@
           class="form-control"
           bsDatepicker
           [bsConfig]="{ isAnimated: true }"
+          [datesDisabled]="disabledDates"
           #checkIn
         />
       </div>
@@ -79,6 +80,7 @@
           class="form-control"
           bsDatepicker
           [bsConfig]="{ isAnimated: true }"
+          [datesDisabled]="disabledDates"
           #checkOut
         />
       </div>
