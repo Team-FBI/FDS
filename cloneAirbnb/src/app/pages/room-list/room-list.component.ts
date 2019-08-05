@@ -207,6 +207,7 @@ export class RoomListComponent implements OnInit {
     this.reservationInfoService.id = id;
     this.roomListService.roomList = [];
     this.roomListService.markers = [];
+    localStorage.setItem('roomId', id.toString());
     this.router.navigate([`roomdetail/${id}`]);
   }
 

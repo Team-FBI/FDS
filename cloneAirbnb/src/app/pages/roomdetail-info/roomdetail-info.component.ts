@@ -21,10 +21,9 @@ export class RoomdetailInfoComponent implements OnInit {
   bedroom: number;
   room_type: any;
   facilities: any;
-  facility: any;
-  facilityImage = [];
+  facilitiesArray = [];
   strArray;
-  id: number;
+  id = this.reservationInfoService.id;
   datePickerConfig:Partial<BsDatepickerConfig>;
   bsInlineValue = this.reservationInfoService.date;
   bsInlineValue3 = new Date();
@@ -39,11 +38,6 @@ export class RoomdetailInfoComponent implements OnInit {
   fourDaysAhead = new Date();
 
   disabledDates = [new Date('2019-08-16'), new Date('2019-08-17')];
-
-  a;
-  b = [];
-  c;
-
 
   constructor(
     private router: Router,
@@ -62,8 +56,9 @@ export class RoomdetailInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.urlRemember.currentUrl = this.router.url;
-    this.id = this.reservationInfoService.id;
+    this.urlRemember.currentUrl = this.router.url;  
+    // localStorage.setItem('roomId', this.id.toString());
+    this.id = parseInt(localStorage.getItem('roomId'));
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
       console.log(res);
@@ -106,59 +101,54 @@ export class RoomdetailInfoComponent implements OnInit {
       }
   
       this.facilities = res.facilities;
-      this.facility = ' ';
-      
-      
-      
       this.facilities.forEach(element => {
-        console.log(element[0]);
-        this.facilityImage.push(element[1]);
         
-        this.b.push(element[0])
-        
+        this.facilitiesArray.push(element);
+
         if (element[0] === 'queen-size bed') {
-          this.facility = '퀸사이즈침대';
+          element[0] = '퀸사이즈침대';
         }
         if (element[0] === 'swimming pool') {
-          this.facility += '수영장';
+          element[0] = '수영장';
         }
         if (element[0] === 'parking lot') {
-          this.facility += '주차장';
+          element[0] = '주차장';
         }
         if (element[0] === 'ethernet') {
-          this.facility += '이더넷';
+          element[0] = '이더넷';
         }
         if (element[0] === 'work space') {
-          this.facility += '작업공간';
+          element[0] = '작업공간';
         }
         if (element[0] === 'television') {
-          this.facility += 'TV';
+          element[0] = 'TV';
         }
         if (element[0] === 'kitchen') {
-          this.facility += '주방';
+          element[0] = '주방';
         }
         if (element[0] === 'elevator') {
-          this.facility += '엘리베이터';
+          element[0] = '엘리베이터';
         }
         if (element[0] === 'cloth iron') {
-          this.facility += '다리미';
+          element[0] = '다리미';
         }
         if (element[0] === 'cloth dryer') {
-          this.facility += '옷걸이';
+          element[0] = '옷걸이';
         }
         if (element[0] === 'wifi') {
-          this.facility += '와이파이';
+          element[0] = '와이파이';
         }
         if (element[0] === 'breakfast service') {
-          this.facility += '아침식사';
+          element[0] = '아침식사';
         }
         if (element[0] === 'coffee maker') {
-          this.facility += '커피머신';
+          element[0] = '커피머신';
         }
-        if (element === 'air conditioner') {
-          this.facility += '에어컨';
+        if (element[0] === 'air conditioner') {
+          element[0] = '에어컨';
         }
       });
+      console.log(res.reservations)
     });
   }
   onValueChange(value: Date): void {

@@ -44,12 +44,13 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   image_4: string;
   max: number = 10;
   rate: number = 7;
-  id: number;
+  id = this.reservationInfoService.id;
 
   checked: boolean = true;
 
   isVisible: boolean = false;
   saveMsg = '삭제되었습니다';
+  flag: boolean;
   timeOutID;
 
   @ViewChild('galleryTop', { static: true }) galleryTop;
@@ -88,6 +89,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
     this.maxDate.setDate(this.maxDate.getDate() + 180);
+
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -98,7 +100,9 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
-    this.id = this.reservationInfoService.id;
+    
+    this.id = parseInt(localStorage.getItem('roomId'));
+    
 
     // this.http.get(`${this.appUrl}/rooms/`)
     //   .subscribe(res => console.log(res))

@@ -32,8 +32,9 @@
       <div class="facilities">
         <h3>편의시설</h3>
         <ul>
-            <li *ngFor="let a of facilityImage" class="fac"><img class="facImage" src="{{a}}"></li>
-            <li *ngFor="let facility of b">{{facility}}</li>
+            <li *ngFor="let facility of facilitiesArray" class="fac">
+              <img class="facImage" src="{{facility[1]}}">{{facility[0]}}
+            </li>
         </ul>
       </div>
       <div class="reservation">
