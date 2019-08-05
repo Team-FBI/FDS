@@ -114,8 +114,15 @@ export class RoomListComponent implements OnInit {
     ];
   }
 
+  checkInDate = new Date(this.reservationInfoService.checkInDate);
+  checkOutDate = new Date(this.reservationInfoService.checkOutDate);
+  dayDiff: number;
+
   ngOnInit() {
     this.getRoomInfo();
+    this.dayDiff =
+      (this.checkOutDate.getTime() - this.checkInDate.getTime()) /
+      (1000 * 60 * 60 * 24);
 
     this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
@@ -139,7 +146,7 @@ export class RoomListComponent implements OnInit {
       (res: RoomList) => {
         this.totalRooms = res.count;
         for (const room of res.results) {
-          this.roomListService.roomList.push(room);
+          this.roomListService.roomList.push(room);  
           this.makeMarker(room);
         }
         this.roomCount = this.roomList.length;
