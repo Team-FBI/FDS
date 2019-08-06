@@ -11,12 +11,22 @@ import { RoomListService } from 'src/app/core/service/room-list.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean; };
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
     public reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService // private spinner: NgxSpinnerService
-  ) {}
+  ) {
+    this.datePickerConfig = Object.assign(
+      {},
+      {  
+        isAnimated: true,
+        containerClass: 'theme-red',
+        selectFromOtherMonth: true
+      }
+    );
+  }
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
