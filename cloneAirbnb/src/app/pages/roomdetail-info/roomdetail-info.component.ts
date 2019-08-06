@@ -81,6 +81,7 @@ export class RoomdetailInfoComponent implements OnInit {
       .get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`)
       .subscribe(
         (res: RoomDetail) => {
+          console.log(res);
           this.title = res.title;
           this.reservationInfoService.reservationInfoObj.title = res.title;
           this.address = res.address;

@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trip-detail.component.scss']
 })
 export class TripDetailComponent implements OnInit {
-
+  currentPage = 1;
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  initializeCurrentPage() {
+    this.currentPage = 1;
   }
 
 }
