@@ -28,16 +28,17 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   maxDate: Date;
   modalRef: BsModalRef;
   personnel = this.reservationInfoService.reservationInfoObj.personnel;
-  adults = this.reservationInfoService.reservationInfoObj.adults;
-  children = this.reservationInfoService.reservationInfoObj.children;
-  infants = this.reservationInfoService.reservationInfoObj.infants;
+  // adults = this.reservationInfoService.reservationInfoObj.adults;
+  // children = this.reservationInfoService.reservationInfoObj.children;
+  // infants = this.reservationInfoService.reservationInfoObj.infants;
   price: number;
   min_stay: number;
   appUrl: string = environment.appUrl;
-  totalprice: number;
-  serviceprice: number;
-  Accommodation: number;
-  finalprice: number;
+  totalPriceBeforeTex: number;
+  cleaningExpenses = 10000;
+  serviceFee: number;
+  accommodationsTax: number;
+  totalPriceAfterTex: number;
   total_rating: number;
   image: string;
   image_1: string;
@@ -45,7 +46,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   image_3: string;
   image_4: string;
   max: number = 10;
-  rate: number = 7;
+  capacity: number;
   // id = this.reservationInfoService.id;
   id: any;
   checked: boolean = true;
@@ -148,17 +149,21 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
           this.price = res.price;
           this.reservationInfoService.reservationInfoObj.price = res.price;
           this.min_stay = res.min_stay;
-          this.totalprice = this.price * this.min_stay * this.personnel;
-          this.serviceprice = this.totalprice * 0.13;
-          this.Accommodation = this.serviceprice * 0.1;
-          this.finalprice =
-            this.totalprice + this.serviceprice + this.Accommodation;
+          this.totalPriceBeforeTex = this.price;
+          this.serviceFee = this.totalPriceBeforeTex * 0.1;
+          this.accommodationsTax = this.serviceFee * 0.1;
+          this.totalPriceAfterTex =
+            this.totalPriceBeforeTex +
+            this.cleaningExpenses +
+            this.serviceFee +
+            this.accommodationsTax;
           this.total_rating = res.total_rating;
           this.image = res.image;
           this.image_1 = res.image_1;
           this.image_2 = res.image_2;
           this.image_3 = res.image_3;
           this.image_4 = res.image_4;
+          this.capacity = res.capacity;
 
           res.reservations.forEach(element => {
             this.getDateRange(element[0], element[1], this.listDate);
@@ -176,47 +181,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   test() {
     this.isOpen = !this.isOpen;
-    // console.log(1)
-  }
-
-  increase(n: number) {
-    // console.log(n)
-    if (n === 1) {
-      this.adults++;
-    } else if (n == 2) {
-      this.children++;
-    } else if (n == 3) {
-      this.infants++;
-    }
-    this.personnel = this.adults + this.children + this.infants;
-    this.totalprice = this.price * this.min_stay * this.personnel;
-    this.serviceprice = this.totalprice * 0.1;
-    this.Accommodation = this.serviceprice * 0.1;
-    this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
-  }
-
-  decrease(n: number) {
-    if (n == 1) {
-      if (this.adults === 0) {
-        return;
-      }
-      this.adults--;
-    } else if (n == 2) {
-      if (this.children === 0) {
-        return;
-      }
-      this.children--;
-    } else if (n == 3) {
-      if (this.infants === 0) {
-        return;
-      }
-      this.infants--;
-    }
-    this.personnel = this.adults + this.children + this.infants;
-    this.totalprice = this.price * this.min_stay * this.personnel;
-    this.serviceprice = this.totalprice * 0.13;
-    this.Accommodation = this.serviceprice * 0.1;
-    this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
   }
 
   ngAfterViewInit() {
@@ -271,5 +235,47 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.listDate.forEach(element => {
       this.disabledDates.push(new Date(element));
     });
+  }
+
+  increase(personnelType: HTMLSpanElement) {
+    if (
+      this.capacity > this.reservationInfoService.reservationInfoObj.personnel
+    ) {
+      this.reservationInfoService.reservationInfoObj[personnelType.id]++;
+
+      this.reservationInfoService.reservationInfoObj.personnel++;
+    }
+  }
+
+  decrease(personnelType: HTMLSpanElement) {
+    if (
+      personnelType.id === 'adults' &&
+      this.reservationInfoService.reservationInfoObj[personnelType.id] === 1
+    ) {
+    } else {
+      if (
+        this.reservationInfoService.reservationInfoObj[personnelType.id] > 0
+      ) {
+        this.reservationInfoService.reservationInfoObj[personnelType.id]--;
+
+        this.reservationInfoService.reservationInfoObj.personnel--;
+      }
+    }
+  }
+
+  get adultsFromService() {
+    return this.reservationInfoService.reservationInfoObj.adults;
+  }
+
+  get childrenFromService() {
+    return this.reservationInfoService.reservationInfoObj.children;
+  }
+
+  get infantsFromService() {
+    return this.reservationInfoService.reservationInfoObj.infants;
+  }
+
+  get personnelFromService() {
+    return this.reservationInfoService.reservationInfoObj.personnel;
   }
 }
