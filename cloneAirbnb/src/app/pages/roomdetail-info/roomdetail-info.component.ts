@@ -49,6 +49,8 @@ export class RoomdetailInfoComponent implements OnInit {
   dateMove;
   strDate;
   listDate = [];
+  initCheckin = new Date(this.reservationInfoService.checkInDate);
+  initCheckOut = new Date(this.reservationInfoService.checkOutDate);
 
   constructor(
     private router: Router,
@@ -242,12 +244,3 @@ export class RoomdetailInfoComponent implements OnInit {
     return listDate;
   }
 }
-// a = {size : 침대}
-
-// for (let key in a) {
-//   this.facilities.forEach(element => {
-//     if(element === key){
-//       this.dkd += a[key];
-//     }
-//   })
-// }
