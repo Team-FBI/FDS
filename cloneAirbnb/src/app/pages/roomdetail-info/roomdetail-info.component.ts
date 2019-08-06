@@ -49,6 +49,8 @@ export class RoomdetailInfoComponent implements OnInit {
   dateMove;
   strDate;
   listDate = [];
+  initCheckin = new Date(this.reservationInfoService.checkInDate);
+  initCheckOut = new Date(this.reservationInfoService.checkOutDate);
 
   constructor(
     private router: Router,
@@ -96,113 +98,10 @@ export class RoomdetailInfoComponent implements OnInit {
           this.reservationInfoService.reservationInfoObj.checkOutTime = res.check_out;
           this.reservationInfoService.reservationInfoObj.rating =
             res.total_rating;
-
-          // this.minDate1 = res.min_stay;
-          // this.maxDate1 = res.max_stay;
-          // this.minDate.setDate(this.minDate1);
-          // this.maxDate.setDate(this.maxDate1);
-          // // this.fourDaysAhead.setDate(this.now.getDate() + this.maxDate1);
-          // // this.dateCustomClasses = [
-          // //   { date: this.now, classes: [] },
-          // //   { date: this.fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
-          // // ];
-
-          // this.reservationInfoService.reservationInfoObj.roomType = this.room_type;
-          // if (this.room_type === 'Apartment') {
-          //   this.room_type = '아파트';
-          // } else if (this.room_type === 'House') {
-          //   this.room_type = '개인집';
-          // } else if (this.room_type === 'Garden House') {
-          //   this.room_type = '가든하우스';
-          // } else if (this.room_type === 'Bed and Breakfast') {
-          //   this.room_type = '침대와 아침식사';
-          // } else if (this.room_type === 'Villa') {
-          //   this.room_type = '빌라';
-          // } else if (this.room_type === 'Caravan') {
-          //   this.room_type = '카라반';
-          // } else if (this.room_type === 'Office') {
-          //   this.room_type = '사무실';
-          // } else {
-          //   this.room_type = '';
-          // }
-
-          // res.reservations.forEach(element => {
-          //   this.getDateRange(element[0], element[1], this.listDate);
-          // });
-          // this.setDisableDate();
-          // // this.disabledDates = [];
-
-          // this.facilities = res.facilities;
-          // this.facilities.forEach(element => {
-          //   // console.log(res.reservations);
-          //   // console.log(res.reservations[0])
-          //   // console.log(res.reservations[0][0])
-          //   // this.disabledDates.push(new Date(res.reservations[0][0]) , new Date(res.reservations[0][1]));
-          //   this.reservationsArray.push(
-          //     new Date(res.reservations[0][0]),
-          //     new Date(res.reservations[0][1])
-          //   );
-          //   // console.log(this.reservationsArray);
-
-          //   // this.getDateRange('2019-08-03', '2019-08-05' , this.listDate);
-
-          //   res.reservations.forEach(element => {
-          //     // console.log(element)
-          //     // element[0] =시작날짜 elment[1]= 끝날짜
-          //     this.getDateRange(element[0], element[1], this.listDate);
-          //   });
-          //   // console.log(this.listDate);
-          //   this.setDisableDate();
-
-          //   this.facilities = res.facilities;
-          //   this.facilities.forEach(element => {
-          //     // console.log(element)
-
-          //     this.facilitiesArray.push(element);
-          //     if (element[0] === 'queen-size bed') {
-          //       element[0] = '퀸사이즈침대';
-          //     }
-          //     if (element[0] === 'swimming pool') {
-          //       element[0] = '수영장';
-          //     }
-          //     if (element[0] === 'parking lot') {
-          //       element[0] = '주차장';
-          //     }
-          //     if (element[0] === 'ethernet') {
-          //       element[0] = '이더넷';
-          //     }
-          //     if (element[0] === 'work space') {
-          //       element[0] = '작업공간';
-          //     }
-          //     if (element[0] === 'television') {
-          //       element[0] = 'TV';
-          //     }
-          //     if (element[0] === 'kitchen') {
-          //       element[0] = '주방';
-          //     }
-          //     if (element[0] === 'elevator') {
-          //       element[0] = '엘리베이터';
-          //     }
-          //     if (element[0] === 'cloth iron') {
-          //       element[0] = '다리미';
-          //     }
-          //     if (element[0] === 'cloth dryer') {
-          //       element[0] = '옷걸이';
-          //     }
-          //     if (element[0] === 'wifi') {
-          //       element[0] = '와이파이';
-          //     }
-          //     if (element[0] === 'breakfast service') {
-          //       element[0] = '아침식사';
-          //     }
-          //     if (element[0] === 'coffee maker') {
-          //       element[0] = '커피머신';
-          //     }
-          //     if (element[0] === 'air conditioner') {
-          //       element[0] = '에어컨';
-          //     }
-          //   });
-          // });
+          res.reservations.forEach(element => {
+            this.getDateRange(element[0], element[1], this.listDate);
+          });
+          this.setDisableDate();
         },
         err => {},
         () => {
@@ -214,7 +113,7 @@ export class RoomdetailInfoComponent implements OnInit {
     this.listDate = [];
 
     const endDate = value.toISOString().slice(0, 10);
-    this.getDateRange('2019-07-31', endDate, this.listDate);
+    this.getDateRange('2019-01-01', endDate, this.listDate);
     this.setDisableDate();
   }
 
@@ -240,12 +139,3 @@ export class RoomdetailInfoComponent implements OnInit {
     return listDate;
   }
 }
-// a = {size : 침대}
-
-// for (let key in a) {
-//   this.facilities.forEach(element => {
-//     if(element === key){
-//       this.dkd += a[key];
-//     }
-//   })
-// }
