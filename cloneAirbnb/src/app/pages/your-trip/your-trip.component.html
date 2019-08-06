@@ -13,9 +13,8 @@
       <div class="list" *ngFor="let room of plannedReservation" (click)="toRoomDetail(room.room)">  
         <img src="{{room.image}}" alt="">
         <div class="travel">
-          <span><i class="fa fa-calendar" aria-hidden="true"></i> {{room.start_date}} <i class="fa fa-long-arrow-right" aria-hidden="true"></i> {{room.end_date}}</span>
+          <span>{{room.start_date}} <i class="fa fa-long-arrow-right" aria-hidden="true"></i> {{room.end_date}}</span>
           <p>{{room.title}}</p>
-          <p>예약 1건</p>
         </div>
       </div>
     </div>
@@ -26,9 +25,8 @@
       <div class="list" *ngFor="let room of pastReservation" (click)="toRoomDetail(room.room)">  
         <img src="{{room.image}}" alt="">
         <div class="travel">
-          <span><i class="fa fa-calendar" aria-hidden="true"></i> {{room.start_date}} <i class="fa fa-long-arrow-right" aria-hidden="true"></i> {{room.end_date}}</span>
+          <span>{{room.start_date}} <i class="fa fa-long-arrow-right" aria-hidden="true"></i> {{room.end_date}}</span>
           <p>{{room.title}}</p>
-          <p>예약 1건</p>
         </div>
       </div>
     </div>
