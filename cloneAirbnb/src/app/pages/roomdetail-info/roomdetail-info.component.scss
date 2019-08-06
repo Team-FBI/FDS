@@ -40,7 +40,10 @@
   .description{
     @include detailLine();
 
-    li{font-weight: 300;}
+    li{
+      font-weight: 300;
+      line-height: 1.6;
+    }
   }
   
   h3{
