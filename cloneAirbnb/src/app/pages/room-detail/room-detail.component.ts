@@ -59,6 +59,27 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   dateMove;
   strDate;
   listDate = [];
+  isDate = false;
+  endDate;
+  endDate2;
+  value
+  
+  
+  
+  initCheckin = this.reservationInfoService.reservationInfoObj.checkIn;
+  initCheckOut = this.reservationInfoService.reservationInfoObj.checkOut;
+  date = new Date();
+
+  initialCheckOutDate = this.reservationInfoService.initialCheckOutDate;
+  
+  // checkInDate = `${this.initCheckin.split('/')}`;
+
+  trcheckInDate = `${this.date.getFullYear()}-${this.date.getMonth() + 1}-${this.date.getDate()}`;
+
+  trcheckOutDate = `${this.initialCheckOutDate.getFullYear()
+  }-${this.initialCheckOutDate.getMonth() + 1}-${this.initialCheckOutDate.getDate()}`;
+  // checkOutDate = `${this.initialCheckOutDate.getMonth() +
+  //   1}/${this.initialCheckOutDate.getDate()}/${this.initialCheckOutDate.getFullYear()}`;
 
 
 
@@ -109,6 +130,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    // console.log(this.trcheckInDate, this.trcheckOutDate);
     this.urlRemember.currentUrl = this.router.url;
     this.id = parseInt(localStorage.getItem('roomId'));
     
@@ -132,18 +154,15 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.image_2 = res.image_2;
       this.image_3 = res.image_3;
       this.image_4 = res.image_4;
-
+      console.log(res);
       res.reservations.forEach(element => {
-        this.getDateRange(element[0], element[1], this.listDate);});
-      this.listDate.forEach(element => {
-        this.disabledDates.push(new Date(element))
-      });
+        this.getDateRange(element[0], element[1], this.listDate);});     
+      this.setDisableDate();
     },
     err => {},
     () => {
       this.isLoading$.next(false);
     }
-    
     );
   }
 
@@ -211,6 +230,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   }
 
   toRoomRegulation() {
+    console.log('예약하기 버튼이 눌렸습니다.');
     this.router.navigate(['roomregulation']);
   }
 
@@ -233,13 +253,42 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     }
     return listDate;
   }
-  onValueChange(value: Date): void {
+  onValueChange(value: any): void {
     this.listDate = [];
-    const endDate = value.toISOString().slice(0,10);
-    this.getDateRange('2019-07-31', endDate, this.listDate);
-    this.setDisableDate();
+    this.endDate = `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`;
+    console.log(this.endDate2 - this.endDate);
+    
+    this.getDateRange('2019-07-31', this.endDate, this.listDate);
+    // console.log(this.listDate);
+
+    this.reservationInfoService.reservationInfoObj.checkIn = this.endDate;
+    
+    // this.setDisableDate();
+    // if(this.endDate2 < this.endDate) {
+    //   this.isDate = true;
+    // } else {
+    //   this.isDate = false;
+    // }
   }
-  setDisableDate(){
+  onValueChange2(value: any): void {
+    // this.endDate2 = value.toISOString().slice(0,10);
+    this.endDate2 = `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`;
+
+    this.reservationInfoService.reservationInfoObj.checkOut = this.endDate2;
+    // if ( this.endDate2 < this.endDate) {
+    //   this.isDate = true;
+    // } else {
+    //   this.isDate = false;
+    // }
+    console.log(this.disabledDates);
+    console.log(this.endDate);
+    console.log(this.endDate2);
+    const a = this.getDateRange('2019-8-8','2019-8-10', this.listDate);
+    console.log(a);
+    
+
+  }
+  setDisableDate() {
     this.listDate.forEach(element => {
       this.disabledDates.push(new Date(element));
     });

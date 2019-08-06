@@ -41,6 +41,8 @@ export class RoomdetailInfoComponent implements OnInit {
   dateMove;
   strDate;
   listDate = [];
+  initCheckin = new Date(this.reservationInfoService.checkInDate);
+  initCheckOut = new Date(this.reservationInfoService.checkOutDate);
 
 
 
@@ -64,7 +66,7 @@ export class RoomdetailInfoComponent implements OnInit {
     this.urlRemember.currentUrl = this.router.url;
     this.id = parseInt(localStorage.getItem('roomId'));
     this.bsInlineValue2.setMonth(this.bsInlineValue.getMonth() + 1);
-    console.log(this.bsInlineValue2);
+    // console.log(this.bsInlineValue2);
 
     this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
       // console.log(res);
@@ -190,18 +192,9 @@ export class RoomdetailInfoComponent implements OnInit {
     }
     return listDate;
   }
-  setDisableDate(){
+  setDisableDate() {
     this.listDate.forEach(element => {
       this.disabledDates.push(new Date(element));
     });
   }
 }
-// a = {size : 침대}
-
-// for (let key in a) {
-//   this.facilities.forEach(element => {
-//     if(element === key){
-//       this.dkd += a[key];
-//     }
-//   })
-// }

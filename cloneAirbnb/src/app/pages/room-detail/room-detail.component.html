@@ -65,7 +65,7 @@
       <div class="checkIn form-group">
         <input
           type="text"
-          placeholder="{{ 'home.checkInPlaceholder' | translate }}"
+          placeholder="{{initCheckin}}"
           class="form-control"
           bsDatepicker
           [bsConfig]="{ isAnimated: true }"
@@ -77,10 +77,11 @@
       <div class="checkOut form-group">
         <input
           type="text"
-          placeholder="{{ 'home.checkOutPlaceholder' | translate }}"
+          placeholder="{{initCheckOut}}"
           class="form-control"
           bsDatepicker
           [bsConfig]="{ isAnimated: true }"
+          (bsValueChange)="onValueChange2($event)"
           [datesDisabled]="disabledDates"
           #checkOut
         />
@@ -151,7 +152,8 @@
       <span>합계</span>
       <span>₩{{finalprice}}</span>
     </div>
-    <button class="reservationBtn" (click)='toRoomRegulation()'>예약하기</button>
+    <button type = "button" class="reservationBtn" (click)='toRoomRegulation()' [disabled]="checkIn.value > checkOut.value">예약하기</button>
+    <div *ngIf="checkIn.value > checkOut.value">체크아웃 날짜가 체크인 날짜보다 작습니다.</div>
     <p class="reservation">예약 확정 전에는 요금이 청구되지 않습니다.</p>
   </section>
 </section>
