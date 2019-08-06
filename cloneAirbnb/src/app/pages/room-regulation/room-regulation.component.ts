@@ -15,6 +15,8 @@ export class RoomRegulationComponent implements OnInit {
   destination = this.reservationInfo.reservationInfoObj.destination;
   checkIn = this.reservationInfo.reservationInfoObj.checkIn;
   checkOut = this.reservationInfo.reservationInfoObj.checkOut;
+  checkInTime = this.reservationInfo.reservationInfoObj.checkInTime;
+  checkOutTime = this.reservationInfo.reservationInfoObj.checkOutTime;
 
   week = [
     'Sunday',
