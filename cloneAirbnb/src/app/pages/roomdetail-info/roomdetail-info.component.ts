@@ -23,7 +23,7 @@ export class RoomdetailInfoComponent implements OnInit {
   facilities: any;
   facilitiesArray = [];
   strArray;
-  id = this.reservationInfoService.id;
+  id: any;
   datePickerConfig:Partial<BsDatepickerConfig>;
   bsInlineValue = this.reservationInfoService.date;
   bsInlineValue2 = new Date();
@@ -61,12 +61,16 @@ export class RoomdetailInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.urlRemember.currentUrl = this.router.url;
-    this.id = parseInt(localStorage.getItem('roomId'));
+
+    this.urlRemember.currentUrl = this.router.url;  
+    // localStorage.setItem('roomId', this.id.toString());
+    this.id = this.router.url.split('/');
+
     this.bsInlineValue2.setMonth(this.bsInlineValue.getMonth() + 1);
     console.log(this.bsInlineValue2);
 
-    this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
+
+    this.http.get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`).subscribe((res: any) => {
       // console.log(res);
       this.title = res.title;
       this.reservationInfoService.reservationInfoObj.title = this.title;
@@ -132,11 +136,8 @@ export class RoomdetailInfoComponent implements OnInit {
         // element[0] =시작날짜 elment[1]= 끝날짜
         this.getDateRange(element[0], element[1], this.listDate);
       });
-      console.log(this.listDate);
-      this.listDate.forEach(element => {
-        console.log(element);
-        this.disabledDates.push(new Date(element))
-      });
+      // console.log(this.listDate);
+      this.setDisableDate();
   
       this.facilities = res.facilities;
       this.facilities.forEach(element => {
@@ -190,18 +191,17 @@ export class RoomdetailInfoComponent implements OnInit {
   }
   onValueChange(value: Date): void {
     this.listDate = [];
-    const endDate = value.toISOString().slice(0,10);
+
+    const endDate = value.toISOString().slice(0, 10);
     this.getDateRange('2019-07-31', endDate, this.listDate);
     this.setDisableDate();
+  }
 
-    // this.inputData = value;
-    // console.log(this.inputData);
-    // this.bsInlineValue = this.inputData;
-    // console.log(this.bsInlineValue);
-    // this.now = this.bsInlineValue;
-    // console.log(this.now)
-    // this.fourDaysAhead.setDate(this.now.getDate() + this.maxDate1);
-    // 나중에 서버에 보낼 input data
+  setDisableDate() {
+    this.listDate.forEach(element => {
+      this.disabledDates.push(new Date(element))
+    });
+
   }
 
 

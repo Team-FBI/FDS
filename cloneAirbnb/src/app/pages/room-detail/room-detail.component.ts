@@ -14,6 +14,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { BehaviorSubject } from 'rxjs';
+declare let Kakao: any;
 
 @Component({
   selector: 'app-room-detail',
@@ -44,8 +45,8 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   image_4: string;
   max: number = 10;
   rate: number = 7;
-  id = this.reservationInfoService.id;
-
+  // id = this.reservationInfoService.id;
+  id: any;
   checked: boolean = true;
 
   isVisible: boolean = false;
@@ -109,14 +110,44 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    Kakao.init('71f4d8c641095d4ff1ba79b80a471bf5');
+
     this.urlRemember.currentUrl = this.router.url;
-    this.id = parseInt(localStorage.getItem('roomId'));
+
+    Kakao.Link.createDefaultButton({
+      container: '#shareBtn',
+      objectType: 'feed',
+      content: {
+        title: document.title,
+        description: '내용, 주로 해시태그',
+        imageUrl: document.images[0].src,
+        link: {
+          webUrl: document.location.href,
+          mobileWebUrl: document.location.href
+        }
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845
+      },
+      buttons: [
+        {
+          title: 'Open!',
+          link: {
+            mobileWebUrl: document.location.href,
+            webUrl: document.location.href
+          }
+        }
+      ]
+    });
     
+    this.id = this.router.url.split('/');
 
     // this.http.get(`${this.appUrl}/rooms/`)
     //   .subscribe(res => console.log(res))
     this.isLoading$.next(true);
-    this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe(
+    this.http.get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`).subscribe(
       (res: any) => {
       this.price = res.price;
       this.reservationInfoService.reservationInfoObj.price = res.price;
