@@ -9,11 +9,7 @@
           class="filterButton"
           [bsConfig]="{ rangeInputFormat: 'MM/DD', isAnimated: true }"
           bsDaterangepicker
-          [ngStyle]="dateStyle"
           placement = "bottom right"
-          (bsValueChange)="onValueChange($event)"
-          (bsValueChange)="widthChange()"
-          [dateCustomClasses]="dateCustomClasses"
           placeholder="날짜"
         />
       </div>
