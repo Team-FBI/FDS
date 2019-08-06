@@ -154,6 +154,8 @@
     </div>
     <button type = "button" class="reservationBtn" (click)='toRoomRegulation()' [disabled]="checkIn.value > checkOut.value">예약하기</button>
     <div *ngIf="checkIn.value > checkOut.value">체크아웃 날짜가 체크인 날짜보다 작습니다.</div>
+    <div *ngIf="overMinstay">이 숙소의 최소 숙박일자는 {{min_stay}}일 입니다.</div>
+    <div *ngIf="overMaxstay">이 숙소의 최대 숙박일자는 {{max_stay}}일 입니다.</div>
     <p class="reservation">예약 확정 전에는 요금이 청구되지 않습니다.</p>
   </section>
 </section>
