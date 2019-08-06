@@ -1,43 +1,42 @@
-@import "../../../styles.scss";
+@import '../../../styles.scss';
 @mixin detailLine() {
-  margin-top:20px;
-  padding-top:20px;
-  border-top:1px solid #ddd;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
 }
 
-
-.detailInfo{
+.detailInfo {
   float: left;
-  width:700px;
-  padding-right:50px;
+  width: 700px;
+  padding-right: 50px;
 
-  .detailTitle{
-    h2{
-      font-size:2rem;
+  .detailTitle {
+    h2 {
+      font-size: 2rem;
       font-weight: bold;
     }
-    p{
-      margin-top:5px;
+    p {
+      margin-top: 5px;
       font-weight: 300;
     }
   }
-  
-  .roomInfoContainer{
-    .roomInfoList{
-      margin-top:20px;
+
+  .roomInfoContainer {
+    .roomInfoList {
+      margin-top: 20px;
       font-weight: 300;
 
-      p{
-        line-height: 1,7;
+      p {
+        line-height: 1, 7;
         font-weight: bold;
-        color:#484848;
+        color: #484848;
       }
-      span{
-        margin-right:20px;
+      span {
+        margin-right: 20px;
       }
     }
   }
-  .description{
+  .description {
     @include detailLine();
 
     li{
@@ -45,40 +44,46 @@
       line-height: 1.6;
     }
   }
-  
-  h3{
-    margin-bottom:5px;
-    font-size:1.1rem;
+
+  h3 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
     font-weight: 600;
-    color:#484848;
+    color: #484848;
   }
-  h3.greenColor{
-    color:#008489
+  h3.greenColor {
+    color: #008489;
   }
 }
 
-.host, .facilities, .reservation, .review{
+.host,
+.facilities,
+.reservation,
+.review {
   clear: both;
   @include detailLine();
 }
 
-.fac{
-  margin-top:5px;
-  
-  .facImage{
-    width:50px;
-    height:40px;
+.fac {
+  margin-top: 5px;
+
+  .facImage {
+    width: 50px;
+    height: 40px;
   }
 }
 
-::ng-deep.bs-datepicker{
-  margin-left:0px !important;
-  margin-bottom:30px;
+::ng-deep.bs-datepicker {
+  margin-left: 0px !important;
+  margin-bottom: 30px;
   box-shadow: none;
 }
 
-
-
+.loading {
+  position: absolute;
+  top: 200px;
+  left: calc(50vw - 128px);
+}
 
 // .roomdetailInfoContainer{
 //   width:1100px;
@@ -110,7 +115,7 @@
 // }
 
 // .description{
-  
+
 // }
 // .placedetail{
 //   margin-top: 10px;
@@ -141,14 +146,11 @@
 
 // // ::ng-deep.form-group{
 // //   height : 300px;
-  
 
 // //   .infodate{
 // //     margin-left: 110%;
 // //   }
 // // }
-
-
 
 // .commentContainer{
 //   margin-top:50px;
@@ -160,7 +162,7 @@
 
 //   .comment{
 //     margin-top:30px;
-    
+
 //     textarea{
 //       width:100%;
 //       height: 100px;
