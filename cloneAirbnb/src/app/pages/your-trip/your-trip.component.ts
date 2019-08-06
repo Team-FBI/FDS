@@ -54,4 +54,5 @@ export class YourTripComponent implements OnInit {
     this.reservationInfoService.id = roomId;
     this.router.navigate([`roomdetail/${roomId}`]);
   }
+
 }

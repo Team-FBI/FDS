@@ -38,6 +38,7 @@ export class RoomdetailInfoComponent implements OnInit {
 
   // 달력 disable
   disabledDates = [];
+  reservationsArray = [];
   dateMove;
   strDate;
   listDate = [];
@@ -220,12 +221,6 @@ export class RoomdetailInfoComponent implements OnInit {
     }
     return listDate;
   }
-  setDisableDate(){
-    this.listDate.forEach(element => {
-      this.disabledDates.push(new Date(element));
-    });
-  }
-
 }
 // a = {size : 침대}
 
