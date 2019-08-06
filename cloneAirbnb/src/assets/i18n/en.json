@@ -90,6 +90,11 @@
     "signInBtn": "Log in",
     "signUpBtn": "Sign Up"
   },
+  "yourTrip": {
+    "upcomingPlans": "Upcoming Plans",
+    "noPlans": "You have no upcoming trips. Start exploring ideas for your next trip.",
+    "pastPlan": "Where you’ve been"
+  },
   "roomList": {
     "datePlaceholder": "Dates",
     "guest": "guest",
