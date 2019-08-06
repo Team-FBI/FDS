@@ -4,6 +4,7 @@ import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { HttpClient } from '@angular/common/http';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { from } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-your-trip',
@@ -11,22 +12,38 @@ import { from } from 'rxjs';
   styleUrls: ['./your-trip.component.scss']
 })
 export class YourTripComponent implements OnInit {
+  appUrl: string = environment.appUrl;
+
+  end = [];
+  start = [];
+  
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
-    private http: HttpClient,
-    private test: ReservationInfoService
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
+    const id = localStorage.getItem('userId')
 
-    console.log(this.test.reservationInfoObj.destination);
-    console.log(this.test.reservationInfoObj.checkIn);
-    console.log(this.test.reservationInfoObj.checkOut);
-    console.log(this.test.reservationInfoObj.adults);
-    console.log(this.test.reservationInfoObj.children);
-    console.log(this.test.reservationInfoObj.infants);
-    console.log(this.test.reservationInfoObj.personnel);
+    this.http.get(`${this.appUrl}/accounts/user/${id}/`).subscribe((res:any) => {
+      // console.log(res.reservations)
+      for(const i of res.reservations){
+        const key = Object.keys(i).join('');
+        // console.log(key)
+        
+        //  console.log(this.parseDate(i[key].end_date))
+        console.log(this.end.push(this.parseDate(i[key].end_date)));        
+      }
+
+    })
   }
+
+  parseDate(str) {
+    const mdy = str.split('-');
+    console.log(mdy);
+    return new Date(mdy[0], mdy[1] - 1, mdy[2]) > new Date() ? true : false;
+  }
+
 }
