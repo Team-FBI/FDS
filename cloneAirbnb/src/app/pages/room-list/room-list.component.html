@@ -341,7 +341,7 @@
       <!-- price filterbutton -->
 
       <div class="date">
-        <input type="text" class="filterButton" [bsConfig]="{ rangeInputFormat: 'MM/DD', isAnimated: true }"
+        <input type="text" class="filterButton" [bsConfig]="datePickerConfig"
           bsDaterangepicker [ngStyle]="dateStyle" placement="bottom right" (bsValueChange)="onValueChange($event)"
           (bsValueChange)="widthChange()" [dateCustomClasses]="dateCustomClasses"
           placeholder="{{ 'roomList.datePlaceholder' | translate }}" />
