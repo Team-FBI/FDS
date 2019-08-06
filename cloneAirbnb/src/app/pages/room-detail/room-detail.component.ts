@@ -14,6 +14,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { BehaviorSubject } from 'rxjs';
+import { RoomDetail } from 'src/app/core/interface/roomDetail.interface';
 declare let Kakao: any;
 
 @Component({
@@ -143,7 +144,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.http
       .get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`)
       .subscribe(
-        (res: any) => {
+        (res: RoomDetail) => {
           this.price = res.price;
           this.reservationInfoService.reservationInfoObj.price = res.price;
           this.min_stay = res.min_stay;
@@ -189,7 +190,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     }
     this.personnel = this.adults + this.children + this.infants;
     this.totalprice = this.price * this.min_stay * this.personnel;
-    this.serviceprice = this.totalprice * 0.13;
+    this.serviceprice = this.totalprice * 0.1;
     this.Accommodation = this.serviceprice * 0.1;
     this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
   }

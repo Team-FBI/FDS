@@ -10,12 +10,12 @@ import { ReservationInfoService } from 'src/app/core/service/reservation-info.se
 })
 export class PaymentComponent implements OnInit {
   title = this.reservationInfo.reservationInfoObj.title;
-  destination = this.reservationInfo.reservationInfoObj.destination;
   checkIn = this.reservationInfo.reservationInfoObj.checkIn;
   checkOut = this.reservationInfo.reservationInfoObj.checkOut;
   personnel = this.reservationInfo.reservationInfoObj.personnel;
   price = this.reservationInfo.reservationInfoObj.price;
   roomType = this.reservationInfo.reservationInfoObj.roomType;
+  rating = this.reservationInfo.reservationInfoObj.rating;
 
   checkInArray = this.checkIn.split('/');
   checkOutArray = this.checkOut.split('/');
