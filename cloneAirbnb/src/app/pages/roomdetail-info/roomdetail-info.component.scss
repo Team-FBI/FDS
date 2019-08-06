@@ -39,7 +39,7 @@
   .description {
     @include detailLine();
 
-    li{
+    li {
       font-weight: 300;
       line-height: 1.6;
     }
@@ -73,11 +73,11 @@
   }
 }
 
-::ng-deep.bs-datepicker {
-  margin-left: 0px !important;
-  margin-bottom: 30px;
-  box-shadow: none;
-}
+// ::ng-deep.bs-datepicker {
+//   margin-left: 0px !important;
+//   margin-bottom: 30px;
+//   box-shadow: none;
+// }
 
 .loading {
   position: absolute;
