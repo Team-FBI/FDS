@@ -105,7 +105,7 @@
                     <button class="decrease" type="button" (click)="decrease(1)">
                       -</button>
                     <span class="counter">{{adults}}</span>
-                    <button class="increase" (click)="increase(1)" type="button">+</button>
+                    <button class="increase" (click)="increase(1)" type="button" [style.opacity]="styleIncreasebtn1" [disabled]="increaseBtn1 ? 'disabled' : null">+</button>
                   </div>
               </div>
               <div class="counterLine">
@@ -114,9 +114,9 @@
                     <span>2~12세</span>
                   </div>
                   <div class="counterCheck">
-                    <button class="decrease" type="button" (click)="decrease(2)">-</button>
+                    <button class="decrease" type="button" (click)="decrease(2)" >-</button>
                     <span class="counter">{{children}}</span>
-                    <button class="increase" type="button" (click)="increase(2)">+</button>
+                    <button class="increase" type="button" (click)="increase(2)" [style.opacity]="styleIncreasebtn2" [disabled]="increaseBtn2 ? 'disabled' : null">+</button>
                   </div>
               </div>
               <div class="counterLine">
@@ -127,7 +127,7 @@
                   <div class="counterCheck">
                     <button class="decrease" type="button" (click)="decrease(3)">-</button>
                     <span class="counter">{{infants}}</span>
-                    <button class="increase" type="button" (click)="increase(3)">+</button>
+                    <button class="increase" type="button" (click)="increase(3)" [style.opacity]="styleIncreasebtn3" [disabled]="increaseBtn3 ? 'disabled' : null">+</button>
                   </div>
               
               </div>
@@ -152,8 +152,8 @@
       <span>합계</span>
       <span>₩{{finalprice}}</span>
     </div>
-    <button type = "button" class="reservationBtn" (click)='toRoomRegulation()' [disabled]="checkIn.value > checkOut.value">예약하기</button>
-    <div *ngIf="checkIn.value > checkOut.value">체크아웃 날짜가 체크인 날짜보다 작습니다.</div>
+    <button type = "button" class="reservationBtn" (click)='toRoomRegulation()' [style.opacity]="btnOpacity" [disabled]="blockSend ? 'disabled' : null">예약하기</button>
+    <div *ngIf="compareDate">체크아웃 날짜가 체크인 날짜보다 작습니다.</div>
     <div *ngIf="overMinstay">이 숙소의 최소 숙박일자는 {{min_stay}}일 입니다.</div>
     <div *ngIf="overMaxstay">이 숙소의 최대 숙박일자는 {{max_stay}}일 입니다.</div>
     <p class="reservation">예약 확정 전에는 요금이 청구되지 않습니다.</p>
