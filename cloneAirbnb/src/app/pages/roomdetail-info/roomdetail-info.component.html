@@ -1,21 +1,29 @@
 <section class="detailInfo">
   <div class="detailTitle">
-    <h2>{{ title }}</h2>
-    <p>{{ address }}</p>
+    <h2>{{title}}</h2>
+    <p>{{address}}</p>
   </div>
   <div class="roomInfoContainer">
     <div class="roomInfoList">
-      <p>{{ room_type }}</p>
-      <span>인원 {{ capacity }} 명</span>
-      <span>침실 {{ bedroom }} 개</span>
-      <span>욕실 {{ bathroom }} 개</span>
+      <p>아파트 전체</p>
+      <span>인원 {{capacity}} 명</span>
+      <span>침실 {{bedroom}} 개</span>
+      <span>욕실 {{bathroom}} 개</span>
+    </div>
+    <div class="roomInfoList">
+      <p>높은 청결도</p>
+      <span>최근 게스트 *명이 청결하다고 후기를 남겼습니다.</span>
+    </div>
+    <div class="roomInfoList">
+      <p>셀프체크인</p>
+      <span>키패드를 이용해 체크인하세요.</span>
     </div>
   </div>
   <div class="description">
     <h3 class="greenColor">숙소의 상세사항</h3>
-    <ul>
-      <li *ngFor="let str of strArray">{{ str }}</li>
-    </ul>
+      <ul>
+        <li *ngFor="let str of strArray">{{str}}</li>
+      </ul>
   </div>
   <div class="host">
     <h3 class="greenColor">호스트에게 연락하기</h3>
@@ -23,82 +31,26 @@
   <div class="facilities">
     <h3>편의시설</h3>
     <ul>
-      <li *ngFor="let facility of facilitiesArray" class="fac">
-        <img class="facImage" src="{{ facility[1] }}" />{{ facility[0] }}
-      </li>
+        <li *ngFor="let facility of facilitiesArray" class="fac">
+          <img class="facImage" src="{{facility[1]}}">{{facility[0]}}
+        </li>
     </ul>
   </div>
   <div class="reservation">
     <h3>예약 가능 여부</h3>
     <div class="calendar">
-      <bs-datepicker-inline
-        [bsValue]="bsInlineValue"
-        style="width:50%; float:left;"
-        [bsConfig]="datePickerConfig"
-        (bsValueChange)="onValueChange($event)"
-        [dateCustomClasses]="dateCustomClasses"
-        [datesDisabled]="disabledDates"
-        placement="bottom"
-        #dt
-      ></bs-datepicker-inline>
+        <bs-datepicker-inline [bsValue]="initCheckin" style="width:50%" [bsConfig]="datePickerConfig" (bsValueChange)="onValueChange($event)" [dateCustomClasses]="dateCustomClasses" [datesDisabled]="disabledDates" placement="bottom"
+        ></bs-datepicker-inline>
+        
+        <!-- <bs-datepicker-inline [bsConfig]="datePickerConfig" style="width:50%; float:right;" [dateCustomClasses]="dateCustomClasses" 
+        [datesDisabled]="disabledDates" ></bs-datepicker-inline> -->
+    </div>
+  </div>
+  <div class="review">
+    <h2>후기</h2>
+  </div>
+</section>
 
-    <section class="detailInfo">
-      <div class="detailTitle">
-        <h2>{{title}}</h2>
-        <p>{{address}}</p>
-      </div>
-      <div class="roomInfoContainer">
-        <div class="roomInfoList">
-          <p>아파트 전체</p>
-          <span>인원 {{capacity}} 명</span>
-          <span>침실 {{bedroom}} 개</span>
-          <span>욕실 {{bathroom}} 개</span>
-        </div>
-        <div class="roomInfoList">
-          <p>높은 청결도</p>
-          <span>최근 게스트 *명이 청결하다고 후기를 남겼습니다.</span>
-        </div>
-        <div class="roomInfoList">
-          <p>셀프체크인</p>
-          <span>키패드를 이용해 체크인하세요.</span>
-        </div>
-      </div>
-      <div class="description">
-        <h3 class="greenColor">숙소의 상세사항</h3>
-          <ul>
-            <li *ngFor="let str of strArray">{{str}}</li>
-          </ul>
-      </div>
-      <div class="host">
-        <h3 class="greenColor">호스트에게 연락하기</h3>
-      </div>
-      <div class="facilities">
-        <h3>편의시설</h3>
-        <ul>
-            <li *ngFor="let facility of facilitiesArray" class="fac">
-              <img class="facImage" src="{{facility[1]}}">{{facility[0]}}
-            </li>
-        </ul>
-      </div>
-      <div class="reservation">
-        <h3>예약 가능 여부</h3>
-        <div class="calendar">
-            <bs-datepicker-inline [bsValue]="initCheckin" style="width:50%; float:left;" [bsConfig]="datePickerConfig" (bsValueChange)="onValueChange($event)" [dateCustomClasses]="dateCustomClasses" [datesDisabled]="disabledDates" placement="bottom"
-            ></bs-datepicker-inline>
-            
-            <!-- <bs-datepicker-inline [bsConfig]="datePickerConfig" style="width:50%; float:right;" [dateCustomClasses]="dateCustomClasses" 
-            [datesDisabled]="disabledDates" ></bs-datepicker-inline> -->
-        </div>
-      </div>
-      <div class="review">
-        <h2>후기</h2>
-      </div>
-    </section>
-    
-  
-
-    
-  
 
 <div *ngIf="isLoading$ | async" class="loading">
   <img src="../../../assets/spinner.gif" alt="loading" class="spinnerImg" />

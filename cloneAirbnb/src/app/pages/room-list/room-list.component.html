@@ -162,14 +162,7 @@
   <div class="filter">
     <!-- filter -->
     <div class="filterLeft">
-      <div class="date">
-        <input type="text" class="filterButton" [bsConfig]="{ rangeInputFormat: 'MM/DD', isAnimated: true }"
-          bsDaterangepicker [ngStyle]="dateStyle" placement="bottom right" (bsValueChange)="onValueChange($event)"
-          (bsValueChange)="widthChange()" [dateCustomClasses]="dateCustomClasses"
-          placeholder="{{ 'roomList.datePlaceholder' | translate }}" />
-        <!-- date filterbutton -->
-      </div>
-      <!-- date filterbutton -->
+      
 
       <div class="personnel" dropdown #personnelDropdown="bs-dropdown" [insideClick]="true">
         <!-- personnel filterbutton -->
@@ -234,6 +227,8 @@
         </ul>
       </div>
       <!-- personnel filterbutton -->
+
+      
 
       <div class="businesstrip" dropdown #businesstripDropdown="bs-dropdown" [insideClick]="true">
         <!-- businesstrip filterbutton -->
@@ -344,6 +339,15 @@
         </ul>
       </div>
       <!-- price filterbutton -->
+
+      <div class="date">
+        <input type="text" class="filterButton" [bsConfig]="datePickerConfig"
+          bsDaterangepicker [ngStyle]="dateStyle" placement="bottom right" (bsValueChange)="onValueChange($event)"
+          (bsValueChange)="widthChange()" [dateCustomClasses]="dateCustomClasses"
+          placeholder="{{ 'roomList.datePlaceholder' | translate }}" />
+        <!-- date filterbutton -->
+      </div>
+      <!-- date filterbutton -->
     </div>
   </div>
 </div>
