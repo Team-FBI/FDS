@@ -11,19 +11,24 @@ export interface RoomDetail {
   image_2: string;
   image_3: string;
   image_4: string;
+  image_5: string;
+  check_in: string;
+  check_out: string;
   total_rating: number;
   capacity: number;
   space: string;
   room_type: string;
   bedroom: number;
+  beds: number;
   bath_type: string;
   bathroom: number;
   cancellation: string;
   min_stay: number;
   max_stay: number;
   description: string;
+  locational_description: string;
   price: number;
-  facilities: string[];
+  facilities: string[][];
   reservations: string[][];
   updated_at: string;
   created_at: string;
@@ -35,4 +40,5 @@ export interface RoomDetail {
   clean_score: number;
   value_score: number;
   super_host: string;
+  reviews: string[];
 }

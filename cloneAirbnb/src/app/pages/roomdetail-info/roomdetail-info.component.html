@@ -1,3 +1,46 @@
+<section class="detailInfo">
+  <div class="detailTitle">
+    <h2>{{ title }}</h2>
+    <p>{{ address }}</p>
+  </div>
+  <div class="roomInfoContainer">
+    <div class="roomInfoList">
+      <p>{{ room_type }}</p>
+      <span>인원 {{ capacity }} 명</span>
+      <span>침실 {{ bedroom }} 개</span>
+      <span>욕실 {{ bathroom }} 개</span>
+    </div>
+  </div>
+  <div class="description">
+    <h3 class="greenColor">숙소의 상세사항</h3>
+    <ul>
+      <li *ngFor="let str of strArray">{{ str }}</li>
+    </ul>
+  </div>
+  <div class="host">
+    <h3 class="greenColor">호스트에게 연락하기</h3>
+  </div>
+  <div class="facilities">
+    <h3>편의시설</h3>
+    <ul>
+      <li *ngFor="let facility of facilitiesArray" class="fac">
+        <img class="facImage" src="{{ facility[1] }}" />{{ facility[0] }}
+      </li>
+    </ul>
+  </div>
+  <div class="reservation">
+    <h3>예약 가능 여부</h3>
+    <div class="calendar">
+      <bs-datepicker-inline
+        [bsValue]="bsInlineValue"
+        style="width:50%; float:left;"
+        [bsConfig]="datePickerConfig"
+        (bsValueChange)="onValueChange($event)"
+        [dateCustomClasses]="dateCustomClasses"
+        [datesDisabled]="disabledDates"
+        placement="bottom"
+        #dt
+      ></bs-datepicker-inline>
 
     <section class="detailInfo">
       <div class="detailTitle">
@@ -57,7 +100,9 @@
     
   
 
-  
+<div *ngIf="isLoading$ | async" class="loading">
+  <img src="../../../assets/spinner.gif" alt="loading" class="spinnerImg" />
+</div>
 
 <!-- <section class="roomdetailInfoContainer">
   <section class="roomdetailInfo">

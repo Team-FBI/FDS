@@ -1,261 +1,3 @@
-<div class="positionTop" >
-  <app-navigation (initializeCurrentPage) = "initializeCurrentPage()"></app-navigation>
-  
-  <div class="filter" >
-    <!-- filter -->
-    <div class="filterLeft">
-      <div class="date">
-        <input
-          type="text"
-          class="filterButton"
-          [bsConfig]="{ rangeInputFormat: 'MM/DD', isAnimated: true }"
-          bsDaterangepicker
-          [ngStyle]="dateStyle"
-          placement = "bottom right"
-          (bsValueChange)="onValueChange($event)"
-          (bsValueChange)="widthChange()"
-          [dateCustomClasses]="dateCustomClasses"
-          placeholder="{{ 'roomList.datePlaceholder' | translate }}"
-        />
-        <!-- date filterbutton -->
-      </div>
-      <!-- date filterbutton -->
-
-      <div
-        class="personnel"
-        dropdown
-        #personnelDropdown="bs-dropdown"
-        [insideClick]="true"
-      >
-        <!-- personnel filterbutton -->
-        <button class="filterButton" dropdownToggle type="button">
-          <span *ngIf="personnel === 1"
-            >{{ personnel }} {{ 'roomList.guest' | translate }}</span
-          >
-          <span *ngIf="personnel > 1"
-            >{{ personnel }} {{ 'roomList.guests' | translate }}</span
-          >
-        </button>
-        <ul
-          *dropdownMenu
-          class="personnel-dropdown-menu dropdown-menu"
-          role="menu"
-        >
-          <div class="counterLine">
-            <div class="people">
-              <p class="top">{{ 'roomList.adults' | translate }}</p>
-            </div>
-            <div class="counterCheck">
-              <button type="button" class="decrease" (click)="decrease(adult)">
-                -
-              </button>
-              <span class="counter" id="adults" #adult>{{ adults }}</span>
-              <button type="button" class="increase" (click)="increase(adult)">
-                +
-              </button>
-            </div>
-          </div>
-
-          <div role="menuitem">
-            <div class="counterLine">
-              <div class="people">
-                <p>{{ 'roomList.children' | translate }}</p>
-                <span>{{ 'roomList.childrenSpan' | translate }}</span>
-              </div>
-              <div class="counterCheck">
-                <button
-                  type="button"
-                  class="decrease"
-                  (click)="decrease(child)"
-                >
-                  -
-                </button>
-                <span class="counter" id="children" #child>{{ children }}</span>
-                <button
-                  type="button"
-                  class="increase"
-                  (click)="increase(child)"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          </div>
-          <div role="menuitem">
-            <div class="counterLine">
-              <div class="people">
-                <p>{{ 'roomList.infants' | translate }}</p>
-                <span>{{ 'roomList.infantsSpan' | translate }}</span>
-              </div>
-              <div class="counterCheck">
-                <button
-                  type="button"
-                  class="decrease"
-                  (click)="decrease(infant)"
-                >
-                  -
-                </button>
-                <span class="counter" id="infants" #infant>{{ infants }}</span>
-                <button
-                  type="button"
-                  class="increase"
-                  (click)="increase(infant)"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          </div>
-          <button
-            class="personnelSaveBtn"
-            type="button"
-            (click)="personnelDropdown.isOpen = !personnelDropdown.isOpen"
-            (click)="changePersonnel()"
-          >
-            {{ 'roomList.saveBtn' | translate }}
-          </button>
-        </ul>
-      </div>
-      <!-- personnel filterbutton -->
-
-      <div
-        class="businesstrip"
-        dropdown
-        #businesstripDropdown="bs-dropdown"
-        [insideClick]="true"
-      >
-        <!-- businesstrip filterbutton -->
-        <button class="businesstrip filterButton" dropdownToggle type="button">
-          {{ 'roomList.workTrip' | translate }}
-        </button>
-        <ul
-          *dropdownMenu
-          class="businesstrip-dropdown-menu dropdown-menu"
-          role="menu"
-        >
-          <input class="businesstrip-checkbox" type="checkbox" #binput />
-          <p>
-            <strong>{{ 'roomList.workTripTitle' | translate }}</strong>
-          </p>
-          <p class="personnel-content-second">
-            {{ 'roomList.workTripContents' | translate }}
-          </p>
-          <!-- <button
-            *ngIf="binput.checked"
-            (click)="binput.checked = false"
-            class="personnelremoveBtn"
-            type="button"
-          >
-            삭제
-          </button> -->
-          <button
-            class="personnelSaveBtn"
-            type="button"
-            (click)="businesstripDropdown.isOpen = !businesstripDropdown.isOpen"
-          >
-            {{ 'roomList.saveBtn' | translate }}
-          </button>
-        </ul>
-      </div>
-      <!-- businesstrip filterbutton -->
-        
-      <!-- roomtype filterbutton -->
-      <!--<div
-        class="roomtype"
-        dropdown
-        #roomtypeDropdown="bs-dropdown"
-        [insideClick]="true"
-      >
-        <button class="roomtype filterButton" dropdownToggle type="button">
-          {{ 'roomList.typeOfPlace' | translate }}
-        </button>
-        <ul
-          *dropdownMenu
-          class="roomtype-dropdown-menu dropdown-menu"
-          role="menu"
-        >
-          <li>
-            <input class="roomtype-checkbox" name="Entire Room" type="checkbox" checked #checkEntire/>
-            <div class="roomtype-text">
-              <p>
-                <strong>{{ 'roomList.entirePlace' | translate }}</strong>
-              </p>
-              <p>{{ 'roomList.entirePlaceContents' | translate }}</p>
-            </div>
-          </li>
-          <li>
-            <input class="roomtype-checkbox" name="Private Room" type="checkbox" checked #checkPrivate/>
-            <div class="roomtype-text">
-              <p>
-                <strong>{{ 'roomList.privateRoom' | translate }}</strong>
-              </p>
-              <p>
-                {{ 'roomList.privateRoomContents' | translate }}
-              </p>
-            </div>
-          </li>
-          <li>
-            <input class="roomtype-checkbox" name="Hotel Room" type="checkbox" checked #checkHotel/>
-            <div class="roomtype-text">
-              <p>
-                <strong>{{ 'roomList.hotelRoom' | translate }}</strong>
-              </p>
-              <p>{{ 'roomList.hotelRoomContents' | translate }}</p>
-            </div>
-          </li>
-          <li>
-            <input class="roomtype-checkbox" name="Shared Room" type="checkbox" checked #checkShare/>
-            <div class="roomtype-text">
-              <p>
-                <strong>{{ 'roomList.sharedRoom' | translate }}</strong>
-              </p>
-              <p>
-                {{ 'roomList.sharedRoomContents' | translate }}
-              </p>
-            </div>
-          </li>
-          <button
-            class="personnelSaveBtn"
-            type="button"
-            (click)="filterSpace(roomtypeDropdown, checkEntire, checkPrivate, checkHotel, checkShare)">
-            {{ 'roomList.saveBtn' | translate }}
-          </button>
-        </ul>
-        
-      </div>  --> <!-- roomtype filterbutton -->
-
-      <div
-        class="price"
-        dropdown
-        #priceDropdown="bs-dropdown"
-        [insideClick]="true"
-      >
-        <!-- price filterbutton -->
-        <button class="price filterButton" dropdownToggle type="button">
-          {{ 'roomList.price' | translate }}
-        </button>
-        <ul *dropdownMenu class="price-dropdown-menu dropdown-menu" role="menu">
-          <ng5-slider
-            [(value)]="minValue"
-            [(highValue)]="maxValue"
-            [options]="options"
-          ></ng5-slider>
-          <button
-            class="personnelSaveBtn"
-            type="button"
-            (click)="priceDropdown.isOpen = !priceDropdown.isOpen"
-            (click)="setPrice()"
-          >
-            {{ 'roomList.saveBtn' | translate }}
-          </button>
-        </ul>
-      </div>
-      <!-- price filterbutton -->
-    </div>
-  </div>
-</div>
-<!-- //filter -->
-
 <div class="roomListWrap clear-fix" *ngIf="!(isLoading$ | async)">
   <div class="list">
     <div class="notice">
@@ -333,6 +75,10 @@
               [readonly]="isReadonly"
             ></rating>
           </div>
+          <div class="viewPrice">
+            ₩{{room.price | number}}/박
+          </div>
+          <p class="finalPrice">총 요금 : ₩{{room.price*dayDiff | number}}</p>
         </div>
       </li>
     </ul>
@@ -394,7 +140,7 @@
               <div class="infoText">
                 <span>{{ marker.room_type }} {{ marker.beds }}</span>
                 <p>{{ marker.title }}</p>
-                <rating
+                <rating class="rating"
                   [(ngModel)]="marker.total_rating"
                   [max]="max"
                   [readonly]="isReadonly"
@@ -409,3 +155,196 @@
   </div>
 </div>
 <div *ngIf="isLoading$ | async" class="loading"><img src="../../../assets/spinner.gif" alt="loading" class="spinnerImg"></div>
+
+<div class="positionTop">
+  <app-navigation (initializeCurrentPage)="initializeCurrentPage()"></app-navigation>
+
+  <div class="filter">
+    <!-- filter -->
+    <div class="filterLeft">
+      <div class="date">
+        <input type="text" class="filterButton" [bsConfig]="{ rangeInputFormat: 'MM/DD', isAnimated: true }"
+          bsDaterangepicker [ngStyle]="dateStyle" placement="bottom right" (bsValueChange)="onValueChange($event)"
+          (bsValueChange)="widthChange()" [dateCustomClasses]="dateCustomClasses"
+          placeholder="{{ 'roomList.datePlaceholder' | translate }}" />
+        <!-- date filterbutton -->
+      </div>
+      <!-- date filterbutton -->
+
+      <div class="personnel" dropdown #personnelDropdown="bs-dropdown" [insideClick]="true">
+        <!-- personnel filterbutton -->
+        <button class="filterButton" dropdownToggle type="button">
+          <span *ngIf="personnel === 1">{{ personnel }} {{ 'roomList.guest' | translate }}</span>
+          <span *ngIf="personnel > 1">{{ personnel }} {{ 'roomList.guests' | translate }}</span>
+        </button>
+        <ul *dropdownMenu class="personnel-dropdown-menu dropdown-menu" role="menu">
+          <div class="counterLine">
+            <div class="people">
+              <p class="top">{{ 'roomList.adults' | translate }}</p>
+            </div>
+            <div class="counterCheck">
+              <button type="button" class="decrease" (click)="decrease(adult)">
+                -
+              </button>
+              <span class="counter" id="adults" #adult>{{ adults }}</span>
+              <button type="button" class="increase" (click)="increase(adult)">
+                +
+              </button>
+            </div>
+          </div>
+
+          <div role="menuitem">
+            <div class="counterLine">
+              <div class="people">
+                <p>{{ 'roomList.children' | translate }}</p>
+                <span>{{ 'roomList.childrenSpan' | translate }}</span>
+              </div>
+              <div class="counterCheck">
+                <button type="button" class="decrease" (click)="decrease(child)">
+                  -
+                </button>
+                <span class="counter" id="children" #child>{{ children }}</span>
+                <button type="button" class="increase" (click)="increase(child)">
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+          <div role="menuitem">
+            <div class="counterLine">
+              <div class="people">
+                <p>{{ 'roomList.infants' | translate }}</p>
+                <span>{{ 'roomList.infantsSpan' | translate }}</span>
+              </div>
+              <div class="counterCheck">
+                <button type="button" class="decrease" (click)="decrease(infant)">
+                  -
+                </button>
+                <span class="counter" id="infants" #infant>{{ infants }}</span>
+                <button type="button" class="increase" (click)="increase(infant)">
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="personnelSaveBtn" type="button" (click)="personnelDropdown.isOpen = !personnelDropdown.isOpen"
+            (click)="changePersonnel()">
+            {{ 'roomList.saveBtn' | translate }}
+          </button>
+        </ul>
+      </div>
+      <!-- personnel filterbutton -->
+
+      <div class="businesstrip" dropdown #businesstripDropdown="bs-dropdown" [insideClick]="true">
+        <!-- businesstrip filterbutton -->
+        <button class="businesstrip filterButton" dropdownToggle type="button">
+          {{ 'roomList.workTrip' | translate }}
+        </button>
+        <ul *dropdownMenu class="businesstrip-dropdown-menu dropdown-menu" role="menu">
+          <input class="businesstrip-checkbox" type="checkbox" #binput />
+          <p>
+            <strong>{{ 'roomList.workTripTitle' | translate }}</strong>
+          </p>
+          <p class="personnel-content-second">
+            {{ 'roomList.workTripContents' | translate }}
+          </p>
+          <!-- <button
+            *ngIf="binput.checked"
+            (click)="binput.checked = false"
+            class="personnelremoveBtn"
+            type="button"
+          >
+            삭제
+          </button> -->
+          <button class="personnelSaveBtn" type="button"
+            (click)="businesstripDropdown.isOpen = !businesstripDropdown.isOpen">
+            {{ 'roomList.saveBtn' | translate }}
+          </button>
+        </ul>
+      </div>
+      <!-- businesstrip filterbutton -->
+
+      <!-- roomtype filterbutton -->
+      <!--<div
+        class="roomtype"
+        dropdown
+        #roomtypeDropdown="bs-dropdown"
+        [insideClick]="true"
+      >
+        <button class="roomtype filterButton" dropdownToggle type="button">
+          {{ 'roomList.typeOfPlace' | translate }}
+        </button>
+        <ul
+          *dropdownMenu
+          class="roomtype-dropdown-menu dropdown-menu"
+          role="menu"
+        >
+          <li>
+            <input class="roomtype-checkbox" name="Entire Room" type="checkbox" checked #checkEntire/>
+            <div class="roomtype-text">
+              <p>
+                <strong>{{ 'roomList.entirePlace' | translate }}</strong>
+              </p>
+              <p>{{ 'roomList.entirePlaceContents' | translate }}</p>
+            </div>
+          </li>
+          <li>
+            <input class="roomtype-checkbox" name="Private Room" type="checkbox" checked #checkPrivate/>
+            <div class="roomtype-text">
+              <p>
+                <strong>{{ 'roomList.privateRoom' | translate }}</strong>
+              </p>
+              <p>
+                {{ 'roomList.privateRoomContents' | translate }}
+              </p>
+            </div>
+          </li>
+          <li>
+            <input class="roomtype-checkbox" name="Hotel Room" type="checkbox" checked #checkHotel/>
+            <div class="roomtype-text">
+              <p>
+                <strong>{{ 'roomList.hotelRoom' | translate }}</strong>
+              </p>
+              <p>{{ 'roomList.hotelRoomContents' | translate }}</p>
+            </div>
+          </li>
+          <li>
+            <input class="roomtype-checkbox" name="Shared Room" type="checkbox" checked #checkShare/>
+            <div class="roomtype-text">
+              <p>
+                <strong>{{ 'roomList.sharedRoom' | translate }}</strong>
+              </p>
+              <p>
+                {{ 'roomList.sharedRoomContents' | translate }}
+              </p>
+            </div>
+          </li>
+          <button
+            class="personnelSaveBtn"
+            type="button"
+            (click)="filterSpace(roomtypeDropdown, checkEntire, checkPrivate, checkHotel, checkShare)">
+            {{ 'roomList.saveBtn' | translate }}
+          </button>
+        </ul>
+        
+      </div>  -->
+      <!-- roomtype filterbutton -->
+
+      <div class="price" dropdown #priceDropdown="bs-dropdown" [insideClick]="true">
+        <!-- price filterbutton -->
+        <button class="price filterButton" dropdownToggle type="button">
+          {{ 'roomList.price' | translate }}
+        </button>
+        <ul *dropdownMenu class="price-dropdown-menu dropdown-menu" role="menu">
+          <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+          <button class="personnelSaveBtn" type="button" (click)="priceDropdown.isOpen = !priceDropdown.isOpen"
+            (click)="setPrice()">
+            {{ 'roomList.saveBtn' | translate }}
+          </button>
+        </ul>
+      </div>
+      <!-- price filterbutton -->
+    </div>
+  </div>
+</div>
+<!-- //filter -->

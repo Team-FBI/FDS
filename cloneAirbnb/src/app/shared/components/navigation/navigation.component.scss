@@ -33,13 +33,6 @@
   float: right;
   font-weight: bold;
 
-  button {
-    padding: 10px 20px;
-    background: transparent;
-    border: 0px;
-    font-weight: bold;
-  }
-
   ul.clear-fix {
     li {
       float: left;
@@ -115,15 +108,19 @@ button:focus {
 
 .mypage {
   margin-right: 10px;
+  padding:0;
 
   .btn-group {
     button {
       background: transparent;
+      padding:0;
     }
     button:focus {
       outline: none;
     }
-
+    .signOutBtn{
+      padding:10px 0px;
+    }
     img {
       width: 30px;
       height: 30px;
@@ -134,7 +131,7 @@ button:focus {
     .dropdown-menu {
       position: absolute;
       left: -2000px;
-      width: 280px;
+      width: 250px;
       padding: 10px 15px;
 
       li {
@@ -143,16 +140,22 @@ button:focus {
       }
 
       a {
-        display: block;
-        padding: 0px;
-        color: #555;
+        display:inline-block;
+        padding:0px 10px;
+        color: #484848;
+        font-weight: 300;
+        font-size:0.9rem;
         border-bottom: 1px solid #f1f1f1;
       }
       a:hover {
         border-bottom: 1px solid #333;
       }
       .signOutBtn {
-        padding-left: 0;
+        padding:15px 10px;
+
+        &:hover {
+          border-bottom: 1px solid #333;
+        }
       }
     }
   }
@@ -185,6 +188,7 @@ button:focus {
 .language button {
   width: 50px;
   padding: 10px;
+  margin-right:20px;
   font-size: 0.8rem;
   background: transparent;
 }

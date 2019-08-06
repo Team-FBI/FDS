@@ -90,6 +90,11 @@
     "signInBtn": "로그인",
     "signUpBtn": "회원가입"
   },
+  "yourTrip": {
+    "upcomingPlans": "예정된 일정",
+    "noPlans": "예정된 일정이 없으시네요. 다음 여행을 슬슬 계획해 볼까요?",
+    "pastPlan": "이전 여행지"
+  },
   "roomList": {
     "datePlaceholder": "날짜",
     "guest": "명",

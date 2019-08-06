@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .positionTop {
   position: fixed;
   top: 0;
@@ -155,11 +157,14 @@ button:focus {
 }
 
 .detailList {
+  @include flexContainer(space-between);
+  align-items: center;
   margin-bottom: 20px;
-  padding: 5px;
+  padding: 0px 3px;
   border: 1px solid #ddd;
   border-radius: 5px;
   cursor: pointer;
+  height: 200px;
 }
 
 .detailList:hover {
@@ -173,19 +178,24 @@ button:focus {
 }
 
 .detailImg {
-  float: left;
-  width: 40%;
+  width: 300px;
   border-radius: 5px;
+  overflow: hidden;
+
+  img{
+    border-radius: 5px;
+  }
 }
 
 carousel slide {
   z-index: -10;
-  height: 170px;
+  height: 190px;
 }
 
 .detailText {
-  float: left;
-  width: 60%;
+  @include flexContainer(space-between);
+  flex-flow: column;
+  width:calc( 100% - 320px );
   height: 100%;
   padding: 10px 20px;
 
@@ -198,6 +208,9 @@ carousel slide {
     font-size: 1.3rem;
     font-weight: bold;
     padding: 2px 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .roomExplanation {
     font-size: 0.9rem;
@@ -205,6 +218,15 @@ carousel slide {
   }
   .star {
     margin-top: 20px;
+    color:#008489;
+  }
+  .viewPrice{
+    font-size:16px;
+    text-align: right;
+  }
+  .finalPrice{
+    font-size:12px;
+    text-align: right;
   }
 }
 
@@ -233,8 +255,14 @@ agm-map {
       font-size: 1.1rem;
       font-weight: bold;
     }
+    .rating{
+      color:#008489;
+    }
   }
 }
+
+
+
 ::ng-deep.gm-style .gm-style-iw-c {
   padding: 17px 0 0 17px;
 }
