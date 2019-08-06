@@ -82,6 +82,8 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   increaseBtn1 = false;
   increaseBtn2 = false;
   increaseBtn3 = false;
+  pricecheckInDate: any;
+  pricecheckOutDate: any;
 
   initCheckin = this.reservationInfoService.reservationInfoObj.checkIn;
   initCheckOut = this.reservationInfoService.reservationInfoObj.checkOut;
@@ -176,6 +178,10 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
     this.endDate = this.reservationInfoService.reservationInfoObj.checkIn;
     this.endDate2 = this.reservationInfoService.reservationInfoObj.checkOut;
+    
+    this.pricecheckInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
+    this.pricecheckOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
+    this.dayDiff = (this.pricecheckOutDate.getTime() - this.pricecheckInDate.getTime()) / (1000 * 60 * 60 * 24);
 
     this.id = this.router.url.split('/');
     this.isLoading$.next(true);
@@ -185,11 +191,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.reservationInfoService.reservationInfoObj.price = res.price;
       this.min_stay = res.min_stay;
       this.max_stay = res.max_stay;
-      this.totalprice = this.price * this.min_stay * this.personnel;
-      this.serviceprice = this.totalprice * 0.13;
-      this.Accommodation = this.serviceprice * 0.1;
-      this.finalprice =
-        this.totalprice + this.serviceprice + this.Accommodation;
+      this.setPrice();
       this.total_rating = res.total_rating;
       this.image = res.image;
       this.image_1 = res.image_1;
@@ -229,10 +231,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     }
     this.personnel = this.adults + this.children;
     this.reservationInfoService.reservationInfoObj.personnel = this.personnel;
-    this.totalprice = this.price * this.min_stay * this.personnel;
-    this.serviceprice = this.totalprice * 0.1;
-    this.Accommodation = this.serviceprice * 0.1;
-    this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
+    this.setPrice();
     this.checkPersonnel();
     this.checkInfants();
   }
@@ -257,12 +256,16 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
     this.personnel = this.adults + this.children;
     this.reservationInfoService.reservationInfoObj.personnel = this.personnel;
-    this.totalprice = this.price * this.min_stay * this.personnel;
-    this.serviceprice = this.totalprice * 0.13;
-    this.Accommodation = this.serviceprice * 0.1;
-    this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
+    this.setPrice();
     this.checkPersonnel();
     this.checkInfants();
+  }
+
+  setPrice() {
+    this.totalprice = this.price * this.dayDiff;
+    this.serviceprice = this.totalprice * 0.1;
+    this.Accommodation = this.serviceprice * 0.1;
+    this.finalprice = this.totalprice + this.serviceprice + this.Accommodation;
   }
 
   checkPersonnel() {
@@ -278,7 +281,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.styleIncreasebtn2 = 1;
     }
   }
-  
+
   checkInfants() {
     if (this.infants >= 5) {
       this.increaseBtn3 = true;
@@ -312,7 +315,8 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     const cInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
     const cOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
     const diff = (cOutDate.getTime() - cInDate.getTime()) / (1000 * 60 * 60 * 24);
-    if (diff <= this.min_stay) {
+    this.dayDiff = diff;
+    if (diff < this.min_stay) {
       this.overMinstay = true;
       this.overMaxstay = false;
       this.btnOpacity = '0.1';
@@ -361,6 +365,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.reservationInfoService.reservationInfoObj.checkIn = this.endDate;
     this.checkDate();
     this.posibleMaxMin();
+    this.setPrice();
   }
 
   onValueChange2(value: any): void {
@@ -368,12 +373,14 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.reservationInfoService.reservationInfoObj.checkOut = this.endDate2;
     this.checkDate();
     this.posibleMaxMin();
+    this.setPrice();
   }
 
   checkDate() {
     const sDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
     const eDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
     const diff = (eDate.getTime() - sDate.getTime()) / (1000 * 60 * 60 * 24);
+    this.dayDiff = diff;
     if (diff <= 0) {
       this.compareDate = true;
       this.btnOpacity = '0.1';

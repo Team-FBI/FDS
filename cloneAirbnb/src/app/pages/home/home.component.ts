@@ -12,6 +12,14 @@ import { RoomListService } from 'src/app/core/service/room-list.service';
 })
 export class HomeComponent implements OnInit {
   datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean; };
+
+  styleIncreasebtn1 = 1;
+  styleIncreasebtn2 = 1;
+  styleIncreasebtn3 = 1;
+  increaseBtn1 = false;
+  increaseBtn2 = false;
+  increaseBtn3 = false;
+
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
@@ -20,7 +28,7 @@ export class HomeComponent implements OnInit {
   ) {
     this.datePickerConfig = Object.assign(
       {},
-      {  
+      {
         isAnimated: true,
         containerClass: 'theme-red',
         selectFromOtherMonth: true
@@ -39,8 +47,8 @@ export class HomeComponent implements OnInit {
 
   increase(personnelType: HTMLSpanElement) {
     this.reservationInfoService.reservationInfoObj[personnelType.id]++;
-
     this.reservationInfoService.reservationInfoObj.personnel++;
+    this.checkPersonnel();
   }
 
   decrease(personnelType: HTMLSpanElement) {
@@ -56,6 +64,43 @@ export class HomeComponent implements OnInit {
 
         this.reservationInfoService.reservationInfoObj.personnel--;
       }
+    }
+    this.checkPersonnel();
+  }
+
+  checkPersonnel() {
+    if ( this.adults >= 16) {
+      this.increaseBtn1 = true;
+      this.styleIncreasebtn1 = 0.1;
+    } else {
+      this.increaseBtn1 = false;
+      this.styleIncreasebtn1 = 1;
+    }
+
+    if (this.children >= 5) {
+      this.increaseBtn2 = true;
+      this.styleIncreasebtn2 = 0.1;
+    } else {
+      this.increaseBtn2 = false;
+      this.styleIncreasebtn2 = 1;
+    }
+
+    if (this.infants >= 5) {
+      this.increaseBtn3 = true;
+      this.styleIncreasebtn3 = 0.1;
+    } else {
+      this.increaseBtn3 = false;
+      this.styleIncreasebtn3 = 1;
+    }
+  }
+
+  checkInfants() {
+    if (this.infants >= 5) {
+      this.increaseBtn3 = true;
+      this.styleIncreasebtn3 = 0.1;
+    } else {
+      this.increaseBtn3 = false;
+      this.styleIncreasebtn3 = 1;
     }
   }
 
