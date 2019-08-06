@@ -3,10 +3,13 @@ export interface ReservationInfo {
   destination: string;
   checkIn: string;
   checkOut: string;
+  checkInTime: string;
+  checkOutTime: string;
   personnel: number;
   adults: number;
   children: number;
   infants: number;
   price: number;
   roomType: string;
+  rating: number;
 }

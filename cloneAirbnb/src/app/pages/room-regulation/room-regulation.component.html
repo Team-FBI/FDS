@@ -1,12 +1,12 @@
 <div class="roomHeader">
   <h1 class="logo">
-      <a routerLink="/home"
+    <a routerLink="/home"
       ><img
         src="https://i.postimg.cc/zDhvQrxH/logo.png"
         alt="Airbnb"
         class="mainLogo"
       />
-      </a>
+    </a>
   </h1>
   <div class="language">
     <button (click)="switchLanguage()">
@@ -37,7 +37,7 @@
         </div>
         <div class="regulationTime">
           <p>{{ 'roomRegulation.checkIn' | translate }} {{ getCheckInDay }}</p>
-          <p>16:00 - 22:00</p>
+          <p>{{ checkInTime }}</p>
         </div>
       </div>
       <div class="regulationCheckOut">
@@ -50,7 +50,7 @@
           <p>
             {{ 'roomRegulation.checkOut' | translate }} {{ getCheckOutDay }}
           </p>
-          <p>11:00</p>
+          <p>{{ checkOutTime }}</p>
         </div>
       </div>
     </div>

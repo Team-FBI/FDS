@@ -56,11 +56,10 @@
 
     .checkInOutDate {
       @include flexContainer(space-between);
-      color:#000;
+      color: #000;
 
-
-      span{
-        font-size:0.9rem;
+      span {
+        font-size: 0.9rem;
         font-weight: 300;
       }
 
@@ -68,7 +67,6 @@
         line-height: 40px;
         font-size: 40px;
       }
-
     }
   }
 

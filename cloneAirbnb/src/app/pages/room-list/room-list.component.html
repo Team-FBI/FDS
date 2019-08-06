@@ -140,7 +140,7 @@
               <div class="infoText">
                 <span>{{ marker.room_type }} {{ marker.beds }}</span>
                 <p>{{ marker.title }}</p>
-                <rating
+                <rating class="rating"
                   [(ngModel)]="marker.total_rating"
                   [max]="max"
                   [readonly]="isReadonly"

@@ -160,11 +160,11 @@ button:focus {
   @include flexContainer(space-between);
   align-items: center;
   margin-bottom: 20px;
-  padding: 0px 15px;
+  padding: 0px 3px;
   border: 1px solid #ddd;
   border-radius: 5px;
   cursor: pointer;
-  height: 210px;
+  height: 200px;
 }
 
 .detailList:hover {
@@ -178,22 +178,26 @@ button:focus {
 }
 
 .detailImg {
-  width: 40%;
+  width: 300px;
   border-radius: 5px;
+  overflow: hidden;
+
+  img{
+    border-radius: 5px;
+  }
 }
 
 carousel slide {
   z-index: -10;
-  height: 170px;
+  height: 190px;
 }
 
 .detailText {
   @include flexContainer(space-between);
   flex-flow: column;
-  width: 60%;
+  width:calc( 100% - 320px );
   height: 100%;
   padding: 10px 20px;
-  
 
   .roomType {
     font-size: 0.8rem;
@@ -214,6 +218,7 @@ carousel slide {
   }
   .star {
     margin-top: 20px;
+    color:#008489;
   }
   .viewPrice{
     font-size:16px;
@@ -250,8 +255,14 @@ agm-map {
       font-size: 1.1rem;
       font-weight: bold;
     }
+    .rating{
+      color:#008489;
+    }
   }
 }
+
+
+
 ::ng-deep.gm-style .gm-style-iw-c {
   padding: 17px 0 0 17px;
 }

@@ -26,12 +26,15 @@ export class ReservationInfoService {
     destination: '',
     checkIn: this.checkInDate,
     checkOut: this.checkOutDate,
+    checkInTime: '',
+    checkOutTime: '',
     personnel: 1,
     adults: 1,
     children: 0,
     infants: 0,
     price: 0,
-    roomType: ''
+    roomType: '',
+    rating: 0
   };
 
   tripresevationInfoObj = {
