@@ -23,7 +23,7 @@ export class RoomdetailInfoComponent implements OnInit {
   facilities: any;
   facilitiesArray = [];
   strArray;
-  id = this.reservationInfoService.id;
+  id: any;
   datePickerConfig:Partial<BsDatepickerConfig>;
   bsInlineValue = this.reservationInfoService.date;
   bsInlineValue3 = new Date();
@@ -66,9 +66,9 @@ export class RoomdetailInfoComponent implements OnInit {
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;  
     // localStorage.setItem('roomId', this.id.toString());
-    this.id = parseInt(localStorage.getItem('roomId'));
+    this.id = this.router.url.split('/');
 
-    this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
+    this.http.get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`).subscribe((res: any) => {
       // console.log(res);
       this.title = res.title;
       this.reservationInfoService.reservationInfoObj.title = this.title;

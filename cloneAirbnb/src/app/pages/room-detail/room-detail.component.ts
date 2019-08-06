@@ -47,8 +47,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   rate: number = 7;
   // id = this.reservationInfoService.id;
   id: any;
-  id1: any;
-
   checked: boolean = true;
 
   isVisible: boolean = false;
@@ -104,8 +102,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     Kakao.init('71f4d8c641095d4ff1ba79b80a471bf5');
 
-    
-
     this.urlRemember.currentUrl = this.router.url;
 
     Kakao.Link.createDefaultButton({
@@ -137,15 +133,11 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     });
     
     this.id = this.router.url.split('/');
-    this.id1 = this.id[this.id.length - 1];
-
-    console.log(this.id1)
-    
 
     // this.http.get(`${this.appUrl}/rooms/`)
     //   .subscribe(res => console.log(res))
     this.isLoading$.next(true);
-    this.http.get(`${this.appUrl}/rooms/${this.id1}/`).subscribe(
+    this.http.get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`).subscribe(
       (res: any) => {
       this.price = res.price;
       this.reservationInfoService.reservationInfoObj.price = res.price;
