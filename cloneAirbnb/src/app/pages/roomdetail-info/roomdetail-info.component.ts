@@ -92,10 +92,8 @@ export class RoomdetailInfoComponent implements OnInit {
           this.description = res.description;
           this.strArray = this.description.split('\n');
           this.facilitiesArray = res.facilities;
-          this.reservationInfoService.reservationInfoObj.checkInTime =
-            res.check_in;
-          this.reservationInfoService.reservationInfoObj.checkOutTime =
-            res.check_out;
+          this.reservationInfoService.reservationInfoObj.checkInTime = res.check_in;
+          this.reservationInfoService.reservationInfoObj.checkOutTime = res.check_out;
           this.reservationInfoService.reservationInfoObj.rating =
             res.total_rating;
 
