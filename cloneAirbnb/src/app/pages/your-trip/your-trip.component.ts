@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { HttpClient } from '@angular/common/http';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
-import { from } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-your-trip',
@@ -12,38 +12,47 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./your-trip.component.scss']
 })
 export class YourTripComponent implements OnInit {
-  appUrl: string = environment.appUrl;
+  isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  appUrl = environment.appUrl;
 
-  end = [];
-  start = [];
-  
+  pastReservation = [];
+  plannedReservation = [];
+
   constructor(
     private router: Router,
     private urlRemember: UrlRememberService,
-    private http: HttpClient
+    private http: HttpClient,
+    private reservationInfoService: ReservationInfoService
   ) {}
 
   ngOnInit() {
+    const id = localStorage.getItem('userId');
     this.urlRemember.currentUrl = this.router.url;
-    const id = localStorage.getItem('userId')
 
-    this.http.get(`${this.appUrl}/accounts/user/${id}/`).subscribe((res:any) => {
-      // console.log(res.reservations)
-      for(const i of res.reservations){
-        const key = Object.keys(i).join('');
-        // console.log(key)
-        
-        //  console.log(this.parseDate(i[key].end_date))
-        console.log(this.end.push(this.parseDate(i[key].end_date)));        
+    this.http.get(`${this.appUrl}/accounts/user/${id}/`).subscribe(
+      (res: any) => {
+        for (const reservation of res.reservations) {
+          const roomId = Object.keys(reservation).join('');
+          this.parseDate(reservation[roomId].end_date)
+            ? this.plannedReservation.push(reservation[roomId])
+            : this.pastReservation.push(reservation[roomId]);
+        }
+      },
+      err => {},
+      () => {
+        this.isLoading$.next(false);
       }
-
-    })
+    );
   }
 
   parseDate(str) {
     const mdy = str.split('-');
-    console.log(mdy);
     return new Date(mdy[0], mdy[1] - 1, mdy[2]) > new Date() ? true : false;
+  }
+
+  toRoomDetail(roomId: number) {
+    this.reservationInfoService.id = roomId;
+    this.router.navigate([`roomdetail/${roomId}`]);
   }
 
 }

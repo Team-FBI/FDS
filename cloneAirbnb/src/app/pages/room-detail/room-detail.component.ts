@@ -14,6 +14,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { BehaviorSubject } from 'rxjs';
+declare let Kakao: any;
 
 @Component({
   selector: 'app-room-detail',
@@ -44,14 +45,24 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   image_4: string;
   max: number = 10;
   rate: number = 7;
-  id = this.reservationInfoService.id;
-
+  // id = this.reservationInfoService.id;
+  id: any;
   checked: boolean = true;
 
   isVisible: boolean = false;
   saveMsg = '삭제되었습니다';
   flag: boolean;
   timeOutID;
+
+  
+  // 달력 disable
+  disabledDates = [];
+  dateMove;
+  strDate;
+  listDate = [];
+
+
+
 
   @ViewChild('galleryTop', { static: true }) galleryTop;
   @ViewChild('galleryThumbs', { static: true }) galleryThumbs;
@@ -99,15 +110,44 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    Kakao.init('71f4d8c641095d4ff1ba79b80a471bf5');
+
     this.urlRemember.currentUrl = this.router.url;
+
+    Kakao.Link.createDefaultButton({
+      container: '#shareBtn',
+      objectType: 'feed',
+      content: {
+        title: document.title,
+        description: '내용, 주로 해시태그',
+        imageUrl: document.images[0].src,
+        link: {
+          webUrl: document.location.href,
+          mobileWebUrl: document.location.href
+        }
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845
+      },
+      buttons: [
+        {
+          title: 'Open!',
+          link: {
+            mobileWebUrl: document.location.href,
+            webUrl: document.location.href
+          }
+        }
+      ]
+    });
     
-    this.id = parseInt(localStorage.getItem('roomId'));
-    
+    this.id = this.router.url.split('/');
 
     // this.http.get(`${this.appUrl}/rooms/`)
     //   .subscribe(res => console.log(res))
     this.isLoading$.next(true);
-    this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe(
+    this.http.get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`).subscribe(
       (res: any) => {
       this.price = res.price;
       this.reservationInfoService.reservationInfoObj.price = res.price;
@@ -123,11 +163,18 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.image_2 = res.image_2;
       this.image_3 = res.image_3;
       this.image_4 = res.image_4;
+
+      res.reservations.forEach(element => {
+        this.getDateRange(element[0], element[1], this.listDate);});
+      this.listDate.forEach(element => {
+        this.disabledDates.push(new Date(element))
+      });
     },
     err => {},
     () => {
       this.isLoading$.next(false);
     }
+    
     );
   }
 
@@ -200,5 +247,32 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   setregulation() {
     this.reservationInfoService.reservationInfoObj.price = this.price;
+  }
+
+  getDateRange(startDate, endDate, listDate){
+    this.dateMove = new Date(startDate);
+    this.strDate = startDate;
+    if (startDate === endDate) {
+      this.strDate = this.dateMove.toISOString().slice(0,10);
+      listDate.push(this.strDate);
+    } else {
+      while (this.strDate < endDate) {
+        this.strDate = this.dateMove.toISOString().slice(0, 10);
+        listDate.push(this.strDate);
+        this.dateMove.setDate(this.dateMove.getDate() + 1);
+      }
+    }
+    return listDate;
+  }
+  onValueChange(value: Date): void {
+    this.listDate = [];
+    const endDate = value.toISOString().slice(0,10);
+    this.getDateRange('2019-07-31', endDate, this.listDate);
+    this.setDisableDate();
+  }
+  setDisableDate(){
+    this.listDate.forEach(element => {
+      this.disabledDates.push(new Date(element));
+    });
   }
 }

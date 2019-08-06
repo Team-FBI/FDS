@@ -23,11 +23,10 @@ export class RoomdetailInfoComponent implements OnInit {
   facilities: any;
   facilitiesArray = [];
   strArray;
-  id = this.reservationInfoService.id;
+  id: any;
   datePickerConfig:Partial<BsDatepickerConfig>;
   bsInlineValue = this.reservationInfoService.date;
-  bsInlineValue3 = new Date();
-  bsInlineValue2 = this.bsInlineValue3.getMonth() + 2;
+  bsInlineValue2 = new Date();
   minDate: Date;
   maxDate: Date;
   minDate1: number;
@@ -37,7 +36,14 @@ export class RoomdetailInfoComponent implements OnInit {
   now = new Date();
   fourDaysAhead = new Date();
 
-  disabledDates = [new Date('2019-08-16'), new Date('2019-08-17')];
+  // 달력 disable
+  disabledDates = [];
+  reservationsArray = [];
+  dateMove;
+  strDate;
+  listDate = [];
+
+
 
   constructor(
     private router: Router,
@@ -56,12 +62,17 @@ export class RoomdetailInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.urlRemember.currentUrl = this.router.url;  
     // localStorage.setItem('roomId', this.id.toString());
-    this.id = parseInt(localStorage.getItem('roomId'));
+    this.id = this.router.url.split('/');
 
-    this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe((res: any) => {
-      console.log(res);
+    this.bsInlineValue2.setMonth(this.bsInlineValue.getMonth() + 1);
+    console.log(this.bsInlineValue2);
+
+
+    this.http.get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`).subscribe((res: any) => {
+      // console.log(res);
       this.title = res.title;
       this.reservationInfoService.reservationInfoObj.title = this.title;
       this.address = res.address;
@@ -99,12 +110,41 @@ export class RoomdetailInfoComponent implements OnInit {
       } else {
         this.room_type = '';
       }
+
+
+      
+      res.reservations.forEach(element => {
+        this.getDateRange(element[0], element[1], this.listDate);
+      });
+      this.setDisableDate();
+      // this.disabledDates = [];
+
+      this.facilities = res.facilities;
+      this.facilities.forEach(element => {
+
+      // console.log(res.reservations);
+      // console.log(res.reservations[0])
+      // console.log(res.reservations[0][0])
+      // this.disabledDates.push(new Date(res.reservations[0][0]) , new Date(res.reservations[0][1]));
+      this.reservationsArray.push(new Date(res.reservations[0][0]) , new Date(res.reservations[0][1]))
+      // console.log(this.reservationsArray);
+
+      // this.getDateRange('2019-08-03', '2019-08-05' , this.listDate);
+
+
+      res.reservations.forEach(element => {
+        // console.log(element)
+        // element[0] =시작날짜 elment[1]= 끝날짜
+        this.getDateRange(element[0], element[1], this.listDate);
+      });
+      // console.log(this.listDate);
+      this.setDisableDate();
   
       this.facilities = res.facilities;
       this.facilities.forEach(element => {
-        
-        this.facilitiesArray.push(element);
+        // console.log(element)
 
+        this.facilitiesArray.push(element);
         if (element[0] === 'queen-size bed') {
           element[0] = '퀸사이즈침대';
         }
@@ -145,21 +185,41 @@ export class RoomdetailInfoComponent implements OnInit {
           element[0] = '커피머신';
         }
         if (element[0] === 'air conditioner') {
-          element[0] = '에어컨';
-        }
+
+          element[0] = '에어컨';}});
       });
-      console.log(res.reservations)
     });
   }
   onValueChange(value: Date): void {
-    this.inputData = value;
-    // console.log(this.inputData);
-    // this.bsInlineValue = this.inputData;
-    // console.log(this.bsInlineValue);
-    // this.now = this.bsInlineValue;
-    // console.log(this.now)
-    // this.fourDaysAhead.setDate(this.now.getDate() + this.maxDate1);
-    // 나중에 서버에 보낼 input data
+    this.listDate = [];
+
+    const endDate = value.toISOString().slice(0, 10);
+    this.getDateRange('2019-07-31', endDate, this.listDate);
+    this.setDisableDate();
+  }
+
+  setDisableDate() {
+    this.listDate.forEach(element => {
+      this.disabledDates.push(new Date(element))
+    });
+
+  }
+
+
+  getDateRange(startDate, endDate, listDate){
+    this.dateMove = new Date(startDate);
+    this.strDate = startDate;
+    if (startDate === endDate) {
+      this.strDate = this.dateMove.toISOString().slice(0,10);
+      listDate.push(this.strDate);
+    } else {
+      while (this.strDate < endDate) {
+        this.strDate = this.dateMove.toISOString().slice(0, 10);
+        listDate.push(this.strDate);
+        this.dateMove.setDate(this.dateMove.getDate() + 1);
+      }
+    }
+    return listDate;
   }
 }
 // a = {size : 침대}

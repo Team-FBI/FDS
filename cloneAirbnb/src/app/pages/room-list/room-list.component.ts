@@ -90,6 +90,11 @@ export class RoomListComponent implements OnInit {
   maxSize = 5;
   currentPage = 1;
   page = this.roomListService.page;
+  
+  //날짜 차이 계산
+  dayDiff: number;
+  checkInDate: Date;
+  checkOutDate: Date; 
 
   constructor(
     private mapsService: GoogleMapService,
@@ -114,8 +119,15 @@ export class RoomListComponent implements OnInit {
     ];
   }
 
+  
+
   ngOnInit() {
     this.getRoomInfo();
+    this.checkInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
+    this.checkOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
+    this.dayDiff =
+      (this.checkOutDate.getTime() - this.checkInDate.getTime()) /
+      (1000 * 60 * 60 * 24);
 
     this.roomListService.roomListUpDated.subscribe((roomList: Result[]) => {
       this.roomList = roomList;
@@ -139,7 +151,7 @@ export class RoomListComponent implements OnInit {
       (res: RoomList) => {
         this.totalRooms = res.count;
         for (const room of res.results) {
-          this.roomListService.roomList.push(room);
+          this.roomListService.roomList.push(room);  
           this.makeMarker(room);
         }
         this.roomCount = this.roomList.length;
@@ -181,6 +193,11 @@ export class RoomListComponent implements OnInit {
       1}/${value[1].getDate()}/${value[1].getFullYear()}`;
 
     this.roomListService.page = 1;
+    this.checkInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
+    this.checkOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
+    this.dayDiff =
+      (this.checkOutDate.getTime() - this.checkInDate.getTime()) /
+      (1000 * 60 * 60 * 24);
     this.setRoomList();
   }
 
@@ -207,7 +224,6 @@ export class RoomListComponent implements OnInit {
     this.reservationInfoService.id = id;
     this.roomListService.roomList = [];
     this.roomListService.markers = [];
-    localStorage.setItem('roomId', id.toString());
     this.router.navigate([`roomdetail/${id}`]);
   }
 
@@ -285,6 +301,11 @@ export class RoomListComponent implements OnInit {
     this.roomListService.page = this.page;
     this.setRoomList();
   }
+
+  // numberWithCommas(num) {
+  //   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  // }
+
 
   get adults() {
     return this.reservationInfoService.reservationInfoObj.adults;
