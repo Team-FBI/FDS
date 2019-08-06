@@ -12,7 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MessageListComponent implements OnInit {
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  appUrl: string = environment.appUrl;
+  appUrl = environment.appUrl;
 
   constructor(private router: Router, private http: HttpClient) {}
   messageList = [];
