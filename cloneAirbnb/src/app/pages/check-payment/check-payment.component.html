@@ -2,7 +2,6 @@
   <h1 class="logo">
     <a routerLink="/home"
       ><img
-        *ngIf="!isMain"
         src="https://i.postimg.cc/zDhvQrxH/logo.png"
         alt="Airbnb"
         class="mainLogo"
@@ -34,10 +33,14 @@
               size="lg"
               [styles]="{ color: 'gray' }"
             ></fa-icon
-            ><span class="caret">{{ 'checkPayment.creditOrDebitCard' | translate }}</span>
+            ><span class="caret">{{
+              'checkPayment.creditOrDebitCard' | translate
+            }}</span>
           </button>
           <ul *dropdownMenu class="dropdown-menu" role="menu">
-            <li style="font-size:14px"><strong>{{ 'checkPayment.addPaymentMethod' | translate }}</strong></li>
+            <li style="font-size:14px">
+              <strong>{{ 'checkPayment.addPaymentMethod' | translate }}</strong>
+            </li>
             <li class="divider dropdown-divider"></li>
             <li role="menuitem" (click)="addCard()">
               {{ 'checkPayment.creditOrDebitCard' | translate }}
@@ -59,25 +62,48 @@
       </div>
       <div class="cardInfo">
         <h3>{{ 'checkPayment.cardInfo' | translate }}</h3>
-        <input type="text" class="cardNumInfo" placeholder="{{ 'checkPayment.cardNumber' | translate }}" />
-        <input type="text" class="cardBtn" placeholder="{{ 'checkPayment.expiration' | translate }}" />
-        <input type="text" class="cardBtn" placeholder="{{ 'checkPayment.CVV' | translate }}" />
+        <input
+          type="text"
+          class="cardNumInfo"
+          placeholder="{{ 'checkPayment.cardNumber' | translate }}"
+        />
+        <input
+          type="text"
+          class="cardBtn"
+          placeholder="{{ 'checkPayment.expiration' | translate }}"
+        />
+        <input
+          type="text"
+          class="cardBtn"
+          placeholder="{{ 'checkPayment.CVV' | translate }}"
+        />
       </div>
       <div class="otherInfo">
         <div class="paymentAddress">
           <h3>{{ 'checkPayment.billingInfo' | translate }}</h3>
-          <input type="text" class="otherBtn" placeholder="{{ 'checkPayment.zipCode' | translate }}" />
+          <input
+            type="text"
+            class="otherBtn"
+            placeholder="{{ 'checkPayment.zipCode' | translate }}"
+          />
         </div>
         <div class="paymentCountry">
           <h3>{{ 'checkPayment.billingCountry' | translate }}</h3>
-          <input type="text" class="otherBtn" placeholder="{{ 'checkPayment.Korea' | translate }}" disabled />
+          <input
+            type="text"
+            class="otherBtn"
+            placeholder="{{ 'checkPayment.Korea' | translate }}"
+            disabled
+          />
         </div>
       </div>
       <div>
         {{ 'checkPayment.policy' | translate }}
       </div>
     </div>
-    <button class="requstResBtn" (click)="toYourTrip()">{{ 'checkPayment.requestToBook' | translate }}</button>
+    <button class="requstResBtn" (click)="toYourTrip()">
+      {{ 'checkPayment.requestToBook' | translate }}
+    </button>
   </section>
   <app-payment></app-payment>
 </section>

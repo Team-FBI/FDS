@@ -71,7 +71,6 @@ export class RoomdetailInfoComponent implements OnInit {
     this.id = this.router.url.split('/');
 
     this.bsInlineValue2.setMonth(this.bsInlineValue.getMonth() + 1);
-    console.log(this.bsInlineValue2);
 
     this.http
       .get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`)

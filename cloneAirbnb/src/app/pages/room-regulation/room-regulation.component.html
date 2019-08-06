@@ -1,13 +1,12 @@
 <div class="roomHeader">
   <h1 class="logo">
-      <a routerLink="/home"
+    <a routerLink="/home"
       ><img
-        *ngIf="!isMain"
         src="https://i.postimg.cc/zDhvQrxH/logo.png"
         alt="Airbnb"
         class="mainLogo"
       />
-      </a>
+    </a>
   </h1>
   <div class="language">
     <button (click)="switchLanguage()">
