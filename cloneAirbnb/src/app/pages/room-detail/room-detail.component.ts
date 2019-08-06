@@ -127,7 +127,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    // console.log(this.trcheckInDate, this.trcheckOutDate);
     this.urlRemember.currentUrl = this.router.url;
 
     Kakao.Link.createDefaultButton({
@@ -159,12 +158,8 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     });
 
     this.id = this.router.url.split('/');
-
-    // this.http.get(`${this.appUrl}/rooms/`)
-    //   .subscribe(res => console.log(res))
     this.isLoading$.next(true);
-<<<<<<< HEAD
-    this.http.get(`${this.appUrl}/rooms/${this.id}/`).subscribe(
+    this.http.get(`${this.appUrl}/rooms/${this.id[this.id.length -1]}/`).subscribe(
       (res: any) => {
       this.price = res.price;
       this.reservationInfoService.reservationInfoObj.price = res.price;
@@ -180,7 +175,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.image_2 = res.image_2;
       this.image_3 = res.image_3;
       this.image_4 = res.image_4;
-      console.log(res);
       res.reservations.forEach(element => {
         this.getDateRange(element[0], element[1], this.listDate);});     
       this.setDisableDate();
@@ -190,48 +184,13 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.isLoading$.next(false);
     }
     );
-=======
-    this.http
-      .get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`)
-      .subscribe(
-        (res: RoomDetail) => {
-          this.price = res.price;
-          this.reservationInfoService.reservationInfoObj.price = res.price;
-          this.min_stay = res.min_stay;
-          this.totalprice = this.price * this.min_stay * this.personnel;
-          this.serviceprice = this.totalprice * 0.13;
-          this.Accommodation = this.serviceprice * 0.1;
-          this.finalprice =
-            this.totalprice + this.serviceprice + this.Accommodation;
-          this.total_rating = res.total_rating;
-          this.image = res.image;
-          this.image_1 = res.image_1;
-          this.image_2 = res.image_2;
-          this.image_3 = res.image_3;
-          this.image_4 = res.image_4;
-
-          res.reservations.forEach(element => {
-            this.getDateRange(element[0], element[1], this.listDate);
-          });
-          this.listDate.forEach(element => {
-            this.disabledDates.push(new Date(element));
-          });
-        },
-        err => {},
-        () => {
-          this.isLoading$.next(false);
-        }
-      );
->>>>>>> rmorigin/develop
   }
 
   test() {
     this.isOpen = !this.isOpen;
-    // console.log(1)
   }
 
   increase(n: number) {
-    // console.log(n)
     if (n === 1) {
       this.adults++;
     } else if (n == 2) {
@@ -290,7 +249,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   }
 
   toRoomRegulation() {
-    console.log('예약하기 버튼이 눌렸습니다.');
     this.router.navigate(['roomregulation']);
   }
 
@@ -315,12 +273,9 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   }
   onValueChange(value: any): void {
     this.listDate = [];
-<<<<<<< HEAD
     this.endDate = `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`;
-    console.log(this.endDate2 - this.endDate);
     
     this.getDateRange('2019-07-31', this.endDate, this.listDate);
-    // console.log(this.listDate);
 
     this.reservationInfoService.reservationInfoObj.checkIn = this.endDate;
     
@@ -341,18 +296,8 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     // } else {
     //   this.isDate = false;
     // }
-    console.log(this.disabledDates);
-    console.log(this.endDate);
-    console.log(this.endDate2);
-    const a = this.getDateRange('2019-8-8','2019-8-10', this.listDate);
-    console.log(a);
     
 
-=======
-    const endDate = value.toISOString().slice(0, 10);
-    this.getDateRange('2019-07-31', endDate, this.listDate);
-    this.setDisableDate();
->>>>>>> rmorigin/develop
   }
   setDisableDate() {
     this.listDate.forEach(element => {
