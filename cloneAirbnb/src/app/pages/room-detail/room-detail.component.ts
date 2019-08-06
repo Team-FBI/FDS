@@ -191,9 +191,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
       this.checkInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
       this.checkOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
-      this.dayDiff = (this.checkOutDate.getTime() - this.checkInDate.getTime()) / (1000 * 60 * 60 * 24);
 
-      this.posibleMaxMin(res.min_stay, res.max_stay);
     },
     err => {},
     () => {
@@ -265,19 +263,17 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   }
 
   posibleMaxMin(minstay, maxstay) {
-    console.log(minstay, maxstay);
     minstay = new Date(minstay);
     maxstay = new Date(maxstay);
     this.dayDiff = (maxstay.getTime() - minstay.getTime()) / (1000 * 60 * 60 * 24);
-    console.log(this.dayDiff);
 
-    if (this.dayDiff < minstay) {
+    if (this.dayDiff < this.min_stay) {
       this.overMinstay = true;
     } else {
       this.overMinstay = false;
     }
 
-    if (this.dayDiff > maxstay) {
+    if (this.dayDiff > this.max_stay) {
       this.overMaxstay = true;
     } else {
       this.overMaxstay = false;
