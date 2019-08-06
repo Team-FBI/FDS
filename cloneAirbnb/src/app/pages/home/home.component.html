@@ -26,7 +26,7 @@
               placeholder="{{ 'home.checkInPlaceholder' | translate }}"
               class="form-control"
               bsDatepicker
-              [bsConfig]="{ isAnimated: true }"
+              [bsConfig]="datePickerConfig"
               #checkIn
             />
           </div>
@@ -37,7 +37,7 @@
               placeholder="{{ 'home.checkOutPlaceholder' | translate }}"
               class="form-control"
               bsDatepicker
-              [bsConfig]="{ isAnimated: true }"
+              [bsConfig]="datePickerConfig"
               #checkOut
             />
           </div>

@@ -33,6 +33,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   // infants = this.reservationInfoService.reservationInfoObj.infants;
   price: number;
   min_stay: number;
+  max_stay: number;
   appUrl: string = environment.appUrl;
   totalPriceBeforeTex: number;
   cleaningExpenses = 10000;
@@ -61,6 +62,31 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   dateMove;
   strDate;
   listDate = [];
+  isDate = false;
+  endDate;
+  endDate2;
+  value;
+  checkInDate: any;
+  checkOutDate: any;
+  dayDiff: any;
+  overMinstay = false;
+  overMaxstay = false;
+  
+  
+  initCheckin = this.reservationInfoService.reservationInfoObj.checkIn;
+  initCheckOut = this.reservationInfoService.reservationInfoObj.checkOut;
+  date = new Date();
+
+  initialCheckOutDate = this.reservationInfoService.initialCheckOutDate;
+  
+  // checkInDate = `${this.initCheckin.split('/')}`;
+
+  trcheckInDate = `${this.date.getFullYear()}-${this.date.getMonth() + 1}-${this.date.getDate()}`;
+
+  trcheckOutDate = `${this.initialCheckOutDate.getFullYear()
+  }-${this.initialCheckOutDate.getMonth() + 1}-${this.initialCheckOutDate.getDate()}`;
+  // checkOutDate = `${this.initialCheckOutDate.getMonth() +
+  //   1}/${this.initialCheckOutDate.getDate()}/${this.initialCheckOutDate.getFullYear()}`;
 
   @ViewChild('galleryTop', { static: true }) galleryTop;
   @ViewChild('galleryThumbs', { static: true }) galleryThumbs;
@@ -137,11 +163,12 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       ]
     });
 
-    this.id = this.router.url.split('/');
+    this.endDate = this.reservationInfoService.reservationInfoObj.checkIn;
+    this.endDate2 = this.reservationInfoService.reservationInfoObj.checkOut;
 
-    // this.http.get(`${this.appUrl}/rooms/`)
-    //   .subscribe(res => console.log(res))
+    this.id = this.router.url.split('/');
     this.isLoading$.next(true);
+
     this.http
       .get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`)
       .subscribe(
@@ -165,18 +192,15 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
           this.image_4 = res.image_4;
           this.capacity = res.capacity;
 
-          res.reservations.forEach(element => {
-            this.getDateRange(element[0], element[1], this.listDate);
-          });
-          this.listDate.forEach(element => {
-            this.disabledDates.push(new Date(element));
-          });
-        },
-        err => {},
-        () => {
-          this.isLoading$.next(false);
-        }
-      );
+      this.checkInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
+      this.checkOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
+
+    },
+    err => {},
+    () => {
+      this.isLoading$.next(false);
+    }
+    );
   }
 
   test() {
@@ -202,6 +226,24 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     }, 3000);
   }
 
+  posibleMaxMin(minstay, maxstay) {
+    minstay = new Date(minstay);
+    maxstay = new Date(maxstay);
+    this.dayDiff = (maxstay.getTime() - minstay.getTime()) / (1000 * 60 * 60 * 24);
+
+    if (this.dayDiff < this.min_stay) {
+      this.overMinstay = true;
+    } else {
+      this.overMinstay = false;
+    }
+
+    if (this.dayDiff > this.max_stay) {
+      this.overMaxstay = true;
+    } else {
+      this.overMaxstay = false;
+    }
+  }
+
   toRoomRegulation() {
     this.router.navigate(['roomregulation']);
   }
@@ -225,12 +267,24 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     }
     return listDate;
   }
-  onValueChange(value: Date): void {
+  
+  onValueChange(value: any): void {
     this.listDate = [];
-    const endDate = value.toISOString().slice(0, 10);
-    this.getDateRange('2019-07-31', endDate, this.listDate);
-    this.setDisableDate();
+    this.endDate = `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`;
+    
+    this.getDateRange('2019-07-31', this.endDate, this.listDate);
+
+    this.reservationInfoService.reservationInfoObj.checkIn = this.endDate;
+    this.posibleMaxMin(this.endDate, this.endDate2);
   }
+
+  onValueChange2(value: any): void {
+    this.endDate2 = `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`;
+
+    this.reservationInfoService.reservationInfoObj.checkOut = this.endDate2;
+    this.posibleMaxMin(this.endDate, this.endDate2);
+  }
+
   setDisableDate() {
     this.listDate.forEach(element => {
       this.disabledDates.push(new Date(element));

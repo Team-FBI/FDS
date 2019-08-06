@@ -95,6 +95,7 @@ export class RoomListComponent implements OnInit {
   dayDiff: number;
   checkInDate: Date;
   checkOutDate: Date; 
+  datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean; };
 
   constructor(
     private mapsService: GoogleMapService,
@@ -117,6 +118,15 @@ export class RoomListComponent implements OnInit {
       { date: twoDaysAhead, classes: ['bg-warning'] },
       { date: fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
     ];
+    this.datePickerConfig = Object.assign(
+      {},
+      {
+        rangeInputFormat: 'MM/DD',
+        isAnimated: true,
+        containerClass: 'theme-red',
+        selectFromOtherMonth: true
+      }
+    );
   }
 
   
