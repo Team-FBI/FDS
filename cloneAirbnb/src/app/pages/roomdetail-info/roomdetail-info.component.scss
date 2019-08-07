@@ -119,36 +119,38 @@
 .reviewContainer{
   
   h2{
-    margin-bottom:20px;
+    margin-bottom:30px;
     font-size: 2rem;
     font-weight: bold;
   }
 
   .reviewList{
+    margin-top:20px;
 
-    .gestInfo{
+    .userInfo{
       @include flexContainer(flex-start);
-      .gestPhoto{
-        width:40px;
-        height:40px;
-        overflow: hidden;
+      .userPhoto{
 
         img{
-          width:100%;
+          width:40px;
+          height:40px;
           border: 1px solid #eee;
           border-radius: 50%;
           object-fit: cover;
         }
       }
-      .gestName{
-        padding-left:10px;
+      .name{
+        margin-left:5px;
+        line-height: 40px;
+        font-size:0.9rem;
+        font-weight: 600;
       }
     }
     .review{
       padding:20px 0px;
       font-size:0.9rem;
       font-weight: 300;
-      border-bottom:1px solid #ddd;
+      border-bottom:1px solid #f1f1f1;
     }
   }
 }
