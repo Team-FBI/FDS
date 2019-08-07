@@ -42,7 +42,12 @@ export class RoomdetailInfoComponent implements OnInit {
   dateCustomClasses: DatepickerDateCustomClasses[];
   now = new Date();
   fourDaysAhead = new Date();
-  reviews: any;
+  reviews = [];
+  newReviews = [];
+  rotate = true;
+  maxSize = 5;
+  currentPage = 1;
+  page = 0;
 
   // 달력 disable
   disabledDates = [];
@@ -95,14 +100,17 @@ export class RoomdetailInfoComponent implements OnInit {
           this.strArray = this.description.split('\n');
           this.facilitiesArray = res.facilities;
           this.reviews = res.reviews;
-          this.reservationInfoService.reservationInfoObj.checkInTime = res.check_in;
-          this.reservationInfoService.reservationInfoObj.checkOutTime = res.check_out;
+          this.reservationInfoService.reservationInfoObj.checkInTime =
+            res.check_in;
+          this.reservationInfoService.reservationInfoObj.checkOutTime =
+            res.check_out;
           this.reservationInfoService.reservationInfoObj.rating =
             res.total_rating;
           res.reservations.forEach(element => {
             this.getDateRange(element[0], element[1], this.listDate);
           });
           this.setDisableDate();
+          this.divideReviews();
         },
         err => {},
         () => {
@@ -138,5 +146,27 @@ export class RoomdetailInfoComponent implements OnInit {
       }
     }
     return listDate;
+  }
+
+  divideReviews() {
+    const result = [];
+    let fiveReviews = [];
+    for (const [index, review] of this.reviews.entries()) {
+      if (index % 5 !== 0 || index === 0) {
+        fiveReviews.push(review);
+      } else if (index % 5 === 0) {
+        result.push(fiveReviews);
+        fiveReviews = [];
+        fiveReviews.push(review);
+      }
+      if (index === this.reviews.length - 1 && index % 5 === 0) {
+        result.push(fiveReviews);
+      }
+    }
+    this.newReviews = result;
+  }
+
+  pageChanged(event: any): void {
+    this.page = event.page - 1;
   }
 }
