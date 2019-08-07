@@ -180,7 +180,8 @@
                 -
               </button>
               <span class="counter" id="adults" #adult>{{ adults }}</span>
-              <button type="button" class="increase" (click)="increase(adult)">
+              <button type="button" class="increase" (click)="increase(adult)" [style.opacity]="styleIncreasebtn1"
+                [disabled]="increaseBtn1? 'disabled' : null">
                 +
               </button>
             </div>
@@ -197,7 +198,8 @@
                   -
                 </button>
                 <span class="counter" id="children" #child>{{ children }}</span>
-                <button type="button" class="increase" (click)="increase(child)">
+                <button type="button" class="increase" (click)="increase(child)" [style.opacity]="styleIncreasebtn2"
+                [disabled]="increaseBtn2 ? 'disabled' : null">
                   +
                 </button>
               </div>
@@ -214,7 +216,8 @@
                   -
                 </button>
                 <span class="counter" id="infants" #infant>{{ infants }}</span>
-                <button type="button" class="increase" (click)="increase(infant)">
+                <button type="button" class="increase" (click)="increase(infant)" [style.opacity]="styleIncreasebtn3"
+                [disabled]="increaseBtn3 ? 'disabled' : null">
                   +
                 </button>
               </div>
