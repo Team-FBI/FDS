@@ -226,7 +226,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
             this.cleaningExpenses +
             this.serviceFee +
             this.accommodationsTax;
-          this.total_rating = res.total_rating;
+          this.total_rating = Math.round(res.total_rating);
           this.image = res.image;
           this.image_1 = res.image_1;
           this.image_2 = res.image_2;

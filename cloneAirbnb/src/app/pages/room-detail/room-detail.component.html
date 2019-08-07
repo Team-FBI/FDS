@@ -69,7 +69,7 @@
     <div class="saveModal" *ngIf="isVisible">{{ saveMsg }}</div>
   </div>
   <div class="picture">
-    <button (click)="isOpen = !isOpen" class="pictureBtn">{{ 'roomDetail.viewPhotos' | translate }}</button>
+    <button (click)="isOpen = !isOpen" class="pictureBtn" >{{ 'roomDetail.viewPhotos' | translate }}</button>
   </div>
 </section>
 
@@ -80,7 +80,7 @@
     <div class="priceTitle">
       <h2>₩{{ price }} <span> <small><sub>{{ 'roomDetail.day' | translate }}</sub></small></span></h2>
       <div class="ratingBtn">
-        <rating [(ngModel)]="total_rating" [max]="5" class="rating"></rating>
+        <rating [(ngModel)]="total_rating" [max]="5" class="rating" [readonly]=true></rating>
       </div>
     </div>
     <div class="date">
