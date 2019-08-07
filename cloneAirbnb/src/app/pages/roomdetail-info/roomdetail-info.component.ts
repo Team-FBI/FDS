@@ -39,6 +39,13 @@ export class RoomdetailInfoComponent implements OnInit {
   minDate1: number;
   maxDate1: number;
   inputData: Date;
+  total_rating: number;
+  accuracyScore: number;
+  checkInScore: number;
+  cleanScore: number;
+  communicationScore: number;
+  locationScore: number;
+  valueScore: number;
   dateCustomClasses: DatepickerDateCustomClasses[];
   now = new Date();
   fourDaysAhead = new Date();
@@ -87,6 +94,7 @@ export class RoomdetailInfoComponent implements OnInit {
       .get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`)
       .subscribe(
         (res: RoomDetail) => {
+          console.log(res);
           this.title = res.title;
           this.reservationInfoService.reservationInfoObj.title = res.title;
           this.address = res.address;
@@ -100,6 +108,13 @@ export class RoomdetailInfoComponent implements OnInit {
           this.strArray = this.description.split('\n');
           this.facilitiesArray = res.facilities;
           this.reviews = res.reviews;
+          this.total_rating = Math.round(res.total_rating);
+          this.accuracyScore = Math.round(res.accuracy_score);
+          this.checkInScore = Math.round(res.checkin_score);
+          this.cleanScore = Math.round(res.clean_score);
+          this.communicationScore = Math.round(res.communication_score);
+          this.locationScore = Math.round(res.location_score);
+          this.valueScore = Math.round(res.value_score);
           this.reservationInfoService.reservationInfoObj.checkInTime =
             res.check_in;
           this.reservationInfoService.reservationInfoObj.checkOutTime =
