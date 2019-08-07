@@ -353,7 +353,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     );
     const diff = (eDate.getTime() - sDate.getTime()) / (1000 * 60 * 60 * 24);
     this.dayDiff = diff;
-    if (diff <= 0) {
+    if (diff < 0) {
       this.compareDate = true;
       this.btnOpacity = '0.1';
       this.blockSend = true;

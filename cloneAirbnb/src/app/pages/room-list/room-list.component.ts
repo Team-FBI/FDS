@@ -97,6 +97,13 @@ export class RoomListComponent implements OnInit {
   checkOutDate: Date;
   datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean };
 
+  styleIncreasebtn1 = 1;
+  styleIncreasebtn2 = 1;
+  styleIncreasebtn3 = 1;
+  increaseBtn1 = false;
+  increaseBtn2 = false;
+  increaseBtn3 = false;
+
   constructor(
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
@@ -226,6 +233,42 @@ export class RoomListComponent implements OnInit {
     this.setRoomList();
   }
 
+  checkPersonnel() {
+    if (this.adults >= 16) {
+      this.increaseBtn1 = true;
+      this.styleIncreasebtn1 = 0.1;
+    } else {
+      this.increaseBtn1 = false;
+      this.styleIncreasebtn1 = 1;
+    }
+
+    if (this.children >= 5) {
+      this.increaseBtn2 = true;
+      this.styleIncreasebtn2 = 0.1;
+    } else {
+      this.increaseBtn2 = false;
+      this.styleIncreasebtn2 = 1;
+    }
+
+    if (this.infants >= 5) {
+      this.increaseBtn3 = true;
+      this.styleIncreasebtn3 = 0.1;
+    } else {
+      this.increaseBtn3 = false;
+      this.styleIncreasebtn3 = 1;
+    }
+  }
+
+  checkInfants() {
+    if (this.infants >= 5) {
+      this.increaseBtn3 = true;
+      this.styleIncreasebtn3 = 0.1;
+    } else {
+      this.increaseBtn3 = false;
+      this.styleIncreasebtn3 = 1;
+    }
+  }
+
   setPrice() {
     const minValue = this.minValue;
     const maxValue = this.maxValue;
@@ -290,6 +333,7 @@ export class RoomListComponent implements OnInit {
     this.reservationInfoService.reservationInfoObj[personnelType.id]++;
 
     this.reservationInfoService.reservationInfoObj.personnel++;
+    this.checkPersonnel();
   }
 
   decrease(personnelType: HTMLSpanElement) {
@@ -306,6 +350,7 @@ export class RoomListComponent implements OnInit {
         this.reservationInfoService.reservationInfoObj.personnel--;
       }
     }
+    this.checkPersonnel();
   }
 
   initializeCurrentPage() {
