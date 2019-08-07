@@ -59,7 +59,7 @@
 .host,
 .facilities,
 .reservation,
-.review {
+.reviewContainer {
   clear: both;
   @include detailLine();
 }
@@ -116,11 +116,61 @@
   }
 }
 
+.reviewContainer{
+  
+  h2{
+    margin-bottom:20px;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .reviewList{
+
+    .gestInfo{
+      @include flexContainer(flex-start);
+      .gestPhoto{
+        width:60px;
+        height:60px;
+        overflow: hidden;
+
+        img{
+          width:100%;
+          border: 1px solid #eee;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .gestName{
+        padding-left:20px;
+      }
+    }
+    .review{
+      padding:20px 0px;
+      font-size:0.9rem;
+      font-weight: 300;
+      border-bottom:1px solid #ddd;
+    }
+  }
+}
+
+
+
+
+
+
+
 .loading {
   position: absolute;
   top: 200px;
   left: calc(50vw - 128px);
 }
+
+
+
+
+
+
+
 
 // .roomdetailInfoContainer{
 //   width:1100px;
