@@ -244,7 +244,7 @@
     >
       예약하기
     </button>
-    <div *ngIf="checkIn.value > checkOut.value">
+    <div *ngIf="compareDate">
       체크아웃 날짜가 체크인 날짜보다 작습니다.
     </div>
     <div *ngIf="overMinstay">

@@ -268,7 +268,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.overMaxstay = false;
       this.btnOpacity = '0.1';
       this.blockSend = true;
-    } else if (diff > this.min_stay && diff <= this.max_stay) {
+    } else if (diff >= this.min_stay && diff <= this.max_stay) {
       this.overMinstay = false;
       this.overMaxstay = false;
       this.btnOpacity = '1';
@@ -332,7 +332,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     );
     const diff = (eDate.getTime() - sDate.getTime()) / (1000 * 60 * 60 * 24);
     this.dayDiff = diff;
-    if (diff <= 0) {
+    if (diff < 0) {
       this.compareDate = true;
       this.btnOpacity = '0.1';
       this.blockSend = true;
