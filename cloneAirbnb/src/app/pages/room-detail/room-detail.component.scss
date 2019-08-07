@@ -102,7 +102,7 @@
 .detailPayment {
   float: left;
   width: 400px;
-  padding: 20px;
+  padding: 0 20px;
   border: 1px solid #e0e0e0;
 
   .priceTitle {
@@ -111,11 +111,11 @@
     border-bottom: 1px solid #e0e0e0;
 
     h2 {
-      font-size: 1.1em;
+      font-size: 1.3em;
       font-weight: 600;
       span {
-        font-size: 0.9rem;
-        font-weight: 300;
+        font-size: 1rem;
+        font-weight: 500;
       }
     }
     .ratingBtn {
@@ -131,7 +131,7 @@
   .date {
     p {
       margin-bottom: 5px;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
     div {
       float: left;
@@ -155,7 +155,7 @@
     padding-top: 10px;
     p {
       margin-bottom: 5px;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
     .guest-dropdown {
       width: 100%;
@@ -222,7 +222,8 @@
     flex-flow: row wrap;
     justify-content: space-between;
     padding: 10px 0px;
-    font-weight: 300;
+    font-weight: 400;
+    font-size: 0.9rem;
     border-bottom: 1px solid #e0e0e0;
   }
   .total {
@@ -238,16 +239,17 @@
     border: 1px solid #ff5a5f;
     border-radius: 5px;
   }
-  .wrap{
-    margin-top:10px;
+  .wrap {
+    margin-top: 10px;
     font-size: 0.8rem;
     font-weight: 300;
     text-align: center;
-    color: #ff5a5f
+    color: #ff5a5f;
   }
 
   .reservation {
     margin-top: 10px;
+    margin-bottom: 20px;
     font-size: 0.8rem;
     font-weight: 300;
     text-align: center;
@@ -714,6 +716,10 @@
   background: #fff;
 }
 
+.dropdown-toggle {
+  margin-bottom: 15px;
+}
+
 .dropdown-toggle::after {
   display: none;
 }
@@ -738,7 +744,7 @@
   height: 100%;
   margin-top: 15px;
   margin-bottom: 10px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .dropdown-menu {

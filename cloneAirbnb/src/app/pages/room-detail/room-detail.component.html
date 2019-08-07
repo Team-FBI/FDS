@@ -78,7 +78,7 @@
 
   <section class="detailPayment">
     <div class="priceTitle">
-      <h2>₩{{ price }} <span> / {{ 'roomDetail.day' | translate }}</span></h2>
+      <h2>₩{{ price }} <span> <small><sub>{{ 'roomDetail.day' | translate }}</sub></small></span></h2>
       <div class="ratingBtn">
         <rating [(ngModel)]="total_rating" [max]="5" class="rating"></rating>
       </div>
