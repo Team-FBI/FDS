@@ -18,8 +18,10 @@
       font-weight: 300;
     }
     .grade {
+      display: inline-block;
       font-size: 14px;
       font-weight: 600;
+      margin: 5px 0 0;
     }
   }
 
@@ -43,7 +45,8 @@
     li {
       @include flexContainer(space-between);
       margin-bottom: 15px;
-      font-weight: 300;
+      font-weight: 400;
+      font-size: 0.9rem;
     }
     .total {
       font-weight: 600;

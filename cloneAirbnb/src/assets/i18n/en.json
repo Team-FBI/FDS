@@ -185,6 +185,7 @@
     "agreeAndContinue": "Agree and continue"
   },
   "payment": {
+    "reviews": "reviews",
     "guest": "guest",
     "guests": "guests",
     "night": "night",
