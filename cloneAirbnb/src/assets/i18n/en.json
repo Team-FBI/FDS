@@ -134,7 +134,7 @@
     "save": "save",
     "saved": "saved",
     "viewPhotos": "View Photos",
-    "day": "day",
+    "day": "per night",
     "dates": "Dates",
     "guestsLabel": "Guest",
     "guestCountOne": "guest",
@@ -185,6 +185,7 @@
     "agreeAndContinue": "Agree and continue"
   },
   "payment": {
+    "reviews": "reviews",
     "guest": "guest",
     "guests": "guests",
     "night": "night",

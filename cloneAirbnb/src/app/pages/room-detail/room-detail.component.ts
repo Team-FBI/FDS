@@ -56,7 +56,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   checked = true;
 
   isVisible = false;
-  saveMsg = '삭제되었습니다';
+  saveMsg = 'Deleted';
   flag: boolean;
   timeOutID;
 
@@ -126,7 +126,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     ignoreBackdropClick: true
   };
   btnOpacity = '1';
-  datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean; };
+  datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean };
 
   constructor(
     private modalService: BsModalService,
@@ -226,7 +226,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
             this.cleaningExpenses +
             this.serviceFee +
             this.accommodationsTax;
-          this.total_rating = res.total_rating;
+          this.total_rating = Math.round(res.total_rating);
           this.image = res.image;
           this.image_1 = res.image_1;
           this.image_2 = res.image_2;
@@ -260,10 +260,10 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.checked = !this.checked;
     this.isVisible = true;
     clearTimeout(this.timeOutID);
-    if (this.saveMsg === '삭제되었습니다') {
-      this.saveMsg = '저장되었습니다';
+    if (this.saveMsg === 'Deleted') {
+      this.saveMsg = 'Saved';
     } else {
-      this.saveMsg = '삭제되었습니다';
+      this.saveMsg = 'Deleted';
     }
     this.timeOutID = setTimeout(() => {
       this.isVisible = false;

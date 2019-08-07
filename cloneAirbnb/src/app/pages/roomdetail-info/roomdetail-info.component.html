@@ -71,21 +71,28 @@
   </div>
   <div class="reviewContainer">
     <h2>{{ 'roomDetailInfo.reviews' | translate }}</h2>
-    <div class="reviewList" *ngFor="let review of reviews">
+    <div class="reviewList" *ngFor="let review of newReviews[page]">
       <div class="userInfo">
         <div class="userPhoto">
-          <img src="{{review[1]}}" />
+          <img src="{{ review[1] }}" />
         </div>
         <div class="name">
-          <p class="name">{{review[0]}}</p>
+          <p class="name">{{ review[0] }}</p>
         </div>
       </div>
       <div class="review">
         <p>
-          {{review[2]}}
+          {{ review[2] }}
         </p>
       </div>
     </div>
+    <pagination
+      [totalItems]="reviews.length * 2"
+      [rotate]="!rotate"
+      [maxSize]="maxSize"
+      [(ngModel)]="currentPage"
+      (pageChanged)="pageChanged($event)"
+    ></pagination>
   </div>
 </section>
 
