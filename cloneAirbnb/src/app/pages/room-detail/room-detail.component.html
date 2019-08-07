@@ -34,7 +34,7 @@
         <path d="m11.5 16v-15"></path>
         <path d="m7.5 4 4-3 4 3"></path>
         <path d="m5.4 9.5h-3.9v14h20v-14h-3.1"></path></svg
-      >공유하기
+      >{{ 'roomDetail.share' | translate }}
     </button>
     <button class="saveBtn" (click)="changeSaveBtn()">
       <div class="showsavebtn" *ngIf="checked">
@@ -48,7 +48,7 @@
           <path
             d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
           ></path></svg
-        >저장
+        >{{ 'roomDetail.save' | translate }}
       </div>
       <div class="hiddensavebtn" *ngIf="!checked">
         <svg
@@ -63,13 +63,13 @@
             d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
             stroke-linejoin="round"
           ></path></svg
-        ><span>저장됨</span>
+        ><span>{{ 'roomDetail.saved' | translate }}</span>
       </div>
     </button>
     <div class="saveModal" *ngIf="isVisible">{{ saveMsg }}</div>
   </div>
   <div class="picture">
-    <button (click)="isOpen = !isOpen" class="pictureBtn">사진보기</button>
+    <button (click)="isOpen = !isOpen" class="pictureBtn">{{ 'roomDetail.viewPhotos' | translate }}</button>
   </div>
 </section>
 
@@ -78,13 +78,13 @@
 
   <section class="detailPayment">
     <div class="priceTitle">
-      <h2>₩{{ price }} <span>/박</span></h2>
+      <h2>₩{{ price }} <span> / {{ 'roomDetail.day' | translate }}</span></h2>
       <div class="ratingBtn">
         <rating [(ngModel)]="total_rating" [max]="5" class="rating"></rating>
       </div>
     </div>
     <div class="date">
-      <p>날짜</p>
+      <p>{{ 'roomDetail.dates' | translate }}</p>
       <div class="checkIn form-group">
         <input
           type="text"
@@ -113,7 +113,7 @@
 
     <div class="btn-group" dropdown [insideClick]="true">
       <div>
-        <p class="personnelLabel">{{ 'home.guestsLabel' | translate }}</p>
+        <p class="personnelLabel">{{ 'roomDetail.guestsLabel' | translate }}</p>
         <button
           id="button-basic"
           dropdownToggle
@@ -123,11 +123,11 @@
         >
           <span class="caret" *ngIf="personnel === 1"
             >{{ personnelFromService }}
-            {{ 'home.guestCountOne' | translate }}</span
+            {{ 'roomDetail.guestCountOne' | translate }}</span
           >
           <span class="caret" *ngIf="personnel > 1"
             >{{ personnelFromService }}
-            {{ 'home.guestCountOverOne' | translate }}</span
+            {{ 'roomDetail.guestCountOverOne' | translate }}</span
           >
         </button>
       </div>
@@ -141,7 +141,7 @@
         <div role="menuitem">
           <div class="counterLine">
             <div class="people">
-              <p class="top">{{ 'home.adults' | translate }}</p>
+              <p class="top">{{ 'roomDetail.adults' | translate }}</p>
             </div>
             <div class="counterCheck">
               <button type="button" class="decrease" (click)="decrease(adult)">
@@ -165,8 +165,8 @@
         <div role="menuitem">
           <div class="counterLine">
             <div class="people">
-              <p>{{ 'home.children' | translate }}</p>
-              <span>{{ 'home.childrenSpan' | translate }}</span>
+              <p>{{ 'roomDetail.children' | translate }}</p>
+              <span>{{ 'roomDetail.childrenSpan' | translate }}</span>
             </div>
             <div class="counterCheck">
               <button type="button" class="decrease" (click)="decrease(child)">
@@ -190,8 +190,8 @@
         <div role="menuitem">
           <div class="counterLine">
             <div class="people">
-              <p>{{ 'home.infants' | translate }}</p>
-              <span>{{ 'home.infantsSpan' | translate }}</span>
+              <p>{{ 'roomDetail.infants' | translate }}</p>
+              <span>{{ 'roomDetail.infantsSpan' | translate }}</span>
             </div>
             <div class="counterCheck">
               <button type="button" class="decrease" (click)="decrease(infant)">
@@ -214,24 +214,28 @@
         </div>
       </div>
     </div>
-    <div class="detail">
-      <span>₩{{ price }} x {{ dayDiff }} 박</span>
+    <div class="detail" *ngIf="dayDiff === 1">
+      <span>₩{{ price }} x {{ dayDiff }} {{ 'roomDetail.night' | translate }}</span>
+      <span>₩{{ totalPriceBeforeTex | number }}</span>
+    </div>
+    <div class="detail" *ngIf="dayDiff > 1">
+      <span>₩{{ price }} x {{ dayDiff }} {{ 'roomDetail.nights' | translate }}</span>
       <span>₩{{ totalPriceBeforeTex | number }}</span>
     </div>
     <div class="detail">
-      <span>청소비</span>
+      <span>{{ 'roomDetail.cleaningExpenses' | translate }}</span>
       <span>₩{{ cleaningExpenses | number }}</span>
     </div>
     <div class="detail">
-      <span>서비스수수료</span>
+      <span>{{ 'roomDetail.serviceFee' | translate }}</span>
       <span>₩{{ serviceFee | number }}</span>
     </div>
     <div class="detail">
-      <span>숙박세와 수수료</span>
+      <span>숙박세와 {{ 'roomDetail.occupancyTex' | translate }}</span>
       <span>₩{{ accommodationsTax | number }}</span>
     </div>
     <div class="detail total">
-      <span>합계</span>
+      <span>{{ 'roomDetail.total' | translate }}</span>
       <span>₩{{ totalPriceAfterTex | number }}</span>
     </div>
 
@@ -242,21 +246,23 @@
       [style.opacity]="btnOpacity"
       [disabled]="blockSend ? 'disabled' : null"
     >
-      예약하기
+    {{ 'roomDetail.reserve' | translate }}
     </button>
     <div class="wrap">
       <p *ngIf="compareDate">
-        체크아웃 날짜가 체크인 날짜보다 작습니다.
+          {{ 'roomDetail.compareDate' | translate }}
       </p>
       <p *ngIf="overMinstay">
-        이 숙소의 최소 숙박일자는 {{ min_stay }}일 입니다.
+        <span *ngIf="min_stay === 1">{{ 'roomDetail.minStay' | translate }} {{ min_stay }}{{ 'roomDetail.Day' | translate }}</span>
+        <span *ngIf="min_stay > 1">{{ 'roomDetail.minStay' | translate }} {{ min_stay }}{{ 'roomDetail.Days' | translate }}</span>
       </p>
       <p *ngIf="overMaxstay">
-        이 숙소의 최대 숙박일자는 {{ max_stay }}일 입니다.
+          <span *ngIf="max_stay === 1">{{ 'roomDetail.maxStay' | translate }} {{ max_stay }}{{ 'roomDetail.Day' | translate }}</span>
+          <span *ngIf="max_stay > 1">{{ 'roomDetail.maxStay' | translate }} {{ max_stay }}{{ 'roomDetail.Days' | translate }}</span>
       </p>
     </div>
 
-    <p class="reservation">예약 확정 전에는 요금이 청구되지 않습니다.</p>
+    <p class="reservation">{{ 'roomDetail.notPayed' | translate }}</p>
   </section>
 </section>
 
