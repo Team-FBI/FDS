@@ -31,9 +31,9 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   maxDate: Date;
   modalRef: BsModalRef;
   personnel = this.reservationInfoService.reservationInfoObj.personnel;
-  // adults = this.reservationInfoService.reservationInfoObj.adults;
-  // children = this.reservationInfoService.reservationInfoObj.children;
-  // infants = this.reservationInfoService.reservationInfoObj.infants;
+  adults = this.reservationInfoService.reservationInfoObj.adults;
+  children = this.reservationInfoService.reservationInfoObj.children;
+  infants = this.reservationInfoService.reservationInfoObj.infants;
   price: number;
   min_stay: number;
   max_stay: number;
@@ -79,7 +79,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   styleIncreasebtn1 = 1;
   styleIncreasebtn2 = 1;
   styleIncreasebtn3 = 1;
-  capacity: number;
   increaseBtn1 = false;
   increaseBtn2 = false;
   increaseBtn3 = false;
@@ -301,7 +300,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.reservationInfoService.reservationInfoObj.checkIn = this.endDate;
     this.checkDate();
     this.posibleMaxMin();
-    this.setPrice();
   }
 
   onValueChange2(value: any): void {
@@ -309,7 +307,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.reservationInfoService.reservationInfoObj.checkOut = this.endDate2;
     this.checkDate();
     this.posibleMaxMin();
-    this.setPrice();
   }
 
   checkDate() {
