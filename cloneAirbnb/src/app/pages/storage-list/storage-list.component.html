@@ -16,7 +16,11 @@
       >{{ likedRoomDetails.length }} {{ 'storageList.lists' | translate }}</span
     >
     <div class="flexContainer">
-      <div class="list" *ngFor="let room of likedRoomDetails; index as i">
+      <div
+        class="list"
+        *ngFor="let room of likedRoomDetails; index as i"
+        (click)="toRoomDetail(room.id)"
+      >
         <!-- <div class="listImage"> -->
         <img src="{{ room.image }}" alt="" class="listImage" />
         <!-- <div class="listImageBg"></div> -->

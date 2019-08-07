@@ -43,4 +43,8 @@ export class StorageListComponent implements OnInit {
       }
     );
   }
+
+  toRoomDetail(roomId: number) {
+    this.router.navigate([`roomdetail/${roomId}`]);
+  }
 }
