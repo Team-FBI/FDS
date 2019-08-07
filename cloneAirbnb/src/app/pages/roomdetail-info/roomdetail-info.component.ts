@@ -42,6 +42,7 @@ export class RoomdetailInfoComponent implements OnInit {
   dateCustomClasses: DatepickerDateCustomClasses[];
   now = new Date();
   fourDaysAhead = new Date();
+  reviews: any;
 
   // 달력 disable
   disabledDates = [];
@@ -93,6 +94,7 @@ export class RoomdetailInfoComponent implements OnInit {
           this.description = res.description;
           this.strArray = this.description.split('\n');
           this.facilitiesArray = res.facilities;
+          this.reviews = res.reviews;
           this.reservationInfoService.reservationInfoObj.checkInTime = res.check_in;
           this.reservationInfoService.reservationInfoObj.checkOutTime = res.check_out;
           this.reservationInfoService.reservationInfoObj.rating =
