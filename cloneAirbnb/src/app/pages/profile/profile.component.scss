@@ -1,0 +1,119 @@
+.formClass {
+  width: 700px;
+  margin: 30px auto;
+  padding: 20px 30px;
+  background: #fff;
+  border: 1px solid #00a699;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.fa {
+  font-size: 16px;
+}
+
+.fa-times {
+  color: #fc642d;
+}
+
+.fa-check {
+  color: #00a699;
+}
+
+.warningMessage {
+  color: #fc642d;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.inputTitleSpan {
+  display: inline-block;
+  width: 100px;
+}
+
+.inputDiv {
+  display: inline-block;
+  width: 538px;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  margin: 15px auto;
+}
+
+.input {
+  display: inline-block;
+  width: 95%;
+  height: 40px;
+  padding: 7px;
+  font-size: 0.8rem;
+  border: 0;
+  margin-left: 5px;
+}
+
+.passwordHide {
+  display: none;
+}
+
+.warningPassword {
+  font-size: 13px;
+}
+
+.monthSelector,
+.daySelector,
+.yearSelector {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 40px;
+  padding: 7px;
+  font-size: 16px;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+}
+
+.monthSelector {
+  width: 214px;
+  margin-right: 15px;
+}
+
+.daySelector {
+  width: 127px;
+  margin-right: 15px;
+}
+
+.yearSelector {
+  width: 167px;
+}
+
+.textBold {
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.textColor484848 {
+  color: #484848;
+  font-size: 13px;
+}
+
+.updateBtn {
+  margin-top: 15px;
+  width: 100%;
+  height: 50px;
+  font-size: 17px;
+  font-weight: bold;
+  background: #ff5a5f;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.disable {
+  background: #ccc;
+}
