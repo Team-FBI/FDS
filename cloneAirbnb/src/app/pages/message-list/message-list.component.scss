@@ -56,14 +56,14 @@
   margin-left: 10px;
   width: 80px;
   height: 80px;
-
+  
   img {
     height: 74px;
     width: 74px;
     margin-top: 3px;
     border: 1px solid #eee;
     border-radius: 200px;
-    
+    object-fit: cover;
   }
 }
 .userName {
