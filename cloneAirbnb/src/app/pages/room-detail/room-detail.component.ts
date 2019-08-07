@@ -54,6 +54,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   // id = this.reservationInfoService.id;
   id: any;
   checked = true;
+  roomId: number;
 
   isVisible = false;
   saveMsg = 'Deleted';
@@ -206,6 +207,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       .get(`${this.appUrl}/rooms/${this.id[this.id.length - 1]}/`)
       .subscribe(
         (res: RoomDetail) => {
+          this.roomId = res.id;
           this.price = res.price;
           this.reservationInfoService.reservationInfoObj.price = res.price;
           this.min_stay = res.min_stay;
@@ -262,8 +264,12 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     clearTimeout(this.timeOutID);
     if (this.saveMsg === 'Deleted') {
       this.saveMsg = 'Saved';
+      this.http
+        .post(`${this.appUrl}/rooms/like/${this.roomId}/`, '')
+        .subscribe();
     } else {
       this.saveMsg = 'Deleted';
+      this.http.delete(`${this.appUrl}/rooms/like/${this.roomId}`).subscribe();
     }
     this.timeOutID = setTimeout(() => {
       this.isVisible = false;
