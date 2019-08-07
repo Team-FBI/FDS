@@ -247,6 +247,15 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
           this.isLoading$.next(false);
         }
       );
+
+    this.http.get(`${this.appUrl}/rooms/like/`).subscribe((res: any) => {
+      for (const room of res) {
+        if (room.room === this.roomId) {
+          this.saveMsg = 'Saved';
+          this.checked = false;
+        }
+      }
+    });
   }
 
   test() {
