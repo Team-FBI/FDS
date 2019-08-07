@@ -90,12 +90,12 @@ export class RoomListComponent implements OnInit {
   maxSize = 5;
   currentPage = 1;
   page = this.roomListService.page;
-  
+
   //날짜 차이 계산
   dayDiff: number;
   checkInDate: Date;
-  checkOutDate: Date; 
-  datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean; };
+  checkOutDate: Date;
+  datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean };
 
   constructor(
     private mapsService: GoogleMapService,
@@ -129,12 +129,14 @@ export class RoomListComponent implements OnInit {
     );
   }
 
-  
-
   ngOnInit() {
     this.getRoomInfo();
-    this.checkInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
-    this.checkOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
+    this.checkInDate = new Date(
+      this.reservationInfoService.reservationInfoObj.checkIn
+    );
+    this.checkOutDate = new Date(
+      this.reservationInfoService.reservationInfoObj.checkOut
+    );
     this.dayDiff =
       (this.checkOutDate.getTime() - this.checkInDate.getTime()) /
       (1000 * 60 * 60 * 24);
@@ -161,7 +163,7 @@ export class RoomListComponent implements OnInit {
       (res: RoomList) => {
         this.totalRooms = res.count;
         for (const room of res.results) {
-          this.roomListService.roomList.push(room);  
+          this.roomListService.roomList.push(room);
           this.makeMarker(room);
         }
         this.roomCount = this.roomList.length;
@@ -203,8 +205,12 @@ export class RoomListComponent implements OnInit {
       1}/${value[1].getDate()}/${value[1].getFullYear()}`;
 
     this.roomListService.page = 1;
-    this.checkInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
-    this.checkOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
+    this.checkInDate = new Date(
+      this.reservationInfoService.reservationInfoObj.checkIn
+    );
+    this.checkOutDate = new Date(
+      this.reservationInfoService.reservationInfoObj.checkOut
+    );
     this.dayDiff =
       (this.checkOutDate.getTime() - this.checkInDate.getTime()) /
       (1000 * 60 * 60 * 24);
@@ -315,7 +321,6 @@ export class RoomListComponent implements OnInit {
   // numberWithCommas(num) {
   //   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   // }
-
 
   get adults() {
     return this.reservationInfoService.reservationInfoObj.adults;
