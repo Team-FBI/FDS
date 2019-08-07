@@ -86,6 +86,9 @@
     <p *ngIf="userEmailDuplicate" class="warningMessage">
       {{ 'signUp.userEmailDuplicate' | translate }}
     </p>
+    <div class="explanation">
+      We won’t share your private email address with other Airbnb users.
+    </div>
     <div class="oneLine">
       <span class="inputTitleSpan">First Name: </span>
       <div
@@ -146,6 +149,10 @@
     >
       {{ 'signUp.lastNamePatternWarningMessage' | translate }}
     </p>
+    <div class="explanation">
+      Your public profile only shows your first name. When you request a
+      booking, your host will see your first and last name.
+    </div>
     <div class="oneLine">
       <span class="inputTitleSpan">Description: </span>
       <div
@@ -158,11 +165,18 @@
           class="input"
           type="text"
           placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
-          formControlName="userDescription"
           #description
         />
         <i class="fa fa-info" aria-hidden="true"></i>
       </div>
+    </div>
+    <div class="explanation">
+      Airbnb is built on relationships. Help other people get to know you. Tell
+      them about the things you like: What are 5 things you can’t live without?
+      Share your favorite travel destinations, books, movies, shows, music,
+      food. Tell them what it’s like to have you as a guest or host: What’s your
+      style of traveling? Of Airbnb hosting? Tell them about you: Do you have a
+      life motto?
     </div>
     <div class="oneLine">
       <span class="inputTitleSpan">Image: </span>
@@ -176,7 +190,6 @@
           class="input"
           type="text"
           placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
-          formControlName="userImage"
           #image
         />
         <i class="fa fa-camera-retro" aria-hidden="true"></i>

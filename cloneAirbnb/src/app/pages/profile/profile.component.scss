@@ -26,14 +26,24 @@
 }
 
 .warningMessage {
+  padding-left: 100px;
   color: #fc642d;
   font-size: 13px;
   font-style: italic;
+  margin-bottom: 10px;
 }
 
 .inputTitleSpan {
   display: inline-block;
   width: 100px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.explanation {
+  padding-left: 100px;
+  font-size: 0.8rem;
+  color: #00a699;
 }
 
 .inputDiv {
