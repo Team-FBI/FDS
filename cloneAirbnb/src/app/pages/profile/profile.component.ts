@@ -27,22 +27,51 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
-    this.http
-      .get(`${this.appUrl}/accounts/user/${this.userId}/`)
-      .subscribe((res: any) => {
+    this.http.get(`${this.appUrl}/accounts/user/${this.userId}/`).subscribe(
+      (res: any) => {
         console.log(res);
         this.userNameFromServer = res.username;
         this.userEmailFromServer = res.email;
         this.userFirstNameFromServer = res.first_name;
         this.userLastNameFromServer = res.last_name;
         this.userDescriptionFromServer = res.description;
-        this.userImageFromServer = res.image;
-      });
+        // this.userImageFromServer = res.image;
+      },
+      err => {},
+      () => {
+        this.profile = this.fb.group({
+          userName: [this.userNameFromServer, [Validators.required]],
+          userEmail: [
+            this.userEmailFromServer,
+            [
+              Validators.required,
+              Validators.pattern(
+                '[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}'
+              )
+            ]
+          ],
+          userFirstName: [
+            this.userFirstNameFromServer,
+            [
+              Validators.required,
+              Validators.pattern('[가-힣]{1,4}|[a-zA-Z. ]*[a-zA-Z]{1,60}$')
+            ]
+          ],
+          userLastName: [
+            this.userLastNameFromServer,
+            [
+              Validators.required,
+              Validators.pattern('[가-힣]{1,4}|[a-zA-Z. ]*[a-zA-Z]{1,60}$')
+            ]
+          ]
+        });
+      }
+    );
 
     this.profile = this.fb.group({
-      userName: ['', [Validators.required]],
+      userName: [this.userNameFromServer, [Validators.required]],
       userEmail: [
-        '',
+        this.userEmailFromServer,
         [
           Validators.required,
           Validators.pattern(
@@ -51,14 +80,14 @@ export class ProfileComponent implements OnInit {
         ]
       ],
       userFirstName: [
-        '',
+        this.userFirstNameFromServer,
         [
           Validators.required,
           Validators.pattern('[가-힣]{1,4}|[a-zA-Z. ]*[a-zA-Z]{1,60}$')
         ]
       ],
       userLastName: [
-        '',
+        this.userLastNameFromServer,
         [
           Validators.required,
           Validators.pattern('[가-힣]{1,4}|[a-zA-Z. ]*[a-zA-Z]{1,60}$')
@@ -94,7 +123,22 @@ export class ProfileComponent implements OnInit {
     userLastName: HTMLInputElement,
     userDescription: HTMLInputElement,
     userImage: HTMLInputElement
-  ) {}
+  ) {
+    const payload = {
+      username: userName.value,
+      email: userEmail.value,
+      first_name: userFirstName.value,
+      last_name: userLastName.value,
+      description: userDescription.value,
+      image: userImage.value
+    };
+
+    this.http
+      .patch(`${this.appUrl}/accounts/user/${this.userId}/`, payload)
+      .subscribe(res => {
+        console.log(res);
+      });
+  }
 
   get userName() {
     return this.profile.get('userName');
