@@ -13,11 +13,13 @@ footer {
     margin-bottom: 10px;
     color: #000;
   }
-  a {
-    font-size: 0.9rem;
-    color: #555;
-    &:hover {
-      text-decoration: underline;
+  li {
+    margin-bottom:5px;
+    font-size: 0.85rem;
+    color: #777;
+
+    &:last-of-type{
+      margin-bottom: 0px;
     }
   }
 }
