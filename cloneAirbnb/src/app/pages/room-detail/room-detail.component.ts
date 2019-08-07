@@ -126,6 +126,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     ignoreBackdropClick: true
   };
   btnOpacity = '1';
+  datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean; };
 
   constructor(
     private modalService: BsModalService,
@@ -139,6 +140,14 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
     this.maxDate.setDate(this.maxDate.getDate() + 180);
+    this.datePickerConfig = Object.assign(
+      {},
+      {
+        containerClass: 'theme-red',
+        selectFromOtherMonth: true,
+        isAnimated: true
+      }
+    );
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -201,6 +210,14 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
           this.reservationInfoService.reservationInfoObj.price = res.price;
           this.min_stay = res.min_stay;
           this.max_stay = res.max_stay;
+          this.totalPriceBeforeTex = this.price * this.dayDiff;
+          this.serviceFee = this.totalPriceBeforeTex * 0.1;
+          this.accommodationsTax = this.serviceFee * 0.1;
+          this.totalPriceAfterTex =
+            this.totalPriceBeforeTex +
+            this.cleaningExpenses +
+            this.serviceFee +
+            this.accommodationsTax;
           this.totalPriceBeforeTex = this.price * this.dayDiff;
           this.serviceFee = this.totalPriceBeforeTex * 0.1;
           this.accommodationsTax = this.serviceFee * 0.1;
@@ -306,19 +323,23 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   }
 
   onValueChange(value: any): void {
+    const checkIndDate = `${value.getMonth() +
+      1}/${value.getDate()}/${value.getFullYear()}`;
     this.listDate = [];
     this.endDate = `${value.getFullYear()}-${value.getMonth() +
       1}-${value.getDate()}`;
     this.getDateRange('2019-07-31', this.endDate, this.listDate);
-    this.reservationInfoService.reservationInfoObj.checkIn = this.endDate;
+    this.reservationInfoService.reservationInfoObj.checkIn = checkIndDate;
     this.checkDate();
     this.possibleMaxMin();
   }
 
   onValueChange2(value: any): void {
+    const checkOutDate = `${value.getMonth() +
+      1}/${value.getDate()}/${value.getFullYear()}`;
     this.endDate2 = `${value.getFullYear()}-${value.getMonth() +
       1}-${value.getDate()}`;
-    this.reservationInfoService.reservationInfoObj.checkOut = this.endDate2;
+    this.reservationInfoService.reservationInfoObj.checkOut = checkOutDate;
     this.checkDate();
     this.possibleMaxMin();
   }
@@ -341,6 +362,14 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.btnOpacity = '1';
       this.blockSend = false;
     }
+    this.totalPriceBeforeTex = this.price * this.dayDiff;
+    this.serviceFee = this.totalPriceBeforeTex * 0.1;
+    this.accommodationsTax = this.serviceFee * 0.1;
+    this.totalPriceAfterTex =
+      this.totalPriceBeforeTex +
+      this.cleaningExpenses +
+      this.serviceFee +
+      this.accommodationsTax;
   }
 
   setDisableDate() {

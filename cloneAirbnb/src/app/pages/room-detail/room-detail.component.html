@@ -91,7 +91,7 @@
           placeholder="{{ initCheckin }}"
           class="form-control"
           bsDatepicker
-          [bsConfig]="{ isAnimated: true }"
+          [bsConfig]="datePickerConfig"
           (bsValueChange)="onValueChange($event)"
           [datesDisabled]="disabledDates"
           #checkIn
@@ -103,7 +103,7 @@
           placeholder="{{ initCheckOut }}"
           class="form-control"
           bsDatepicker
-          [bsConfig]="{ isAnimated: true }"
+          [bsConfig]="datePickerConfig"
           (bsValueChange)="onValueChange2($event)"
           [datesDisabled]="disabledDates"
           #checkOut
@@ -216,23 +216,23 @@
     </div>
     <div class="detail">
       <span>₩{{ price }} x {{ dayDiff }} 박</span>
-      <span>₩{{ totalPriceBeforeTex }}</span>
+      <span>₩{{ totalPriceBeforeTex | number }}</span>
     </div>
     <div class="detail">
       <span>청소비</span>
-      <span>₩{{ cleaningExpenses }}</span>
+      <span>₩{{ cleaningExpenses | number }}</span>
     </div>
     <div class="detail">
       <span>서비스수수료</span>
-      <span>₩{{ serviceFee }}</span>
+      <span>₩{{ serviceFee | number }}</span>
     </div>
     <div class="detail">
       <span>숙박세와 수수료</span>
-      <span>₩{{ accommodationsTax }}</span>
+      <span>₩{{ accommodationsTax | number }}</span>
     </div>
     <div class="detail total">
       <span>합계</span>
-      <span>₩{{ totalPriceAfterTex }}</span>
+      <span>₩{{ totalPriceAfterTex | number }}</span>
     </div>
 
     <button
@@ -244,6 +244,7 @@
     >
       예약하기
     </button>
+<<<<<<< HEAD
     <div *ngIf="compareDate">
       체크아웃 날짜가 체크인 날짜보다 작습니다.
     </div>
@@ -252,6 +253,18 @@
     </div>
     <div *ngIf="overMaxstay">
       이 숙소의 최대 숙박일자는 {{ max_stay }}일 입니다.
+=======
+    <div class="wrap">
+      <p *ngIf="compareDate">
+        체크아웃 날짜가 체크인 날짜보다 작습니다.
+      </p>
+      <p *ngIf="overMinstay">
+        이 숙소의 최소 숙박일자는 {{ min_stay }}일 입니다.
+      </p>
+      <p *ngIf="overMaxstay">
+        이 숙소의 최대 숙박일자는 {{ max_stay }}일 입니다.
+      </p>
+>>>>>>> rmorigin/develop
     </div>
 
     <p class="reservation">예약 확정 전에는 요금이 청구되지 않습니다.</p>

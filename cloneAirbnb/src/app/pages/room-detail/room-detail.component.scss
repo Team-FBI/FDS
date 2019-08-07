@@ -238,6 +238,14 @@
     border: 1px solid #ff5a5f;
     border-radius: 5px;
   }
+  .wrap{
+    margin-top:10px;
+    font-size: 0.8rem;
+    font-weight: 300;
+    text-align: center;
+    color: #ff5a5f
+  }
+
   .reservation {
     margin-top: 10px;
     font-size: 0.8rem;
@@ -722,8 +730,8 @@
   font-size: 0.8rem;
   color: #777;
   background: #fff;
-  border: 1px solid #f1f1f1;
-  border-radius: 5px;
+  border: 1px solid #ddd;
+  border-radius: 0px;
 }
 
 .personnelLabel {
