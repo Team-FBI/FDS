@@ -91,6 +91,12 @@
     padding: 8px 15px;
     font-weight: 300;
     line-height: 1.2;
+
+    span{
+      display: inline-block;
+      margin-top:5px;
+      font-size:0.9rem;
+    }
   }
   .regulationInfo::after {
     content: '';

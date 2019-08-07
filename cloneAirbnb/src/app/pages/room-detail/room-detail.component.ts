@@ -126,6 +126,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     ignoreBackdropClick: true
   };
   btnOpacity = '1';
+  datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean; };
 
   constructor(
     private modalService: BsModalService,
@@ -139,6 +140,14 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
     this.maxDate.setDate(this.maxDate.getDate() + 180);
+    this.datePickerConfig = Object.assign(
+      {},
+      {
+        containerClass: 'theme-red',
+        selectFromOtherMonth: true,
+        isAnimated: true
+      }
+    );
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
