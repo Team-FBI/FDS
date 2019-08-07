@@ -711,7 +711,7 @@
 }
 
 .btn-group {
-  display: block;
+  display: inline-block;
   width: 100%;
 }
 
@@ -727,6 +727,7 @@
 }
 
 .personnelLabel {
+  height: 100%;
   margin-top: 15px;
   margin-bottom: 10px;
   font-size: 0.9rem;
