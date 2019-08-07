@@ -326,11 +326,11 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   }
 
   onValueChange2(value: any): void {
-    const checkOutdDate = `${value.getMonth() +
+    const checkOutDate = `${value.getMonth() +
       1}/${value.getDate()}/${value.getFullYear()}`;
     this.endDate2 = `${value.getFullYear()}-${value.getMonth() +
       1}-${value.getDate()}`;
-    this.reservationInfoService.reservationInfoObj.checkOut = checkOutdDate;
+    this.reservationInfoService.reservationInfoObj.checkOut = checkOutDate;
     this.checkDate();
     this.possibleMaxMin();
   }
