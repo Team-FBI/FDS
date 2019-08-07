@@ -34,6 +34,7 @@
           formControlName="userName"
           (click)="deleteUserNameWarningMessage()"
           [style.background]="'rgba(255, 255, 255, 0)'"
+          [value]="userNameFromServer"
           #inputUserName
         />
         <i class="fa fa-id-card-o" aria-hidden="true"></i>
@@ -66,6 +67,7 @@
           formControlName="userEmail"
           (click)="deleteEmailWarningMessage()"
           [style.background]="'rgba(255, 255, 255, 0)'"
+          [value]="userEmailFromServer"
           #inputUserEmail
         />
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -102,6 +104,7 @@
           type="text"
           placeholder=" {{ 'signUp.firstNamePlaceholder' | translate }}"
           formControlName="userFirstName"
+          [value]="userFirstNameFromServer"
           #firstName
         />
         <i class="fa fa-user-o" aria-hidden="true"></i>
@@ -132,6 +135,7 @@
           type="text"
           placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
           formControlName="userLastName"
+          [value]="userLastNameFromServer"
           #lastName
         />
         <i class="fa fa-user-o" aria-hidden="true"></i>
@@ -165,6 +169,7 @@
           class="input"
           type="text"
           placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
+          [value]="userDescriptionFromServer"
           #description
         />
         <i class="fa fa-info" aria-hidden="true"></i>
@@ -190,6 +195,7 @@
           class="input"
           type="text"
           placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
+          [value]="userImageFromServer"
           #image
         />
         <i class="fa fa-camera-retro" aria-hidden="true"></i>
