@@ -7,7 +7,9 @@
   </div>
   <section class="storageList">
     <h3>{{ 'storageList.yourLists' | translate }}</h3>
-    <span *ngIf="likedRoomDetails.length === 1" class="numOfLists"
+    <span
+      *ngIf="likedRoomDetails.length === 1 || likedRoomDetails.length === 0"
+      class="numOfLists"
       >{{ likedRoomDetails.length }} {{ 'storageList.list' | translate }}</span
     >
     <span *ngIf="likedRoomDetails.length > 1" class="numOfLists"
