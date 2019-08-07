@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
@@ -14,10 +15,30 @@ export class ProfileComponent implements OnInit {
   previousUrl: string;
   userNameDuplicate: boolean;
   userEmailDuplicate: boolean;
+  userId: string;
+  userNameFromServer: string;
+  userEmailFromServer: string;
+  userFirstNameFromServer: string;
+  userLastNameFromServer: string;
+  userDescriptionFromServer: string;
+  userImageFromServer: string;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit() {
+    this.userId = localStorage.getItem('userId');
+    this.http
+      .get(`${this.appUrl}/accounts/user/${this.userId}/`)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.userNameFromServer = res.username;
+        this.userEmailFromServer = res.email;
+        this.userFirstNameFromServer = res.first_name;
+        this.userLastNameFromServer = res.last_name;
+        this.userDescriptionFromServer = res.description;
+        this.userImageFromServer = res.image;
+      });
+
     this.profile = this.fb.group({
       userName: ['', [Validators.required]],
       userEmail: [

@@ -14,10 +14,12 @@
       )
     "
   >
-    <p class="title">프로필 업데이트</p>
+    <p class="title">{{ 'profile.editProfile' | translate }}</p>
     <div class="divideLine"></div>
     <div class="oneLine">
-      <span class="inputTitleSpan">ID: </span>
+      <span class="inputTitleSpan"
+        >{{ 'profile.idPlaceholder' | translate }}:
+      </span>
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivUserName)"
@@ -30,10 +32,11 @@
         <input
           class="input"
           type="text"
-          placeholder="{{ 'signUp.idPlaceholder' | translate }}"
+          placeholder="{{ 'profile.idPlaceholder' | translate }}"
           formControlName="userName"
           (click)="deleteUserNameWarningMessage()"
           [style.background]="'rgba(255, 255, 255, 0)'"
+          [value]="userNameFromServer"
           #inputUserName
         />
         <i class="fa fa-id-card-o" aria-hidden="true"></i>
@@ -43,13 +46,13 @@
       *ngIf="userName.errors?.required && userName.touched"
       class="warningMessage"
     >
-      {{ 'signUp.idWarningMessage' | translate }}
+      {{ 'profile.idWarningMessage' | translate }}
     </p>
     <p *ngIf="userNameDuplicate" class="warningMessage">
-      {{ 'signUp.userNameDuplicate' | translate }}
+      {{ 'profile.userNameDuplicate' | translate }}
     </p>
     <div class="oneLine">
-      <span class="inputTitleSpan">Email: </span>
+      <span class="inputTitleSpan">{{ 'profile.email' | translate }}: </span>
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivEmail)"
@@ -62,10 +65,11 @@
         <input
           class="input"
           type="text"
-          placeholder="{{ 'signUp.emailPlaceholder' | translate }}"
+          placeholder="{{ 'profile.emailPlaceholder' | translate }}"
           formControlName="userEmail"
           (click)="deleteEmailWarningMessage()"
           [style.background]="'rgba(255, 255, 255, 0)'"
+          [value]="userEmailFromServer"
           #inputUserEmail
         />
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -75,22 +79,24 @@
       *ngIf="userEmail.errors?.required && userEmail.touched"
       class="warningMessage"
     >
-      {{ 'signUp.emailRequiredWarningMessage' | translate }}
+      {{ 'profile.emailRequiredWarningMessage' | translate }}
     </p>
     <p
       *ngIf="userEmail.errors?.pattern && userEmail.touched"
       class="warningMessage"
     >
-      {{ 'signUp.emailPatternWarningMessage' | translate }}
+      {{ 'profile.emailPatternWarningMessage' | translate }}
     </p>
     <p *ngIf="userEmailDuplicate" class="warningMessage">
-      {{ 'signUp.userEmailDuplicate' | translate }}
+      {{ 'profile.userEmailDuplicate' | translate }}
     </p>
     <div class="explanation">
-      We won’t share your private email address with other Airbnb users.
+      {{ 'profile.emailExplanation' | translate }}
     </div>
     <div class="oneLine">
-      <span class="inputTitleSpan">First Name: </span>
+      <span class="inputTitleSpan"
+        >{{ 'profile.firstNamePlaceholder' | translate }}:
+      </span>
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivFistName)"
@@ -100,8 +106,9 @@
         <input
           class="input"
           type="text"
-          placeholder=" {{ 'signUp.firstNamePlaceholder' | translate }}"
+          placeholder="{{ 'profile.firstNamePlaceholder' | translate }}"
           formControlName="userFirstName"
+          [value]="userFirstNameFromServer"
           #firstName
         />
         <i class="fa fa-user-o" aria-hidden="true"></i>
@@ -111,16 +118,18 @@
       *ngIf="userFirstName.errors?.required && userFirstName.touched"
       class="warningMessage"
     >
-      {{ 'signUp.firstNameRequiredWarningMessage' | translate }}
+      {{ 'profile.firstNameRequiredWarningMessage' | translate }}
     </p>
     <p
       *ngIf="userFirstName.errors?.pattern && userFirstName.touched"
       class="warningMessage"
     >
-      {{ 'signUp.firstNamePatternWarningMessage' | translate }}
+      {{ 'profile.firstNamePatternWarningMessage' | translate }}
     </p>
     <div class="oneLine">
-      <span class="inputTitleSpan">Last Name: </span>
+      <span class="inputTitleSpan"
+        >{{ 'profile.lastNamePlaceholder' | translate }}:
+      </span>
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivLastName)"
@@ -130,8 +139,9 @@
         <input
           class="input"
           type="text"
-          placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
+          placeholder="{{ 'profile.lastNamePlaceholder' | translate }}"
           formControlName="userLastName"
+          [value]="userLastNameFromServer"
           #lastName
         />
         <i class="fa fa-user-o" aria-hidden="true"></i>
@@ -141,20 +151,21 @@
       *ngIf="userLastName.errors?.required && userLastName.touched"
       class="warningMessage"
     >
-      {{ 'signUp.lastNameRequiredWarningMessage' | translate }}
+      {{ 'profile.lastNameRequiredWarningMessage' | translate }}
     </p>
     <p
       *ngIf="userLastName.errors?.pattern && userLastName.touched"
       class="warningMessage"
     >
-      {{ 'signUp.lastNamePatternWarningMessage' | translate }}
+      {{ 'profile.lastNamePatternWarningMessage' | translate }}
     </p>
     <div class="explanation">
-      Your public profile only shows your first name. When you request a
-      booking, your host will see your first and last name.
+      {{ 'profile.lastNameExplanation' | translate }}
     </div>
     <div class="oneLine">
-      <span class="inputTitleSpan">Description: </span>
+      <span class="inputTitleSpan"
+        >{{ 'profile.description' | translate }}:
+      </span>
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivDescription)"
@@ -164,22 +175,27 @@
         <input
           class="input"
           type="text"
-          placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
+          placeholder="{{ 'profile.description' | translate }}"
+          [value]="userDescriptionFromServer"
           #description
         />
         <i class="fa fa-info" aria-hidden="true"></i>
       </div>
     </div>
     <div class="explanation">
-      Airbnb is built on relationships. Help other people get to know you. Tell
-      them about the things you like: What are 5 things you can’t live without?
-      Share your favorite travel destinations, books, movies, shows, music,
-      food. Tell them what it’s like to have you as a guest or host: What’s your
-      style of traveling? Of Airbnb hosting? Tell them about you: Do you have a
-      life motto?
+      {{ 'profile.descriptionExplanation1' | translate }}
+      <br />
+      <br />
+      {{ 'profile.descriptionExplanation2' | translate }}
+      <br />
+      <br />
+      {{ 'profile.descriptionExplanation3' | translate }}
+      <br />
+      <br />
+      {{ 'profile.descriptionExplanation4' | translate }}
     </div>
     <div class="oneLine">
-      <span class="inputTitleSpan">Image: </span>
+      <span class="inputTitleSpan">{{ 'profile.image' | translate }}: </span>
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivImage)"
@@ -189,7 +205,8 @@
         <input
           class="input"
           type="text"
-          placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
+          placeholder="{{ 'profile.imagePlaceholder' | translate }}"
+          [value]="userImageFromServer"
           #image
         />
         <i class="fa fa-camera-retro" aria-hidden="true"></i>
@@ -201,7 +218,7 @@
       [disabled]="profile.invalid"
       [class.disable]="profile.invalid"
     >
-      프로필 업데이트
+      {{ 'profile.save' | translate }}
     </button>
   </form>
 </div>
