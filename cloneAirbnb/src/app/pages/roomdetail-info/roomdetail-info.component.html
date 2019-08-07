@@ -70,7 +70,71 @@
     </div>
   </div>
   <div class="reviewContainer">
-    <h2>{{ 'roomDetailInfo.reviews' | translate }}</h2>
+    <h2>
+      {{ reviews.length }} {{ 'roomDetailInfo.reviews' | translate }}
+      <rating
+        [(ngModel)]="total_rating"
+        [max]="5"
+        class="rating"
+        [readonly]="true"
+      ></rating>
+    </h2>
+    <div class="ratingBox">
+      <p class="ratingDetails">
+        Accuracy
+        <rating
+          [(ngModel)]="accuracyScore"
+          [max]="5"
+          class="rating"
+          [readonly]="true"
+        ></rating>
+      </p>
+      <p class="ratingDetails">
+        Location
+        <rating
+          [(ngModel)]="locationScore"
+          [max]="5"
+          class="rating"
+          [readonly]="true"
+        ></rating>
+      </p>
+      <p class="ratingDetails">
+        Communication
+        <rating
+          [(ngModel)]="communicationScore"
+          [max]="5"
+          class="rating"
+          [readonly]="true"
+        ></rating>
+      </p>
+      <p class="ratingDetails">
+        Check-in
+        <rating
+          [(ngModel)]="checkInScore"
+          [max]="5"
+          class="rating"
+          [readonly]="true"
+        ></rating>
+      </p>
+      <p class="ratingDetails">
+        Cleanliness
+        <rating
+          [(ngModel)]="cleanScore"
+          [max]="5"
+          class="rating"
+          [readonly]="true"
+        ></rating>
+      </p>
+      <p class="ratingDetails">
+        Value
+        <rating
+          [(ngModel)]="valueScore"
+          [max]="5"
+          class="rating"
+          [readonly]="true"
+        ></rating>
+      </p>
+    </div>
     <div class="reviewList" *ngFor="let review of newReviews[page]">
       <div class="userInfo">
         <div class="userPhoto">
