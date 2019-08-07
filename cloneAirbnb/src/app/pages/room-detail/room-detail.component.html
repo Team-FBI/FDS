@@ -110,6 +110,7 @@
         />
       </div>
     </div>
+
     <div class="btn-group" dropdown [insideClick]="true">
       <div>
         <p class="personnelLabel">{{ 'home.guestsLabel' | translate }}</p>
@@ -149,7 +150,7 @@
               <span class="counter" id="adults" #adult>{{
                 adultsFromService
               }}</span>
-              <button type="button" class="increase" (click)="increase(adult)">
+              <button type="button" class="increase" (click)="increase(adult)" [style.opacity]="styleIncreasebtn1" [disabled]="increaseBtn1 ? 'disabled' : null">
                 +
               </button>
             </div>
@@ -168,7 +169,7 @@
               <span class="counter" id="children" #child>{{
                 childrenFromService
               }}</span>
-              <button type="button" class="increase" (click)="increase(child)">
+              <button type="button" class="increase" (click)="increase(child)" [style.opacity]="styleIncreasebtn2" [disabled]="increaseBtn2 ? 'disabled' : null">
                 +
               </button>
             </div>
@@ -187,7 +188,7 @@
               <span class="counter" id="infants" #infant>{{
                 infantsFromService
               }}</span>
-              <button type="button" class="increase" (click)="increase(infant)">
+              <button type="button" class="increase" (click)="increase(infant)" [style.opacity]="styleIncreasebtn3" [disabled]="increaseBtn3 ? 'disabled' : null">
                 +
               </button>
             </div>
@@ -216,7 +217,7 @@
       <span>₩{{ totalPriceAfterTex }}</span>
     </div>
 
-    <button type = "button" class="reservationBtn" (click)='toRoomRegulation()' [disabled]="checkIn.value > checkOut.value">예약하기</button>
+    <button type = "button" class="reservationBtn" (click)='toRoomRegulation()' [style.opacity]="btnOpacity" [disabled]="blockSend ? 'disabled' : null">예약하기</button>
     <div *ngIf="checkIn.value > checkOut.value">체크아웃 날짜가 체크인 날짜보다 작습니다.</div>
     <div *ngIf="overMinstay">이 숙소의 최소 숙박일자는 {{min_stay}}일 입니다.</div>
     <div *ngIf="overMaxstay">이 숙소의 최대 숙박일자는 {{max_stay}}일 입니다.</div>

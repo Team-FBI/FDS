@@ -3,7 +3,8 @@ import {
   OnInit,
   TemplateRef,
   ViewChild,
-  AfterViewInit
+  AfterViewInit,
+  Renderer2
 } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { HttpClient } from '@angular/common/http';
@@ -15,6 +16,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { BehaviorSubject } from 'rxjs';
 import { RoomDetail } from 'src/app/core/interface/roomDetail.interface';
+import { style } from '@angular/animations';
+import { element } from 'protractor';
 declare let Kakao: any;
 
 @Component({
@@ -50,9 +53,9 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   capacity: number;
   // id = this.reservationInfoService.id;
   id: any;
-  checked: boolean = true;
+  checked = true;
 
-  isVisible: boolean = false;
+  isVisible = false;
   saveMsg = '삭제되었습니다';
   flag: boolean;
   timeOutID;
@@ -71,8 +74,18 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   dayDiff: any;
   overMinstay = false;
   overMaxstay = false;
-  
-  
+  compareDate = false;
+  blockSend = true;
+  styleIncreasebtn1 = 1;
+  styleIncreasebtn2 = 1;
+  styleIncreasebtn3 = 1;
+  capacity: number;
+  increaseBtn1 = false;
+  increaseBtn2 = false;
+  increaseBtn3 = false;
+  pricecheckInDate: any;
+  pricecheckOutDate: any;
+
   initCheckin = this.reservationInfoService.reservationInfoObj.checkIn;
   initCheckOut = this.reservationInfoService.reservationInfoObj.checkOut;
   date = new Date();
@@ -112,13 +125,15 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   config = {
     ignoreBackdropClick: true
   };
+  btnOpacity = '1';
 
   constructor(
     private modalService: BsModalService,
     private http: HttpClient,
     private router: Router,
     private urlRemember: UrlRememberService,
-    private reservationInfoService: ReservationInfoService
+    private reservationInfoService: ReservationInfoService,
+    private renderer: Renderer2
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -134,7 +149,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
-
     Kakao.Link.createDefaultButton({
       container: '#shareBtn',
       objectType: 'feed',
@@ -165,6 +179,10 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
     this.endDate = this.reservationInfoService.reservationInfoObj.checkIn;
     this.endDate2 = this.reservationInfoService.reservationInfoObj.checkOut;
+    
+    this.pricecheckInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
+    this.pricecheckOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
+    this.dayDiff = (this.pricecheckOutDate.getTime() - this.pricecheckInDate.getTime()) / (1000 * 60 * 60 * 24);
 
     this.id = this.router.url.split('/');
     this.isLoading$.next(true);
@@ -176,6 +194,7 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
           this.price = res.price;
           this.reservationInfoService.reservationInfoObj.price = res.price;
           this.min_stay = res.min_stay;
+          this.max_stay = res.max_stay;
           this.totalPriceBeforeTex = this.price;
           this.serviceFee = this.totalPriceBeforeTex * 0.1;
           this.accommodationsTax = this.serviceFee * 0.1;
@@ -191,10 +210,12 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
           this.image_3 = res.image_3;
           this.image_4 = res.image_4;
           this.capacity = res.capacity;
-
-      this.checkInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
-      this.checkOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
-
+          res.reservations.forEach(element => {
+          this.getDateRange(element[0], element[1], this.listDate);
+          });
+          this.setDisableDate();
+          this.posibleMaxMin();
+          this.checkDate();
     },
     err => {},
     () => {
@@ -226,21 +247,26 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     }, 3000);
   }
 
-  posibleMaxMin(minstay, maxstay) {
-    minstay = new Date(minstay);
-    maxstay = new Date(maxstay);
-    this.dayDiff = (maxstay.getTime() - minstay.getTime()) / (1000 * 60 * 60 * 24);
-
-    if (this.dayDiff < this.min_stay) {
+  posibleMaxMin() {
+    const cInDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
+    const cOutDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
+    const diff = (cOutDate.getTime() - cInDate.getTime()) / (1000 * 60 * 60 * 24);
+    this.dayDiff = diff;
+    if (diff < this.min_stay) {
       this.overMinstay = true;
-    } else {
-      this.overMinstay = false;
-    }
-
-    if (this.dayDiff > this.max_stay) {
-      this.overMaxstay = true;
-    } else {
       this.overMaxstay = false;
+      this.btnOpacity = '0.1';
+      this.blockSend = true;
+    } else if (diff > this.min_stay && diff <= this.max_stay) {
+      this.overMinstay = false;
+      this.overMaxstay = false;
+      this.btnOpacity = '1';
+      this.blockSend = false;
+    } else if (diff > this.max_stay) {
+      this.overMinstay = false;
+      this.overMaxstay = true;
+      this.btnOpacity = '0.1';
+      this.blockSend = true;
     }
   }
 
@@ -271,18 +297,35 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
   onValueChange(value: any): void {
     this.listDate = [];
     this.endDate = `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`;
-    
     this.getDateRange('2019-07-31', this.endDate, this.listDate);
-
     this.reservationInfoService.reservationInfoObj.checkIn = this.endDate;
-    this.posibleMaxMin(this.endDate, this.endDate2);
+    this.checkDate();
+    this.posibleMaxMin();
+    this.setPrice();
   }
 
   onValueChange2(value: any): void {
     this.endDate2 = `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`;
-
     this.reservationInfoService.reservationInfoObj.checkOut = this.endDate2;
-    this.posibleMaxMin(this.endDate, this.endDate2);
+    this.checkDate();
+    this.posibleMaxMin();
+    this.setPrice();
+  }
+
+  checkDate() {
+    const sDate = new Date(this.reservationInfoService.reservationInfoObj.checkIn);
+    const eDate = new Date(this.reservationInfoService.reservationInfoObj.checkOut);
+    const diff = (eDate.getTime() - sDate.getTime()) / (1000 * 60 * 60 * 24);
+    this.dayDiff = diff;
+    if (diff <= 0) {
+      this.compareDate = true;
+      this.btnOpacity = '0.1';
+      this.blockSend = true;
+    } else {
+      this.compareDate = false;
+      this.btnOpacity = '1';
+      this.blockSend = false;
+    }
   }
 
   setDisableDate() {
@@ -299,6 +342,8 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
       this.reservationInfoService.reservationInfoObj.personnel++;
     }
+    this.checkPersonnel();
+    this.checkInfants();
   }
 
   decrease(personnelType: HTMLSpanElement) {
@@ -314,6 +359,32 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
         this.reservationInfoService.reservationInfoObj.personnel--;
       }
+    }
+    this.checkPersonnel();
+    this.checkInfants();
+  }
+
+  checkPersonnel() {
+    if ( this.capacity <= this.personnel ) {
+      this.increaseBtn1 = true;
+      this.increaseBtn2 = true;
+      this.styleIncreasebtn1 = 0.1;
+      this.styleIncreasebtn2 = 0.1;
+    } else {
+      this.increaseBtn1 = false;
+      this.increaseBtn2 = false;
+      this.styleIncreasebtn1 = 1;
+      this.styleIncreasebtn2 = 1;
+    }
+  }
+
+  checkInfants() {
+    if (this.infants >= 5) {
+      this.increaseBtn3 = true;
+      this.styleIncreasebtn3 = 0.1;
+    } else {
+      this.increaseBtn3 = false;
+      this.styleIncreasebtn3 = 1;
     }
   }
 
