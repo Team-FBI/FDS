@@ -95,6 +95,13 @@
     "noPlans": "You have no upcoming trips. Start exploring ideas for your next trip.",
     "pastPlan": "Where you’ve been"
   },
+  "storageList": {
+    "Lists": "Lists",
+    "yourLists": "Your lists",
+    "list": "list",
+    "lists": "lists",
+    "popularLists": "Popular lists"
+  },
   "roomList": {
     "datePlaceholder": "Dates",
     "guest": "guest",

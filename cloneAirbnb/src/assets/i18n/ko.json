@@ -95,6 +95,13 @@
     "noPlans": "예정된 일정이 없으시네요. 다음 여행을 슬슬 계획해 볼까요?",
     "pastPlan": "이전 여행지"
   },
+  "storageList": {
+    "Lists": "목록",
+    "yourLists": "내 위시리스트",
+    "list": "개의 리스트",
+    "lists": "개의 리스트",
+    "popularLists": "인기 목록"
+  },
   "roomList": {
     "datePlaceholder": "날짜",
     "guest": "명",

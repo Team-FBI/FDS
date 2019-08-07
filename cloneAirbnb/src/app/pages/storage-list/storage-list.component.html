@@ -2,50 +2,41 @@
 
 <section class="storageListContainer">
   <div class="storageListTitle">
-    <h2>목록</h2>
-    <button class="storageListBtn">목록 만들기</button>
+    <h2>{{ 'storageList.Lists' | translate }}</h2>
+    <!-- <button class="storageListBtn">목록 만들기</button> -->
   </div>
   <section class="storageList">
-    <h3>내 위시리스트</h3>
-    <span>1개의 리스트</span>
+    <h3>{{ 'storageList.yourLists' | translate }}</h3>
+    <span *ngIf="likedRoomDetails.length === 1" class="numOfLists"
+      >{{ likedRoomDetails.length }} {{ 'storageList.list' | translate }}</span
+    >
+    <span *ngIf="likedRoomDetails.length > 1" class="numOfLists"
+      >{{ likedRoomDetails.length }} {{ 'storageList.lists' | translate }}</span
+    >
     <div class="flexContainer">
-      <div class="list">        
-        <div class="listImage" style="background-image: url(https://a0.muscache.com/im/pictures/4230043/7e9a64d3_original.jpg?aki_policy=large)">
-          <div class="listImageBg"></div>
-          <div class="listTitle">
-            <p>저장한 제목</p>
-            <span>숙소정보</span>
-          </div>
+      <div class="list" *ngFor="let room of likedRoomDetails; index as i">
+        <!-- <div class="listImage"> -->
+        <img src="{{ room.image }}" alt="" class="listImage" />
+        <!-- <div class="listImageBg"></div> -->
+        <div class="listTitle">
+          <p>{{ room.title }}</p>
+          <span>{{ room.address }}</span>
         </div>
-      </div>
-      <div class="list">        
-        <div class="listImage" style="background-image: url(https://a0.muscache.com/im/pictures/b4066637-a13d-4a2f-801b-0d4d8551d719.jpg?aki_policy=large)">
-          <div class="listImageBg"></div>
-          <div class="listTitle">
-            <p>저장한 제목</p>
-            <span>숙소정보</span>
-          </div>
-        </div>
-      </div>
-      <div class="list">        
-        <div class="listImage" style="background-image: url(https://a0.muscache.com/im/pictures/c448d8f3-3c31-4119-b69f-80f251621f94.jpg?aki_policy=large)">
-          <div class="listImageBg"></div>
-          <div class="listTitle">
-            <p>저장한 제목</p>
-            <span>숙소정보</span>
-          </div>
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </section>
   <section class="popularList">
     <div class="storageListTitle">
-      <h3>인기 목록</h3>
-      <button class="popularBtn">전체보기</button>
+      <h3>{{ 'storageList.popularLists' | translate }}</h3>
+      <!-- <button class="popularBtn">전체보기</button> -->
     </div>
     <div class="flexContainer">
-      <div class="list">        
-        <div class="listImage" style="background-image: url(https://a0.muscache.com/im/pictures/22447cfd-d6d7-409d-8732-e7de62101841.jpg?aki_policy=large)">
+      <div class="list">
+        <div
+          class="listImage"
+          style="background-image: url(https://a0.muscache.com/im/pictures/22447cfd-d6d7-409d-8732-e7de62101841.jpg?aki_policy=large)"
+        >
           <div class="listImageBg"></div>
           <div class="listTitle">
             <p>인기 숙소</p>
@@ -53,8 +44,11 @@
           </div>
         </div>
       </div>
-      <div class="list">        
-        <div class="listImage" style="background-image: url(https://a0.muscache.com/im/pictures/5b2bceb0-8f19-4b56-ab69-baa59c7f69fe.jpg)">
+      <div class="list">
+        <div
+          class="listImage"
+          style="background-image: url(https://a0.muscache.com/im/pictures/5b2bceb0-8f19-4b56-ab69-baa59c7f69fe.jpg)"
+        >
           <div class="listImageBg"></div>
           <div class="listTitle">
             <p>인기 숙소</p>
