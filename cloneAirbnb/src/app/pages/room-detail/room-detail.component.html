@@ -88,7 +88,7 @@
       <div class="checkIn form-group">
         <input
           type="text"
-          placeholder="{{initCheckin}}"
+          placeholder="{{ initCheckin }}"
           class="form-control"
           bsDatepicker
           [bsConfig]="{ isAnimated: true }"
@@ -100,7 +100,7 @@
       <div class="checkOut form-group">
         <input
           type="text"
-          placeholder="{{initCheckOut}}"
+          placeholder="{{ initCheckOut }}"
           class="form-control"
           bsDatepicker
           [bsConfig]="{ isAnimated: true }"
@@ -150,7 +150,13 @@
               <span class="counter" id="adults" #adult>{{
                 adultsFromService
               }}</span>
-              <button type="button" class="increase" (click)="increase(adult)" [style.opacity]="styleIncreasebtn1" [disabled]="increaseBtn1 ? 'disabled' : null">
+              <button
+                type="button"
+                class="increase"
+                (click)="increase(adult)"
+                [style.opacity]="styleIncreasebtn1"
+                [disabled]="increaseBtn1 ? 'disabled' : null"
+              >
                 +
               </button>
             </div>
@@ -169,7 +175,13 @@
               <span class="counter" id="children" #child>{{
                 childrenFromService
               }}</span>
-              <button type="button" class="increase" (click)="increase(child)" [style.opacity]="styleIncreasebtn2" [disabled]="increaseBtn2 ? 'disabled' : null">
+              <button
+                type="button"
+                class="increase"
+                (click)="increase(child)"
+                [style.opacity]="styleIncreasebtn2"
+                [disabled]="increaseBtn2 ? 'disabled' : null"
+              >
                 +
               </button>
             </div>
@@ -188,7 +200,13 @@
               <span class="counter" id="infants" #infant>{{
                 infantsFromService
               }}</span>
-              <button type="button" class="increase" (click)="increase(infant)" [style.opacity]="styleIncreasebtn3" [disabled]="increaseBtn3 ? 'disabled' : null">
+              <button
+                type="button"
+                class="increase"
+                (click)="increase(infant)"
+                [style.opacity]="styleIncreasebtn3"
+                [disabled]="increaseBtn3 ? 'disabled' : null"
+              >
                 +
               </button>
             </div>
@@ -197,7 +215,7 @@
       </div>
     </div>
     <div class="detail">
-      <span>₩{{ price }} x {{ min_stay }} 박</span>
+      <span>₩{{ price }} x {{ dayDiff }} 박</span>
       <span>₩{{ totalPriceBeforeTex }}</span>
     </div>
     <div class="detail">
@@ -217,10 +235,24 @@
       <span>₩{{ totalPriceAfterTex }}</span>
     </div>
 
-    <button type = "button" class="reservationBtn" (click)='toRoomRegulation()' [style.opacity]="btnOpacity" [disabled]="blockSend ? 'disabled' : null">예약하기</button>
-    <div *ngIf="checkIn.value > checkOut.value">체크아웃 날짜가 체크인 날짜보다 작습니다.</div>
-    <div *ngIf="overMinstay">이 숙소의 최소 숙박일자는 {{min_stay}}일 입니다.</div>
-    <div *ngIf="overMaxstay">이 숙소의 최대 숙박일자는 {{max_stay}}일 입니다.</div>
+    <button
+      type="button"
+      class="reservationBtn"
+      (click)="toRoomRegulation()"
+      [style.opacity]="btnOpacity"
+      [disabled]="blockSend ? 'disabled' : null"
+    >
+      예약하기
+    </button>
+    <div *ngIf="checkIn.value > checkOut.value">
+      체크아웃 날짜가 체크인 날짜보다 작습니다.
+    </div>
+    <div *ngIf="overMinstay">
+      이 숙소의 최소 숙박일자는 {{ min_stay }}일 입니다.
+    </div>
+    <div *ngIf="overMaxstay">
+      이 숙소의 최대 숙박일자는 {{ max_stay }}일 입니다.
+    </div>
 
     <p class="reservation">예약 확정 전에는 요금이 청구되지 않습니다.</p>
   </section>
