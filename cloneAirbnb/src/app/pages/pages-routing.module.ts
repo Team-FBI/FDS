@@ -11,12 +11,12 @@ import { GuestInfoComponent } from './guest-info/guest-info.component';
 import { CheckPaymentComponent } from './check-payment/check-payment.component';
 import { PaymentComponent } from './payment/payment.component';
 import { TripListComponent } from './trip-list/trip-list.component';
-import { TripDetailComponent  } from './trip-detail/trip-detail.component';
-
+import { TripDetailComponent } from './trip-detail/trip-detail.component';
 
 import { AuthGuard } from '../core/guard/auth.guard';
 import { MessageComponent } from './message/message.component';
 import { MessageListComponent } from './message-list/message-list.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -26,16 +26,23 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: 'yourTrip', component: YourTripComponent, canActivate: [AuthGuard] },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
   { path: 'roomList', component: RoomListComponent },
   {
     path: 'roomdetail/:id',
     component: RoomDetailComponent
   },
   {
-    path: 'tripList', component: TripListComponent
+    path: 'tripList',
+    component: TripListComponent
   },
   {
-    path: 'tripDetail', component: TripDetailComponent
+    path: 'tripDetail',
+    component: TripDetailComponent
   },
   {
     path: 'roomregulation',
