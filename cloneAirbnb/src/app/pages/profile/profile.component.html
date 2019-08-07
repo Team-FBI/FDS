@@ -1,1 +1,194 @@
 <app-navigation></app-navigation>
+
+<div class="formClass">
+  <form
+    [formGroup]="profile"
+    (ngSubmit)="
+      onSubmit(
+        inputUserName,
+        inputUserEmail,
+        firstName,
+        lastName,
+        description,
+        image
+      )
+    "
+  >
+    <p class="title">프로필 업데이트</p>
+    <div class="divideLine"></div>
+    <div class="oneLine">
+      <span class="inputTitleSpan">ID: </span>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivUserName)"
+        (focusout)="inputDivUnclicked(inputDivUserName)"
+        [style.background]="
+          userNameDuplicate ? 'rgba(252, 100, 45, 0.3)' : '#fff'
+        "
+        #inputDivUserName
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="{{ 'signUp.idPlaceholder' | translate }}"
+          formControlName="userName"
+          (click)="deleteUserNameWarningMessage()"
+          [style.background]="'rgba(255, 255, 255, 0)'"
+          #inputUserName
+        />
+        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+      </div>
+    </div>
+    <p
+      *ngIf="userName.errors?.required && userName.touched"
+      class="warningMessage"
+    >
+      {{ 'signUp.idWarningMessage' | translate }}
+    </p>
+    <p *ngIf="userNameDuplicate" class="warningMessage">
+      {{ 'signUp.userNameDuplicate' | translate }}
+    </p>
+    <div class="oneLine">
+      <span class="inputTitleSpan">Email: </span>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivEmail)"
+        (focusout)="inputDivUnclicked(inputDivEmail)"
+        [style.background]="
+          userEmailDuplicate ? 'rgba(252, 100, 45, 0.3)' : '#fff'
+        "
+        #inputDivEmail
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="{{ 'signUp.emailPlaceholder' | translate }}"
+          formControlName="userEmail"
+          (click)="deleteEmailWarningMessage()"
+          [style.background]="'rgba(255, 255, 255, 0)'"
+          #inputUserEmail
+        />
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      </div>
+    </div>
+    <p
+      *ngIf="userEmail.errors?.required && userEmail.touched"
+      class="warningMessage"
+    >
+      {{ 'signUp.emailRequiredWarningMessage' | translate }}
+    </p>
+    <p
+      *ngIf="userEmail.errors?.pattern && userEmail.touched"
+      class="warningMessage"
+    >
+      {{ 'signUp.emailPatternWarningMessage' | translate }}
+    </p>
+    <p *ngIf="userEmailDuplicate" class="warningMessage">
+      {{ 'signUp.userEmailDuplicate' | translate }}
+    </p>
+    <div class="oneLine">
+      <span class="inputTitleSpan">First Name: </span>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivFistName)"
+        (focusout)="inputDivUnclicked(inputDivFistName)"
+        #inputDivFistName
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder=" {{ 'signUp.firstNamePlaceholder' | translate }}"
+          formControlName="userFirstName"
+          #firstName
+        />
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+      </div>
+    </div>
+    <p
+      *ngIf="userFirstName.errors?.required && userFirstName.touched"
+      class="warningMessage"
+    >
+      {{ 'signUp.firstNameRequiredWarningMessage' | translate }}
+    </p>
+    <p
+      *ngIf="userFirstName.errors?.pattern && userFirstName.touched"
+      class="warningMessage"
+    >
+      {{ 'signUp.firstNamePatternWarningMessage' | translate }}
+    </p>
+    <div class="oneLine">
+      <span class="inputTitleSpan">Last Name: </span>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivLastName)"
+        (focusout)="inputDivUnclicked(inputDivLastName)"
+        #inputDivLastName
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
+          formControlName="userLastName"
+          #lastName
+        />
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+      </div>
+    </div>
+    <p
+      *ngIf="userLastName.errors?.required && userLastName.touched"
+      class="warningMessage"
+    >
+      {{ 'signUp.lastNameRequiredWarningMessage' | translate }}
+    </p>
+    <p
+      *ngIf="userLastName.errors?.pattern && userLastName.touched"
+      class="warningMessage"
+    >
+      {{ 'signUp.lastNamePatternWarningMessage' | translate }}
+    </p>
+    <div class="oneLine">
+      <span class="inputTitleSpan">Description: </span>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivDescription)"
+        (focusout)="inputDivUnclicked(inputDivDescription)"
+        #inputDivDescription
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
+          formControlName="userDescription"
+          #description
+        />
+        <i class="fa fa-info" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="oneLine">
+      <span class="inputTitleSpan">Image: </span>
+      <div
+        class="inputDiv"
+        (click)="inputDivClicked(inputDivImage)"
+        (focusout)="inputDivUnclicked(inputDivImage)"
+        #inputDivImage
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
+          formControlName="userImage"
+          #image
+        />
+        <i class="fa fa-camera-retro" aria-hidden="true"></i>
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="updateBtn"
+      [disabled]="profile.invalid"
+      [class.disable]="profile.invalid"
+    >
+      프로필 업데이트
+    </button>
+  </form>
+</div>
