@@ -215,6 +215,13 @@ carousel slide {
   .roomExplanation {
     font-size: 0.9rem;
     font-weight: 300;
+
+    p{
+      margin-top:5px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
   .star {
     margin-top: 20px;
