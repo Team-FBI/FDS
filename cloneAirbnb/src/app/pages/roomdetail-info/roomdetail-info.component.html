@@ -49,6 +49,11 @@
   </div>
   <div class="review">
     <h2>후기</h2>
+    <ul>
+      <li *ngFor="let review of reviews">
+        {{review[0]}} {{review[1]}} {{review[2]}}
+      </li>
+    </ul>
   </div>
 </section>
 
