@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
+import { RoomListService } from 'src/app/core/service/room-list.service';
 
 @Component({
   selector: 'app-storage-list',
@@ -10,10 +11,12 @@ import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 export class StorageListComponent implements OnInit {
   constructor(
     private router: Router,
-    private urlRemember: UrlRememberService
+    private urlRemember: UrlRememberService,
+    private roomListService: RoomListService
   ) {}
 
   ngOnInit() {
+    this.roomListService.roomList = [];
     this.urlRemember.currentUrl = this.router.url;
   }
 }

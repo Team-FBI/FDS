@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MessageList } from 'src/app/core/interface/messageList.interface';
 import { BehaviorSubject } from 'rxjs';
+import { RoomListService } from 'src/app/core/service/room-list.service';
 
 @Component({
   selector: 'app-message-list',
@@ -14,10 +15,15 @@ export class MessageListComponent implements OnInit {
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   appUrl = environment.appUrl;
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private roomListService: RoomListService
+  ) {}
   messageList = [];
 
   ngOnInit() {
+    this.roomListService.roomList = [];
     this.isLoading$.next(true);
     this.http.get(`${this.appUrl}/chat/`).subscribe(
       (res: Array<MessageList>) => {

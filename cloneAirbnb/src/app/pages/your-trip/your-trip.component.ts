@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
+import { RoomListService } from 'src/app/core/service/room-list.service';
 
 @Component({
   selector: 'app-your-trip',
@@ -22,10 +23,12 @@ export class YourTripComponent implements OnInit {
     private router: Router,
     private urlRemember: UrlRememberService,
     private http: HttpClient,
-    private reservationInfoService: ReservationInfoService
+    private reservationInfoService: ReservationInfoService,
+    private roomListService: RoomListService
   ) {}
 
   ngOnInit() {
+    this.roomListService.roomList = [];
     const id = localStorage.getItem('userId');
     this.urlRemember.currentUrl = this.router.url;
 
@@ -54,5 +57,4 @@ export class YourTripComponent implements OnInit {
     this.reservationInfoService.id = roomId;
     this.router.navigate([`roomdetail/${roomId}`]);
   }
-
 }
