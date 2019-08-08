@@ -14,16 +14,18 @@ export class ScrollDirective {
     this.renderer.setStyle(
       this.el.nativeElement,
       'position',
-      window.pageYOffset > this.scrollToTop ? 'fixed' : 'absolute');
-
-      this.renderer.setStyle(
-        this.el.nativeElement,
-        'top',
-        window.pageYOffset > this.scrollToTop ? '1px' : '1px');
-
-        // this.renderer.setStyle(
-        //   this.el.nativeElement,
-        //   'margin-left',
-        //   window.pageYOffset > this.scrollToTop ? '1%' : '1%');
+      window.pageYOffset > this.scrollToTop ? 'fixed' : 'absolute'); 
+    this.renderer.setStyle(
+      this.el.nativeElement,
+      'top',
+      window.pageYOffset > this.scrollToTop ? '1px' : '650px');
+    this.renderer.setStyle(
+      this.el.nativeElement,
+      'border',
+      window.pageYOffset > this.scrollToTop ? '1px solid #e0e0e0' : '1px solid #e0e0e0');
+    this.renderer.setStyle(
+      this.el.nativeElement,
+      'padding',
+      window.pageYOffset > this.scrollToTop ? '0 20px' : '0 20px');
   }
 }
