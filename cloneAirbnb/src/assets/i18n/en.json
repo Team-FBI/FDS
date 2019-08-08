@@ -117,7 +117,9 @@
     "descriptionExplanation4": "Tell them about you: Do you have a life motto?",
     "image": "Image",
     "imagePlaceholder": "Image URL",
-    "save": "Save"
+    "save": "Save",
+    "updateTitle": "Profile is updated!",
+    "updateContents": "Your profile has been successfully updated!"
   },
   "yourTrip": {
     "upcomingPlans": "Upcoming Plans",
