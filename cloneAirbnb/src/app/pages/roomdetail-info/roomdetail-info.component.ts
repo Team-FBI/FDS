@@ -173,7 +173,7 @@ export class RoomdetailInfoComponent implements OnInit {
         fiveReviews = [];
         fiveReviews.push(review);
       }
-      if (index === this.reviews.length - 1 && index % 5 === 0) {
+      if (index === this.reviews.length - 1) {
         result.push(fiveReviews);
       }
     }
