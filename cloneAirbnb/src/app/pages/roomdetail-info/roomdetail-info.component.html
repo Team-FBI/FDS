@@ -141,7 +141,7 @@
         </div>
       </div>
     </div>
-    <div class="reviewList" *ngFor="let review of newReviews[page]">
+    <div class="reviewList" *ngFor="let review of newReviews">
       <div class="userInfo">
         <div class="userPhoto">
           <img src="{{ review[1] }}" />
@@ -159,7 +159,8 @@
     <div class="paginationWrap">
       <div class="reviewPage">
           <pagination
-          [totalItems]="reviews.length * 2"
+          [totalItems]="reviews.length"
+          [itemsPerPage]="5"
           [rotate]="!rotate"
           [maxSize]="maxSize"
           [(ngModel)]="currentPage"
