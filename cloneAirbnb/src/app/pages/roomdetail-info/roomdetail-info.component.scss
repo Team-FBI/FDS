@@ -118,7 +118,7 @@
 
 .reviewContainer {
   h2 {
-    margin-bottom: 30px;
+    margin:20px 0px 25px;
     font-size: 1.5rem;
     font-weight: bold;
   }
@@ -162,11 +162,58 @@
   }
 }
 
+::ng-deep.page-item.active .page-link{
+  background:#ff5a5f;
+  border:1px solid #ff5a5f;
+}
+.paginationWrap{
+  margin-top:30px;
+  text-align: center;
+
+  .reviewPage{
+    display: inline-block
+  }
+}
+
 .loading {
   position: absolute;
   top: 200px;
   left: calc(50vw - 128px);
 }
+
+
+.ratingBox{
+  margin-bottom:10px;
+  padding-top:10px;
+  border-top:1px solid #ddd;
+
+  .ratingList{
+    @include flexContainer(flex-start);
+    
+    .ratingDetails{
+      width:50%;
+      margin-bottom:10px;
+      font-size:1.1rem;
+      font-weight: 300;
+
+      &:last-of-type{
+        padding-left:20px;
+      }
+
+      .rating{
+        float: right;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
 
 // .roomdetailInfoContainer{
 //   width:1100px;

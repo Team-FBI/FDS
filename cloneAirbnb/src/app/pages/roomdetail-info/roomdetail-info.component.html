@@ -80,60 +80,66 @@
       ></rating>
     </h2>
     <div class="ratingBox">
-      <p class="ratingDetails">
-        {{ 'roomDetailInfo.accuracy' | translate }}
-        <rating
-          [(ngModel)]="accuracyScore"
-          [max]="5"
-          class="rating"
-          [readonly]="true"
-        ></rating>
-      </p>
-      <p class="ratingDetails">
-        {{ 'roomDetailInfo.location' | translate }}
-        <rating
-          [(ngModel)]="locationScore"
-          [max]="5"
-          class="rating"
-          [readonly]="true"
-        ></rating>
-      </p>
-      <p class="ratingDetails">
-        {{ 'roomDetailInfo.communication' | translate }}
-        <rating
-          [(ngModel)]="communicationScore"
-          [max]="5"
-          class="rating"
-          [readonly]="true"
-        ></rating>
-      </p>
-      <p class="ratingDetails">
-        {{ 'roomDetailInfo.checkIn' | translate }}
-        <rating
-          [(ngModel)]="checkInScore"
-          [max]="5"
-          class="rating"
-          [readonly]="true"
-        ></rating>
-      </p>
-      <p class="ratingDetails">
-        {{ 'roomDetailInfo.cleanliness' | translate }}
-        <rating
-          [(ngModel)]="cleanScore"
-          [max]="5"
-          class="rating"
-          [readonly]="true"
-        ></rating>
-      </p>
-      <p class="ratingDetails">
-        {{ 'roomDetailInfo.value' | translate }}
-        <rating
-          [(ngModel)]="valueScore"
-          [max]="5"
-          class="rating"
-          [readonly]="true"
-        ></rating>
-      </p>
+      <div class="ratingList">
+        <div class="ratingDetails">
+          {{ 'roomDetailInfo.accuracy' | translate }}
+          <rating
+            [(ngModel)]="accuracyScore"
+            [max]="5"
+            class="rating"
+            [readonly]="true"
+          ></rating>
+        </div>
+        <div class="ratingDetails">
+          {{ 'roomDetailInfo.location' | translate }}
+          <rating
+            [(ngModel)]="locationScore"
+            [max]="5"
+            class="rating"
+            [readonly]="true"
+          ></rating>
+        </div>
+      </div>
+      <div class="ratingList">
+        <div class="ratingDetails">
+          {{ 'roomDetailInfo.communication' | translate }}
+          <rating
+            [(ngModel)]="communicationScore"
+            [max]="5"
+            class="rating"
+            [readonly]="true"
+          ></rating>
+        </div>
+        <div class="ratingDetails">
+          {{ 'roomDetailInfo.checkIn' | translate }}
+          <rating
+            [(ngModel)]="checkInScore"
+            [max]="5"
+            class="rating"
+            [readonly]="true"
+          ></rating>
+        </div>
+      </div>
+      <div class="ratingList">
+        <div class="ratingDetails">
+          {{ 'roomDetailInfo.cleanliness' | translate }}
+          <rating
+            [(ngModel)]="cleanScore"
+            [max]="5"
+            class="rating"
+            [readonly]="true"
+          ></rating>
+        </div>
+        <div class="ratingDetails">
+          {{ 'roomDetailInfo.value' | translate }}
+          <rating
+            [(ngModel)]="valueScore"
+            [max]="5"
+            class="rating"
+            [readonly]="true"
+          ></rating>
+        </div>
+      </div>
     </div>
     <div class="reviewList" *ngFor="let review of newReviews[page]">
       <div class="userInfo">
@@ -150,13 +156,17 @@
         </p>
       </div>
     </div>
-    <pagination
-      [totalItems]="reviews.length * 2"
-      [rotate]="!rotate"
-      [maxSize]="maxSize"
-      [(ngModel)]="currentPage"
-      (pageChanged)="pageChanged($event)"
-    ></pagination>
+    <div class="paginationWrap">
+      <div class="reviewPage">
+          <pagination
+          [totalItems]="reviews.length * 2"
+          [rotate]="!rotate"
+          [maxSize]="maxSize"
+          [(ngModel)]="currentPage"
+          (pageChanged)="pageChanged($event)"
+        ></pagination>
+      </div>
+    </div>
   </div>
 </section>
 
