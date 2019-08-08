@@ -41,11 +41,17 @@
           name=""
           id=""
           placeholder="메세지를 입력해주세요."
+          (input)="changeIsEmpty(userMessage)"
           #userMessage
         ></textarea>
       </div>
     </div>
-    <button class="guestInfoBtn" (click)="toCheckPayment(userMessage)">
+    <button
+      class="guestInfoBtn"
+      (click)="toCheckPayment(userMessage)"
+      [disabled]="isEmpty"
+      [style.background]="isEmpty ? '#ccc' : '#fd5c63'"
+    >
       {{ 'guestInfo.continue' | translate }}
     </button>
   </section>
