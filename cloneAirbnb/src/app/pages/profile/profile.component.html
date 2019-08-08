@@ -201,7 +201,9 @@
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Profile is updated!</h4>
+    <h4 class="modal-title pull-left">
+      {{ 'profile.updateTitle' | translate }}
+    </h4>
     <button
       type="button"
       class="close pull-right"
@@ -213,8 +215,8 @@
   </div>
   <div class="modal-body">
     <img src="https://i.postimg.cc/J08Gp0FB/user.png" class="modalImg" />
-    <i class="fa fa-check-circle-o" aria-hidden="true"></i> Your profile has
-    been successfully updated!
+    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+    {{ 'profile.updateContents' | translate }}
   </div>
 </ng-template>
 
