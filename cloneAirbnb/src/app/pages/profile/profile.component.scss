@@ -127,3 +127,29 @@
 .disable {
   background: #ccc;
 }
+
+.modal-title {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.modal-header {
+  border: 0;
+}
+
+.modal-body {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.modalImg {
+  width: 30%;
+  display: block;
+  height: auto;
+  text-align: center;
+  margin: 15px auto 30px;
+}
