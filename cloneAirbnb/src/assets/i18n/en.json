@@ -78,6 +78,8 @@
     "selectDay": "Day",
     "selectYear": "Year",
     "promotionMessage": "We’ll send you marketing promotions, special offers, inspiration, and policy updates via email.",
+    "image": "Profile Image",
+    "imagePlaceholder": "Image URL",
     "submitBtn": "Sign up"
   },
   "signIn": {
@@ -203,7 +205,13 @@
     "contactHost": "Contact host",
     "amenities": "Amenities",
     "availability": "Availability",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "accuracy": "Accuracy",
+    "location": "Location",
+    "communication": "Communication",
+    "checkIn": "Check-in",
+    "cleanliness": "Cleanliness",
+    "value": "Value"
   },
   "roomRegulation": {
     "roomRegulationTitle": "Review house rules",

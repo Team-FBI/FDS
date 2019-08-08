@@ -78,6 +78,8 @@
     "selectDay": "일",
     "selectYear": "년",
     "promotionMessage": "에어비앤비의 마케팅 프로모션, 특별 할인 및 추천 여행 정보, 정책 변경사항을 이메일로 보내드립니다.",
+    "image": "프로필 이미지",
+    "imagePlaceholder": "이미지 URL",
     "submitBtn": "가입하기"
   },
   "signIn": {
@@ -203,7 +205,13 @@
     "contactHost": "호스트에게 연락하기",
     "amenities": "편의시설",
     "availability": "예약 가능 여부",
-    "reviews": "후기"
+    "reviews": "후기",
+    "accuracy": "정확성",
+    "location": "위치",
+    "communication": "의사소통",
+    "checkIn": "체크인",
+    "cleanliness": "청결도",
+    "value": "가치"
   },
   "roomRegulation": {
     "roomRegulationTitle": "숙소 이용규칙 확인하기",
