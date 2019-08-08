@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -21,14 +23,19 @@ export class ProfileComponent implements OnInit {
   userFirstNameFromServer: string;
   userLastNameFromServer: string;
   userDescriptionFromServer: string;
+  modalRef: BsModalRef;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private modalService: BsModalService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
     this.http.get(`${this.appUrl}/accounts/user/${this.userId}/`).subscribe(
       (res: any) => {
-        console.log(res);
         this.userNameFromServer = res.username;
         this.userEmailFromServer = res.email;
         this.userFirstNameFromServer = res.first_name;
@@ -94,6 +101,15 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  closeModal() {
+    this.modalRef.hide();
+    this.router.navigate(['/home']);
+  }
+
   deleteUserNameWarningMessage() {
     this.userNameDuplicate = false;
   }
@@ -131,9 +147,7 @@ export class ProfileComponent implements OnInit {
 
     this.http
       .patch(`${this.appUrl}/accounts/user/${this.userId}/`, payload)
-      .subscribe(res => {
-        console.log(res);
-      });
+      .subscribe();
   }
 
   get userName() {

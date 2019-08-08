@@ -192,10 +192,30 @@
       class="updateBtn"
       [disabled]="profile.invalid"
       [class.disable]="profile.invalid"
+      (click)="openModal(template)"
     >
       {{ 'profile.save' | translate }}
     </button>
   </form>
 </div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Profile is updated!</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img src="https://i.postimg.cc/J08Gp0FB/user.png" class="modalImg" />
+    <i class="fa fa-check-circle-o" aria-hidden="true"></i> Your profile has
+    been successfully updated!
+  </div>
+</ng-template>
 
 <app-footer></app-footer>
