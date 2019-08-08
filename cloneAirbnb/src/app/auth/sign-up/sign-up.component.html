@@ -230,7 +230,7 @@
       <div class="textColor484848">
         {{ 'signUp.promotionMessage' | translate }}
       </div>
-      <div class="textBold">Profile Image</div>
+      <div class="textBold">{{ 'signUp.image' | translate }}</div>
       <div
         class="inputDiv"
         (click)="inputDivClicked(inputDivImage)"
@@ -240,7 +240,7 @@
         <input
           class="input"
           type="text"
-          placeholder="{{ 'profile.imagePlaceholder' | translate }}"
+          placeholder="{{ 'signUp.imagePlaceholder' | translate }}"
           #image
         />
         <i class="fa fa-camera-retro" aria-hidden="true"></i>

@@ -81,7 +81,7 @@
     </h2>
     <div class="ratingBox">
       <p class="ratingDetails">
-        Accuracy
+        {{ 'roomDetailInfo.accuracy' | translate }}
         <rating
           [(ngModel)]="accuracyScore"
           [max]="5"
@@ -90,7 +90,7 @@
         ></rating>
       </p>
       <p class="ratingDetails">
-        Location
+        {{ 'roomDetailInfo.location' | translate }}
         <rating
           [(ngModel)]="locationScore"
           [max]="5"
@@ -99,7 +99,7 @@
         ></rating>
       </p>
       <p class="ratingDetails">
-        Communication
+        {{ 'roomDetailInfo.communication' | translate }}
         <rating
           [(ngModel)]="communicationScore"
           [max]="5"
@@ -108,7 +108,7 @@
         ></rating>
       </p>
       <p class="ratingDetails">
-        Check-in
+        {{ 'roomDetailInfo.checkIn' | translate }}
         <rating
           [(ngModel)]="checkInScore"
           [max]="5"
@@ -117,7 +117,7 @@
         ></rating>
       </p>
       <p class="ratingDetails">
-        Cleanliness
+        {{ 'roomDetailInfo.cleanliness' | translate }}
         <rating
           [(ngModel)]="cleanScore"
           [max]="5"
@@ -126,7 +126,7 @@
         ></rating>
       </p>
       <p class="ratingDetails">
-        Value
+        {{ 'roomDetailInfo.value' | translate }}
         <rating
           [(ngModel)]="valueScore"
           [max]="5"
