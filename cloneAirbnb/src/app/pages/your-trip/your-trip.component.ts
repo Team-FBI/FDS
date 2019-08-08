@@ -34,6 +34,7 @@ export class YourTripComponent implements OnInit {
 
     this.http.get(`${this.appUrl}/accounts/user/${id}/`).subscribe(
       (res: any) => {
+        console.log(res);
         for (const reservation of res.reservations) {
           const roomId = Object.keys(reservation).join('');
           this.parseDate(reservation[roomId].end_date)

@@ -4,14 +4,7 @@
   <form
     [formGroup]="profile"
     (ngSubmit)="
-      onSubmit(
-        inputUserName,
-        inputUserEmail,
-        firstName,
-        lastName,
-        description,
-        image
-      )
+      onSubmit(inputUserName, inputUserEmail, firstName, lastName, description)
     "
   >
     <p class="title">{{ 'profile.editProfile' | translate }}</p>
@@ -193,24 +186,6 @@
       <br />
       <br />
       {{ 'profile.descriptionExplanation4' | translate }}
-    </div>
-    <div class="oneLine">
-      <span class="inputTitleSpan">{{ 'profile.image' | translate }}: </span>
-      <div
-        class="inputDiv"
-        (click)="inputDivClicked(inputDivImage)"
-        (focusout)="inputDivUnclicked(inputDivImage)"
-        #inputDivImage
-      >
-        <input
-          class="input"
-          type="text"
-          placeholder="{{ 'profile.imagePlaceholder' | translate }}"
-          [value]="userImageFromServer"
-          #image
-        />
-        <i class="fa fa-camera-retro" aria-hidden="true"></i>
-      </div>
     </div>
     <button
       type="submit"

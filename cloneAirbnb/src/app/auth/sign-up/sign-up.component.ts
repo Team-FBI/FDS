@@ -108,7 +108,6 @@ export class SignUpComponent implements OnInit {
 
     this.authService.registerUser(payload).subscribe(
       res => {
-        console.log(res);
         this.router.navigate(['/signIn']);
       },
       err => {

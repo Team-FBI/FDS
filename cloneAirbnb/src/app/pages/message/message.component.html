@@ -99,7 +99,14 @@
             </div>
           </div>
           <div class="userImage">
-            <img src="https://i.postimg.cc/RFtppDcT/image.png" />
+            <img
+              *ngIf="!message.author.image"
+              src="https://i.postimg.cc/RFtppDcT/image.png"
+            />
+            <img
+              *ngIf="message.author.image"
+              src="{{ message.author.image }}"
+            />
           </div>
         </div>
       </div>
@@ -136,7 +143,14 @@
             </div>
           </div>
           <div class="userImage">
-            <img src="https://i.postimg.cc/RFtppDcT/image.png" />
+            <img
+              *ngIf="!message.author.image"
+              src="https://i.postimg.cc/RFtppDcT/image.png"
+            />
+            <img
+              *ngIf="message.author.image"
+              src="{{ message.author.image }}"
+            />
           </div>
         </div>
       </div>

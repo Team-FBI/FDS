@@ -42,9 +42,7 @@ export class GuestInfoComponent implements OnInit {
         message: userMessage.value
       };
 
-      this.http.post(`${this.appUrl}/rooms/${id}`, payload).subscribe(res => {
-        console.log(res);
-      });
+      this.http.post(`${this.appUrl}/rooms/${id}`, payload).subscribe();
       this.router.navigate(['checkpayment']);
     }
   }
