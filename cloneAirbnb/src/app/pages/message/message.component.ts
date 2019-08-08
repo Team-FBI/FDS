@@ -35,6 +35,7 @@ export class MessageComponent implements OnInit {
   constructor(private chatService: ChatService, private http: HttpClient) {
     chatService.messages.subscribe(msg => {
       this.messages.push(msg);
+      console.log(this.messages);
     });
   }
 

@@ -21,7 +21,6 @@ export class ProfileComponent implements OnInit {
   userFirstNameFromServer: string;
   userLastNameFromServer: string;
   userDescriptionFromServer: string;
-  userImageFromServer: string;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {}
 
@@ -35,7 +34,6 @@ export class ProfileComponent implements OnInit {
         this.userFirstNameFromServer = res.first_name;
         this.userLastNameFromServer = res.last_name;
         this.userDescriptionFromServer = res.description;
-        // this.userImageFromServer = res.image;
       },
       err => {},
       () => {
@@ -121,16 +119,14 @@ export class ProfileComponent implements OnInit {
     userEmail: HTMLInputElement,
     userFirstName: HTMLInputElement,
     userLastName: HTMLInputElement,
-    userDescription: HTMLInputElement,
-    userImage: HTMLInputElement
+    userDescription: HTMLInputElement
   ) {
     const payload = {
       username: userName.value,
       email: userEmail.value,
       first_name: userFirstName.value,
       last_name: userLastName.value,
-      description: userDescription.value,
-      image: userImage.value
+      description: userDescription.value
     };
 
     this.http
@@ -162,9 +158,5 @@ export class ProfileComponent implements OnInit {
 
   get userDescription() {
     return this.profile.get('userDescription');
-  }
-
-  get userImage() {
-    return this.profile.get('userImage');
   }
 }
