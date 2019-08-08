@@ -93,17 +93,18 @@
   width: 1100px;
   margin: 50px auto 0px;
 }
-.detailContainer::after {
-  clear: both;
-  display: block;
-  content: '';
-}
+
 
 .detailPayment {
   float: left;
   width: 400px;
-  padding: 0 20px;
-  border: 1px solid #e0e0e0;
+
+  .paymentFixed{
+      padding: 0 20px;
+      border: 1px solid #e0e0e0;
+      width:400px;
+  }
+
 
   .priceTitle {
     margin-bottom: 10px;
@@ -257,6 +258,12 @@
   }
 }
 
+
+.detailContainer::after {
+  clear: both;
+  display: block;
+  content: '';
+}
 // .box{
 //   position: relative;
 //   margin-bottom:15px;
