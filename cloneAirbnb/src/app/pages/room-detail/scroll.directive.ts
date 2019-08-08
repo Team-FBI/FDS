@@ -14,7 +14,7 @@ export class ScrollDirective {
     this.renderer.setStyle(
       this.el.nativeElement,
       'position',
-      window.pageYOffset > this.scrollToTop ? 'fixed' : ''); 
+      window.pageYOffset > this.scrollToTop ? 'sticky' : 'absolute'); 
     this.renderer.setStyle(
       this.el.nativeElement,
       'top',
