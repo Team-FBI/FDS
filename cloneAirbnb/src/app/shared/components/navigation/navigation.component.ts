@@ -8,6 +8,7 @@ import { LanguageService } from 'src/app/core/service/language.service';
 import { GoogleMapService } from 'src/app/pages/room-list/google-map.service';
 import { GoogleMapsAPIWrapper } from '@agm/core';
 import { States } from '../../../core/interface/states.interface';
+import { MenuService } from 'src/app/core/service/menu.service';
 
 @Component({
   selector: 'app-navigation',
@@ -21,6 +22,7 @@ export class NavigationComponent implements OnInit {
   switchLang: boolean;
   states = [];
   searchInputFocus = false;
+  menuOpen = this.menuService.isOpen;
 
   constructor(
     private router: Router,
@@ -28,7 +30,8 @@ export class NavigationComponent implements OnInit {
     public reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private menuService: MenuService
   ) {
     this.translate = translate;
   }
@@ -82,5 +85,10 @@ export class NavigationComponent implements OnInit {
     const language = this.switchLang ? 'ko' : 'en';
     this.languageService.switchLanguageService(language);
     this.switchLang = !this.switchLang;
+  }
+
+  openHamburgerMenu() {
+    this.menuService.menuChangeDetect();
+    this.menuOpen = this.menuService.isOpen;
   }
 }

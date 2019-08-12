@@ -78,3 +78,63 @@
   top: 200px;
   left: calc(50vw - 128px);
 }
+
+@media screen and (max-width: 1200px) {
+  .messageContainer {
+    width: 90%;
+    margin: 50px auto 0;
+    min-height: 500px;
+    border:2px solid red
+  }
+}
+@media screen and (max-width: 780px) {
+  .messageContainer {
+    width: 90%;
+    margin: 50px auto 0;
+    min-height: 500px;
+  }
+  .messageDiv {
+    .userName {
+      width: 20%;
+      padding:10px;
+    }
+    .lastMessage {
+      width: 45%;
+      padding:10px;
+    }
+    .reservationInfo{
+      width:15%;
+      padding:10px 0;
+      text-align: right;
+    } 
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .messageDiv {
+    @include flexContainer(space-between);
+    flex-flow: wrap;
+    height: auto;
+    padding:10px 10px 10px 0px;    
+
+    .hostImage{
+      width:auto;
+    }
+    .userName {
+      width: 70%;
+    }
+    .lastMessage {
+      width: 70%;
+    }
+    .reservationInfo{
+      width:30%;
+
+      p, span{
+        font-size:0.8rem;
+      }
+    } 
+  }
+  .allMessage{
+    font-size:0.8rem;
+  }
+}
