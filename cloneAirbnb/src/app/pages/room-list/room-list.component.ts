@@ -8,15 +8,16 @@ import { GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
 import { environment } from 'src/environments/environment';
 import { Options } from 'ng5-slider';
-import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 
 import { GoogleMapService } from './google-map.service';
+import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { RoomListService } from 'src/app/core/service/room-list.service';
 import { MakerInfo } from '../../core/interface/maker-info.interface';
 import { RoomList, Result } from '../../core/interface/roomList.interface';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { MenuService } from 'src/app/core/service/menu.service';
 
 @Component({
   selector: 'app-room-list',
@@ -28,6 +29,7 @@ export class RoomListComponent implements OnInit {
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
   roomList = this.roomListService.roomList;
+  menuOpen = false;
 
   // 지도관련 변수
   map: any;
@@ -56,7 +58,6 @@ export class RoomListComponent implements OnInit {
   Adultcounter = 0;
   Childcounter = 0;
   Youngcounter = 0;
-  dateCustomClasses: DatepickerDateCustomClasses[];
   dateStyle = {
     width: '65px'
   };
@@ -107,9 +108,11 @@ export class RoomListComponent implements OnInit {
   constructor(
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
+    private urlRemember: UrlRememberService,
     private reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService,
-    private router: Router
+    private router: Router,
+    private menuService: MenuService
   ) {
     this.currentIW = null;
     this.previousIW = null;
@@ -120,11 +123,6 @@ export class RoomListComponent implements OnInit {
     const fourDaysAhead = new Date();
     fourDaysAhead.setDate(now.getDate() + 4);
 
-    this.dateCustomClasses = [
-      { date: now, classes: [] },
-      { date: twoDaysAhead, classes: ['bg-warning'] },
-      { date: fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
-    ];
     this.datePickerConfig = Object.assign(
       {},
       {
@@ -137,6 +135,7 @@ export class RoomListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.urlRemember.currentUrl = this.router.url;
     this.getRoomInfo();
     this.checkInDate = new Date(
       this.reservationInfoService.reservationInfoObj.checkIn
@@ -161,6 +160,10 @@ export class RoomListComponent implements OnInit {
       this.latitude = latlng[0];
       this.longitude = latlng[1];
       this.map.setCenter({ lat: this.latitude, lng: this.longitude });
+    });
+
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
     });
   }
 

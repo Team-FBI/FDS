@@ -113,10 +113,8 @@
 @media screen and (max-width: 360px) {
   .messageDiv {
     @include flexContainer(space-between);
-    // justify-content: space-between
     flex-flow: wrap;
-    height: auto;
-    
+    height: auto;    
 
     .hostImage{
       width:30%;
