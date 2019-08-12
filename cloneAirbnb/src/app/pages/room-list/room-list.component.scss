@@ -15,7 +15,6 @@
   align-items: center;
   border-bottom: 1px solid #ddd;
   position: relative;
-
 }
 .filterButton {
   position: relative;
@@ -24,11 +23,11 @@
   font-size: 14px;
   line-height: 18px;
   color: rgb(72, 72, 72);
-  padding:6px 12px;
+  padding: 6px 12px;
   cursor: pointer;
   background: none;
   text-align: center;
-  border:1px solid rgb(220, 224, 224);
+  border: 1px solid rgb(220, 224, 224);
   border-radius: 4px;
   text-decoration: none;
 }
@@ -47,7 +46,7 @@
   transition-property: opacity;
   transition-duration: 250ms;
   transition-timing-function: ease-in-out;
-  border:1px solid rgb(0, 132, 137);
+  border: 1px solid rgb(0, 132, 137);
   border-radius: 32px;
 }
 
@@ -114,16 +113,14 @@ button:focus {
   text-align: center;
 }
 
-
-::ng-deep.page-item.active .page-link{
-  background:#ff5a5f;
-  border:1px solid #ff5a5f;
+::ng-deep.page-item.active .page-link {
+  background: #ff5a5f;
+  border: 1px solid #ff5a5f;
 }
 .paginationStyle {
   display: inline-block;
   margin: 30px auto;
 }
-
 
 .map {
   float: left;
@@ -183,7 +180,7 @@ button:focus {
   border-radius: 5px;
   overflow: hidden;
 
-  img{
+  img {
     border-radius: 5px;
   }
 }
@@ -196,7 +193,7 @@ carousel slide {
 .detailText {
   @include flexContainer(space-between);
   flex-flow: column;
-  width:calc( 100% - 320px );
+  width: calc(100% - 320px);
   height: 100%;
   padding: 10px 20px;
 
@@ -217,8 +214,8 @@ carousel slide {
     font-size: 0.9rem;
     font-weight: 300;
 
-    p{
-      margin-top:5px;
+    p {
+      margin-top: 5px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -226,14 +223,14 @@ carousel slide {
   }
   .star {
     margin-top: 20px;
-    color:#008489;
+    color: #008489;
   }
-  .viewPrice{
-    font-size:16px;
+  .viewPrice {
+    font-size: 16px;
     text-align: right;
   }
-  .finalPrice{
-    font-size:12px;
+  .finalPrice {
+    font-size: 12px;
     text-align: right;
   }
 }
@@ -263,13 +260,11 @@ agm-map {
       font-size: 1.1rem;
       font-weight: bold;
     }
-    .rating{
-      color:#008489;
+    .rating {
+      color: #008489;
     }
   }
 }
-
-
 
 ::ng-deep.gm-style .gm-style-iw-c {
   padding: 17px 0 0 17px;

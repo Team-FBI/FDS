@@ -17,6 +17,7 @@ import { MakerInfo } from '../../core/interface/maker-info.interface';
 import { RoomList, Result } from '../../core/interface/roomList.interface';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { MenuService } from 'src/app/core/service/menu.service';
 
 @Component({
   selector: 'app-room-list',
@@ -28,6 +29,7 @@ export class RoomListComponent implements OnInit {
   //백엔드 연결 URL
   appUrl: string = environment.appUrl;
   roomList = this.roomListService.roomList;
+  menuOpen = false;
 
   // 지도관련 변수
   map: any;
@@ -109,7 +111,8 @@ export class RoomListComponent implements OnInit {
     private urlRemember: UrlRememberService,
     private reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService,
-    private router: Router
+    private router: Router,
+    private menuService: MenuService
   ) {
     this.currentIW = null;
     this.previousIW = null;
@@ -157,6 +160,10 @@ export class RoomListComponent implements OnInit {
       this.latitude = latlng[0];
       this.longitude = latlng[1];
       this.map.setCenter({ lat: this.latitude, lng: this.longitude });
+    });
+
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
     });
   }
 
