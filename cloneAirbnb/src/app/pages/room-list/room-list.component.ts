@@ -8,7 +8,6 @@ import { GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
 import { environment } from 'src/environments/environment';
 import { Options } from 'ng5-slider';
-import { DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker';
 
 import { GoogleMapService } from './google-map.service';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
@@ -56,7 +55,6 @@ export class RoomListComponent implements OnInit {
   Adultcounter = 0;
   Childcounter = 0;
   Youngcounter = 0;
-  dateCustomClasses: DatepickerDateCustomClasses[];
   dateStyle = {
     width: '65px'
   };
@@ -120,11 +118,6 @@ export class RoomListComponent implements OnInit {
     const fourDaysAhead = new Date();
     fourDaysAhead.setDate(now.getDate() + 4);
 
-    this.dateCustomClasses = [
-      { date: now, classes: [] },
-      { date: twoDaysAhead, classes: ['bg-warning'] },
-      { date: fourDaysAhead, classes: ['bg-danger', 'text-warning'] }
-    ];
     this.datePickerConfig = Object.assign(
       {},
       {
