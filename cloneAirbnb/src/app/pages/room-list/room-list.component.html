@@ -95,7 +95,12 @@
     </div>
   </div>
 
-  <div class="map clear-fix">
+  <div class="showMapBtn">
+    <button class="mapBtn" (click)="showMap($event)">map
+    </button>
+  </div>
+
+  <div class="map clear-fix" [style.display]="isShowMap">
     <div class="mapWrap">
       <agm-map
         class="mapSize"

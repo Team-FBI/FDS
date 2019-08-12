@@ -103,6 +103,8 @@ export class RoomListComponent implements OnInit {
   increaseBtn2 = false;
   increaseBtn3 = false;
 
+  isShowMap: string;
+
   constructor(
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
@@ -323,6 +325,16 @@ export class RoomListComponent implements OnInit {
       this.previousIW.close();
     }
     this.previousIW = infoWindow;
+  }
+
+  showMap(e) {
+    if (this.isShowMap !== 'block') {
+      this.isShowMap = 'block';
+      e.target.textContent = 'list';
+    } else {
+      this.isShowMap = 'none';
+      e.target.textContent = 'map';
+    }
   }
 
   increase(personnelType: HTMLSpanElement) {
