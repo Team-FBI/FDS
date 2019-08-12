@@ -122,14 +122,6 @@
           [iconUrl]="icon"
           (markerClick)="markerClick(iw)"
         >
-          <agm-marker
-            *ngFor="let marker of markers"
-            [latitude]="marker.lat"
-            [longitude]="marker.lng"
-            [opacity]="marker.alpha"
-            [iconUrl]="icon"
-            (markerClick)="markerClick(iw)"
-          >
             <agm-info-window [isOpen]="marker.disabled" #iw>
               <div class="infowindow">
                 <div>
@@ -161,7 +153,6 @@
                   ></rating>
                 </div>
               </div>
-              `
             </agm-info-window>
           </agm-marker>
         </agm-map>
