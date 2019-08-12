@@ -16,145 +16,190 @@
         />
       </a>
     </h1>
-    <div class="search" *ngIf="!isMain">
-      <i class="fa fa-search" aria-hidden="true"></i>
-      <input
-        type="text"
-        (input)="
-          input.value ? (searchInputFocus = true) : (searchInputFocus = false)
-        "
-        (focus)="
-          input.value ? (searchInputFocus = true) : (searchInputFocus = false)
-        "
-        (focusout)="searchInputFocusout()"
-        (keyup.enter)="showRoomList(input.value, input)"
-        (keyup.enter)="initializeCurrentPage.emit()"
-        (input)="stateSuggestion(input)"
-        placeholder="{{ 'navigation.searchBarPlaceholder' | translate }}"
-        class="searchInput"
-        #input
-      />
-      <ul *ngIf="searchInputFocus" class="statesList">
-        <li
-          *ngFor="let state of states | slice: 0:5; index as i"
-          (click)="showRoomList(states[i].name, input)"
-          (click)="initializeCurrentPage.emit()"
-        >
-          <span class="float-left"
-            ><i class="fa fa-map-marker" aria-hidden="true"></i>
-            {{ states[i].name }}</span
-          >
-          <span class="float-right">{{ states[i].rooms }} rooms available</span>
-        </li>
-      </ul>
+    <div class="menuChange under1200">
+      <i
+        class="fa fa-angle-down"
+        aria-hidden="true"
+        [style.color]="isMain ? '#fff' : '#fd5c63'"
+        (click)="openHamburgerMenu()"
+      ></i>
+      <div class="hamburgerMenu" *ngIf="menuOpen">
+        <h1 class="logo">
+          <a routerLink="/home"
+            ><img
+              *ngIf="!isMain"
+              src="https://i.postimg.cc/zDhvQrxH/logo.png"
+              alt="Airbnb"
+              class="mainLogo"
+            />
+          </a>
+        </h1>
+        <i
+          class="fa fa-angle-up"
+          aria-hidden="true"
+          [style.color]="'#fd5c63'"
+          (click)="openHamburgerMenu()"
+        ></i>
+        <ul class="hamburgerMenuUl">
+          <li class="hamburgerMenuLi">홈</li>
+          <li class="hamburgerMenuLi">저장목록</li>
+          <li class="hamburgerMenuLi">여행</li>
+          <li class="hamburgerMenuLi">메세지</li>
+          <li class="hamburgerMenuLi">회원가입</li>
+          <li class="hamburgerMenuLi">로그인</li>
+          <li class="hamburgerMenuLi">프로필</li>
+          <li class="hamburgerMenuLi">로그아웃</li>
+        </ul>
+      </div>
     </div>
-    <nav class="headerNav">
-      <ul class="clear-fix">
-        <li
-          *ngIf="authService.loggedIn()"
-          class="borderColor555"
-          [class.borderColorWhite]="isMain"
-        >
-          <a
-            routerLink="/storageList"
-            [style.color]="isMain ? '#fff' : '#000'"
-            >{{ 'navigation.favorites' | translate }}</a
+    <div class="menuChange over1200">
+      <div class="search" *ngIf="!isMain">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input
+          type="text"
+          (input)="
+            input.value ? (searchInputFocus = true) : (searchInputFocus = false)
+          "
+          (focus)="
+            input.value ? (searchInputFocus = true) : (searchInputFocus = false)
+          "
+          (focusout)="searchInputFocusout()"
+          (keyup.enter)="showRoomList(input.value, input)"
+          (keyup.enter)="initializeCurrentPage.emit()"
+          (input)="stateSuggestion(input)"
+          placeholder="{{ 'navigation.searchBarPlaceholder' | translate }}"
+          class="searchInput"
+          #input
+        />
+        <ul *ngIf="searchInputFocus" class="statesList">
+          <li
+            *ngFor="let state of states | slice: 0:5; index as i"
+            (click)="showRoomList(states[i].name, input)"
+            (click)="initializeCurrentPage.emit()"
           >
-        </li>
-        <li
-          *ngIf="authService.loggedIn()"
-          class="borderColor555"
-          [class.borderColorWhite]="isMain"
-        >
-          <a routerLink="/yourTrip" [style.color]="isMain ? '#fff' : '#000'">{{
-            'navigation.myTrip' | translate
-          }}</a>
-        </li>
-        <li
-          *ngIf="authService.loggedIn()"
-          class="borderColor555"
-          [class.borderColorWhite]="isMain"
-        >
-          <a
-            routerLink="/messageList"
-            [style.color]="isMain ? '#fff' : '#000'"
-            >{{ 'navigation.message' | translate }}</a
+            <span class="float-left"
+              ><i class="fa fa-map-marker" aria-hidden="true"></i>
+              {{ states[i].name }}</span
+            >
+            <span class="float-right"
+              >{{ states[i].rooms }} rooms available</span
+            >
+          </li>
+        </ul>
+      </div>
+      <nav class="headerNav">
+        <ul class="clear-fix">
+          <li
+            *ngIf="authService.loggedIn()"
+            class="borderColor555"
+            [class.borderColorWhite]="isMain"
           >
-        </li>
-        <li
-          *ngIf="!authService.loggedIn()"
-          class="borderColor555"
-          [class.borderColorWhite]="isMain"
-        >
-          <a routerLink="/signUp" [style.color]="isMain ? '#fff' : '#000'">{{
-            'navigation.signUp' | translate
-          }}</a>
-        </li>
-        <li
-          *ngIf="!authService.loggedIn()"
-          class="borderColor555"
-          [class.borderColorWhite]="isMain"
-        >
-          <a routerLink="/signIn" [style.color]="isMain ? '#fff' : '#000'">{{
-            'navigation.signIn' | translate
-          }}</a>
-        </li>
-        <li>
-          <div class="language">
-            <button
-              (click)="switchLanguage()"
+            <a
+              routerLink="/storageList"
               [style.color]="isMain ? '#fff' : '#000'"
-              [style.border]="isMain ? '1px solid #fff' : '1px solid #000'"
+              >{{ 'navigation.favorites' | translate }}</a
             >
-              {{ switchLang ? 'KOR' : 'ENG' }}
-            </button>
-          </div>
-        </li>
-        <!-- <li class="myPageBtn" (click)="myPage= !myPage">
-          <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt="">
-        </li> -->
-        <li
-          class="mypage borderColor555"
-          *ngIf="authService.loggedIn()"
-          [class.borderColorWhite]="isMain"
-        >
-          <div class="btn-group" dropdown placement="bottom right">
-            <button
-              id="button-basic"
-              dropdownToggle
-              type="button"
-              class="btn dropdown-toggle"
-              aria-controls="dropdown-basic"
+          </li>
+          <li
+            *ngIf="authService.loggedIn()"
+            class="borderColor555"
+            [class.borderColorWhite]="isMain"
+          >
+            <a
+              routerLink="/yourTrip"
+              [style.color]="isMain ? '#fff' : '#000'"
+              >{{ 'navigation.myTrip' | translate }}</a
             >
-              <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt="" />
-              <span class="caret"></span>
-            </button>
-            <ul
-              id="dropdown-basic"
-              *dropdownMenu
-              class="dropdown-menu dropdown-menu-right"
-              role="menu"
-              aria-labelledby="button-basic"
+          </li>
+          <li
+            *ngIf="authService.loggedIn()"
+            class="borderColor555"
+            [class.borderColorWhite]="isMain"
+          >
+            <a
+              routerLink="/messageList"
+              [style.color]="isMain ? '#fff' : '#000'"
+              >{{ 'navigation.message' | translate }}</a
             >
-              <li role="menuitem">
-                <a class="dropdown-item" routerLink="/profile">{{
-                  'navigation.profile' | translate
-                }}</a>
-              </li>
-              <li role="menuitem">
-                <a class="dropdown-item" href="#">{{
-                  'navigation.account' | translate
-                }}</a>
-              </li>
-              <li role="menuitem">
-                <button class="dropdown-item signOutBtn" (click)="signOutBtn()">
-                  {{ 'navigation.signOut' | translate }}
-                </button>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </nav>
+          </li>
+          <li
+            *ngIf="!authService.loggedIn()"
+            class="borderColor555"
+            [class.borderColorWhite]="isMain"
+          >
+            <a routerLink="/signUp" [style.color]="isMain ? '#fff' : '#000'">{{
+              'navigation.signUp' | translate
+            }}</a>
+          </li>
+          <li
+            *ngIf="!authService.loggedIn()"
+            class="borderColor555"
+            [class.borderColorWhite]="isMain"
+          >
+            <a routerLink="/signIn" [style.color]="isMain ? '#fff' : '#000'">{{
+              'navigation.signIn' | translate
+            }}</a>
+          </li>
+          <li>
+            <div class="language">
+              <button
+                (click)="switchLanguage()"
+                [style.color]="isMain ? '#fff' : '#000'"
+                [style.border]="isMain ? '1px solid #fff' : '1px solid #000'"
+              >
+                {{ switchLang ? 'KOR' : 'ENG' }}
+              </button>
+            </div>
+          </li>
+          <!-- <li class="myPageBtn" (click)="myPage= !myPage">
+            <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt="">
+          </li> -->
+          <li
+            class="mypage borderColor555"
+            *ngIf="authService.loggedIn()"
+            [class.borderColorWhite]="isMain"
+          >
+            <div class="btn-group" dropdown placement="bottom right">
+              <button
+                id="button-basic"
+                dropdownToggle
+                type="button"
+                class="btn dropdown-toggle"
+                aria-controls="dropdown-basic"
+              >
+                <img src="https://i.postimg.cc/sXX85j2W/icon.png" alt="" />
+                <span class="caret"></span>
+              </button>
+              <ul
+                id="dropdown-basic"
+                *dropdownMenu
+                class="dropdown-menu dropdown-menu-right"
+                role="menu"
+                aria-labelledby="button-basic"
+              >
+                <li role="menuitem">
+                  <a class="dropdown-item" routerLink="/profile">{{
+                    'navigation.profile' | translate
+                  }}</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">{{
+                    'navigation.account' | translate
+                  }}</a>
+                </li>
+                <li role="menuitem">
+                  <button
+                    class="dropdown-item signOutBtn"
+                    (click)="signOutBtn()"
+                  >
+                    {{ 'navigation.signOut' | translate }}
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
