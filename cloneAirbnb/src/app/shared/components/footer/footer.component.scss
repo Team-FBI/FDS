@@ -32,3 +32,21 @@ footer {
   border-radius: 3px;
   background: $roomColor;
 }
+
+
+@media screen and (max-width: 1200px) { 
+  .footerContainer {
+    width:100%;
+    padding:0 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footerContainer {
+
+    div{
+      width:50%;
+      margin-bottom:20px;
+    }
+  }
+}

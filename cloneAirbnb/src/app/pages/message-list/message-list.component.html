@@ -31,7 +31,7 @@
       <p class="reservationStatePassed" *ngIf="!parseDate(message.end_date)">
         {{ 'messageList.notPossible' | translate }}
       </p>
-      <p>₩{{ message.room.price | number }}</p>
+      <span>₩{{ message.room.price | number }}</span>
     </div>
   </div>
 </section>
