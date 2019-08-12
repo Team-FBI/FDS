@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MessageList } from 'src/app/core/interface/messageList.interface';
 import { BehaviorSubject } from 'rxjs';
 import { RoomListService } from 'src/app/core/service/room-list.service';
+import { MenuService } from 'src/app/core/service/menu.service';
 
 @Component({
   selector: 'app-message-list',
@@ -14,11 +15,13 @@ import { RoomListService } from 'src/app/core/service/room-list.service';
 export class MessageListComponent implements OnInit {
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   appUrl = environment.appUrl;
+  menuOpen = false;
 
   constructor(
     private router: Router,
     private http: HttpClient,
-    private roomListService: RoomListService
+    private roomListService: RoomListService,
+    private menuService: MenuService
   ) {}
   messageList = [];
 
@@ -36,6 +39,10 @@ export class MessageListComponent implements OnInit {
         this.isLoading$.next(false);
       }
     );
+
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
+    });
   }
 
   parseDate(str) {

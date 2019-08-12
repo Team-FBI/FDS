@@ -1,6 +1,6 @@
 <app-navigation></app-navigation>
 
-<div class="formClass">
+<div class="formClass" *ngIf="!menuOpen">
   <form
     [formGroup]="profile"
     (ngSubmit)="

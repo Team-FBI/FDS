@@ -6,6 +6,7 @@ import { ReservationInfoService } from '../../core/service/reservation-info.serv
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { RoomListService } from 'src/app/core/service/room-list.service';
+import { MenuService } from 'src/app/core/service/menu.service';
 
 @Component({
   selector: 'app-your-trip',
@@ -15,6 +16,7 @@ import { RoomListService } from 'src/app/core/service/room-list.service';
 export class YourTripComponent implements OnInit {
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   appUrl = environment.appUrl;
+  menuOpen = false;
 
   pastReservation = [];
   plannedReservation = [];
@@ -24,7 +26,8 @@ export class YourTripComponent implements OnInit {
     private urlRemember: UrlRememberService,
     private http: HttpClient,
     private reservationInfoService: ReservationInfoService,
-    private roomListService: RoomListService
+    private roomListService: RoomListService,
+    private menuService: MenuService
   ) {}
 
   ngOnInit() {
@@ -46,6 +49,9 @@ export class YourTripComponent implements OnInit {
         this.isLoading$.next(false);
       }
     );
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
+    });
   }
 
   parseDate(str) {

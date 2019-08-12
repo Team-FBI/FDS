@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { ReservationInfoService } from 'src/app/core/service/reservation-info.service';
 import { RoomListService } from 'src/app/core/service/room-list.service';
+import { MenuService } from 'src/app/core/service/menu.service';
 // import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
@@ -11,7 +12,8 @@ import { RoomListService } from 'src/app/core/service/room-list.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean; };
+  datePickerConfig: { containerClass: string; selectFromOtherMonth: boolean };
+  menuOpen = false;
 
   styleIncreasebtn1 = 1;
   styleIncreasebtn2 = 1;
@@ -24,7 +26,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private urlRemember: UrlRememberService,
     public reservationInfoService: ReservationInfoService,
-    private roomListService: RoomListService // private spinner: NgxSpinnerService
+    private roomListService: RoomListService,
+    private menuService: MenuService // private spinner: NgxSpinnerService
   ) {
     this.datePickerConfig = Object.assign(
       {},
@@ -43,6 +46,10 @@ export class HomeComponent implements OnInit {
     // setTimeout(() => {
     //   this.spinner.hide();
     // }, 1500);
+
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
+    });
   }
 
   increase(personnelType: HTMLSpanElement) {
@@ -69,7 +76,7 @@ export class HomeComponent implements OnInit {
   }
 
   checkPersonnel() {
-    if ( this.adults >= 16) {
+    if (this.adults >= 16) {
       this.increaseBtn1 = true;
       this.styleIncreasebtn1 = 0.1;
     } else {

@@ -1,5 +1,5 @@
 <app-navigation></app-navigation>
-<main class="mainBg">
+<main class="mainBg" *ngIf="!menuOpen">
   <div class="mainSearch">
     <form action="">
       <fieldset>
@@ -86,7 +86,7 @@
                     type="button"
                     class="increase"
                     (click)="increase(adult)"
-                    [style.opacity]="styleIncreasebtn1" 
+                    [style.opacity]="styleIncreasebtn1"
                     [disabled]="increaseBtn1 ? 'disabled' : null"
                   >
                     +
@@ -115,7 +115,7 @@
                     type="button"
                     class="increase"
                     (click)="increase(child)"
-                    [style.opacity]="styleIncreasebtn2" 
+                    [style.opacity]="styleIncreasebtn2"
                     [disabled]="increaseBtn2 ? 'disabled' : null"
                   >
                     +
@@ -144,7 +144,7 @@
                     type="button"
                     class="increase"
                     (click)="increase(infant)"
-                    [style.opacity]="styleIncreasebtn3" 
+                    [style.opacity]="styleIncreasebtn3"
                     [disabled]="increaseBtn3 ? 'disabled' : null"
                   >
                     +
