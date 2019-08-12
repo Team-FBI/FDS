@@ -407,4 +407,34 @@ agm-map {
   background: #fff;
 }
 
+.showMapBtn {
+    display: none;
+  }
 
+@media screen and (max-width: 1200px) {  
+  .map {
+    display: none;
+    width: 100%;
+    left: 0;
+    z-index: 29;
+  }
+  .list {
+    width: 100%;
+  }
+  .showMapBtn {
+    display: block;
+    position: fixed;
+    z-index: 30;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    .mapBtn{
+      padding: 8px;
+      background: white;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (max-width: 768px) {  }
+@media screen and (max-width: 360px) {  }
