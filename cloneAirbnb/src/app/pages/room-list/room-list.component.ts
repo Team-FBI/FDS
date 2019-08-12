@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { Options } from 'ng5-slider';
 
 import { GoogleMapService } from './google-map.service';
+import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { ReservationInfoService } from '../../core/service/reservation-info.service';
 import { RoomListService } from 'src/app/core/service/room-list.service';
 import { MakerInfo } from '../../core/interface/maker-info.interface';
@@ -105,6 +106,7 @@ export class RoomListComponent implements OnInit {
   constructor(
     private mapsService: GoogleMapService,
     private ngzone: NgZone,
+    private urlRemember: UrlRememberService,
     private reservationInfoService: ReservationInfoService,
     private roomListService: RoomListService,
     private router: Router
@@ -130,6 +132,7 @@ export class RoomListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.urlRemember.currentUrl = this.router.url;
     this.getRoomInfo();
     this.checkInDate = new Date(
       this.reservationInfoService.reservationInfoObj.checkIn
