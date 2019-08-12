@@ -117,7 +117,9 @@
     "descriptionExplanation4": "인생의 좌우명은 무엇인가요?",
     "image": "이미지",
     "imagePlaceholder": "이미지 URL",
-    "save": "저장"
+    "save": "저장",
+    "updateTitle": "프로필 업데이트!",
+    "updateContents": "프로필이 성공적으로 업데이트 되었습니다!"
   },
   "yourTrip": {
     "upcomingPlans": "예정된 일정",

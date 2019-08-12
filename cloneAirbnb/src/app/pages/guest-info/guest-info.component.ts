@@ -18,6 +18,7 @@ export class GuestInfoComponent implements OnInit {
   personnel = this.reservationInfoService.reservationInfoObj.personnel;
   switchLang = this.languageService.language === 'en' ? true : false;
   appUrl: string = environment.appUrl;
+  isEmpty = true;
 
   constructor(
     private router: Router,
@@ -31,6 +32,14 @@ export class GuestInfoComponent implements OnInit {
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
     this.translate.setDefaultLang(`${this.languageService.currentLanguage()}`);
+  }
+
+  changeIsEmpty(userMessage: HTMLTextAreaElement) {
+    if (userMessage.value.trim()) {
+      this.isEmpty = false;
+    } else {
+      this.isEmpty = true;
+    }
   }
 
   toCheckPayment(userMessage: HTMLTextAreaElement) {
