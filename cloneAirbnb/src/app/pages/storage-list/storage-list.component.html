@@ -1,69 +1,73 @@
 <app-navigation></app-navigation>
 
-<section class="storageListContainer">
-  <div class="storageListTitle">
-    <h2>{{ 'storageList.Lists' | translate }}</h2>
-    <!-- <button class="storageListBtn">목록 만들기</button> -->
-  </div>
-  <section class="storageList">
-    <h3>{{ 'storageList.yourLists' | translate }}</h3>
-    <span
-      *ngIf="likedRoomDetails.length === 1 || likedRoomDetails.length === 0"
-      class="numOfLists"
-      >{{ likedRoomDetails.length }} {{ 'storageList.list' | translate }}</span
-    >
-    <span *ngIf="likedRoomDetails.length > 1" class="numOfLists"
-      >{{ likedRoomDetails.length }} {{ 'storageList.lists' | translate }}</span
-    >
-    <div class="flexContainer">
-      <div
-        class="list"
-        *ngFor="let room of likedRoomDetails; index as i"
-        (click)="toRoomDetail(room.id)"
-      >
-        <!-- <div class="listImage"> -->
-        <img src="{{ room.image }}" alt="" class="listImage" />
-        <!-- <div class="listImageBg"></div> -->
-        <div class="listTitle">
-          <p>{{ room.title }}</p>
-          <span>{{ room.address }}</span>
-        </div>
-        <!-- </div> -->
-      </div>
-    </div>
-  </section>
-  <section class="popularList">
+<div *ngIf="!menuOpen">
+  <section class="storageListContainer">
     <div class="storageListTitle">
-      <h3>{{ 'storageList.popularLists' | translate }}</h3>
-      <!-- <button class="popularBtn">전체보기</button> -->
+      <h2>{{ 'storageList.Lists' | translate }}</h2>
+      <!-- <button class="storageListBtn">목록 만들기</button> -->
     </div>
-    <div class="flexContainer">
-      <div class="list">
+    <section class="storageList">
+      <h3>{{ 'storageList.yourLists' | translate }}</h3>
+      <span
+        *ngIf="likedRoomDetails.length === 1 || likedRoomDetails.length === 0"
+        class="numOfLists"
+        >{{ likedRoomDetails.length }}
+        {{ 'storageList.list' | translate }}</span
+      >
+      <span *ngIf="likedRoomDetails.length > 1" class="numOfLists"
+        >{{ likedRoomDetails.length }}
+        {{ 'storageList.lists' | translate }}</span
+      >
+      <div class="flexContainer">
         <div
-          class="listImage"
-          style="background-image: url(https://a0.muscache.com/im/pictures/22447cfd-d6d7-409d-8732-e7de62101841.jpg?aki_policy=large)"
+          class="list"
+          *ngFor="let room of likedRoomDetails; index as i"
+          (click)="toRoomDetail(room.id)"
         >
-          <div class="listImageBg"></div>
+          <!-- <div class="listImage"> -->
+          <img src="{{ room.image }}" alt="" class="listImage" />
+          <!-- <div class="listImageBg"></div> -->
           <div class="listTitle">
-            <p>인기 숙소</p>
-            <span>숙소정보</span>
+            <p>{{ room.title }}</p>
+            <span>{{ room.address }}</span>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </section>
+    <section class="popularList">
+      <div class="storageListTitle">
+        <h3>{{ 'storageList.popularLists' | translate }}</h3>
+        <!-- <button class="popularBtn">전체보기</button> -->
+      </div>
+      <div class="flexContainer">
+        <div class="list">
+          <div
+            class="listImage"
+            style="background-image: url(https://a0.muscache.com/im/pictures/22447cfd-d6d7-409d-8732-e7de62101841.jpg?aki_policy=large)"
+          >
+            <div class="listImageBg"></div>
+            <div class="listTitle">
+              <p>인기 숙소</p>
+              <span>숙소정보</span>
+            </div>
+          </div>
+        </div>
+        <div class="list">
+          <div
+            class="listImage"
+            style="background-image: url(https://a0.muscache.com/im/pictures/5b2bceb0-8f19-4b56-ab69-baa59c7f69fe.jpg)"
+          >
+            <div class="listImageBg"></div>
+            <div class="listTitle">
+              <p>인기 숙소</p>
+              <span>숙소정보</span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="list">
-        <div
-          class="listImage"
-          style="background-image: url(https://a0.muscache.com/im/pictures/5b2bceb0-8f19-4b56-ab69-baa59c7f69fe.jpg)"
-        >
-          <div class="listImageBg"></div>
-          <div class="listTitle">
-            <p>인기 숙소</p>
-            <span>숙소정보</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   </section>
-</section>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+</div>

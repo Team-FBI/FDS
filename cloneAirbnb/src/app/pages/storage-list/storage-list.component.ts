@@ -5,6 +5,7 @@ import { RoomListService } from 'src/app/core/service/room-list.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { RoomDetail } from 'src/app/core/interface/roomDetail.interface';
+import { MenuService } from 'src/app/core/service/menu.service';
 
 @Component({
   selector: 'app-storage-list',
@@ -13,6 +14,7 @@ import { RoomDetail } from 'src/app/core/interface/roomDetail.interface';
 })
 export class StorageListComponent implements OnInit {
   appUrl: string = environment.appUrl;
+  menuOpen = false;
   likedRoom = [];
   likedRoomDetails = [];
 
@@ -20,7 +22,8 @@ export class StorageListComponent implements OnInit {
     private router: Router,
     private urlRemember: UrlRememberService,
     private roomListService: RoomListService,
-    private http: HttpClient
+    private http: HttpClient,
+    private menuService: MenuService
   ) {}
 
   ngOnInit() {
@@ -42,6 +45,9 @@ export class StorageListComponent implements OnInit {
         }
       }
     );
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
+    });
   }
 
   toRoomDetail(roomId: number) {

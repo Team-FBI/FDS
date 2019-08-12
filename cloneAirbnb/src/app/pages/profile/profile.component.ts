@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
+import { MenuService } from 'src/app/core/service/menu.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,7 @@ export class ProfileComponent implements OnInit {
   profile: FormGroup;
   passwordDisplay = true;
   appUrl: string = environment.appUrl;
+  menuOpen = false;
   previousUrl: string;
   userNameDuplicate: boolean;
   userEmailDuplicate: boolean;
@@ -29,7 +31,8 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private modalService: BsModalService,
-    private router: Router
+    private router: Router,
+    private menuService: MenuService
   ) {}
 
   ngOnInit() {
@@ -98,6 +101,10 @@ export class ProfileComponent implements OnInit {
           Validators.pattern('[가-힣]{1,4}|[a-zA-Z. ]*[a-zA-Z]{1,60}$')
         ]
       ]
+    });
+
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
     });
   }
 
