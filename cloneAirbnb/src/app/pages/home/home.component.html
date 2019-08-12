@@ -43,24 +43,22 @@
           </div>
         </div>
         <div class="btn-group" dropdown [insideClick]="true">
-          <div>
-            <p class="personnelLabel">{{ 'home.guestsLabel' | translate }}</p>
-            <button
-              id="button-basic"
-              dropdownToggle
-              type="button"
-              class="btn dropdown-toggle"
-              aria-controls="dropdown-basic"
+          <p class="personnelLabel">{{ 'home.guestsLabel' | translate }}</p>
+          <button
+            id="button-basic"
+            dropdownToggle
+            type="button"
+            class="btn dropdown-toggle"
+            aria-controls="dropdown-basic"
+          >
+            <span class="caret" *ngIf="personnel === 1"
+              >{{ personnel }} {{ 'home.guestCountOne' | translate }}</span
             >
-              <span class="caret" *ngIf="personnel === 1"
-                >{{ personnel }} {{ 'home.guestCountOne' | translate }}</span
-              >
-              <span class="caret" *ngIf="personnel > 1"
-                >{{ personnel }}
-                {{ 'home.guestCountOverOne' | translate }}</span
-              >
-            </button>
-          </div>
+            <span class="caret" *ngIf="personnel > 1"
+              >{{ personnel }}
+              {{ 'home.guestCountOverOne' | translate }}</span
+            >
+          </button>
           <div
             id="dropdown-basic"
             *dropdownMenu
