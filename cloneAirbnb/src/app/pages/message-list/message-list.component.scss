@@ -114,19 +114,27 @@
   .messageDiv {
     @include flexContainer(space-between);
     flex-flow: wrap;
-    height: auto;    
+    height: auto;
+    padding:10px 10px 10px 0px;    
 
     .hostImage{
-      width:30%;
+      width:auto;
     }
     .userName {
-      width: 65%;
+      width: 70%;
     }
     .lastMessage {
-      width: 65%;
+      width: 70%;
     }
     .reservationInfo{
-      width:35%;
+      width:30%;
+
+      p, span{
+        font-size:0.8rem;
+      }
     } 
+  }
+  .allMessage{
+    font-size:0.8rem;
   }
 }
