@@ -12,11 +12,9 @@
   }
   @include pc{
     width:100%;
-    border:2px solid red
+    padding:0;
   }
 }
-
-
 
 .left {
   width: 400px;
@@ -54,6 +52,7 @@
   }
 
   .tripInfoDiv {
+
     .tripInfoTitle {
       font-size: 1.2rem;
       color: #181818;
@@ -92,6 +91,7 @@
     }
 
     .paymentInfo {
+
       .paymentInfoP {
         @include flexContainer(space-between);
         width: 100%;
@@ -106,7 +106,12 @@
   }
 }
 .float-right{
-  width:650px;
+  width:600px;
+
+  @include tablets{
+    width:100%;
+    padding:0px 10px;
+  }
 }
 
 .messageDisplay {
@@ -116,6 +121,12 @@
   padding: 10px 0;
   background: #fff;
   overflow-y: scroll;
+
+  @include tablets{
+    width:100%;
+    height: auto;
+    padding:0 0 50px;
+  }
 }
 
 .messageDisplay::-webkit-scrollbar {
@@ -151,6 +162,10 @@
     min-height: 50px;
     width: 400px;
 
+    @include tablets{
+      width:100%;
+    }
+
     .messageDate {
       margin-top: 15px;
       font-size: 7px;
@@ -182,6 +197,10 @@
     min-height: 50px;
     width: 400px;
     text-align: left;
+
+    @include tablets{
+      width:100%;
+    }
 
     .messageDate {
       margin-top: 15px;
@@ -254,12 +273,16 @@
 
 .messageText {
   display: block;
-  width: 650px;
+  width: 600px;
   height: 80px;
   margin: 0 auto;
   padding: 10px;
   border: 1px solid #ddd;
   resize: none;
+
+  @include tablets{
+    width:100%;
+  }
 }
 
 .messageText::-webkit-scrollbar {
@@ -272,17 +295,3 @@
   left: calc(50vw - 128px);
 }
 
-
-// @media screen and (max-width: 1200px) {
-//   .whole {
-//     width: 100%;
-//     border:2px solid red
-//   }
-//   .float-right{
-//     border:2px solid green
-//   }
-//   .messageText {
-//     width:100%;
-//     border:2px solid blue
-//   }
-// }

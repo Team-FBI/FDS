@@ -543,7 +543,7 @@ $mainColor:#ff5a5f;
   }
 }
 @mixin tablets {
-  @media screen and (max-width: 780px){
+  @media screen and (max-width: 768px){
     @content;
   }
 }
