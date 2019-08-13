@@ -23,7 +23,10 @@
         [style.color]="isMain ? '#fff' : '#fd5c63'"
         (click)="openHamburgerMenu()"
       ></i>
-      <div class="hamburgerMenu" *ngIf="menuOpen">
+      <div
+        class="hamburgerMenu"
+        [ngClass]="menuStatus ? 'hamburgerMenuOpen' : 'hamburgerMenuClose'"
+      >
         <h1 class="logo">
           <a routerLink="/home"
             ><img
