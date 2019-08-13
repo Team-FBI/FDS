@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .formClass {
   width: 700px;
   margin: 50px auto 0;
@@ -116,7 +118,7 @@
   height: 50px;
   font-size: 17px;
   font-weight: bold;
-  background: #ff5a5f;
+  background: $mainColor;
   color: #fff;
   border: 0;
   border-radius: 5px;

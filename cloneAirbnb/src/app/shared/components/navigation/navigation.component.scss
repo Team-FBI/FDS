@@ -222,18 +222,66 @@ button:focus {
   .hamburgerMenu {
     position: fixed;
     overflow-y: hidden;
+    height: 0;
     width: 100%;
-    height: 100%;
     top: 0;
-    background: #eee;
+    background: #fff;
     z-index: 100;
 
+    .languageInHamburgerMenu {
+      position: absolute;
+      right: 10px;
+      line-height: 80px;
+      display: inline-block;
+    }
+
     .hamburgerMenuUl {
-      padding: 15px;
+      padding: 30px;
 
       .hamburgerMenuLi {
         margin: 10px 0 10px 0;
       }
+
+      .hamburgerMenuLiHome {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+
+      .hamburgerMenuLiMessage {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+
+      .hamburgerMenuSignOutBtn {
+        background: none;
+        border: none;
+        padding: 0;
+      }
+    }
+  }
+
+  .hamburgerMenuOpen {
+    animation: dropDownMenuOpen 0.2s ease-in-out forwards;
+  }
+
+  .hamburgerMenuClose {
+    animation: dropDownMenuClose 0.2s ease-in-out forwards;
+  }
+
+  @keyframes dropDownMenuOpen {
+    from {
+      height: 0%;
+    }
+    to {
+      height: 100%;
+    }
+  }
+  @keyframes dropDownMenuClose {
+    from {
+      height: 100%;
+    }
+    to {
+      height: 0%;
     }
   }
 }

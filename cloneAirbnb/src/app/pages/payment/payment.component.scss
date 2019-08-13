@@ -84,7 +84,7 @@
       font-weight: 300;
 
       a {
-        color: #008489;
+        color: $roomColor;
 
         &:hover {
           text-decoration: underline;
@@ -95,7 +95,7 @@
 }
 
 .fa-star {
-  color: #008489;
+  color: $roomColor;
 }
 
 svg {

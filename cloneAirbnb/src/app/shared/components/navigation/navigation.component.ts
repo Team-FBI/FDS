@@ -23,6 +23,7 @@ export class NavigationComponent implements OnInit {
   states = [];
   searchInputFocus = false;
   menuOpen = this.menuService.isOpen;
+  menuStatus = false;
 
   constructor(
     private router: Router,
@@ -88,7 +89,22 @@ export class NavigationComponent implements OnInit {
   }
 
   openHamburgerMenu() {
+    document
+      .getElementById('hamburgerMenuControl')
+      .classList.remove('hamburgerMenuClose');
+
     this.menuService.menuChangeDetect();
     this.menuOpen = this.menuService.isOpen;
+    this.menuStatus = !this.menuStatus;
+  }
+
+  closeHamburgerMenu() {
+    document
+      .getElementById('hamburgerMenuControl')
+      .classList.add('hamburgerMenuClose');
+
+    this.menuService.menuChangeDetect();
+    this.menuOpen = this.menuService.isOpen;
+    this.menuStatus = !this.menuStatus;
   }
 }

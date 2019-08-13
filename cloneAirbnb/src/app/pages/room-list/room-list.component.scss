@@ -114,8 +114,8 @@ button:focus {
 }
 
 ::ng-deep.page-item.active .page-link {
-  background: #ff5a5f;
-  border: 1px solid #ff5a5f;
+  background: $mainColor;
+  border: 1px solid $mainColor;
 }
 .paginationStyle {
   display: inline-block;
@@ -223,7 +223,7 @@ carousel slide {
   }
   .star {
     margin-top: 20px;
-    color: #008489;
+    color: $roomColor;
   }
   .viewPrice {
     font-size: 16px;
@@ -261,7 +261,7 @@ agm-map {
       font-weight: bold;
     }
     .rating {
-      color: #008489;
+      color: $roomColor;
     }
   }
 }
@@ -307,7 +307,7 @@ agm-map {
     height: 40px;
     padding: 5px;
     margin: 0;
-    border: 1px solid #008489;
+    border: 1px solid $roomColor;
     border-radius: 50%;
     background: #fff;
   }
@@ -319,7 +319,7 @@ agm-map {
   float: right;
   margin-top: 10px;
   border: 0;
-  color: #008489;
+  color: $roomColor;
   background: #fff;
 }
 
@@ -335,7 +335,7 @@ agm-map {
   float: right;
   margin-top: 10px;
   border: 0;
-  color: #008489;
+  color: $roomColor;
   background: #fff;
 }
 
@@ -403,7 +403,7 @@ agm-map {
   float: right;
   margin-top: 10px;
   border: 0;
-  color: #008489;
+  color: $roomColor;
   background: #fff;
 }
 
@@ -436,5 +436,3 @@ agm-map {
     }
   }
 }
-@media screen and (max-width: 768px) {  }
-@media screen and (max-width: 360px) {  }

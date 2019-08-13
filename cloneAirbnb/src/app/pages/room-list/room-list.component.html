@@ -114,14 +114,14 @@
         (mapClick)="mapClick($event)"
         (mapReady)="mapReady($event)"
       >
-          <agm-marker
-            *ngFor="let marker of markers"
-            [latitude]="marker.lat"
-            [longitude]="marker.lng"
-            [opacity]="marker.alpha"
-            [iconUrl]="icon"
-            (markerClick)="markerClick(iw)"
-          >
+        <agm-marker
+          *ngFor="let marker of markers"
+          [latitude]="marker.lat"
+          [longitude]="marker.lng"
+          [opacity]="marker.alpha"
+          [iconUrl]="icon"
+          (markerClick)="markerClick(iw)"
+        >
             <agm-info-window [isOpen]="marker.disabled" #iw>
               <div class="infowindow">
                 <div>
