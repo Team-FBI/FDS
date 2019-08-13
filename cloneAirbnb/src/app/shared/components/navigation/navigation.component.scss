@@ -225,14 +225,37 @@ button:focus {
     height: 0;
     width: 100%;
     top: 0;
-    background: #eee;
+    background: #fff;
     z-index: 100;
 
+    .languageInHamburgerMenu {
+      position: absolute;
+      right: 10px;
+      line-height: 80px;
+      display: inline-block;
+    }
+
     .hamburgerMenuUl {
-      padding: 15px;
+      padding: 30px;
 
       .hamburgerMenuLi {
         margin: 10px 0 10px 0;
+      }
+
+      .hamburgerMenuLiHome {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+
+      .hamburgerMenuLiMessage {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+
+      .hamburgerMenuSignOutBtn {
+        background: none;
+        border: none;
+        padding: 0;
       }
     }
   }
