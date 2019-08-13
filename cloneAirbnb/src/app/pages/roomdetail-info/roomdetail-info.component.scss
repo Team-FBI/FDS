@@ -124,7 +124,7 @@
   }
 
   .rating {
-    color: #008489;
+    color: $roomColor;
   }
 
   .ratingDetails {
@@ -163,8 +163,8 @@
 }
 
 ::ng-deep.page-item.active .page-link{
-  background:#ff5a5f;
-  border:1px solid #ff5a5f;
+  background:$mainColor;
+  border:1px solid $mainColor;
 }
 .paginationWrap{
   margin-top:30px;
@@ -211,118 +211,3 @@
 
 
 
-
-
-
-
-// .roomdetailInfoContainer{
-//   width:1100px;
-//   // margin: 10px auto;
-
-//   h3{
-//     font-size:1.25em;
-//     font-weight: 400;
-//   }
-// }
-// .roomdetailInfo{
-//   float: left;
-//   width:700px;
-//   padding:0px 50px 0 30px;
-
-//     h2{
-//       font-size:2em;
-//       font-weight: 600;
-//       color:#444;
-//     }
-
-//     .houseall{
-//       display: flex;
-
-//       .margin-r{
-//         margin-right: 10px;
-//       }
-//     }
-// }
-
-// .description{
-
-// }
-// .placedetail{
-//   margin-top: 10px;
-//   color:#008489;
-//   border:0;
-//   background: #ffffff;
-//   display:block;
-// }
-// .msgbutton{
-//   margin-top: 10px;
-//   color:#008489;
-//   border:0;
-//   background: #ffffff;
-//   display:block;
-// }
-
-// ::ng-deep.bs-datepicker{
-//   left:0px;
-//   top:0px;
-//   margin-left:0px !important;
-//   height:300px;
-//   //이부분 css를 먹였지만, roomlist것을 나중에 불러와서 덮어쓴다
-// }
-
-// // ::ng-deep.theme-green{
-// //   top:-40px;
-// // }
-
-// // ::ng-deep.form-group{
-// //   height : 300px;
-
-// //   .infodate{
-// //     margin-left: 110%;
-// //   }
-// // }
-
-// .commentContainer{
-//   margin-top:50px;
-
-//   p{
-//     margin-top:10px;
-//     font-weight: 300;
-//   }
-
-//   .comment{
-//     margin-top:30px;
-
-//     textarea{
-//       width:100%;
-//       height: 100px;
-//       padding:15px;
-//       font-weight: 300;
-//       border:1px solid #ddd;
-//       border-radius: 5px;
-//     }
-//   }
-
-// }
-
-// .roomdetailInfoBtn{
-//   // padding:15px 25px;
-//   border-radius: 5px;
-//   margin-top: 10px;
-//   color:#008489;
-//   border:0;
-//   background: #ffffff;
-//   display:block;
-// }
-
-// ::ng-deep .theme-green {
-//   .bs-datepicker-body {
-//     table {
-//       td {
-//         span.selected {
-//           background-color: #5cb85c !important;
-//         }
-//       }
-//     }
-//   }
-// }
