@@ -24,8 +24,9 @@
         (click)="openHamburgerMenu()"
       ></i>
       <div
+        id="hamburgerMenuControl"
         class="hamburgerMenu"
-        [ngClass]="menuStatus ? 'hamburgerMenuOpen' : 'hamburgerMenuClose'"
+        [class.hamburgerMenuOpen]="menuStatus"
       >
         <h1 class="logo">
           <a routerLink="/home"
@@ -40,17 +41,75 @@
           class="fa fa-angle-up"
           aria-hidden="true"
           [style.color]="'#fd5c63'"
-          (click)="openHamburgerMenu()"
+          (click)="closeHamburgerMenu()"
         ></i>
+        <div class="language languageInHamburgerMenu">
+          <button (click)="switchLanguage()" [style.border]="'1px solid #000'">
+            {{ switchLang ? 'KOR' : 'ENG' }}
+          </button>
+        </div>
         <ul class="hamburgerMenuUl">
-          <li class="hamburgerMenuLi">홈</li>
-          <li class="hamburgerMenuLi">저장목록</li>
-          <li class="hamburgerMenuLi">여행</li>
-          <li class="hamburgerMenuLi">메세지</li>
-          <li class="hamburgerMenuLi">회원가입</li>
-          <li class="hamburgerMenuLi">로그인</li>
-          <li class="hamburgerMenuLi">프로필</li>
-          <li class="hamburgerMenuLi">로그아웃</li>
+          <li
+            class="hamburgerMenuLi hamburgerMenuLiHome"
+            (click)="closeHamburgerMenu()"
+          >
+            <a routerLink="/home">Home</a>
+          </li>
+          <li
+            class="hamburgerMenuLi"
+            *ngIf="authService.loggedIn()"
+            (click)="closeHamburgerMenu()"
+          >
+            <a routerLink="/storageList">{{
+              'navigation.favorites' | translate
+            }}</a>
+          </li>
+          <li
+            class="hamburgerMenuLi"
+            *ngIf="authService.loggedIn()"
+            (click)="closeHamburgerMenu()"
+          >
+            <a routerLink="/yourTrip">{{ 'navigation.myTrip' | translate }}</a>
+          </li>
+          <li
+            class="hamburgerMenuLi hamburgerMenuLiMessage"
+            *ngIf="authService.loggedIn()"
+            (click)="closeHamburgerMenu()"
+          >
+            <a routerLink="/messageList">{{
+              'navigation.message' | translate
+            }}</a>
+          </li>
+          <li
+            class="hamburgerMenuLi"
+            *ngIf="!authService.loggedIn()"
+            (click)="closeHamburgerMenu()"
+          >
+            <a routerLink="/signUp">{{ 'navigation.signUp' | translate }}</a>
+          </li>
+          <li
+            class="hamburgerMenuLi"
+            *ngIf="!authService.loggedIn()"
+            (click)="closeHamburgerMenu()"
+          >
+            <a routerLink="/signIn">{{ 'navigation.signIn' | translate }}</a>
+          </li>
+          <li
+            class="hamburgerMenuLi"
+            *ngIf="authService.loggedIn()"
+            (click)="closeHamburgerMenu()"
+          >
+            <a routerLink="/profile">{{ 'navigation.profile' | translate }}</a>
+          </li>
+          <li
+            class="hamburgerMenuLi"
+            *ngIf="authService.loggedIn()"
+            (click)="closeHamburgerMenu()"
+          >
+            <button class="hamburgerMenuSignOutBtn" (click)="signOutBtn()">
+              {{ 'navigation.signOut' | translate }}
+            </button>
+          </li>
         </ul>
       </div>
     </div>
