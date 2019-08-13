@@ -23,6 +23,7 @@ export class NavigationComponent implements OnInit {
   states = [];
   searchInputFocus = false;
   menuOpen = this.menuService.isOpen;
+  menuStatus = false;
 
   constructor(
     private router: Router,
@@ -90,5 +91,6 @@ export class NavigationComponent implements OnInit {
   openHamburgerMenu() {
     this.menuService.menuChangeDetect();
     this.menuOpen = this.menuService.isOpen;
+    this.menuStatus = !this.menuStatus;
   }
 }
