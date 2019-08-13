@@ -185,16 +185,9 @@
 // }
 
 @media screen and (max-width: 768px) {
-  .mainSearch {
-    border:2px solid red
-  }
-}
-
-@media screen and (max-width: 360px) {
   .mainBg {
     width: 100%;
     height: 200px;
-    border:2px solid yellow;
   }
   .mainSearch {
     // position: static;
@@ -206,3 +199,4 @@
     background: #fff;
   }
 }
+
