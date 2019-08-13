@@ -10,7 +10,8 @@
     display: block;
     content: '';
   }
-  @include tablets{
+  @include pc{
+    width:100%;
     border:2px solid red
   }
 }
@@ -21,6 +22,10 @@
   width: 400px;
   height: 700px;
   border: 1px solid #ddd;
+
+  @include tablets{
+    display: none;
+  }
 }
 
 .hostInfo {

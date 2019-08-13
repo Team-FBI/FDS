@@ -22,6 +22,7 @@
   }
 
   .roomInfoContainer {
+
     .roomInfoList {
       margin-top: 20px;
       font-weight: 300;
@@ -35,6 +36,7 @@
         margin-right: 20px;
       }
     }
+
   }
   .description {
     @include detailLine();
@@ -52,7 +54,7 @@
     color: #484848;
   }
   h3.greenColor {
-    color: #008489;
+    color: $roomColor;
   }
 }
 
