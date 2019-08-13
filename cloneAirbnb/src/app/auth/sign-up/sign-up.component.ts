@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { MenuService } from 'src/app/core/service/menu.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,6 +14,7 @@ import { AuthService } from 'src/app/core/service/auth.service';
 })
 export class SignUpComponent implements OnInit {
   singUp: FormGroup;
+  menuOpen = false;
   passwordDisplay = true;
   months: number[];
   days: number[];
@@ -27,7 +29,8 @@ export class SignUpComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private urlRemember: UrlRememberService,
-    private authService: AuthService
+    private authService: AuthService,
+    private menuService: MenuService
   ) {}
 
   ngOnInit() {
@@ -83,6 +86,10 @@ export class SignUpComponent implements OnInit {
       monthSelector: ['', [Validators.required]],
       daySelector: ['', [Validators.required]],
       yearSelector: ['', [Validators.required]]
+    });
+
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
     });
   }
 

@@ -1,5 +1,5 @@
 <app-navigation></app-navigation>
-<section class="messageContainer">
+<section class="messageContainer" *ngIf="!menuOpen">
   <div class="allMessage">
     {{ 'messageList.allMessages' | translate }} ({{ messageList.length }})
   </div>
@@ -9,7 +9,7 @@
     (click)="toMessage(message.id)"
   >
     <div class="hostImage">
-        <img src="{{ message.room.host.image }}" alt="" />
+      <img src="{{ message.room.host.image }}" alt="" />
       <!-- {{ message.room.host.image }} -->
     </div>
     <div class="userName">

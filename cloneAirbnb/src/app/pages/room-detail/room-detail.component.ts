@@ -18,6 +18,7 @@ import { BehaviorSubject } from 'rxjs';
 import { RoomDetail } from 'src/app/core/interface/roomDetail.interface';
 import { style } from '@angular/animations';
 import { element } from 'protractor';
+import { MenuService } from 'src/app/core/service/menu.service';
 declare let Kakao: any;
 
 @Component({
@@ -27,6 +28,7 @@ declare let Kakao: any;
 })
 export class RoomDetailComponent implements OnInit, AfterViewInit {
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  menuOpen = false;
   minDate: Date;
   maxDate: Date;
   modalRef: BsModalRef;
@@ -135,7 +137,8 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     private router: Router,
     private urlRemember: UrlRememberService,
     private reservationInfoService: ReservationInfoService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private menuService: MenuService
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -159,6 +162,11 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
+
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
+    });
+
     Kakao.Link.createDefaultButton({
       container: '#shareBtn',
       objectType: 'feed',

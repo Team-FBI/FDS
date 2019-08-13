@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 import { UrlRememberService } from 'src/app/core/service/url-remember.service';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { SignInObj } from 'src/app/core/interface/signIn.interface';
-
-
+import { MenuService } from 'src/app/core/service/menu.service';
 
 // 네이티브 앱 키
 // 8cf99291f680339b20fcb552d490a147
@@ -24,18 +23,24 @@ export class SignInComponent implements OnInit {
   singIn: FormGroup;
   previousUrl: string;
   signInFail = false;
+  menuOpen = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private urlRemember: UrlRememberService,
-    private authService: AuthService
+    private authService: AuthService,
+    private menuService: MenuService
   ) {}
 
   ngOnInit() {
     this.singIn = this.fb.group({
       userEmail: ['', [Validators.required]],
       userPassword: ['', [Validators.required]]
+    });
+
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
     });
   }
 
