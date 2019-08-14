@@ -23,6 +23,37 @@
         [style.color]="isMain ? '#fff' : '#fd5c63'"
         (click)="openHamburgerMenu()"
       ></i>
+      <div class="search" *ngIf="!isMain">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input
+          type="text"
+          (input)="
+            input.value ? (searchInputFocus = true) : (searchInputFocus = false)
+          "
+          (focus)="
+            input.value ? (searchInputFocus = true) : (searchInputFocus = false)
+          "
+          (focusout)="searchInputFocusout()"
+          (keyup.enter)="showRoomList(input.value, input)"
+          (keyup.enter)="initializeCurrentPage.emit()"
+          (input)="stateSuggestion(input)"
+          placeholder="{{ 'navigation.searchBarPlaceholder' | translate }}"
+          class="searchInput"
+          #input
+        />
+        <ul *ngIf="searchInputFocus" class="statesList">
+          <li
+            *ngFor="let state of states | slice: 0:5; index as i"
+            (click)="showRoomList(states[i].name, input)"
+            (click)="initializeCurrentPage.emit()"
+          >
+            <span class="float-left"
+              ><i class="fa fa-map-marker" aria-hidden="true"></i>
+              {{ states[i].name }}</span
+            >
+          </li>
+        </ul>
+      </div>
       <div
         id="hamburgerMenuControl"
         class="hamburgerMenu"
