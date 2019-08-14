@@ -39,6 +39,12 @@
   .mainDate div {
     float: left;
     width: 50%;
+
+    @include mobile {
+      float: left;
+      width: 100%;
+      margin-bottom: 15px;
+    }
   }
   label {
     display: block;
@@ -154,6 +160,10 @@
     margin-top: 15px;
     margin-bottom: 10px;
     font-size: 0.9rem;
+
+    @include mobile {
+      margin-top: 0;
+    }
   }
 
   .dropdown-menu {
@@ -199,4 +209,3 @@
     background: #fff;
   }
 }
-

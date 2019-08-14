@@ -547,7 +547,7 @@ $mainColor: #ff5a5f;
   }
 }
 @mixin mobile {
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 420px) {
     @content;
   }
 }
