@@ -77,4 +77,28 @@
   left: calc(50vw - 128px);
 }
 
+@include pc {
+  .tripListContainer {
+    width: 100%;
+  }
 
+  .travelList {
+    width: 100%;
+    overflow-x: scroll;
+
+    .flexContainer {
+      width: 100%;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .list {
+      width: 200px;
+      display: inline-block;
+    }
+  }
+
+  .travelList::-webkit-scrollbar {
+    display: none;
+  }
+}
