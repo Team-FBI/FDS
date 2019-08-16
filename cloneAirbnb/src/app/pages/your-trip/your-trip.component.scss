@@ -86,8 +86,20 @@
 }
 
 @include pc {
+
   .tripListContainer {
+    min-height: 100%;
     width: 100%;
+
+    .tripListTitle {
+      h2 {
+        font-size: 1.5em;
+      }
+      p {
+        margin-top: 30px;
+        font-weight: 400;
+      }
+    }
   }
 
   .tripImg {
@@ -120,5 +132,29 @@
 
   .travelList::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@include mobile {
+  .tripListContainer {
+    .tripListTitle {
+      h2 {
+        font-size: 1.2em;
+      }
+      p {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: 11px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .travelListTitle {
+    h2 {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #444;
+    }
   }
 }

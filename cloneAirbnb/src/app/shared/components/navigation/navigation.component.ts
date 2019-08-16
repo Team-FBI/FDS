@@ -80,6 +80,7 @@ export class NavigationComponent implements OnInit {
 
   signOutBtn() {
     this.authService.signOutUser();
+    this.router.navigate(['/signIn']);
   }
 
   switchLanguage() {
