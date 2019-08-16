@@ -337,10 +337,10 @@ export class RoomListComponent implements OnInit {
   showMap(e) {
     if (this.isShowMap !== 'block') {
       this.isShowMap = 'block';
-      e.target.textContent = 'list';
+      e.target.textContent = 'List';
     } else {
       this.isShowMap = 'none';
-      e.target.textContent = 'map';
+      e.target.textContent = 'Map';
     }
   }
 

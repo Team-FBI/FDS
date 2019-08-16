@@ -16,6 +16,15 @@
       font-weight: 400;
     }
   }
+
+}
+
+.travelListTitle {
+  h2 {
+    font-size: 2em;
+    font-weight: 600;
+    color: #444;
+  }
 }
 
 .travelList {
@@ -76,4 +85,40 @@
   left: calc(50vw - 128px);
 }
 
+@include pc {
+  .tripListContainer {
+    width: 100%;
+  }
 
+  .tripImg {
+    width: 100%;
+  }
+
+  .travelListTitle {
+    h2 {
+      font-size: 1.5em;
+      font-weight: 600;
+      color: #444;
+    }
+  }
+
+  .travelList {
+    width: 100%;
+    overflow-x: scroll;
+
+    .flexContainer {
+      width: 100%;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .list {
+      width: 200px;
+      display: inline-block;
+    }
+  }
+
+  .travelList::-webkit-scrollbar {
+    display: none;
+  }
+}

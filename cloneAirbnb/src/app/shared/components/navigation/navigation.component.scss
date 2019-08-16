@@ -284,8 +284,42 @@ button:focus {
       height: 0%;
     }
   }
+
+  .fa-angle-down {
+    float: left;
+    margin-right: 30px;
+  }
+
+  .search {
+    width: 70%;
+  }
+
+  .searchInput {
+    width: calc(100% - 55px);
+  }
+
+  .statesList {
+    left: 100px;
+    width: calc(70%);
+
+    li {
+      font-size: 14px;
+      padding: 0 10px;
+      height: 40px;
+      line-height: 40px;
+      cursor: pointer;
+    }
+  }
 }
+
 @media screen and (max-width: 768px) {
 }
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 420px) {
+  .search {
+    width: 65%;
+  }
+
+  .statesList {
+    width: calc(70% - 20px);
+  }
 }
