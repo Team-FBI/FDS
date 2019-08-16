@@ -3,6 +3,10 @@
 footer {
   margin-top: 50px;
   border-top: 1px solid #ddd;
+  @include pc {
+    margin-top: 0px;
+    border-top: 0px;
+  }
 }
 .footerContainer {
   @include flexContainer(space-between);
@@ -21,6 +25,10 @@ footer {
     &:last-of-type {
       margin-bottom: 0px;
     }
+  }
+
+  @include pc {
+    display: none;
   }
 }
 .new:after {
@@ -47,22 +55,11 @@ address {
     font-size: 0.9rem;
     font-weight: 300;
   }
-}
 
-@media screen and (max-width: 1200px) {
-  footer {
-    margin-top: 0px;
-    border-top: 0px;
-  }
-
-  .footerContainer {
-    display: none;
-  }
-  address {
+  @include pc {
     width: 100%;
+    padding-bottom: 30px;
     text-align: center;
   }
 }
 
-@media screen and (max-width: 768px) {
-}
