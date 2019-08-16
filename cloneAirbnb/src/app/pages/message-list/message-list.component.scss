@@ -4,12 +4,22 @@
   width: 900px;
   margin: 50px auto 0;
   min-height: 500px;
+
+  @include pc{
+    width: 90%;
+    margin: 50px auto 0;
+    min-height: 500px;
+  }
 }
 
 .allMessage {
   display: inline-block;
   border: 1px solid #ddd;
   padding: 10px 15px;
+
+  @include tablets{
+    font-size:0.8rem;
+  }
 }
 
 .messageDiv {
@@ -46,6 +56,31 @@
   .reservationStatePassed {
     color: #cc3300;
   }
+
+  @include tablets{
+    @include flexContainer(flex-start);
+    flex-flow: wrap;
+    height: auto;
+    padding:10px 10px 10px 0px;    
+
+    .hostImage{
+      width:auto;
+    }
+    .userName {
+      width: auto;
+    }
+    .lastMessage {
+      width: 80%;
+    }
+    .reservationInfo{
+      width:20%;
+      text-align: right;
+
+      p, span{
+        font-size:0.8rem;
+      }
+    } 
+  }
 }
 
 .messageDiv:hover {
@@ -79,60 +114,4 @@
   left: calc(50vw - 128px);
 }
 
-@media screen and (max-width: 1200px) {
-  .messageContainer {
-    width: 90%;
-    margin: 50px auto 0;
-    min-height: 500px;
-  }
-}
-@media screen and (max-width: 780px) {
-  // .messageContainer {
-  //   width: 90%;
-  //   margin: 50px auto 0;
-  //   min-height: 500px;
-  // }
-  // .messageDiv {
-  //   .userName {
-  //     width: 20%;
-  //     padding:10px;
-  //   }
-  //   .lastMessage {
-  //     width: 45%;
-  //     padding:10px;
-  //   }
-  //   .reservationInfo{
-  //     width:15%;
-  //     padding:10px 0;
-  //     text-align: right;
-  //   } 
-  // }
-  .messageDiv {
-    @include flexContainer(flex-start);
-    flex-flow: wrap;
-    height: auto;
-    padding:10px 10px 10px 0px;    
-
-    .hostImage{
-      width:auto;
-    }
-    .userName {
-      width: auto;
-    }
-    .lastMessage {
-      width: 80%;
-    }
-    .reservationInfo{
-      width:20%;
-      text-align: right;
-
-      p, span{
-        font-size:0.8rem;
-      }
-    } 
-  }
-  .allMessage{
-    font-size:0.8rem;
-  }
-}
 
