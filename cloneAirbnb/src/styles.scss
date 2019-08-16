@@ -111,6 +111,9 @@ body {
   font-weight: 400;
   overflow-x: hidden;
 }
+html, body {
+  height: 100%;
+}
 ol,
 ul {
   list-style: none;

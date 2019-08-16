@@ -135,9 +135,10 @@
           <li
             class="hamburgerMenuLi"
             *ngIf="authService.loggedIn()"
+            (click)="signOutBtn()"
             (click)="closeHamburgerMenu()"
           >
-            <button class="hamburgerMenuSignOutBtn" (click)="signOutBtn()">
+            <button class="hamburgerMenuSignOutBtn">
               {{ 'navigation.signOut' | translate }}
             </button>
           </li>
