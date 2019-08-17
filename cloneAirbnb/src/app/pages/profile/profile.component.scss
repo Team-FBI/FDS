@@ -7,6 +7,7 @@
   background: #fff;
   border: 1px solid #00a699;
   border-radius: 10px;
+
 }
 
 .title {
@@ -47,13 +48,14 @@
   font-size: 0.8rem;
   color: #00a699;
 }
-
+.oneLine{
+  margin: 15px auto;
+}
 .inputDiv {
   display: inline-block;
   width: 538px;
   border: 1px solid #f1f1f1;
   border-radius: 5px;
-  margin: 15px auto;
 }
 
 .input {
@@ -154,4 +156,38 @@
   height: auto;
   text-align: center;
   margin: 15px auto 30px;
+}
+
+
+@include tablets {
+  .formClass {
+     width: 90%;
+  }
+  .oneLine i{
+    display: none
+  }
+  .inputTitleSpan {
+    width:20%;
+    height:40px;
+    line-height: 40px;
+  }
+  .inputDiv {
+    width:80%;
+  }
+  .explanation{
+    padding:0px 10px;
+  }
+}
+@include mobile {
+  .formClass {
+    padding:20px;
+  }  
+  .inputTitleSpan {
+    width:30%;
+    font-size:0.8rem;
+  }
+  .inputDiv {
+    width:70%;
+    font-size:0.8rem;
+  }
 }
