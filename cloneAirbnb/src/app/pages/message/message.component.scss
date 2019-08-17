@@ -5,14 +5,14 @@
   width: 1100px;
   padding: 50px 0;
 
-  &::after{
+  &::after {
     clear: both;
     display: block;
     content: '';
   }
-  @include pc{
-    width:100%;
-    padding:0;
+  @include pc {
+    width: 100%;
+    padding: 0;
   }
 }
 
@@ -21,7 +21,7 @@
   height: 700px;
   border: 1px solid #ddd;
 
-  @include tablets{
+  @include pc {
     display: none;
   }
 }
@@ -52,7 +52,6 @@
   }
 
   .tripInfoDiv {
-
     .tripInfoTitle {
       font-size: 1.2rem;
       color: #181818;
@@ -91,7 +90,6 @@
     }
 
     .paymentInfo {
-
       .paymentInfoP {
         @include flexContainer(space-between);
         width: 100%;
@@ -105,12 +103,12 @@
     }
   }
 }
-.float-right{
-  width:600px;
+.float-right {
+  width: 600px;
 
-  @include tablets{
-    width:100%;
-    padding:0px 10px;
+  @include pc {
+    width: 100%;
+    padding: 0px 10px;
   }
 }
 
@@ -122,10 +120,10 @@
   background: #fff;
   overflow-y: scroll;
 
-  @include tablets{
-    width:100%;
-    height: auto;
-    padding:0 0 50px;
+  @include pc {
+    width: 100%;
+    height: calc(100vh - 220px);
+    padding: 0 0 50px;
   }
 }
 
@@ -162,8 +160,8 @@
     min-height: 50px;
     width: 400px;
 
-    @include tablets{
-      width:100%;
+    @include pc {
+      width: calc(60vw);
     }
 
     .messageDate {
@@ -198,8 +196,8 @@
     width: 400px;
     text-align: left;
 
-    @include tablets{
-      width:100%;
+    @include pc {
+      width: (60vw);
     }
 
     .messageDate {
@@ -280,8 +278,8 @@
   border: 1px solid #ddd;
   resize: none;
 
-  @include tablets{
-    width:100%;
+  @include pc {
+    width: 100%;
   }
 }
 
@@ -295,3 +293,8 @@
   left: calc(50vw - 128px);
 }
 
+@media screen and (max-width: 1200px) {
+  .footer {
+    display: none;
+  }
+}

@@ -41,7 +41,6 @@ export class MessageComponent implements OnInit {
   ) {
     chatService.messages.subscribe(msg => {
       this.messages.push(msg);
-      console.log(this.messages);
     });
   }
 
