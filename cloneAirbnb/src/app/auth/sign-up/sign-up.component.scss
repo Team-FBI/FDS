@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .background {
   height: 100vh;
   background-image: url('https://i.postimg.cc/Kc6xrNBX/florence-1655830-1920.jpg');
@@ -5,13 +7,22 @@
   background-size: cover;
   background-position: center;
   padding-top: 80px;
-}
 
+  @include mobile {
+    padding-top: 0;
+    height: calc(85vh);
+    background-image: url('https://i.postimg.cc/xjXxXVGv/plain-white-background.jpg');
+  }
+}
 .formClass {
   width: 600px;
   margin: 0 auto;
   padding: 20px 30px;
   background: #fff;
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .title {
@@ -52,6 +63,10 @@
   font-size: 0.8rem;
   border: 0;
   margin-left: 5px;
+
+  @include mobile {
+    width: 90%;
+  }
 }
 
 .passwordHide {
@@ -77,15 +92,27 @@
 .monthSelector {
   width: 214px;
   margin-right: 15px;
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .daySelector {
   width: 127px;
   margin-right: 15px;
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .yearSelector {
   width: 167px;
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .textBold {
