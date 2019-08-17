@@ -16,7 +16,6 @@
       font-weight: 400;
     }
   }
-
 }
 
 .travelListTitle {
@@ -86,9 +85,8 @@
 }
 
 @include pc {
-
   .tripListContainer {
-    min-height: 100%;
+    min-height: calc(100vh - 270px);
     width: 100%;
 
     .tripListTitle {
