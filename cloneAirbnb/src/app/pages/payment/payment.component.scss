@@ -6,6 +6,13 @@
   padding: 20px;
   border: 1px solid #ddd;
 
+  @include pc {
+    width:40%;
+  }
+  @include tablets {
+    display: none;
+  }
+
   .paymentInfoWrap {
     @include flexContainer(space-between);
 
