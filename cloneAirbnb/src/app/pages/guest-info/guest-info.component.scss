@@ -40,6 +40,11 @@
   width:1100px;
   margin:100px auto;
 
+  @include pc {
+    width:90%;
+    margin:50px auto;
+  }
+
   h3{
     font-size:1.25em;
     font-weight: 400;
@@ -49,6 +54,14 @@
   float: left;
   width:700px;
   padding:0px 50px 0 30px;
+
+  @include pc {
+    width:60%;
+  }
+  @include tablets {
+    width:100%;
+    padding: 0px;
+  }
 
     h2{
       font-size:2em;
@@ -72,6 +85,10 @@
     font-weight: 300;
     border:1px solid #ddd;
     background: #fff;
+
+    @include tablets {
+      width:100%;
+    }
   }
 
 }
@@ -95,6 +112,10 @@
   p{
     margin-top:10px;
     font-weight: 300;
+
+    @include tablets {
+      font-size:0.8rem;
+    }
   }
 
   .hostMessage{
