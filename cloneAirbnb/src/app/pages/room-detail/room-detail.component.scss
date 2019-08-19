@@ -41,10 +41,10 @@
     }
 
     @include pc {
-      width:65%;
+      width: 65%;
     }
     @include tablets {
-      width:100%;
+      width: 100%;
     }
   }
   .smallImageContainer {
@@ -61,18 +61,20 @@
     }
 
     @include pc {
-      width:35%;
+      width: 35%;
 
       .imageList {
         width: 100%;
       }
-      .pcHidden{
+      .pcHidden {
         display: none;
       }
     }
 
     @include tablets {
-      .imageList {display: none;}
+      .imageList {
+        display: none;
+      }
     }
   }
 
@@ -114,7 +116,7 @@
     z-index: 1;
     border: 1px solid $mainColor;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
-    color:$mainColor;
+    color: $mainColor;
   }
 
   .picture {
@@ -129,8 +131,8 @@
   margin: 50px auto 0px;
 
   @include pc {
-    width:90%;
-    margin:50px auto;
+    width: 90%;
+    margin: 50px auto;
   }
 }
 
@@ -141,11 +143,11 @@
   width: 400px;
 
   @include pc {
-    width:40%;
+    width: 40%;
   }
   @include tablets {
-    width:100%;
-    margin-top:50px;
+    width: 100%;
+    margin-top: 50px;
   }
 
   .paymentFixed {
@@ -154,9 +156,8 @@
     width: 400px;
 
     @include pc {
-      width:100%;
+      width: 100%;
     }
-    
   }
 
   .priceTitle {
@@ -190,6 +191,12 @@
     div {
       float: left;
       width: 50%;
+
+      @include mobile {
+        display: block;
+        width: 100%;
+      }
+
       input {
         border-radius: 0;
         font-size: 0.8rem;
@@ -200,6 +207,11 @@
     .checkIn {
       input {
         border-right: 0;
+
+        @include mobile {
+          border: 1px solid #ced4da;
+          margin-bottom: 10px;
+        }
       }
     }
   }
@@ -352,7 +364,7 @@
   margin: 0 auto;
 
   @include pc {
-    width:100%;
+    width: 100%;
   }
 }
 .gallery-top .swiper-slide {
@@ -375,7 +387,7 @@
   height: 65px;
 
   @include pc {
-    width:100%;
+    width: 100%;
   }
 }
 .gallery-thumbs .swiper-slide {
@@ -388,8 +400,6 @@
 .gallery-thumbs .swiper-slide-active {
   opacity: 1;
 }
-
-
 
 .counterWrap {
   display: none;

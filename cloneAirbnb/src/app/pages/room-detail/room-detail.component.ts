@@ -167,8 +167,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
       this.menuOpen = booleanValue;
     });
 
-    
-
     this.endDate = this.reservationInfoService.reservationInfoObj.checkIn;
     this.endDate2 = this.reservationInfoService.reservationInfoObj.checkOut;
 
@@ -227,6 +225,36 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
         err => {},
         () => {
           this.isLoading$.next(false);
+
+          setTimeout(() => {
+            Kakao.Link.createDefaultButton({
+              container: '#shareBtn',
+              objectType: 'feed',
+              content: {
+                title: document.title,
+                description: '내용, 주로 해시태그',
+                imageUrl: document.images[0].src,
+                link: {
+                  webUrl: document.location.href,
+                  mobileWebUrl: document.location.href
+                }
+              },
+              social: {
+                likeCount: 286,
+                commentCount: 45,
+                sharedCount: 845
+              },
+              buttons: [
+                {
+                  title: 'Open!',
+                  link: {
+                    mobileWebUrl: document.location.href,
+                    webUrl: document.location.href
+                  }
+                }
+              ]
+            });
+          }, 200);
         }
       );
 
@@ -237,34 +265,6 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
           this.checked = false;
         }
       }
-    });
-
-    Kakao.Link.createDefaultButton({
-      container: '#shareBtn',
-      objectType: 'feed',
-      content: {
-        title: document.title,
-        description: '내용, 주로 해시태그',
-        imageUrl: document.images[0].src,
-        link: {
-          webUrl: document.location.href,
-          mobileWebUrl: document.location.href
-        }
-      },
-      social: {
-        likeCount: 286,
-        commentCount: 45,
-        sharedCount: 845
-      },
-      buttons: [
-        {
-          title: 'Open!',
-          link: {
-            mobileWebUrl: document.location.href,
-            webUrl: document.location.href
-          }
-        }
-      ]
     });
   }
 
