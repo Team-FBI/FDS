@@ -65,22 +65,19 @@
   .saveModal {
     //저장버튼
     position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 300px;
     height: 40px;
     padding: 0px 15px;
     line-height: 35px;
     font-size: 0.9rem;
     background: #fff;
-    border-radius: 5px;
-    border: 1px solid #fff;
-
-    max-width: 100%;
-    z-index: 1;
-    border: 1px solid #ebebeb;
     border-radius: 2px;
+    z-index: 1;
+    border: 1px solid $mainColor;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
-    width: 375px;
-    bottom: 24px;
-    left: 24px;
+    color:$mainColor;
   }
 
   .picture {
@@ -241,8 +238,8 @@
     margin-top: 10px;
     padding: 10px;
     color: #fff;
-    background: #ff5a5f;
-    border: 1px solid #ff5a5f;
+    background: $mainColor;
+    border: 1px solid $mainColor;
     border-radius: 5px;
   }
   .wrap {
@@ -250,7 +247,7 @@
     font-size: 0.8rem;
     font-weight: 300;
     text-align: center;
-    color: #ff5a5f;
+    color: $mainColor;
   }
 
   .reservation {
@@ -263,6 +260,7 @@
   }
 }
 
+<<<<<<< HEAD
 // .box{
 //   position: relative;
 //   margin-bottom:15px;
@@ -604,6 +602,14 @@
 // ::ng-deep .modal .gallery-thumbs .swiper-slide img {
 //   width: 25%;
 // }
+=======
+.detailContainer::after {
+  clear: both;
+  display: block;
+  content: '';
+}
+
+>>>>>>> rmorigin/develop
 .loading {
   position: absolute;
   top: calc(50vh - 128px);
@@ -661,12 +667,7 @@
   opacity: 1;
 }
 
-// .bs-datepicker-container{
-// .mainDate {
-//   margin-left: 485px;
-//   margin-top: 44px;
-//   background: red;
-// }
+
 
 .counterWrap {
   display: none;

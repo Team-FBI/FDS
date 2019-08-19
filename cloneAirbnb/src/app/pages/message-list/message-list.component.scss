@@ -4,12 +4,22 @@
   width: 900px;
   margin: 50px auto 0;
   min-height: 500px;
+
+  @include pc {
+    width: 90%;
+    margin: 30px auto;
+    min-height: 500px;
+  }
 }
 
 .allMessage {
   display: inline-block;
   border: 1px solid #ddd;
   padding: 10px 15px;
+
+  @include tablets {
+    font-size: 0.8rem;
+  }
 }
 
 .messageDiv {
@@ -46,6 +56,32 @@
   .reservationStatePassed {
     color: #cc3300;
   }
+
+  @include tablets {
+    @include flexContainer(flex-start);
+    flex-flow: wrap;
+    height: auto;
+    padding: 10px 10px 10px 0px;
+
+    .hostImage {
+      width: auto;
+    }
+    .userName {
+      width: auto;
+    }
+    .lastMessage {
+      width: 80%;
+    }
+    .reservationInfo {
+      width: 20%;
+      text-align: right;
+
+      p,
+      span {
+        font-size: 0.8rem;
+      }
+    }
+  }
 }
 
 .messageDiv:hover {
@@ -56,7 +92,7 @@
   margin-left: 10px;
   width: 80px;
   height: 80px;
-  
+
   img {
     height: 74px;
     width: 74px;

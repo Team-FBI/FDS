@@ -18,6 +18,14 @@
   }
 }
 
+.travelListTitle {
+  h2 {
+    font-size: 2em;
+    font-weight: 600;
+    color: #444;
+  }
+}
+
 .travelList {
   margin-bottom: 50px;
 
@@ -74,4 +82,78 @@
   position: absolute;
   top: 200px;
   left: calc(50vw - 128px);
+}
+
+@include pc {
+  .tripListContainer {
+    min-height: calc(100vh - 270px);
+    width: 100%;
+
+    .tripListTitle {
+      h2 {
+        font-size: 1.5em;
+      }
+      p {
+        margin-top: 30px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .tripImg {
+    width: 100%;
+  }
+
+  .travelListTitle {
+    h2 {
+      font-size: 1.5em;
+      font-weight: 600;
+      color: #444;
+    }
+  }
+
+  .travelList {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    .flexContainer {
+      width: 100%;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .list {
+      width: 200px;
+      display: inline-block;
+    }
+  }
+
+  .travelList::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@include mobile {
+  .tripListContainer {
+    .tripListTitle {
+      h2 {
+        font-size: 1.2em;
+      }
+      p {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: 11px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .travelListTitle {
+    h2 {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #444;
+    }
+  }
 }

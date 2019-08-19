@@ -1,5 +1,5 @@
 <app-navigation></app-navigation>
-<div class="whole">
+<div class="whole" *ngIf="!menuOpen">
   <div class="float-left left">
     <div class="hostInfo" *ngFor="let hostInfo of allInfo">
       <div class="hostInfoImgDiv">
@@ -169,4 +169,4 @@
   <img src="../../../assets/spinner.gif" alt="loading" class="spinnerImg" />
 </div>
 
-<app-footer></app-footer>
+<app-footer class="footer"></app-footer>

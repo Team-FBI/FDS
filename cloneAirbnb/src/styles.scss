@@ -111,6 +111,7 @@ body {
   font-weight: 400;
   overflow-x: hidden;
 }
+
 ol,
 ul {
   list-style: none;
@@ -517,16 +518,18 @@ template {
 }
 
 /* 숨김 콘턴츠 */
-.readable-hidden, legend{
+.readable-hidden,
+legend {
   position: absolute;
-  width:1px;
-  height:1px;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
-  margin:-1px;
-  clip:rect(0, 0, 0, 0);
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
 }
 
-
+$roomColor: #008489;
+$mainColor: #ff5a5f;
 
 @mixin flexContainer($justifyContent) {
   display: flex;
@@ -534,12 +537,22 @@ template {
   justify-content: $justifyContent;
 }
 
-
-$roomColor: #008489;
-
-
-
+@mixin pc {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+@mixin tablets {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media screen and (max-width: 420px) {
+    @content;
+  }
+}
 
 pagination-controls .ng2-pagination li.current {
   background: gray !important;
- }
+}

@@ -108,18 +108,18 @@ button:focus {
 
 .mypage {
   margin-right: 10px;
-  padding:0;
+  padding: 0;
 
   .btn-group {
     button {
       background: transparent;
-      padding:0;
+      padding: 0;
     }
     button:focus {
       outline: none;
     }
-    .signOutBtn{
-      padding:10px 0px;
+    .signOutBtn {
+      padding: 10px 0px;
     }
     img {
       width: 30px;
@@ -140,18 +140,18 @@ button:focus {
       }
 
       a {
-        display:inline-block;
-        padding:0px 10px;
+        display: inline-block;
+        padding: 0px 10px;
         color: #484848;
         font-weight: 300;
-        font-size:0.9rem;
+        font-size: 0.9rem;
         border-bottom: 1px solid #f1f1f1;
       }
       a:hover {
         border-bottom: 1px solid #333;
       }
       .signOutBtn {
-        padding:15px 10px;
+        padding: 15px 10px;
 
         &:hover {
           border-bottom: 1px solid #333;
@@ -188,7 +188,138 @@ button:focus {
 .language button {
   width: 50px;
   padding: 10px;
-  margin-right:20px;
+  margin-right: 20px;
   font-size: 0.8rem;
   background: transparent;
+}
+
+.under1200 {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .over1200 {
+    display: none;
+  }
+
+  .under1200 {
+    display: block;
+  }
+
+  .header {
+    .logo {
+      width: 35px;
+      margin-right: 5px;
+    }
+  }
+
+  .fa-angle-down,
+  .fa-angle-up {
+    position: relative;
+    line-height: 80px;
+  }
+
+  .hamburgerMenu {
+    position: fixed;
+    overflow-y: hidden;
+    height: 0;
+    width: 100%;
+    top: 0;
+    background: #fff;
+    z-index: 100;
+
+    .languageInHamburgerMenu {
+      position: absolute;
+      right: 10px;
+      line-height: 80px;
+      display: inline-block;
+    }
+
+    .hamburgerMenuUl {
+      padding: 30px;
+
+      .hamburgerMenuLi {
+        margin: 10px 0 10px 0;
+      }
+
+      .hamburgerMenuLiHome {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+
+      .hamburgerMenuLiMessage {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+
+      .hamburgerMenuSignOutBtn {
+        background: none;
+        border: none;
+        padding: 0;
+      }
+    }
+  }
+
+  .hamburgerMenuOpen {
+    animation: dropDownMenuOpen 0.2s ease-in-out forwards;
+  }
+
+  .hamburgerMenuClose {
+    animation: dropDownMenuClose 0.2s ease-in-out forwards;
+  }
+
+  @keyframes dropDownMenuOpen {
+    from {
+      height: 0%;
+    }
+    to {
+      height: 100%;
+    }
+  }
+  @keyframes dropDownMenuClose {
+    from {
+      height: 100%;
+    }
+    to {
+      height: 0%;
+    }
+  }
+
+  .fa-angle-down {
+    float: left;
+    margin-right: 30px;
+  }
+
+  .search {
+    width: 70%;
+  }
+
+  .searchInput {
+    width: calc(100% - 55px);
+  }
+
+  .statesList {
+    left: 100px;
+    width: calc(70%);
+
+    li {
+      font-size: 14px;
+      padding: 0 10px;
+      height: 40px;
+      line-height: 40px;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 420px) {
+  .search {
+    width: 65%;
+  }
+
+  .statesList {
+    width: calc(70% - 20px);
+  }
 }

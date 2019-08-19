@@ -18,6 +18,7 @@ import { BehaviorSubject } from 'rxjs';
 import { RoomDetail } from 'src/app/core/interface/roomDetail.interface';
 import { style } from '@angular/animations';
 import { element } from 'protractor';
+import { MenuService } from 'src/app/core/service/menu.service';
 declare let Kakao: any;
 
 @Component({
@@ -27,6 +28,7 @@ declare let Kakao: any;
 })
 export class RoomDetailComponent implements OnInit, AfterViewInit {
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  menuOpen = false;
   minDate: Date;
   maxDate: Date;
   modalRef: BsModalRef;
@@ -135,7 +137,8 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
     private router: Router,
     private urlRemember: UrlRememberService,
     private reservationInfoService: ReservationInfoService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private menuService: MenuService
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -159,33 +162,12 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.urlRemember.currentUrl = this.router.url;
-    Kakao.Link.createDefaultButton({
-      container: '#shareBtn',
-      objectType: 'feed',
-      content: {
-        title: document.title,
-        description: '내용, 주로 해시태그',
-        imageUrl: document.images[0].src,
-        link: {
-          webUrl: document.location.href,
-          mobileWebUrl: document.location.href
-        }
-      },
-      social: {
-        likeCount: 286,
-        commentCount: 45,
-        sharedCount: 845
-      },
-      buttons: [
-        {
-          title: 'Open!',
-          link: {
-            mobileWebUrl: document.location.href,
-            webUrl: document.location.href
-          }
-        }
-      ]
+
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
     });
+
+    
 
     this.endDate = this.reservationInfoService.reservationInfoObj.checkIn;
     this.endDate2 = this.reservationInfoService.reservationInfoObj.checkOut;
@@ -255,6 +237,34 @@ export class RoomDetailComponent implements OnInit, AfterViewInit {
           this.checked = false;
         }
       }
+    });
+
+    Kakao.Link.createDefaultButton({
+      container: '#shareBtn',
+      objectType: 'feed',
+      content: {
+        title: document.title,
+        description: '내용, 주로 해시태그',
+        imageUrl: document.images[0].src,
+        link: {
+          webUrl: document.location.href,
+          mobileWebUrl: document.location.href
+        }
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845
+      },
+      buttons: [
+        {
+          title: 'Open!',
+          link: {
+            mobileWebUrl: document.location.href,
+            webUrl: document.location.href
+          }
+        }
+      ]
     });
   }
 

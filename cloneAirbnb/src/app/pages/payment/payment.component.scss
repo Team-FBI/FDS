@@ -6,6 +6,13 @@
   padding: 20px;
   border: 1px solid #ddd;
 
+  @include pc {
+    width:40%;
+  }
+  @include tablets {
+    display: none;
+  }
+
   .paymentInfoWrap {
     @include flexContainer(space-between);
 
@@ -84,7 +91,7 @@
       font-weight: 300;
 
       a {
-        color: #008489;
+        color: $roomColor;
 
         &:hover {
           text-decoration: underline;
@@ -95,7 +102,7 @@
 }
 
 .fa-star {
-  color: #008489;
+  color: $roomColor;
 }
 
 svg {

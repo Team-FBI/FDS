@@ -14,45 +14,30 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ddd;
-  position: relative;
-
+  
 }
 .filterButton {
-  position: relative;
   display: inline-block;
   margin: 0px 15px;
   font-size: 14px;
   line-height: 18px;
   color: rgb(72, 72, 72);
-  padding:6px 12px;
+  padding: 6px 12px;
   cursor: pointer;
   background: none;
   text-align: center;
-  border:1px solid rgb(220, 224, 224);
+  border: 1px solid rgb(220, 224, 224);
   border-radius: 4px;
   text-decoration: none;
+  
+  @include mobile {
+    font-size: 12px;
+    margin: 0px 5px;
+  }
 }
 
 .filterButton::placeholder {
   color: #484848;
-}
-
-.filterRight {
-  position: absolute;
-  right: 30px;
-}
-
-.filterRight button {
-  display: inherit;
-  transition-property: opacity;
-  transition-duration: 250ms;
-  transition-timing-function: ease-in-out;
-  border:1px solid rgb(0, 132, 137);
-  border-radius: 32px;
-}
-
-.filterRight span {
-  padding-right: 8px;
 }
 
 button:focus {
@@ -101,6 +86,9 @@ button:focus {
   float: left;
   width: 50%;
   padding: 25px;
+  @include pc{
+    width: 100%;
+  }
 }
 
 .loading {
@@ -114,16 +102,14 @@ button:focus {
   text-align: center;
 }
 
-
-::ng-deep.page-item.active .page-link{
-  background:#ff5a5f;
-  border:1px solid #ff5a5f;
+::ng-deep.page-item.active .page-link {
+  background: $mainColor;
+  border: 1px solid $mainColor;
 }
 .paginationStyle {
   display: inline-block;
   margin: 30px auto;
 }
-
 
 .map {
   float: left;
@@ -132,6 +118,12 @@ button:focus {
   left: 50%;
   width: 50%;
   height: calc(100vh - 128px);
+  @include pc{
+    display: none;
+    width: 100%;
+    left: 0;
+    z-index: 29;
+  }
 }
 .mapWrap {
   width: 100%;
@@ -166,6 +158,32 @@ button:focus {
   border-radius: 5px;
   cursor: pointer;
   height: 200px;
+  carousel slide {
+    z-index: -10;
+    height: 190px;
+  }
+  
+  @include tablets {
+    height: 100%;
+    .detailImg{
+      width:100%;
+      display: block;
+      carousel slide {
+        height: 300px;
+      }
+    }
+    .detailText{
+      width: 100%;
+      display: block;
+    }
+  }
+   @include mobile {
+    .detailImg{
+      carousel slide {
+        height: 100%;
+      }
+    }
+   }
 }
 
 .detailList:hover {
@@ -183,20 +201,17 @@ button:focus {
   border-radius: 5px;
   overflow: hidden;
 
-  img{
+  img {
     border-radius: 5px;
   }
 }
 
-carousel slide {
-  z-index: -10;
-  height: 190px;
-}
+
 
 .detailText {
   @include flexContainer(space-between);
   flex-flow: column;
-  width:calc( 100% - 320px );
+  width: calc(100% - 320px);
   height: 100%;
   padding: 10px 20px;
 
@@ -217,8 +232,8 @@ carousel slide {
     font-size: 0.9rem;
     font-weight: 300;
 
-    p{
-      margin-top:5px;
+    p {
+      margin-top: 5px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -226,14 +241,14 @@ carousel slide {
   }
   .star {
     margin-top: 20px;
-    color:#008489;
+    color: $roomColor;
   }
-  .viewPrice{
-    font-size:16px;
+  .viewPrice {
+    font-size: 16px;
     text-align: right;
   }
-  .finalPrice{
-    font-size:12px;
+  .finalPrice {
+    font-size: 12px;
     text-align: right;
   }
 }
@@ -263,13 +278,11 @@ agm-map {
       font-size: 1.1rem;
       font-weight: bold;
     }
-    .rating{
-      color:#008489;
+    .rating {
+      color: $roomColor;
     }
   }
 }
-
-
 
 ::ng-deep.gm-style .gm-style-iw-c {
   padding: 17px 0 0 17px;
@@ -312,7 +325,7 @@ agm-map {
     height: 40px;
     padding: 5px;
     margin: 0;
-    border: 1px solid #008489;
+    border: 1px solid $roomColor;
     border-radius: 50%;
     background: #fff;
   }
@@ -324,7 +337,7 @@ agm-map {
   float: right;
   margin-top: 10px;
   border: 0;
-  color: #008489;
+  color: $roomColor;
   background: #fff;
 }
 
@@ -340,7 +353,7 @@ agm-map {
   float: right;
   margin-top: 10px;
   border: 0;
-  color: #008489;
+  color: $roomColor;
   background: #fff;
 }
 
@@ -408,6 +421,28 @@ agm-map {
   float: right;
   margin-top: 10px;
   border: 0;
-  color: #008489;
+  color: $roomColor;
   background: #fff;
 }
+
+.showMapBtn {
+  display: none;
+
+  @include pc {
+      display: block;
+      position: fixed;
+      z-index: 30;
+      bottom: 10px;
+      left: 50%;
+      transform: translate(-50%);
+      .mapBtn {
+        line-height: 20px;
+        padding: 8px;
+        background: white;
+        border: 2px solid #eee;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+  }
+}
+

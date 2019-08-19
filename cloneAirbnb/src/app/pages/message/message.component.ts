@@ -4,6 +4,7 @@ import { ChatService } from 'src/app/core/service/chat.service';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { MenuService } from 'src/app/core/service/menu.service';
 
 @Component({
   selector: 'app-message',
@@ -14,6 +15,7 @@ import { BehaviorSubject } from 'rxjs';
 export class MessageComponent implements OnInit {
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   appUrl: string = environment.appUrl;
+  menuOpen = false;
   allInfo = [];
   messages = [];
   messageHistory = [];
@@ -32,10 +34,13 @@ export class MessageComponent implements OnInit {
     message: ''
   };
 
-  constructor(private chatService: ChatService, private http: HttpClient) {
+  constructor(
+    private chatService: ChatService,
+    private http: HttpClient,
+    private menuService: MenuService
+  ) {
     chatService.messages.subscribe(msg => {
       this.messages.push(msg);
-      console.log(this.messages);
     });
   }
 
@@ -68,6 +73,10 @@ export class MessageComponent implements OnInit {
         this.isLoading$.next(false);
       }
     );
+
+    this.menuService.menuOpen.subscribe((booleanValue: boolean) => {
+      this.menuOpen = booleanValue;
+    });
   }
 
   dateDiff(first, second) {

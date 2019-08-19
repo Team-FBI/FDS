@@ -1,70 +1,74 @@
 <app-navigation></app-navigation>
-<div class="background">
-  <div>
-  </div>
-  <div class="formClass">
-    <form [formGroup]="singIn" (ngSubmit)="onSubmit(userId, userInputPassword)">
-      <p class="title">{{ 'signIn.signInTitle' | translate }}</p>
-      <div *ngIf="signInFail">
-        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-        <span class="signInFailMessage">
-          {{ 'signIn.signInFailMessage' | translate }}
-        </span>
-      </div>
-      <div
-        class="inputDiv"
-        (click)="inputDivClicked(inputDivEmail)"
-        (focusout)="inputDivUnclicked(inputDivEmail)"
-        #inputDivEmail
+<div *ngIf="!menuOpen">
+  <div class="background">
+    <div></div>
+    <div class="formClass">
+      <form
+        [formGroup]="singIn"
+        (ngSubmit)="onSubmit(userId, userInputPassword)"
       >
-        <input
-          class="input"
-          type="text"
-          placeholder="{{ 'signIn.emailIDPlaceholder' | translate }}"
-          formControlName="userEmail"
-          #userId
-        />
-        <i class="fa fa-id-card-o" aria-hidden="true"></i>
-      </div>
-      <p
-        *ngIf="userEmail.errors?.required && userEmail.touched"
-        class="warningMessage"
-      >
-        {{ 'signIn.emailIDRequiredWarningMessage' | translate }}
-      </p>
-      <div
-        class="inputDiv"
-        (click)="inputDivClicked(inputDivPassword)"
-        (focusout)="inputDivUnclicked(inputDivPassword)"
-        #inputDivPassword
-      >
-        <input
-          class="input"
-          type="password"
-          placeholder="{{ 'signIn.passwordPlaceholder' | translate }}"
-          formControlName="userPassword"
-          #userInputPassword
-        />
-        <i class="fa fa-eye-slash" aria-hidden="true"></i>
-      </div>
-      <p
-        *ngIf="userPassword.errors?.required && userPassword.touched"
-        class="warningMessage"
-      >
-        {{ 'signIn.passwordRequiredWarningMessage' | translate }}
-      </p>
-      <button
-        type="submit"
-        class="signInBtn"
-        [disabled]="singIn.invalid"
-        [class.disable]="singIn.invalid"
-      >
-        {{ 'signIn.signInBtn' | translate }}
+        <p class="title">{{ 'signIn.signInTitle' | translate }}</p>
+        <div *ngIf="signInFail">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <span class="signInFailMessage">
+            {{ 'signIn.signInFailMessage' | translate }}
+          </span>
+        </div>
+        <div
+          class="inputDiv"
+          (click)="inputDivClicked(inputDivEmail)"
+          (focusout)="inputDivUnclicked(inputDivEmail)"
+          #inputDivEmail
+        >
+          <input
+            class="input"
+            type="text"
+            placeholder="{{ 'signIn.emailIDPlaceholder' | translate }}"
+            formControlName="userEmail"
+            #userId
+          />
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+        </div>
+        <p
+          *ngIf="userEmail.errors?.required && userEmail.touched"
+          class="warningMessage"
+        >
+          {{ 'signIn.emailIDRequiredWarningMessage' | translate }}
+        </p>
+        <div
+          class="inputDiv"
+          (click)="inputDivClicked(inputDivPassword)"
+          (focusout)="inputDivUnclicked(inputDivPassword)"
+          #inputDivPassword
+        >
+          <input
+            class="input"
+            type="password"
+            placeholder="{{ 'signIn.passwordPlaceholder' | translate }}"
+            formControlName="userPassword"
+            #userInputPassword
+          />
+          <i class="fa fa-eye-slash" aria-hidden="true"></i>
+        </div>
+        <p
+          *ngIf="userPassword.errors?.required && userPassword.touched"
+          class="warningMessage"
+        >
+          {{ 'signIn.passwordRequiredWarningMessage' | translate }}
+        </p>
+        <button
+          type="submit"
+          class="signInBtn"
+          [disabled]="singIn.invalid"
+          [class.disable]="singIn.invalid"
+        >
+          {{ 'signIn.signInBtn' | translate }}
+        </button>
+      </form>
+      <div class="divideLine"></div>
+      <button type="button" class="toSignUp" (click)="toSignUp()">
+        {{ 'signIn.signUpBtn' | translate }}
       </button>
-    </form>
-    <div class="divideLine"></div>
-    <button type="button" class="toSignUp" (click)="toSignUp()">
-      {{ 'signIn.signUpBtn' | translate }}
-    </button>
+    </div>
   </div>
 </div>

@@ -1,258 +1,263 @@
 <app-navigation></app-navigation>
-<div class="background">
-  <div class="formClass">
-    <form
-      [formGroup]="singUp"
-      (ngSubmit)="
-        onSubmit(
-          inputUserName,
-          inputUserEmail,
-          firstName,
-          lastName,
-          password,
-          month,
-          day,
-          year
-        )
-      "
-    >
-      <p class="title">{{ 'signUp.signUpTitle' | translate }}</p>
-      <div class="divideLine"></div>
-      <div
-        class="inputDiv"
-        (click)="inputDivClicked(inputDivUserName)"
-        (focusout)="inputDivUnclicked(inputDivUserName)"
-        [style.background]="
-          userNameDuplicate ? 'rgba(252, 100, 45, 0.3)' : '#fff'
-        "
-        #inputDivUserName
-      >
-        <input
-          class="input"
-          type="text"
-          placeholder="{{ 'signUp.idPlaceholder' | translate }}"
-          formControlName="userName"
-          (click)="deleteUserNameWarningMessage()"
-          [style.background]="'rgba(255, 255, 255, 0)'"
-          #inputUserName
-        />
-        <i class="fa fa-id-card-o" aria-hidden="true"></i>
-      </div>
-      <p
-        *ngIf="userName.errors?.required && userName.touched"
-        class="warningMessage"
-      >
-        {{ 'signUp.idWarningMessage' | translate }}
-      </p>
-      <p *ngIf="userNameDuplicate" class="warningMessage">
-        {{ 'signUp.userNameDuplicate' | translate }}
-      </p>
-      <div
-        class="inputDiv"
-        (click)="inputDivClicked(inputDivEmail)"
-        (focusout)="inputDivUnclicked(inputDivEmail)"
-        [style.background]="
-          userEmailDuplicate ? 'rgba(252, 100, 45, 0.3)' : '#fff'
-        "
-        #inputDivEmail
-      >
-        <input
-          class="input"
-          type="text"
-          placeholder="{{ 'signUp.emailPlaceholder' | translate }}"
-          formControlName="userEmail"
-          (click)="deleteEmailWarningMessage()"
-          [style.background]="'rgba(255, 255, 255, 0)'"
-          #inputUserEmail
-        />
-        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-      </div>
-      <p
-        *ngIf="userEmail.errors?.required && userEmail.touched"
-        class="warningMessage"
-      >
-        {{ 'signUp.emailRequiredWarningMessage' | translate }}
-      </p>
-      <p
-        *ngIf="userEmail.errors?.pattern && userEmail.touched"
-        class="warningMessage"
-      >
-        {{ 'signUp.emailPatternWarningMessage' | translate }}
-      </p>
-      <p *ngIf="userEmailDuplicate" class="warningMessage">
-        {{ 'signUp.userEmailDuplicate' | translate }}
-      </p>
-      <div
-        class="inputDiv"
-        (click)="inputDivClicked(inputDivFistName)"
-        (focusout)="inputDivUnclicked(inputDivFistName)"
-        #inputDivFistName
-      >
-        <input
-          class="input"
-          type="text"
-          placeholder=" {{ 'signUp.firstNamePlaceholder' | translate }}"
-          formControlName="userFirstName"
-          #firstName
-        />
-        <i class="fa fa-user-o" aria-hidden="true"></i>
-      </div>
-      <p
-        *ngIf="userFirstName.errors?.required && userFirstName.touched"
-        class="warningMessage"
-      >
-        {{ 'signUp.firstNameRequiredWarningMessage' | translate }}
-      </p>
-      <p
-        *ngIf="userFirstName.errors?.pattern && userFirstName.touched"
-        class="warningMessage"
-      >
-        {{ 'signUp.firstNamePatternWarningMessage' | translate }}
-      </p>
-      <div
-        class="inputDiv"
-        (click)="inputDivClicked(inputDivLastName)"
-        (focusout)="inputDivUnclicked(inputDivLastName)"
-        #inputDivLastName
-      >
-        <input
-          class="input"
-          type="text"
-          placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
-          formControlName="userLastName"
-          #lastName
-        />
-        <i class="fa fa-user-o" aria-hidden="true"></i>
-      </div>
-      <p
-        *ngIf="userLastName.errors?.required && userLastName.touched"
-        class="warningMessage"
-      >
-        {{ 'signUp.lastNameRequiredWarningMessage' | translate }}
-      </p>
-      <p
-        *ngIf="userLastName.errors?.pattern && userLastName.touched"
-        class="warningMessage"
-      >
-        {{ 'signUp.lastNamePatternWarningMessage' | translate }}
-      </p>
-      <div
-        class="inputDiv"
-        (click)="inputDivClicked(inputDivPassword)"
-        (focusout)="inputDivUnclicked(inputDivPassword)"
-        #inputDivPassword
-      >
-        <input
-          class="input"
-          type="password"
-          placeholder="{{ 'signUp.passwordPlaceholder' | translate }}"
-          formControlName="userPassword"
-          (click)="passwordClicked()"
-          (focus)="passwordClicked()"
-          #password
-        />
-        <i class="fa fa-eye-slash" aria-hidden="true"></i>
-      </div>
-      <div [class.passwordHide]="passwordDisplay">
-        <span
-          *ngIf="
-            userPassword.errors?.required || userPassword.value.length < 8;
-            else passwordLengthElse
-          "
-          ><i class="fa fa-times" aria-hidden="true"></i
-        ></span>
-        <ng-template #passwordLengthElse
-          ><i class="fa fa-check" aria-hidden="true"></i
-        ></ng-template>
-        <span
-          class="warningPassword"
-          [style.color]="
-            userPassword.errors?.required || userPassword.value.length < 8
-              ? '#fc642d'
-              : '#00a699'
-          "
-        >
-          {{ 'signUp.passwordNameRequiredWarningMessage' | translate }}
-        </span>
-        <br />
-        <span
-          *ngIf="
-            userPassword.errors?.pattern || userPassword.invalid;
-            else passwordLengthElse
-          "
-          ><i class="fa fa-times" aria-hidden="true"></i
-        ></span>
-        <ng-template #passwordLengthElse
-          ><i class="fa fa-check" aria-hidden="true"></i
-        ></ng-template>
-        <span
-          class="warningPassword"
-          [style.color]="
-            userPassword.errors?.pattern || userPassword.invalid
-              ? '#fc642d'
-              : '#00a699'
-          "
-        >
-          {{ 'signUp.passwordNamePatternWarningMessage' | translate }}
-        </span>
-      </div>
-      <div class="textBold">{{ 'signUp.birthdayTitle' | translate }}</div>
-      <div class="textColor484848"></div>
-      <div class="selectBoxes">
-        <select formControlName="monthSelector" class="monthSelector" #month>
-          <option [ngValue]="null" disabled value selected>{{
-            'signUp.selectMonth' | translate
-          }}</option>
-          <option
-            *ngFor="let month of months"
-            [value]="month"
-            [ngValue]="month"
-            >{{ month }}</option
-          >
-        </select>
-        <select formControlName="daySelector" class="daySelector" #day>
-          <option [ngValue]="null" disabled value selected>
-            {{ 'signUp.selectDay' | translate }}</option
-          >
-          <option *ngFor="let day of days" [value]="day" [ngValue]="day">{{
-            day
-          }}</option>
-        </select>
-        <select formControlName="yearSelector" class="yearSelector" #year>
-          <option [ngValue]="null" disabled value selected>
-            {{ 'signUp.selectYear' | translate }}</option
-          >
-          <option *ngFor="let year of years" [value]="year" [ngValue]="year">{{
+<div *ngIf="!menuOpen">
+  <div class="background">
+    <div class="formClass">
+      <form
+        [formGroup]="singUp"
+        (ngSubmit)="
+          onSubmit(
+            inputUserName,
+            inputUserEmail,
+            firstName,
+            lastName,
+            password,
+            month,
+            day,
             year
-          }}</option>
-        </select>
-      </div>
-      <div class="textColor484848">
-        {{ 'signUp.promotionMessage' | translate }}
-      </div>
-      <div class="textBold">{{ 'signUp.image' | translate }}</div>
-      <div
-        class="inputDiv"
-        (click)="inputDivClicked(inputDivImage)"
-        (focusout)="inputDivUnclicked(inputDivImage)"
-        #inputDivImage
+          )
+        "
       >
-        <input
-          class="input"
-          type="text"
-          placeholder="{{ 'signUp.imagePlaceholder' | translate }}"
-          #image
-        />
-        <i class="fa fa-camera-retro" aria-hidden="true"></i>
-      </div>
-      <button
-        type="submit"
-        class="signUpBtn"
-        [disabled]="singUp.invalid"
-        [class.disable]="singUp.invalid"
-      >
-        {{ 'signUp.submitBtn' | translate }}
-      </button>
-    </form>
+        <p class="title">{{ 'signUp.signUpTitle' | translate }}</p>
+        <div class="divideLine"></div>
+        <div
+          class="inputDiv"
+          (click)="inputDivClicked(inputDivUserName)"
+          (focusout)="inputDivUnclicked(inputDivUserName)"
+          [style.background]="
+            userNameDuplicate ? 'rgba(252, 100, 45, 0.3)' : '#fff'
+          "
+          #inputDivUserName
+        >
+          <input
+            class="input"
+            type="text"
+            placeholder="{{ 'signUp.idPlaceholder' | translate }}"
+            formControlName="userName"
+            (click)="deleteUserNameWarningMessage()"
+            [style.background]="'rgba(255, 255, 255, 0)'"
+            #inputUserName
+          />
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+        </div>
+        <p
+          *ngIf="userName.errors?.required && userName.touched"
+          class="warningMessage"
+        >
+          {{ 'signUp.idWarningMessage' | translate }}
+        </p>
+        <p *ngIf="userNameDuplicate" class="warningMessage">
+          {{ 'signUp.userNameDuplicate' | translate }}
+        </p>
+        <div
+          class="inputDiv"
+          (click)="inputDivClicked(inputDivEmail)"
+          (focusout)="inputDivUnclicked(inputDivEmail)"
+          [style.background]="
+            userEmailDuplicate ? 'rgba(252, 100, 45, 0.3)' : '#fff'
+          "
+          #inputDivEmail
+        >
+          <input
+            class="input"
+            type="text"
+            placeholder="{{ 'signUp.emailPlaceholder' | translate }}"
+            formControlName="userEmail"
+            (click)="deleteEmailWarningMessage()"
+            [style.background]="'rgba(255, 255, 255, 0)'"
+            #inputUserEmail
+          />
+          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+        </div>
+        <p
+          *ngIf="userEmail.errors?.required && userEmail.touched"
+          class="warningMessage"
+        >
+          {{ 'signUp.emailRequiredWarningMessage' | translate }}
+        </p>
+        <p
+          *ngIf="userEmail.errors?.pattern && userEmail.touched"
+          class="warningMessage"
+        >
+          {{ 'signUp.emailPatternWarningMessage' | translate }}
+        </p>
+        <p *ngIf="userEmailDuplicate" class="warningMessage">
+          {{ 'signUp.userEmailDuplicate' | translate }}
+        </p>
+        <div
+          class="inputDiv"
+          (click)="inputDivClicked(inputDivFistName)"
+          (focusout)="inputDivUnclicked(inputDivFistName)"
+          #inputDivFistName
+        >
+          <input
+            class="input"
+            type="text"
+            placeholder=" {{ 'signUp.firstNamePlaceholder' | translate }}"
+            formControlName="userFirstName"
+            #firstName
+          />
+          <i class="fa fa-user-o" aria-hidden="true"></i>
+        </div>
+        <p
+          *ngIf="userFirstName.errors?.required && userFirstName.touched"
+          class="warningMessage"
+        >
+          {{ 'signUp.firstNameRequiredWarningMessage' | translate }}
+        </p>
+        <p
+          *ngIf="userFirstName.errors?.pattern && userFirstName.touched"
+          class="warningMessage"
+        >
+          {{ 'signUp.firstNamePatternWarningMessage' | translate }}
+        </p>
+        <div
+          class="inputDiv"
+          (click)="inputDivClicked(inputDivLastName)"
+          (focusout)="inputDivUnclicked(inputDivLastName)"
+          #inputDivLastName
+        >
+          <input
+            class="input"
+            type="text"
+            placeholder=" {{ 'signUp.lastNamePlaceholder' | translate }}"
+            formControlName="userLastName"
+            #lastName
+          />
+          <i class="fa fa-user-o" aria-hidden="true"></i>
+        </div>
+        <p
+          *ngIf="userLastName.errors?.required && userLastName.touched"
+          class="warningMessage"
+        >
+          {{ 'signUp.lastNameRequiredWarningMessage' | translate }}
+        </p>
+        <p
+          *ngIf="userLastName.errors?.pattern && userLastName.touched"
+          class="warningMessage"
+        >
+          {{ 'signUp.lastNamePatternWarningMessage' | translate }}
+        </p>
+        <div
+          class="inputDiv"
+          (click)="inputDivClicked(inputDivPassword)"
+          (focusout)="inputDivUnclicked(inputDivPassword)"
+          #inputDivPassword
+        >
+          <input
+            class="input"
+            type="password"
+            placeholder="{{ 'signUp.passwordPlaceholder' | translate }}"
+            formControlName="userPassword"
+            (click)="passwordClicked()"
+            (focus)="passwordClicked()"
+            #password
+          />
+          <i class="fa fa-eye-slash" aria-hidden="true"></i>
+        </div>
+        <div [class.passwordHide]="passwordDisplay">
+          <span
+            *ngIf="
+              userPassword.errors?.required || userPassword.value.length < 8;
+              else passwordLengthElse
+            "
+            ><i class="fa fa-times" aria-hidden="true"></i
+          ></span>
+          <ng-template #passwordLengthElse
+            ><i class="fa fa-check" aria-hidden="true"></i
+          ></ng-template>
+          <span
+            class="warningPassword"
+            [style.color]="
+              userPassword.errors?.required || userPassword.value.length < 8
+                ? '#fc642d'
+                : '#00a699'
+            "
+          >
+            {{ 'signUp.passwordNameRequiredWarningMessage' | translate }}
+          </span>
+          <br />
+          <span
+            *ngIf="
+              userPassword.errors?.pattern || userPassword.invalid;
+              else passwordLengthElse
+            "
+            ><i class="fa fa-times" aria-hidden="true"></i
+          ></span>
+          <ng-template #passwordLengthElse
+            ><i class="fa fa-check" aria-hidden="true"></i
+          ></ng-template>
+          <span
+            class="warningPassword"
+            [style.color]="
+              userPassword.errors?.pattern || userPassword.invalid
+                ? '#fc642d'
+                : '#00a699'
+            "
+          >
+            {{ 'signUp.passwordNamePatternWarningMessage' | translate }}
+          </span>
+        </div>
+        <div class="textBold">{{ 'signUp.birthdayTitle' | translate }}</div>
+        <div class="textColor484848"></div>
+        <div class="selectBoxes">
+          <select formControlName="monthSelector" class="monthSelector" #month>
+            <option [ngValue]="null" disabled value selected>{{
+              'signUp.selectMonth' | translate
+            }}</option>
+            <option
+              *ngFor="let month of months"
+              [value]="month"
+              [ngValue]="month"
+              >{{ month }}</option
+            >
+          </select>
+          <select formControlName="daySelector" class="daySelector" #day>
+            <option [ngValue]="null" disabled value selected>
+              {{ 'signUp.selectDay' | translate }}</option
+            >
+            <option *ngFor="let day of days" [value]="day" [ngValue]="day">{{
+              day
+            }}</option>
+          </select>
+          <select formControlName="yearSelector" class="yearSelector" #year>
+            <option [ngValue]="null" disabled value selected>
+              {{ 'signUp.selectYear' | translate }}</option
+            >
+            <option
+              *ngFor="let year of years"
+              [value]="year"
+              [ngValue]="year"
+              >{{ year }}</option
+            >
+          </select>
+        </div>
+        <div class="textColor484848">
+          {{ 'signUp.promotionMessage' | translate }}
+        </div>
+        <!-- <div class="textBold">{{ 'signUp.image' | translate }}</div>
+        <div
+          class="inputDiv"
+          (click)="inputDivClicked(inputDivImage)"
+          (focusout)="inputDivUnclicked(inputDivImage)"
+          #inputDivImage
+        >
+          <input
+            class="input"
+            type="text"
+            placeholder="{{ 'signUp.imagePlaceholder' | translate }}"
+            #image
+          />
+          <i class="fa fa-camera-retro" aria-hidden="true"></i>
+        </div> -->
+        <button
+          type="submit"
+          class="signUpBtn"
+          [disabled]="singUp.invalid"
+          [class.disable]="singUp.invalid"
+        >
+          {{ 'signUp.submitBtn' | translate }}
+        </button>
+      </form>
+    </div>
   </div>
 </div>
