@@ -21,11 +21,16 @@
   }
   .bigImageContainer {
     width: 50%;
+
     img {
       height: 500px;
     }
+    
     @include pc {
       width:65%;
+    }
+    @include tablets {
+      width:100%;
     }
   }
   .smallImageContainer {
@@ -50,6 +55,10 @@
       .pcHidden{
         display: none;
       }
+    }
+
+    @include tablets {
+      .imageList {display: none;}
     }
   }
 
@@ -108,6 +117,7 @@
   @include pc {
     width:90%;
     margin:50px auto;
+    border:2px solid blue;
   }
 }
 
@@ -117,10 +127,20 @@
   float: left;
   width: 400px;
 
+  @include pc {
+    width:40%;
+    border:2px solid red
+  }
+
   .paymentFixed {
     padding: 0 20px;
     border: 1px solid #e0e0e0;
     width: 400px;
+
+    @include pc {
+      width:100%;
+      border:2px solid red
+    }
   }
 
   .priceTitle {

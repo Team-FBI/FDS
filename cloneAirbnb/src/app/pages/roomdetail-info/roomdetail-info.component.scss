@@ -10,6 +10,16 @@
   width: 700px;
   padding-right: 50px;
 
+  @include pc {
+    width:60%;
+    border:2px solid red
+  }
+
+  @include tablets {
+    width:100%;
+    border:2px solid black;
+  }
+
   .detailTitle {
     h2 {
       font-size: 2rem;
