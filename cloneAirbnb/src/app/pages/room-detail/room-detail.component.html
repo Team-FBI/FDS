@@ -1,4 +1,4 @@
-<app-navigation></app-navigation>
+<app-navigation class="noneHead"></app-navigation>
 
 <section class="roomsImageContainer">
   <div class="flexContainer">
@@ -7,16 +7,16 @@
     </div>
     <div class="smallImageContainer">
       <div class="flexContainer">
-        <div class="imageList">
+        <div class="imageList imgleft">
           <img src="{{ image_1 }}" alt="" />
         </div>
-        <div class="imageList">
+        <div class="imageList imgright">
           <img src="{{ image_2 }}" alt="" />
         </div>
-        <div class="imageList">
+        <div class="imageList imgleft">
           <img src="{{ image_3 }}" alt="" />
         </div>
-        <div class="imageList">
+        <div class="imageList imgright">
           <img src="{{ image_4 }}" alt="" />
         </div>
       </div>
@@ -34,7 +34,7 @@
         <path d="m11.5 16v-15"></path>
         <path d="m7.5 4 4-3 4 3"></path>
         <path d="m5.4 9.5h-3.9v14h20v-14h-3.1"></path></svg
-      >{{ 'roomDetail.share' | translate }}
+      ><span class="noment">{{ 'roomDetail.share' | translate }}</span>
     </button>
     <button class="saveBtn" (click)="changeSaveBtn()">
       <div class="showsavebtn" *ngIf="checked">
@@ -48,7 +48,7 @@
           <path
             d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
           ></path></svg
-        >{{ 'roomDetail.save' | translate }}
+        ><span class="noment">{{ 'roomDetail.save' | translate }}</span>
       </div>
       <div class="hiddensavebtn" *ngIf="!checked">
         <svg
@@ -63,13 +63,13 @@
             d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6"
             stroke-linejoin="round"
           ></path></svg
-        ><span>{{ 'roomDetail.saved' | translate }}</span>
+        ><span class="noment">{{ 'roomDetail.saved' | translate }}</span>
       </div>
     </button>
     <div class="saveModal" *ngIf="isVisible">{{ saveMsg }}</div>
   </div>
   <div class="picture">
-    <button (click)="isOpen = !isOpen" class="pictureBtn" >{{ 'roomDetail.viewPhotos' | translate }}</button>
+    <button (click)="isOpen = !isOpen" class="pictureBtn">{{ 'roomDetail.viewPhotos' | translate }}</button>
   </div>
 </section>
 
