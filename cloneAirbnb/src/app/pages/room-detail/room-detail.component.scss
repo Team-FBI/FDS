@@ -397,9 +397,10 @@
 .gallery-thumbs .swiper-slide {
   overflow: hidden;
   opacity: 0.4;
+  width:100%;
 
   @include mobile {
-    width:50%;
+    width:100px !important;
   }
 }
 .gallery-thumbs .swiper-slide img {
