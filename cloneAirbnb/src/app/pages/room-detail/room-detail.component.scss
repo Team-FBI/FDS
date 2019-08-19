@@ -15,6 +15,9 @@
   @include tablets {
     height: 400px;
   }
+  @include mobile {
+    height: 300px;
+  }
 
   img {
     width: 100%;
@@ -31,6 +34,9 @@
 
       @include tablets {
         height: 400px;
+      }
+      @include mobile {
+        height: 300px;
       }
     }
 
@@ -358,6 +364,9 @@
 
   @include tablets {
     height: 400px;
+  }
+  @include mobile {
+    height: 300px;
   }
 }
 .gallery-thumbs {
