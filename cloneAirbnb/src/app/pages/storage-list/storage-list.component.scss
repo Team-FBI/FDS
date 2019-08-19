@@ -4,6 +4,11 @@
   width: 1100px;
   margin: 50px auto 0;
   padding: 0 30px;
+  
+  @include pc {
+    width:90%;
+    padding:0;
+  }
 
   h3 {
     display: inline-block;
@@ -51,6 +56,21 @@
   width: 330px;
   height: 250px;
   cursor: pointer;
+
+  @include pc {
+    position: relative;
+    margin-right: 21px;
+    width: 33%;
+    cursor: pointer;
+  }
+  @include tablets {
+    width:49%;
+    margin-right:1%;
+  }
+  @include mobile {
+    width:100%;
+    margin:0 0 10px 0;
+  }
 }
 .list:last-child {
   margin-right: 0;
@@ -94,33 +114,5 @@
   background: #fff;
 }
 
-@media screen and (max-width: 1200px) {  
-  .storageListContainer{
-    width:100%;
-    border:2px solid red
-  }
-  .list {
-    position: relative;
-    margin-right: 21px;
-    width: 33%;
-    cursor: pointer;
-    border:2px solid yellow;
-  }
-}
 
-@media screen and (max-width: 768px) { 
-  .list {
-    width:49%;
-    margin:0 5px 20px 0;
-  }
- }
- @media screen and (max-width: 360px) {
-  .storageListContainer{
-    border:2px solid blue
-  }
-  
-  .list {
-      width:100%;
-      margin:0 0 20px 0;
-    }
-  }
+
