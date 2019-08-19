@@ -219,12 +219,14 @@
   .personnel {
     clear: both;
     padding-top: 10px;
+
     p {
       margin-bottom: 5px;
       font-size: 1rem;
     }
     .guest-dropdown {
       width: 100%;
+
       button {
         padding: 10px;
         background: #fff;
@@ -241,6 +243,7 @@
           margin-bottom: 20px;
         }
         .people {
+
           p {
             display: inline;
             font-size: 18px;
@@ -253,6 +256,7 @@
             margin-top: 8px;
             font-size: 12px;
           }
+
         }
         .counterCheck {
           position: absolute;
@@ -393,6 +397,10 @@
 .gallery-thumbs .swiper-slide {
   overflow: hidden;
   opacity: 0.4;
+
+  @include mobile {
+    width:50%;
+  }
 }
 .gallery-thumbs .swiper-slide img {
   width: 100%;
