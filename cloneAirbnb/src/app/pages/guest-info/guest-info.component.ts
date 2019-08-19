@@ -52,7 +52,7 @@ export class GuestInfoComponent implements OnInit {
       };
 
       this.http.post(`${this.appUrl}/rooms/${id}`, payload).subscribe();
-      this.router.navigate(['checkpayment']);
+      this.router.navigate(['yourTrip']);
     }
   }
 
