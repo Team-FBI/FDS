@@ -18,6 +18,7 @@
   }
 }
 .storageListTitle {
+
   h2 {
     display: inline-block;
     font-size: 2em;
@@ -32,6 +33,7 @@
     border-radius: 5px;
     background: #fff;
   }
+
 }
 .storageList {
   margin-top: 50px;
@@ -46,35 +48,59 @@
     color: #484848;
   }
 }
-.flexContainer {
-  @include flexContainer(flex-start);
-  margin-top: 20px;
-}
-.list {
-  position: relative;
-  margin-right: 21px;
-  width: 330px;
-  height: 250px;
-  cursor: pointer;
+.listWrap{
+
+  .flexContainer {
+    @include flexContainer(flex-start);
+    margin-top: 20px;
+  }
+
+  .list {
+    position: relative;
+    margin-right: 1%;
+    margin-bottom:1%;
+    width: 32%;
+    height: 230px;
+    cursor: pointer;
+  
+    @include pc {
+      width: 100%;
+      overflow-y: hidden;
+      overflow-x: scroll;
+    }
+
+    :last-of-type{
+      margin-right: 0;
+    }
+  
+  }
 
   @include pc {
-    position: relative;
-    margin-right: 21px;
-    width: 33%;
-    cursor: pointer;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .flexContainer {
+      width: 100%;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .list {
+      width: 200px;
+      display: inline-block;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
-  @include tablets {
-    width:49%;
-    margin-right:1%;
-  }
-  @include mobile {
-    width:100%;
-    margin:0 0 10px 0;
-  }
+  
 }
-.list:last-child {
-  margin-right: 0;
-}
+
+
 .listImage {
   background-position: center center !important;
   background-repeat: no-repeat !important;
