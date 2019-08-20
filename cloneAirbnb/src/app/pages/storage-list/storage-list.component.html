@@ -17,23 +17,6 @@
         >{{ likedRoomDetails.length }}
         {{ 'storageList.lists' | translate }}</span
       >
-<<<<<<< HEAD
-      <div class="listWrap">
-        <div class="flexContainer">
-          <div
-            class="list"
-            *ngFor="let room of likedRoomDetails; index as i"
-            (click)="toRoomDetail(room.id)"
-          >
-            <!-- <div class="listImage"> -->
-            <img src="{{ room.image }}" alt="" class="listImage" />
-            <!-- <div class="listImageBg"></div> -->
-            <div class="listTitle">
-              <p>{{ room.title }}</p>
-              <span>{{ room.address }}</span>
-            </div>
-            <!-- </div> -->
-=======
       <div class="flexContainer">
         <div
           class="list"
@@ -44,7 +27,6 @@
           <div class="listTitle">
             <p>{{ room.title }}</p>
             <span>{{ room.address }}</span>
->>>>>>> rmorigin/develop
           </div>
         </div>
       </div>
