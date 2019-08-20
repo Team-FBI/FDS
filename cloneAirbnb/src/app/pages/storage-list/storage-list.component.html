@@ -4,7 +4,6 @@
   <section class="storageListContainer">
     <div class="storageListTitle">
       <h2>{{ 'storageList.Lists' | translate }}</h2>
-      <!-- <button class="storageListBtn">목록 만들기</button> -->
     </div>
     <section class="storageList">
       <h3>{{ 'storageList.yourLists' | translate }}</h3>
@@ -18,6 +17,7 @@
         >{{ likedRoomDetails.length }}
         {{ 'storageList.lists' | translate }}</span
       >
+<<<<<<< HEAD
       <div class="listWrap">
         <div class="flexContainer">
           <div
@@ -33,6 +33,18 @@
               <span>{{ room.address }}</span>
             </div>
             <!-- </div> -->
+=======
+      <div class="flexContainer">
+        <div
+          class="list"
+          *ngFor="let room of likedRoomDetails; index as i"
+          (click)="toRoomDetail(room.id)"
+        >
+          <img src="{{ room.image }}" alt="" class="listImage" />
+          <div class="listTitle">
+            <p>{{ room.title }}</p>
+            <span>{{ room.address }}</span>
+>>>>>>> rmorigin/develop
           </div>
         </div>
       </div>
@@ -40,7 +52,6 @@
     <section class="popularList">
       <div class="storageListTitle">
         <h3>{{ 'storageList.popularLists' | translate }}</h3>
-        <!-- <button class="popularBtn">전체보기</button> -->
       </div>
       <div class="listWrap">
         <div class="flexContainer">
