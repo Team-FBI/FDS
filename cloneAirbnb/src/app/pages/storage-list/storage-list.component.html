@@ -4,7 +4,6 @@
   <section class="storageListContainer">
     <div class="storageListTitle">
       <h2>{{ 'storageList.Lists' | translate }}</h2>
-      <!-- <button class="storageListBtn">목록 만들기</button> -->
     </div>
     <section class="storageList">
       <h3>{{ 'storageList.yourLists' | translate }}</h3>
@@ -24,46 +23,68 @@
           *ngFor="let room of likedRoomDetails; index as i"
           (click)="toRoomDetail(room.id)"
         >
-          <!-- <div class="listImage"> -->
           <img src="{{ room.image }}" alt="" class="listImage" />
-          <!-- <div class="listImageBg"></div> -->
           <div class="listTitle">
             <p>{{ room.title }}</p>
             <span>{{ room.address }}</span>
           </div>
-          <!-- </div> -->
         </div>
       </div>
     </section>
     <section class="popularList">
       <div class="storageListTitle">
         <h3>{{ 'storageList.popularLists' | translate }}</h3>
-        <!-- <button class="popularBtn">전체보기</button> -->
       </div>
-      <div class="flexContainer">
-        <div class="list">
-          <div
-            class="listImage"
-            style="background-image: url(https://a0.muscache.com/im/pictures/22447cfd-d6d7-409d-8732-e7de62101841.jpg?aki_policy=large)"
-          >
-            <div class="listImageBg"></div>
-            <div class="listTitle">
-              <p>인기 숙소</p>
-              <span>숙소정보</span>
+      <div class="listWrap">
+        <div class="flexContainer">
+            <div class="list">
+              <div
+                class="listImage"
+                style="background-image: url(https://a0.muscache.com/im/pictures/22447cfd-d6d7-409d-8732-e7de62101841.jpg?aki_policy=large)"
+              >
+                <div class="listImageBg"></div>
+                <div class="listTitle">
+                  <p>인기 숙소</p>
+                  <span>숙소정보</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="list">
-          <div
-            class="listImage"
-            style="background-image: url(https://a0.muscache.com/im/pictures/5b2bceb0-8f19-4b56-ab69-baa59c7f69fe.jpg)"
-          >
-            <div class="listImageBg"></div>
-            <div class="listTitle">
-              <p>인기 숙소</p>
-              <span>숙소정보</span>
+            <div class="list">
+              <div
+                class="listImage"
+                style="background-image: url(https://a0.muscache.com/im/pictures/b8cf8052-8b2f-40ab-bb5d-d8e7d2b569e7.jpg?aki_policy=large)"
+              >
+                <div class="listImageBg"></div>
+                <div class="listTitle">
+                  <p>인기 숙소</p>
+                  <span>숙소정보</span>
+                </div>
+              </div>
             </div>
-          </div>
+            <div class="list">
+              <div
+                class="listImage"
+                style="background-image: url(https://a0.muscache.com/im/pictures/85478039/fa28c4f5_original.jpg?aki_policy=large)"
+              >
+                <div class="listImageBg"></div>
+                <div class="listTitle">
+                  <p>인기 숙소</p>
+                  <span>숙소정보</span>
+                </div>
+              </div>
+            </div>
+            <div class="list">
+              <div
+                class="listImage"
+                style="background-image: url(https://a0.muscache.com/im/pictures/5b2bceb0-8f19-4b56-ab69-baa59c7f69fe.jpg)"
+              >
+                <div class="listImageBg"></div>
+                <div class="listTitle">
+                  <p>인기 숙소</p>
+                  <span>숙소정보</span>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </section>

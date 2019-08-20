@@ -80,8 +80,6 @@ export class RoomdetailInfoComponent implements OnInit {
     );
     this.minDate = new Date();
     this.maxDate = new Date();
-    // this.bsInlineValue2.setDate(this.bsInlineValue.getDate() + 32);
-    // 다음달 달력만들때 필요한것
   }
 
   ngOnInit() {
@@ -161,24 +159,6 @@ export class RoomdetailInfoComponent implements OnInit {
     }
     return listDate;
   }
-
-  // divideReviews() {
-  //   const result = [];
-  //   let fiveReviews = [];
-  //   for (const [index, review] of this.reviews.entries()) {
-  //     if (index % 5 !== 0 || index === 0) {
-  //       fiveReviews.push(review);
-  //     } else if (index % 5 === 0) {
-  //       result.push(fiveReviews);
-  //       fiveReviews = [];
-  //       fiveReviews.push(review);
-  //     }
-  //     if (index === this.reviews.length - 1) {
-  //       result.push(fiveReviews);
-  //     }
-  //   }
-  //   this.newReviews = result;
-  // }
 
   pageChanged(event: any): void {
     this.page = event.page - 1;

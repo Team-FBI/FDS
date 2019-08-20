@@ -4,6 +4,11 @@
   width: 1100px;
   margin: 50px auto 0;
   padding: 0 30px;
+  
+  @include pc {
+    width:90%;
+    padding:0;
+  }
 
   h3 {
     display: inline-block;
@@ -13,6 +18,7 @@
   }
 }
 .storageListTitle {
+
   h2 {
     display: inline-block;
     font-size: 2em;
@@ -27,6 +33,7 @@
     border-radius: 5px;
     background: #fff;
   }
+
 }
 .storageList {
   margin-top: 50px;
@@ -41,20 +48,59 @@
     color: #484848;
   }
 }
-.flexContainer {
-  @include flexContainer(flex-start);
-  margin-top: 20px;
+.listWrap{
+
+  .flexContainer {
+    @include flexContainer(flex-start);
+    margin-top: 20px;
+  }
+
+  .list {
+    position: relative;
+    margin-right: 1%;
+    margin-bottom:1%;
+    width: 32%;
+    height: 230px;
+    cursor: pointer;
+  
+    @include pc {
+      width: 100%;
+      overflow-y: hidden;
+      overflow-x: scroll;
+    }
+
+    :last-of-type{
+      margin-right: 0;
+    }
+  
+  }
+
+  @include pc {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .flexContainer {
+      width: 100%;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .list {
+      width: 200px;
+      display: inline-block;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+  
 }
-.list {
-  position: relative;
-  margin-right: 21px;
-  width: 330px;
-  height: 250px;
-  cursor: pointer;
-}
-.list:last-child {
-  margin-right: 0;
-}
+
+
 .listImage {
   background-position: center center !important;
   background-repeat: no-repeat !important;
@@ -94,33 +140,5 @@
   background: #fff;
 }
 
-@media screen and (max-width: 1200px) {  
-  .storageListContainer{
-    width:100%;
-    border:2px solid red
-  }
-  .list {
-    position: relative;
-    margin-right: 21px;
-    width: 33%;
-    cursor: pointer;
-    border:2px solid yellow;
-  }
-}
 
-@media screen and (max-width: 768px) { 
-  .list {
-    width:49%;
-    margin:0 5px 20px 0;
-  }
- }
- @media screen and (max-width: 360px) {
-  .storageListContainer{
-    border:2px solid blue
-  }
-  
-  .list {
-      width:100%;
-      margin:0 0 20px 0;
-    }
-  }
+

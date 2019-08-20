@@ -10,10 +10,26 @@
   width: 700px;
   padding-right: 50px;
 
+  @include pc {
+    width:60%;
+  }
+
+  @include tablets {
+    width:100%;
+    padding-right:0;
+  }
+
   .detailTitle {
     h2 {
       font-size: 2rem;
       font-weight: bold;
+
+      @include tablets {
+        font-size: 1.7rem;
+      }
+      @include mobile {
+        font-size: 1.5rem;
+      }
     }
     p {
       margin-top: 5px;
@@ -123,6 +139,10 @@
     margin:20px 0px 25px;
     font-size: 1.5rem;
     font-weight: bold;
+
+    @include mobile {
+      font-size: 1.3rem;
+    }
   }
 
   .rating {
@@ -198,8 +218,17 @@
       font-size:1.1rem;
       font-weight: 300;
 
+      @include mobile {
+        width:100%;
+        font-size:0.9rem;
+      }
+
       &:last-of-type{
         padding-left:20px;
+
+        @include mobile {
+          padding:0;
+        }
       }
 
       .rating{

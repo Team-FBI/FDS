@@ -26,10 +26,6 @@
         {{ personnel }} {{ 'guestInfo.guests' | translate }}
       </div>
     </div>
-    <!-- <div class="businessTrip">
-      <h3>출장을 떠나시나요?</h3>
-      <button>출장버튼</button>
-    </div> -->
     <div class="hostMessageContainer">
       <div class="hostInfo">
         <h3>{{ 'guestInfo.tellToHost' | translate }}</h3>
@@ -40,7 +36,7 @@
         <textarea
           name=""
           id=""
-          placeholder="메세지를 입력해주세요."
+          placeholder="Please enter a message."
           (input)="changeIsEmpty(userMessage)"
           #userMessage
         ></textarea>
