@@ -18,20 +18,22 @@
         >{{ likedRoomDetails.length }}
         {{ 'storageList.lists' | translate }}</span
       >
-      <div class="flexContainer">
-        <div
-          class="list"
-          *ngFor="let room of likedRoomDetails; index as i"
-          (click)="toRoomDetail(room.id)"
-        >
-          <!-- <div class="listImage"> -->
-          <img src="{{ room.image }}" alt="" class="listImage" />
-          <!-- <div class="listImageBg"></div> -->
-          <div class="listTitle">
-            <p>{{ room.title }}</p>
-            <span>{{ room.address }}</span>
+      <div class="listWrap">
+        <div class="flexContainer">
+          <div
+            class="list"
+            *ngFor="let room of likedRoomDetails; index as i"
+            (click)="toRoomDetail(room.id)"
+          >
+            <!-- <div class="listImage"> -->
+            <img src="{{ room.image }}" alt="" class="listImage" />
+            <!-- <div class="listImageBg"></div> -->
+            <div class="listTitle">
+              <p>{{ room.title }}</p>
+              <span>{{ room.address }}</span>
+            </div>
+            <!-- </div> -->
           </div>
-          <!-- </div> -->
         </div>
       </div>
     </section>
@@ -40,30 +42,56 @@
         <h3>{{ 'storageList.popularLists' | translate }}</h3>
         <!-- <button class="popularBtn">전체보기</button> -->
       </div>
-      <div class="flexContainer">
-        <div class="list">
-          <div
-            class="listImage"
-            style="background-image: url(https://a0.muscache.com/im/pictures/22447cfd-d6d7-409d-8732-e7de62101841.jpg?aki_policy=large)"
-          >
-            <div class="listImageBg"></div>
-            <div class="listTitle">
-              <p>인기 숙소</p>
-              <span>숙소정보</span>
+      <div class="listWrap">
+        <div class="flexContainer">
+            <div class="list">
+              <div
+                class="listImage"
+                style="background-image: url(https://a0.muscache.com/im/pictures/22447cfd-d6d7-409d-8732-e7de62101841.jpg?aki_policy=large)"
+              >
+                <div class="listImageBg"></div>
+                <div class="listTitle">
+                  <p>인기 숙소</p>
+                  <span>숙소정보</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="list">
-          <div
-            class="listImage"
-            style="background-image: url(https://a0.muscache.com/im/pictures/5b2bceb0-8f19-4b56-ab69-baa59c7f69fe.jpg)"
-          >
-            <div class="listImageBg"></div>
-            <div class="listTitle">
-              <p>인기 숙소</p>
-              <span>숙소정보</span>
+            <div class="list">
+              <div
+                class="listImage"
+                style="background-image: url(https://a0.muscache.com/im/pictures/5b2bceb0-8f19-4b56-ab69-baa59c7f69fe.jpg)"
+              >
+                <div class="listImageBg"></div>
+                <div class="listTitle">
+                  <p>인기 숙소</p>
+                  <span>숙소정보</span>
+                </div>
+              </div>
             </div>
-          </div>
+            <div class="list">
+              <div
+                class="listImage"
+                style="background-image: url(https://a0.muscache.com/im/pictures/5b2bceb0-8f19-4b56-ab69-baa59c7f69fe.jpg)"
+              >
+                <div class="listImageBg"></div>
+                <div class="listTitle">
+                  <p>인기 숙소</p>
+                  <span>숙소정보</span>
+                </div>
+              </div>
+            </div>
+            <div class="list">
+              <div
+                class="listImage"
+                style="background-image: url(https://a0.muscache.com/im/pictures/5b2bceb0-8f19-4b56-ab69-baa59c7f69fe.jpg)"
+              >
+                <div class="listImageBg"></div>
+                <div class="listTitle">
+                  <p>인기 숙소</p>
+                  <span>숙소정보</span>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </section>
