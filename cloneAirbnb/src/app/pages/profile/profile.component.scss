@@ -8,6 +8,12 @@
   border: 1px solid #00a699;
   border-radius: 10px;
 
+  @include tablets {
+    width: 90%;
+  }
+  @include mobile {
+    padding:20px;
+  }
 }
 
 .title {
@@ -41,36 +47,67 @@
   width: 100px;
   font-size: 0.9rem;
   font-weight: 500;
+
+  @include tablets {
+    width:20%;
+    height:40px;
+    line-height: 40px;
+  }
+  @include mobile {
+    width:30%;
+    font-size:0.8rem;
+  }
 }
 
 .explanation {
   padding-left: 100px;
   font-size: 0.8rem;
   color: #00a699;
+
+  @include tablets {
+    padding:0px 10px;
+  }
 }
+
 .oneLine{
   margin: 15px auto;
-}
-.inputDiv {
-  display: inline-block;
-  width: 538px;
-  border: 1px solid #f1f1f1;
-  border-radius: 5px;
+
+  i{
+    @include tablets {
+      display: none
+    }
+  }
+
+  .inputDiv {
+    display: inline-block;
+    width: 538px;
+    border: 1px solid #f1f1f1;
+    border-radius: 5px;
+
+    @include tablets {
+      width:80%;
+    }
+    @include mobile {
+      width:70%;
+      font-size:0.8rem;
+    }
+  }
+
+  .input {
+    display: inline-block;
+    width: 95%;
+    height: 40px;
+    padding: 7px;
+    font-size: 0.8rem;
+    border: 0;
+    margin-left: 5px;
+    
+  }
 }
 
-.input {
-  display: inline-block;
-  width: 95%;
-  height: 40px;
-  padding: 7px;
-  font-size: 0.8rem;
-  border: 0;
-  margin-left: 5px;
-}
-
-.passwordHide {
-  display: none;
-}
+// .passwordHide {
+//   display: none;
+// }
 
 .warningPassword {
   font-size: 13px;
@@ -161,35 +198,3 @@
 }
 
 
-@include tablets {
-  .formClass {
-     width: 90%;
-  }
-  .oneLine i{
-    display: none
-  }
-  .inputTitleSpan {
-    width:20%;
-    height:40px;
-    line-height: 40px;
-  }
-  .inputDiv {
-    width:80%;
-  }
-  .explanation{
-    padding:0px 10px;
-  }
-}
-@include mobile {
-  .formClass {
-    padding:20px;
-  }  
-  .inputTitleSpan {
-    width:30%;
-    font-size:0.8rem;
-  }
-  .inputDiv {
-    width:70%;
-    font-size:0.8rem;
-  }
-}
