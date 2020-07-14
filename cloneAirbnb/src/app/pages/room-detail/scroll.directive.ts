@@ -5,6 +5,7 @@ import { Directive, ElementRef, Renderer2, HostListener } from '@angular/core';
 })
 export class ScrollDirective {
   scrollToTop = 640;
+  scrollTobottom = 1340;
 
   constructor(public el: ElementRef, public renderer: Renderer2) {}
 
