@@ -77,7 +77,6 @@
       }
     }
   }
-
   button {
     padding: 0px 15px;
     line-height: 35px;
@@ -135,16 +134,12 @@
     margin: 50px auto;
   }
 }
-.detailContainer::after {
-  clear: both;
-  display: block;
-  content: '';
-}
 
 .detailPayment {
   position: sticky;
   top: 20px;
   float: left;
+  width: 400px;
 
   @include pc {
     width: 40%;
@@ -515,77 +510,3 @@
 .btn:focus {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }
-
-//반응형
-@media screen and (max-width: 1200px){
-  .noneHead{
-    display:none;
-  }
-  .detailPayment{
-    display:none;
-  }
-
-  .roomsImageContainer{
-    .bigImageContainer {
-      width: 70%;
-      // border:2px solid red;
-      img {
-        height: 500px;
-      }
-    }
-    .smallImageContainer {
-      width: 30%;
-
-      .flexContainer{
-        // border:2px solid yellow;
-        .imageList{
-          width:100%;
-          // border:2px solid green;
-        }
-        .imgright{
-          display:none;
-        }
-      }
-    }
-
-  }
-
-} 
-@media screen and (max-width: 768px){
-  .pictureBtn{
-    display: none;
-  }
-  .showsavebtn{
-    // visibility: hidden;
-  }
-  .noment{
-    display:none;
-  }
-
-  .roomsImageContainer{
-    .bigImageContainer {
-      width: 100%;
-      // border:2px solid red;
-      img {
-        height: 500px;
-      }
-    }
-    .smallImageContainer {
-      width: 0%;
-
-      .flexContainer{
-        // border:2px solid yellow;
-        .imageList{
-          width:0%;
-          // border:2px solid green;
-        }
-        // .imageLeft{
-        //   border:2px solid green;
-        // }
-      }
-    }
-
-  }
-
-} 
-@media screen and (max-width: 360px) {  }
